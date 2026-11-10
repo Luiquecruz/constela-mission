@@ -17,6 +17,7 @@ function progressWith(completed: string[], lastLesson?: string): ProgressState {
     challenges: Object.fromEntries(completed.map((id) => [`demo/${id}`, true as const])),
     challengeLanguages: {},
     language: {},
+    provider: {},
     quizzes: {},
     visited: {},
     code: {},
@@ -26,7 +27,7 @@ function progressWith(completed: string[], lastLesson?: string): ProgressState {
 }
 
 const modules = [module(0, true), ...Array.from({ length: 14 }, (_, index) => module(index + 1, false))];
-const track: Track = { id: 'demo', engine: 'csharp', languages: [], order: 1, title: 'Demo', monogram: 'D', description: '', version: '1', modules, lessons: modules.flatMap((entry) => entry.lessons) };
+const track: Track = { id: 'demo', engine: 'csharp', languages: [], providers: [], order: 1, title: 'Demo', monogram: 'D', description: '', version: '1', modules, lessons: modules.flatMap((entry) => entry.lessons) };
 const requiredLessons = modules.filter((entry) => !entry.optional).flatMap((entry) => entry.lessons.map((item) => item.id));
 
 describe('stageLine', () => {

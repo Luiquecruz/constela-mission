@@ -161,6 +161,17 @@ export const TRACK_GLYPHS: Record<string, TrackGlyph> = {
     ],
     key: [22.5, 30],
   },
+  cicd: {
+    concept: 'an integration loop feeding a delivery line',
+    lines: ['M16 14H26A8 8 0 0 1 26 30H16A8 8 0 0 1 16 14Z', 'M34 22H41'],
+    stars: [
+      [16, 14],
+      [26, 14],
+      [26, 30],
+      [16, 30],
+    ],
+    key: [41, 22],
+  },
   'system-design': {
     concept: 'a balancer fanning out to replicated nodes',
     lines: ['M24 11L12 34', 'M24 11L24 34', 'M24 11L36 34', 'M12 34H36'],

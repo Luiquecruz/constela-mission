@@ -7,7 +7,8 @@ import type { Lesson, LessonEntry, Track } from './types';
 
 export { isTrackEnabled, TRACK_FLAGS } from './featureFlags';
 export { LANGUAGES } from './languages';
-export type { Challenge, Concept, EngineId, LanguageId, LanguageInfo, LanguageRegistry, Lesson, LessonContent, LessonEntry, Level, Module, ProjectFiles, QuizQuestion, Track, TrackId } from './types';
+export { PROVIDERS } from './providers';
+export type { Challenge, Concept, EngineId, LanguageId, LanguageInfo, LanguageRegistry, Lesson, LessonContent, LessonEntry, Level, Module, ProjectFiles, ProviderId, ProviderInfo, ProviderRegistry, QuizQuestion, Track, TrackId } from './types';
 
 export const tracks: Track[] = catalog.map((track) => ({ ...track, lessons: track.modules.flatMap((module) => module.lessons) }));
 export const availableTracks = tracks.filter((track) => isTrackEnabled(track.id));

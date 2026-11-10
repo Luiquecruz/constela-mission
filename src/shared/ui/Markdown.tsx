@@ -1,5 +1,6 @@
 import { useMemo } from 'react';
 import { Marked } from 'marked';
+import { selectProviderBlocks } from './providerBlocks';
 import hljs from 'highlight.js/lib/core';
 import typescript from 'highlight.js/lib/languages/typescript';
 import javascript from 'highlight.js/lib/languages/javascript';
@@ -62,8 +63,8 @@ const marked = new Marked({
 /**
  * Renders trusted course Markdown with syntax highlighting.
  */
-export function Markdown({ source, className }: { source: string; className?: string }) {
-  const html = useMemo(() => marked.parse(source) as string, [source]);
+export function Markdown({ source, className, provider }: { source: string; className?: string; provider?: string }) {
+  const html = useMemo(() => marked.parse(selectProviderBlocks(source, provider)) as string, [source, provider]);
   return <div className={`markdown ${className ?? ''}`} dangerouslySetInnerHTML={{ __html: html }} />;
 }
 

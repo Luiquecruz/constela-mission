@@ -1,0 +1,14 @@
+{
+  "languages": [
+    "node",
+    "python",
+    "csharp"
+  ],
+  "order": 13,
+  "providers": ["github", "azure", "aws", "gcp"],
+  "title": "CI/CD",
+  "monogram": "CD",
+  "shortTitle": "CI/CD",
+  "description": "From commit to production: pipelines, quality gates, environments, deployment strategies, workload identity and supply chain security, GitOps, delivery metrics, and the YAML and infrastructure as code behind them, with examples for GitHub Actions, Azure, AWS and Google Cloud.",
+  "version": "Pipelines · quality gates · deploy strategies · supply chain · GitOps · IaC and YAML"
+}

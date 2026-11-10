@@ -1,5 +1,14 @@
 export type EngineId = 'typescript' | 'react' | 'vue' | 'angular' | 'node' | 'python' | 'csharp';
 export type LanguageId = string;
+
+/** A platform whose examples a track can show in the theory, chosen by the learner. */
+export type ProviderId = string;
+
+export interface ProviderInfo {
+  label: string;
+}
+
+export type ProviderRegistry = Record<ProviderId, ProviderInfo>;
 export type TrackId = string;
 export type Level = 'beginner' | 'intermediate' | 'advanced' | 'expert';
 export type ProjectFiles = Record<string, string>;
@@ -76,6 +85,7 @@ export interface Track<TLesson extends LessonEntry = LessonEntry> {
   id: TrackId;
   engine: EngineId;
   languages: LanguageId[];
+  providers: ProviderId[];
   order: number;
   title: string;
   shortTitle?: string;

@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from 'react';
 import { migrateStateManagementProgress } from './legacyStateProgress';
-import type { LanguageId, LessonEntry, ProjectFiles, TrackId } from '@/content';
+import type { LanguageId, LessonEntry, ProjectFiles, ProviderId, TrackId } from '@/content';
 
 const STORAGE_KEY = 'constela:progress:v1';
 const LEGACY_STORAGE_KEY = 'dev-dojo:progress:v1';
@@ -9,6 +9,7 @@ export interface ProgressState {
   challenges: Record<string, true>;
   challengeLanguages: Record<string, Record<LanguageId, true>>;
   language: Partial<Record<TrackId, LanguageId>>;
+  provider: Partial<Record<TrackId, ProviderId>>;
   quizzes: Record<string, true>;
   visited: Record<string, true>;
   code: Record<string, ProjectFiles>;
@@ -16,7 +17,7 @@ export interface ProgressState {
   lastLesson: Partial<Record<TrackId, string>>;
 }
 
-const empty: ProgressState = { challenges: {}, challengeLanguages: {}, language: {}, quizzes: {}, visited: {}, code: {}, quizAnswers: {}, lastLesson: {} };
+const empty: ProgressState = { challenges: {}, challengeLanguages: {}, language: {}, provider: {}, quizzes: {}, visited: {}, code: {}, quizAnswers: {}, lastLesson: {} };
 
 /**
  * Saved progress, moved once from the key used before the Constela Mission rename to the current one.
@@ -86,6 +87,9 @@ export const progress = {
   },
   chooseLanguage(trackId: TrackId, language: LanguageId) {
     update((current) => ({ ...current, language: { ...current.language, [trackId]: language } }));
+  },
+  chooseProvider(trackId: TrackId, provider: ProviderId) {
+    update((current) => ({ ...current, provider: { ...current.provider, [trackId]: provider } }));
   },
   markQuiz(lessonKey: string) {
     update((current) => ({ ...current, quizzes: { ...current.quizzes, [lessonKey]: true } }));

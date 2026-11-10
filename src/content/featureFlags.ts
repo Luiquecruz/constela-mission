@@ -10,6 +10,7 @@ export const TRACK_FLAGS: Readonly<Record<string, boolean>> = {
   'system-design': true,
   'java-spring': true,
   nextjs: true,
+  cicd: false,
 };
 
 /**
