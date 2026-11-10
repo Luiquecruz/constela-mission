@@ -2,7 +2,7 @@
 
 Large Next.js platforms rarely use a single uniform layout hierarchy. Marketing pages need a lightweight public header, an authenticated CloudStudio console needs a persistent sidebar, a multi-panel billing dashboard needs independent streaming and fault isolation per widget, and an asset gallery needs quick-view modals that preserve URL shareability.
 
-In this checkpoint, you will synthesize the routing patterns from Module 5 into an **Architectural Decision Record (ADR)** for the CloudStudio platform.
+In this checkpoint, you will synthesize the routing patterns from this module into an **Architectural Decision Record (ADR)** for the CloudStudio platform.
 
 ## Architectural Trade-Off Matrix
 

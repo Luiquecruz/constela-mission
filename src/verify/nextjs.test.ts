@@ -26,10 +26,10 @@ const modules = track?.modules ?? [];
 const lessons = track?.lessons ?? [];
 
 describe('nextjs track standards', () => {
-  it('declares the react engine and six consecutive required modules', () => {
+  it('declares the react engine and modules 03 to 08 while the foundation modules 01 and 02 land', () => {
     expect(track).toBeDefined();
     expect(track!.engine).toBe('react');
-    expect(modules.map((module) => module.number)).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(modules.map((module) => module.number)).toEqual([3, 4, 5, 6, 7, 8]);
     expect(modules.filter((module) => module.optional)).toEqual([]);
     expect(lessons.length).toBe(24);
   });
