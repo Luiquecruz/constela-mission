@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the required format for a valid SHA256 artifact digest string?",
+    "options": [
+      "Any plain text string ending with '.tar.gz'.",
+      "A random 10-digit integer value.",
+      "A 64-character hexadecimal string prefixed with 'sha256:'.",
+      "An email address format such as 'user@domain.com'."
+    ],
+    "answer": 2,
+    "explanation": "Valid SHA256 digests must consist of 'sha256:' followed by exactly 64 hexadecimal characters."
+  },
+  {
+    "question": "What must an immutable artifact registry do when receiving a registration request for an existing digest with different binary payload details?",
+    "options": [
+      "Throw an explicit immutability violation error and reject the operation.",
+      "Overwrite the old artifact silently.",
+      "Delete all images in the registry.",
+      "Rename the new artifact to 'latest'."
+    ],
+    "answer": 0,
+    "explanation": "Immutable registries must throw an error when an attempt is made to modify or overwrite an existing digest entry."
+  },
+  {
+    "question": "How should a cache policy evaluator set 'canWrite' permission for a Pull Request branch run?",
+    "options": [
+      "Set canWrite to true for all PR branches.",
+      "Set canWrite to true only on weekends.",
+      "Delete the cache key entirely.",
+      "Set canWrite to false to enforce cache isolation against poisoning."
+    ],
+    "answer": 3,
+    "explanation": "PR branches must receive canWrite: false to prevent unreviewed PR code from poisoning shared primary caches."
+  },
+  {
+    "question": "Which branch is authorized to receive 'canWrite: true' in a standard cache isolation policy?",
+    "options": [
+      "Any unreviewed feature branch created by a guest user.",
+      "The protected primary branch (e.g., 'main' or 'master').",
+      "Draft PR branches.",
+      "Temporary experiment branches."
+    ],
+    "answer": 1,
+    "explanation": "Cache write permissions are restricted exclusively to protected primary branches like main or master."
+  },
+  {
+    "question": "What components form a primary cache key in a deterministic cache strategy?",
+    "options": [
+      "Developer local username and CPU temperature.",
+      "Current minute timestamp and random numbers.",
+      "OS platform identifier, language runtime, and dependency lockfile hash.",
+      "Git commit message body text."
+    ],
+    "answer": 2,
+    "explanation": "Deterministic cache keys combine environment indicators with cryptographic hashes of dependency lockfiles."
+  }
+]

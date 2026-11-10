@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Digest Verification",
+    "description": "Validation check ensuring SHA256 strings conform to 64-character hexadecimal formatting with sha256: prefix."
+  },
+  {
+    "term": "Immutability Violation",
+    "description": "Error condition raised when an attempt is made to overwrite an existing artifact digest record."
+  },
+  {
+    "term": "Cache Policy Evaluator",
+    "description": "System determining cache restore key sequences and read/write permissions based on branch context."
+  },
+  {
+    "term": "Store Key",
+    "description": "Composite lookup key used to index artifacts uniquely by name and SHA256 digest in a registry."
+  }
+]
