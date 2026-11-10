@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Declarative Promotion",
+    "description": "Workflow advancing an immutable artifact across environments by updating version references in Git configuration files."
+  },
+  {
+    "term": "Promotion Precondition",
+    "description": "Validation rule (such as passing staging tests) that must be satisfied before an artifact can be promoted."
+  },
+  {
+    "term": "Configuration Diff",
+    "description": "Version control difference showing exact parameter and digest updates proposed for an environment manifest."
+  },
+  {
+    "term": "Smoke Testing",
+    "description": "Automated post-deployment verification testing basic system health and API endpoint availability."
+  },
+  {
+    "term": "Sequential Promotion",
+    "description": "Policy requiring artifacts to successfully pass through lower environments before reaching production."
+  }
+]
