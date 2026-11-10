@@ -56,8 +56,8 @@ export function classifyRouteExecution({
 
   if (!isPreGenerated) {
     return {
-      mode: 'dynamic',
-      reason: `Slug "${slug}" was not pre-generated, so Next.js renders it dynamically on demand because dynamicParams is true.`,
+      mode: 'static',
+      reason: `Slug "${slug}" was not pre-generated, so Next.js statically generates it on demand on the first request and caches it for subsequent requests because dynamicParams is true.`,
     };
   }
 
@@ -104,7 +104,7 @@ export function RenderModeExplorerApp() {
             checked={dynamicParams}
             onChange={(e) => setDynamicParams(e.target.checked)}
           />{' '}
-          dynamicParams = true (allow on-demand dynamic slugs)
+          dynamicParams = true (allow on-demand slugs)
         </label>
 
         <label>

@@ -23,11 +23,26 @@ test('resolvePageMetadata applies title.template for dynamic generateMetadata an
   expect(postMeta.title).toBe('Post: routing-basics | Constela');
   expect(postMeta.description).toBe('Post summary');
   expect(postMeta.openGraph).toEqual({
-    siteName: 'Constela',
     type: 'article',
     title: 'Post: routing-basics | Constela',
     description: 'Post summary',
   });
+});
+
+test('resolvePageMetadata replaces Open Graph objects and preserves explicit shared fields without mutating inputs', () => {
+  const parent = { title: 'Site', description: 'Site summary', openGraph: {
+    siteName: 'Constela', images: '/shared.png', title: 'Old title', description: 'Old summary',
+  } };
+  const before = JSON.stringify(parent);
+  const inherited = mod.resolvePageMetadata(parent, undefined);
+  expect(inherited.openGraph).toEqual({ siteName: 'Constela', images: '/shared.png', title: 'Site', description: 'Site summary' });
+  const empty = mod.resolvePageMetadata(parent, { openGraph: {} });
+  expect(empty.openGraph).toEqual({ title: 'Site', description: 'Site summary' });
+  const child = { openGraph: { siteName: parent.openGraph.siteName, title: 'Social title', description: 'Social summary' } };
+  const result = mod.resolvePageMetadata(parent, child);
+  expect(result.openGraph).toEqual(child.openGraph);
+  expect(JSON.stringify(parent)).toBe(before);
+  expect(child.openGraph).toEqual({ siteName: 'Constela', title: 'Social title', description: 'Social summary' });
 });
 
 test('buildSitemap normalizes baseUrl and generates root plus blog post entries', () => {

@@ -1,3 +1,7 @@
+<!-- coderabbit-ai-generated:v1 -->
+
+<!-- coderabbit-ai-generated-section:v1:c4eb3970997b30e1f65bc7f0ed0b852ca9605d9c08b6e1e6ea187d12e9929005 -->
+
 # Metadata API, Open Graph, and SEO Files
 
 In a traditional React SPA, `<head>` tags are often mutated client-side after JavaScript boots, leaving search crawlers and social link unfurlers (Slack, X, LinkedIn) staring at a generic `<title>` and blank preview card. The Next.js App Router solves this natively on the server with a declarative **Metadata API** and typed file conventions for `sitemap.xml` and `robots.txt`.
@@ -53,7 +57,7 @@ export async function generateMetadata({
 
 Two important merging rules apply across segments:
 
-1. **Shallow merging per segment**: Child keys override matching parent keys (`description`, `openGraph`), while nested objects like `openGraph` replace or merge carefully—meaning you should explicitly include `openGraph.title` and `openGraph.description` on child pages when overriding social cards so shared `siteName` or defaults stay coherent.
+1. **Shallow merging per segment**: Child keys override matching parent keys. When a child defines `openGraph`, its object replaces the parent's object entirely; inherited fields such as `siteName` and `images` are lost unless explicitly preserved. Retain shared values by spreading a shared Open Graph object into the child, or by reading the resolved parent metadata through the second `parent` argument of `generateMetadata` and explicitly copying the desired fields. The challenge simulator additionally fills missing Open Graph title and description from its resolved page values for the preview.
 2. **Automatic deduplication**: Next.js automatically deduplicates `fetch()` calls (and React `cache()` helpers) shared between `generateMetadata` and the `Page` component during the same request.
 
 ## Built-in `app/sitemap.ts` and `app/robots.ts`
@@ -69,3 +73,6 @@ Instead of hand-editing brittle XML or static text files, Next.js provides typed
 - **Dynamic `generateMetadata({ params })`**: Choose for dynamic routes (`/blog/[slug]`, `/products/[id]`) where the `<title>`, `description`, and Open Graph tags must reflect fetched content.
 - **Root `title: { default, template }`**: Always define this in `app/layout.tsx` so every child route inherits consistent branding automatically without duplicating `' | Brand'` in every page file.
 - **Programmatic `app/sitemap.ts` & `app/robots.ts`**: Choose whenever URLs grow dynamically from a CMS or database, or when staging/private paths (`/admin`, `/preview`) must be blocked cleanly in `robots.txt`.
+
+
+<!-- /coderabbit-ai-generated:v1 -->

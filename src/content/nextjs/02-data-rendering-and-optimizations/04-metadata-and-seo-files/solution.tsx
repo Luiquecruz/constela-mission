@@ -100,19 +100,14 @@ export function resolvePageMetadata<TContext = unknown>(
   const resolvedDescription = child.description ?? parentMeta.description ?? '';
 
   const mergedOpenGraph: Record<string, string> = {
-    ...(parentMeta.openGraph ?? {}),
-    ...(child.openGraph ?? {}),
+    ...(child.openGraph !== undefined ? child.openGraph : parentMeta.openGraph ?? {}),
   };
 
-  if (!child.openGraph?.title && !mergedOpenGraph.title) {
-    mergedOpenGraph.title = resolvedTitle;
-  } else if (!child.openGraph?.title) {
+  if (!child.openGraph?.title) {
     mergedOpenGraph.title = resolvedTitle;
   }
 
-  if (!child.openGraph?.description && !mergedOpenGraph.description) {
-    mergedOpenGraph.description = resolvedDescription;
-  } else if (!child.openGraph?.description) {
+  if (!child.openGraph?.description) {
     mergedOpenGraph.description = resolvedDescription;
   }
 

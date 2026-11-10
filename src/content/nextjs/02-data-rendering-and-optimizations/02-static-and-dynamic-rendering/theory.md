@@ -1,10 +1,16 @@
+<!-- coderabbit-ai-generated:v1 -->
+
+<!-- coderabbit-ai-generated-section:v1:4dc0d4a804c5c0b7e5f23018745bc491d56b3a14451316013dd2e030de8a9a0e -->
+
+<!-- coderabbit-ai-generated-section:v1:ede5f3643365dd06f074ad1c1f66da6e6f8c896db601b183dc57a0967e88c3da -->
+
 # Static and Dynamic Rendering with `generateStaticParams`
 
 By default, Next.js tries to do as much rendering work as possible **once at build time** rather than repeating it on every incoming HTTP request. Understanding when a route stays **static** versus when it switches to **dynamic** per-request execution is essential for predictable latency, CDN cacheability, and avoiding accidental slowdowns in production.
 
 ## Static Rendering vs. Dynamic Rendering
 
-- **Static Rendering (Prerendering)**: Next.js renders the route at build time (or during background revalidation), producing cached HTML and React Server Component payloads that can be served directly from a CDN edge node with sub-50 ms TTFB.
+- **Static Rendering (Prerendering)**: Next.js renders the route at build time, on the first request for an unlisted slug, or during background revalidation, producing cached HTML and React Server Component payloads that can be served directly from a CDN edge node with sub-50 ms TTFB.
 - **Dynamic Rendering**: Next.js renders the route **at request time** for each incoming user request. This is necessary when output depends on per-user cookies, request headers, query strings, or uncached live data.
 
 ## Pre-rendering Dynamic Segments with `generateStaticParams`
@@ -35,7 +41,7 @@ export default async function BlogPostPage({
 
 The `dynamicParams` segment export controls what happens when a visitor requests a `slug` that was **not** returned by `generateStaticParams()`:
 
-- **`dynamicParams = true` (default)**: Next.js dynamically renders the page on demand on the first request and caches it for subsequent visitors.
+- **`dynamicParams = true` (default)**: For a route eligible for static rendering, Next.js statically generates the page on demand on the first request and caches it for subsequent visitors. This is distinct from dynamic rendering on every request; an unlisted slug alone does not make the route dynamic. Dynamic request APIs or an explicit `dynamic = 'force-dynamic'` configuration instead require per-request rendering. This lesson models the classic route configuration without Cache Components and assumes no other configuration or uncached data opts the route into dynamic rendering.
 - **`dynamicParams = false`**: Any `slug` absent from `generateStaticParams()` immediately returns a **404 Not Found** response without hitting your page component or database. This is ideal for fixed documentation sets or closed catalogs where unknown URLs should fail fast.
 
 ## What Triggers Dynamic Rendering Automatically?
@@ -63,3 +69,6 @@ Mastering static vs. dynamic classification first gives you the exact mental mod
 - **Static Rendering with `generateStaticParams` (`dynamicParams = false`)**: Choose for marketing pages, fixed product docs, editorial guides, and finite static paths where unknown slugs should return 404 immediately.
 - **Static Rendering with `generateStaticParams` (`dynamicParams = true`)**: Choose for large blogs or e-commerce catalogs where you prebuild the top 200 popular routes at build time and render long-tail pages on demand.
 - **Dynamic Rendering (Dynamic APIs)**: Choose when the response genuinely varies per visitor—personalized dashboards, authenticated account screens, localized currency headers, or search results driven by `searchParams`.
+
+
+<!-- /coderabbit-ai-generated:v1 -->

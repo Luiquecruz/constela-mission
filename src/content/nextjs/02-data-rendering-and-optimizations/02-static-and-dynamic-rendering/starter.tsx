@@ -82,7 +82,7 @@ export function RenderModeExplorerApp() {
             checked={dynamicParams}
             onChange={(e) => setDynamicParams(e.target.checked)}
           />{' '}
-          dynamicParams = true (allow on-demand dynamic slugs)
+          dynamicParams = true (allow on-demand slugs)
         </label>
 
         <label>

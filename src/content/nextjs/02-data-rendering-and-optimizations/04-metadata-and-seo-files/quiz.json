@@ -42,5 +42,16 @@
     ],
     "answer": 3,
     "explanation": "app/robots.ts generates /robots.txt with structured user-agent allow/disallow rules and the canonical sitemap URL for search engine crawlers."
+  },
+  {
+    "question": "A layout defines openGraph with siteName and images. A child page defines openGraph: { title: \"Post\" }. What happens to the parent fields?",
+    "options": [
+      "They are automatically deep-merged into the child object",
+      "They are lost unless the child explicitly preserves them, for example by spreading shared values or reading parent metadata in generateMetadata",
+      "Next.js rejects the child metadata",
+      "They become top-level metadata fields"
+    ],
+    "answer": 1,
+    "explanation": "Metadata is shallowly merged across segments: a child openGraph object replaces the parent object entirely. Explicitly copy shared fields to retain them."
   }
 ]

@@ -38,7 +38,14 @@ test('classifyRouteExecution handles un-prerendered slugs for dynamicParams true
     dynamicParams: true,
     usesDynamicApi: false,
   });
-  expect(onDemand.mode).toBe('dynamic');
+  expect(onDemand.mode).toBe('static');
+  expect(onDemand.reason.toLowerCase()).toContain('first request');
+  expect(onDemand.reason.toLowerCase()).toContain('caches');
+
+  const perRequest = mod.classifyRouteExecution({
+    pathname: '/blog/new-draft', staticParams, dynamicParams: true, usesDynamicApi: true,
+  });
+  expect(perRequest.mode).toBe('dynamic');
 
   const rejected = mod.classifyRouteExecution({
     pathname: '/blog/new-draft',
@@ -62,7 +69,8 @@ test('RenderModeExplorerApp updates mode badge when toggling dynamic APIs and dy
   expect(screen.getByTestId('execution-mode')).toHaveTextContent('static');
 
   await user.selectOptions(screen.getByLabelText(/route slug/i), 'unlisted-draft');
-  expect(screen.getByTestId('execution-mode')).toHaveTextContent('dynamic');
+  expect(screen.getByTestId('execution-mode')).toHaveTextContent('static');
+  expect(screen.getByTestId('execution-reason')).toHaveTextContent(/caches/i);
 
   await user.click(screen.getByLabelText(/dynamicParams = true/i));
   expect(screen.getByTestId('execution-mode')).toHaveTextContent('not-found');
