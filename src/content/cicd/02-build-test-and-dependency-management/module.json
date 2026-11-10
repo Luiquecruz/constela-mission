@@ -1,0 +1,4 @@
+{
+  "title": "Build, Test, and Dependency Management",
+  "description": "Learn how to structure deterministic automated builds, commit test suites, dependency locking, and security scanning (SAST and SCA)."
+}

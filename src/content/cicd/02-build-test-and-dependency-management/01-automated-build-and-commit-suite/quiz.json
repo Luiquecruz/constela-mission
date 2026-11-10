@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What primary property characterizes a deterministic build process?",
+    "options": [
+      "The build script executes automatically at midnight every day.",
+      "The build requires manual approval from a security manager before starting.",
+      "Identical source code inputs and parameters produce identical binary outputs regardless of build machine.",
+      "The build process compresses all source files into a ZIP archive."
+    ],
+    "answer": 2,
+    "explanation": "Deterministic builds ensure that compiling identical source code produces identical binary outputs across different machines."
+  },
+  {
+    "question": "What is the recommended maximum execution time target for a primary commit test suite?",
+    "options": [
+      "Under 5 to 10 minutes.",
+      "Between 2 and 4 hours.",
+      "Exactly 24 hours.",
+      "Between 45 and 60 minutes."
+    ],
+    "answer": 0,
+    "explanation": "Commit test suites should run within 5 to 10 minutes to maintain developer focus and enable rapid feedback loops."
+  },
+  {
+    "question": "Which test types are best suited for inclusion in a fast commit test suite?",
+    "options": [
+      "Manual exploratory user acceptance tests.",
+      "Full end-to-end browser UI automation tests requiring external staging databases.",
+      "Disaster recovery failover simulations.",
+      "Unit tests, fast integration tests, and static code linting."
+    ],
+    "answer": 3,
+    "explanation": "Fast commit suites focus on isolated unit tests and static checks that execute rapidly without external network dependencies."
+  },
+  {
+    "question": "Why are stateful, persistent build servers considered problematic for deterministic builds?",
+    "options": [
+      "They consume less electricity than ephemeral build servers.",
+      "Accumulated local state and residual files cause non-reproducible build inconsistencies across runs.",
+      "They prevent developers from writing TypeScript functions.",
+      "They automatically delete Git branches after 10 minutes."
+    ],
+    "answer": 1,
+    "explanation": "Stateful build servers accumulate residual files and environment variations that cause non-reproducible build results."
+  },
+  {
+    "question": "What operational problem occurs when CI pipeline feedback loops exceed 30 minutes?",
+    "options": [
+      "Git repository disk space decreases rapidly.",
+      "Source code files are automatically converted to HTML.",
+      "Context-switching overhead increases and PR review velocity drops significantly.",
+      "Compiler tools fail with syntax error messages."
+    ],
+    "answer": 2,
+    "explanation": "Slow pipelines cause context-switching friction as developers move to other tasks while waiting for build results."
+  }
+]

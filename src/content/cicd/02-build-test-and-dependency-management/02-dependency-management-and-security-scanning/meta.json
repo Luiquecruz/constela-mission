@@ -1,0 +1,19 @@
+{
+  "title": "Dependency Management and Security Scanning",
+  "summary": "Master lockfile pinning, SAST, SCA security scanning, and defense against OWASP Dependency Chain Abuse (CICD-SEC-3).",
+  "level": "beginner",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OWASP CICD-SEC-3: Dependency Chain Abuse",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-03-Dependency-Chain-Abuse"
+    },
+    {
+      "label": "GitHub Docs: About the dependency graph",
+      "url": "https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/about-the-dependency-graph"
+    }
+  ]
+}
