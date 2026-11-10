@@ -6,8 +6,9 @@ Esta especificação define os requisitos técnicos, padrões de código, modelo
 
 A evolução do Next.js (consolidada nas versões 15 e 16 com React 19) estabelece um divisor de águas na construção de aplicações web full-stack. O modelo mental do framework transicionou de comportamentos implícitos (como cache automático agressivo e acesso síncrono ao contexto de requisição) para um **controle declarativo explícito** validado pelo compilador e pelo runtime.
 
-**Objetivo da trilha:** formar engenheiros capazes de projetar, implementar, depurar, instrumentar e migrar aplicações Next.js de alta escala em produção, dominando:
+**Objetivo da trilha:** conduzir quem concluiu a trilha de React desde os fundamentos do framework (App Router, roteamento baseado em sistema de arquivos, layouts/templates, navegação, busca de dados, renderização estática vs dinâmica, Route Handlers, metadados e otimizações nativas) até formar engenheiros capazes de projetar, implementar, depurar, instrumentar e migrar aplicações Next.js de alta escala em produção, dominando:
 
+0. **Fundamentos do App Router e Construção de Sites de Conteúdo (Módulos 1–2)**: anatomia do projeto Next.js vs SPA com Vite, App Router vs Pages Router, roteamento por diretórios (`[slug]`, `[...slug]`, `[[...slug]]`, `_lib`, `(grupos)`), `layout.tsx` (estado preservado) vs `template.tsx` (remount por navegação), `<Link>`, `usePathname`, `useSearchParams`, `useRouter`, `redirect()`, `loading.tsx`/`error.tsx`/`not-found.tsx`, fetch em Server Components com props serializáveis, `generateStaticParams` e `dynamicParams`, Route Handlers (`GET`/`POST`), `generateMetadata`/`sitemap`/`robots`, `next/image`/`next/font`/`next/script`/`NEXT_PUBLIC_*`, fechando com um projeto intermediário de site de conteúdo.
 1. **Fronteira Híbrida Servidor/Cliente (RSC, Streaming e Server Actions)**: onde cada componente executa, o que atravessa a rede pelo protocolo Flight, como evitar waterfalls com `<Suspense>` e como construir mutações resilientes.
 2. **Isolamento de Contexto Assíncrono, Partial Prerendering (PPR) e Data Access Layer (DAL)**: por que `params`, `searchParams`, `cookies()` e `headers()` são Promises, como preservar cascas estáticas (static shells) empurrando leituras dinâmicas para dentro de `<Suspense>` e como proteger dados com memoização por requisição (`React.cache`).
 3. **Arquitetura Declarativa de Cache (`use cache`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`)**: inversão para dinâmico por padrão, chaves de cache derivadas de argumentos e closures, perfis de expiração em múltiplas camadas e semântica Stale-While-Revalidate vs Read-Your-Own-Writes.
@@ -17,7 +18,28 @@ A evolução do Next.js (consolidada nas versões 15 e 16 com React 19) estabele
 
 ---
 
-## 2. Módulo 1: Modelo de Execução e Renderização Híbrida (RSC & React 19)
+## 1B. Módulos de Fundamentos (Ponte a partir da Trilha de React)
+
+Antes de entrar nas decisões arquiteturais avançadas (RSC Flight serialization, PPR, `'use cache'`, `after()`, Parallel/Intercepting Routes e `proxy.ts`), os **Módulos 1 e 2** preenchem a lacuna entre uma aplicação SPA em React (Vite + React Router) e o modelo full-stack do App Router:
+
+### Módulo 1 (`01-app-router-foundations`): Roteamento, Layouts e Navegação
+- **App Router vs Pages Router & Anatomia de Projeto**: por que um framework full-stack vai além da biblioteca de UI (`app/`, `public/`, `next.config.ts`, `dev`/`build`/`start`, Turbopack).
+- **File-System Routing & Precedência**: `page.tsx`, segmentos dinâmicos (`[slug]`), catch-all (`[...slug]`), catch-all opcional (`[[...slug]]`), pastas privadas (`_lib`) e route groups (`(group)`).
+- **`layout.tsx` vs `template.tsx`**: root layout (`<html>`/`<body>`), aninhamento por segmento, preservação de estado em layouts e remount intencional em templates.
+- **Navegação & URL State**: `<Link>` (prefetch), `usePathname()`, `useSearchParams()`, `useRouter()` e `redirect()` no servidor.
+- **Boundaries Básicas de Segmento**: `loading.tsx` (`<Suspense>`), `error.tsx` (Client Component com `reset()`) e `not-found.tsx` / `notFound()`.
+
+### Módulo 2 (`02-data-rendering-and-optimizations`): Dados, Renderização e Otimizações
+- **Data Fetching em Server Components**: componentes `async` sem cascata de `useEffect`, tratamento de erro/vazio e serialização JSON na fronteira Server → Client.
+- **Renderização Estática vs Dinâmica**: `generateStaticParams`, `dynamicParams` (`true` vs `false`) e o impacto de APIs dinâmicas (`cookies()`, `headers()`, `searchParams`, `connection()`).
+- **Route Handlers Fundamentais**: `app/api/.../route.ts` com `GET`/`POST`, validação, códigos HTTP, `Response.json` e escolha entre Route Handler e Server Action.
+- **Metadados & Arquivos de SEO**: `metadata` estático, `title.template`, `generateMetadata`, `app/sitemap.ts` e `app/robots.ts`.
+- **Otimizações Nativas & Ambiente**: `next/image` (`sizes`, `fill`, `priority`, `remotePatterns`), `next/font`, `next/script`, CSS Modules/Tailwind em RSC e `NEXT_PUBLIC_*` vs segredos server-only.
+- **Projeto Intermediário (`06-project-content-site`)**: site editorial/blog multi-arquivo integrando layout persistente, `[slug]`, `generateStaticParams`, `generateMetadata`, `not-found` e `loading` antes da entrada nos módulos avançados `03–08`.
+
+---
+
+## 2. Módulo 3 (Avançado 1): Modelo de Execução e Renderização Híbrida (RSC & React 19)
 
 ### 2.1 Server Components, Redução de Bundle e a Fronteira `'use client'`
 
@@ -417,8 +439,19 @@ A trilha roda em `src/content/nextjs` (track `nextjs`, engine `react`) e o plano
 
 ### Mapa spec → lições (`src/content/nextjs`)
 
-| Módulo | Item da spec / competência expert | Lição | Formato |
+| Módulo | Item da spec / competência | Lição | Formato |
 | --- | --- | --- | --- |
+| `01-app-router-foundations` | Por que Next.js, App Router vs Pages Router, anatomia e Turbopack | `01-what-is-nextjs-and-the-app-router` | Quiz |
+| `01-app-router-foundations` | Roteamento por pastas, `[slug]`, `[...slug]`, `[[...slug]]`, grupos e `_private` | `02-file-system-routing-and-dynamic-segments` | Desafio |
+| `01-app-router-foundations` | Root layout, layouts aninhados (estado preservado) vs `template.tsx` (remount) | `03-layouts-templates-and-nested-ui` | Desafio |
+| `01-app-router-foundations` | `<Link>`, `usePathname`, `useSearchParams`, `useRouter` e `redirect()` | `04-linking-and-navigation` | Desafio |
+| `01-app-router-foundations` | Boundaries básicas de segmento: `loading.tsx`, `error.tsx` (`reset`) e `notFound()` | `05-loading-error-and-not-found` | Desafio |
+| `02-data-rendering-and-optimizations` | Busca de dados em Server Components `async` e serialização para Client Components | `01-fetching-data-in-server-components` | Desafio |
+| `02-data-rendering-and-optimizations` | Renderização estática vs dinâmica, `generateStaticParams` e `dynamicParams` | `02-static-and-dynamic-rendering` | Desafio |
+| `02-data-rendering-and-optimizations` | Route Handlers (`GET`/`POST`, `Response.json`) e quando preferir sobre Server Action | `03-route-handlers-fundamentals` | Desafio |
+| `02-data-rendering-and-optimizations` | `metadata`, `title.template`, `generateMetadata`, `sitemap.ts` e `robots.ts` | `04-metadata-and-seo-files` | Desafio |
+| `02-data-rendering-and-optimizations` | `next/image`, `next/font`, `next/script`, estilização e `NEXT_PUBLIC_*` vs server env | `05-images-fonts-styling-and-environment` | Quiz |
+| `02-data-rendering-and-optimizations` | Projeto Intermediário: blog/site de conteúdo multi-arquivo (ponte para módulos 03–08) | `06-project-content-site` | Desafio Multi-arquivo |
 | `03-hybrid-rendering` | RSC, redução de bundle, fronteira `'use client'` e padrão Donut (`children`) | `01-server-components-and-bundle-boundary` | Desafio |
 | `03-hybrid-rendering` | Streaming com `<Suspense>`, pré-carregamento paralelo e eliminação de waterfalls | `02-streaming-suspense-and-waterfalls` | Desafio |
 | `03-hybrid-rendering` | Server Actions (`'use server'`), `<Form>` (`next/form`), validação e `useActionState` | `03-server-actions-and-progressive-forms` | Desafio |
