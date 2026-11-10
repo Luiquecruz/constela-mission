@@ -1,0 +1,25 @@
+{
+  "title": "Route Handlers Fundamentals",
+  "summary": "Build Web-standard app/api route.ts endpoints with named HTTP methods, query parameters, JSON body validation, status codes, and clear criteria for choosing Route Handlers vs. Server Actions.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Docs: route.ts File Convention",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route"
+    },
+    {
+      "title": "Next.js Docs: Route Handlers",
+      "url": "https://nextjs.org/docs/app/getting-started/route-handlers"
+    },
+    {
+      "title": "MDN Web Docs: Request",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Request"
+    },
+    {
+      "title": "MDN Web Docs: Response.json()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Response/json_static"
+    }
+  ]
+}

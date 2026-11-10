@@ -1,0 +1,46 @@
+[
+  {
+    "question": "A user types text into a sidebar search input inside app/dashboard/layout.tsx and then clicks a link from /dashboard/billing to /dashboard/settings. What happens to the search input?",
+    "options": [
+      "The input clears because Next.js unmounts all layouts on every route change",
+      "The input value and DOM element are preserved because nested layouts stay mounted across sibling navigations",
+      "Next.js throws a hydration error unless the input is moved into template.tsx",
+      "The input clears unless you wrap it in 'use client' and localStorage"
+    ],
+    "answer": 1,
+    "explanation": "With partial rendering, shared layouts like app/dashboard/layout.tsx stay mounted while only the changing child page swaps, preserving React state and DOM nodes across sibling routes."
+  },
+  {
+    "question": "When a folder contains both layout.tsx and template.tsx, in what order do they wrap page.tsx?",
+    "options": [
+      "template.tsx wraps layout.tsx, which wraps page.tsx",
+      "page.tsx wraps template.tsx inside layout.tsx",
+      "layout.tsx wraps template.tsx, which wraps page.tsx",
+      "Next.js forbids placing layout.tsx and template.tsx in the same folder"
+    ],
+    "answer": 2,
+    "explanation": "A segment's layout.tsx always renders on the outside and wraps template.tsx, which in turn wraps the segment's page.tsx or nested child routes."
+  },
+  {
+    "question": "Which scenario is the clearest reason to choose template.tsx instead of layout.tsx?",
+    "options": [
+      "Keeping a persistent audio player running while users browse different albums",
+      "Re-triggering a CSS enter animation and resetting local feedback form state on every page visit",
+      "Defining the root <html> and <body> tags for the application",
+      "Rendering a shared navigation sidebar whose scroll position should never reset"
+    ],
+    "answer": 1,
+    "explanation": "Because template.tsx mounts a brand-new React instance on every route transition, local state resets and mount effects/animations re-run automatically per visit."
+  },
+  {
+    "question": "Which statement about nested layout.tsx files is true?",
+    "options": [
+      "Every nested layout.tsx must also render its own <html> and <body> tags",
+      "A layout can pass props directly to its children like React.cloneElement(children, { user })",
+      "Only the root app/layout.tsx defines <html> and <body>; nested layouts wrap children with normal semantic elements",
+      "Nested layouts are ignored unless the parent folder has a page.tsx"
+    ],
+    "answer": 2,
+    "explanation": "Only the root app/layout.tsx renders <html> and <body>. Nested layouts wrap children in regular elements such as <section> or <div> and do not pass direct props to children."
+  }
+]

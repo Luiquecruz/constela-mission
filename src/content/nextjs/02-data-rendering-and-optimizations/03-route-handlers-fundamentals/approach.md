@@ -1,0 +1,3 @@
+1. In `createNotesHandlers(store)`, implement `GET(request)` by parsing `new URL(request.url).searchParams.get('tag')`, filtering `store` if a non-empty tag is provided, and returning `Response.json({ notes }, { status: 200 })`.
+2. Implement `POST(request)` with a `try/catch` around `await request.json()`, validating trimmed non-empty `title` and `tag` strings (returning `400` on invalid JSON or missing fields), pushing the created `NoteItem` into `store`, and returning `Response.json({ note: created }, { status: 201 })`.
+3. Implement `chooseEndpointMechanism` to return `'server-action'` only when `caller === 'react-ui' && !needsPublicWebhook && formMutation`, and `'route-handler'` in all other cases.

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Why does a production React application often adopt Next.js instead of staying a plain client-only Vite SPA?",
+    "options": [
+      "Plain React cannot render JSX without a Next.js server running in Node.js",
+      "Next.js adds server rendering, file-system routing, automatic route code splitting, caching, and backend integration on top of React",
+      "Vite does not support TypeScript or CSS modules in React components",
+      "React hooks like useState only work inside Next.js applications"
+    ],
+    "answer": 1,
+    "explanation": "React is a UI library focused on rendering components. Next.js provides the surrounding full-stack framework infrastructure: file-system routing, server rendering, code splitting, caching, and asset optimization."
+  },
+  {
+    "question": "Which file in the app/ directory is required at the root and must render the <html> and <body> tags?",
+    "options": [
+      "app/page.tsx",
+      "next.config.ts",
+      "app/layout.tsx",
+      "public/index.html"
+    ],
+    "answer": 2,
+    "explanation": "The root app/layout.tsx file wraps every route in the App Router and must define the top-level <html> and <body> elements."
+  },
+  {
+    "question": "In the App Router, what happens if you create app/dashboard/ChartHelper.tsx without creating a page.tsx in that folder?",
+    "options": [
+      "ChartHelper.tsx is safely colocated and is not exposed as a public URL route",
+      "Next.js throws a build error because every file inside app/ must export a route",
+      "Users can visit /dashboard/ChartHelper in the browser to render that component",
+      "Next.js automatically moves ChartHelper.tsx into the public/ folder"
+    ],
+    "answer": 0,
+    "explanation": "In the App Router, only folders containing a page.tsx (or route.ts) become publicly addressable routes. Other files inside app/ are safely colocated without becoming URLs."
+  },
+  {
+    "question": "Which CLI command compiles your Next.js application into optimized production bundles before starting the server?",
+    "options": [
+      "next dev",
+      "next start",
+      "next lint",
+      "next build"
+    ],
+    "answer": 3,
+    "explanation": "next build compiles and optimizes server and client bundles for production. After building, next start launches the production server, whereas next dev runs the local development server with Turbopack."
+  },
+  {
+    "question": "How does the App Router treat a newly created component file inside app/ that has no directives at the top?",
+    "options": [
+      "It runs exclusively in the browser and includes all imports in the client JavaScript bundle",
+      "It executes as a React Server Component by default, keeping its code off the client bundle",
+      "It compiles into a legacy Pages Router getServerSideProps function",
+      "It refuses to render unless you add 'use server' on line 1"
+    ],
+    "answer": 1,
+    "explanation": "Every component in the App Router is a React Server Component by default. You only add 'use client' to files that require browser interactivity like state, effects, or DOM event handlers."
+  }
+]

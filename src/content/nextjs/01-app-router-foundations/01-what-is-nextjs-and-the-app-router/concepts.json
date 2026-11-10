@@ -1,0 +1,22 @@
+[
+  {
+    "term": "App Router (app/)",
+    "description": "Next.js's modern file-system router built on React Server Components, nested layouts, streaming Suspense, and segment-level loading and error boundaries."
+  },
+  {
+    "term": "Root Layout (app/layout.tsx)",
+    "description": "The mandatory top-level layout file in the App Router that defines the HTML and body elements shared across all routes."
+  },
+  {
+    "term": "Server Component by Default",
+    "description": "The App Router rule where components execute exclusively on the server without adding JavaScript to the client bundle unless a file declares 'use client'."
+  },
+  {
+    "term": "Turbopack",
+    "description": "The incremental Rust-based bundler used by Next.js during development and builds to deliver fast module compilation and Fast Refresh."
+  },
+  {
+    "term": "Colocation",
+    "description": "Storing helper functions, components, tests, and styles directly inside app/ route folders safely because only page.tsx or route.ts files expose public URLs."
+  }
+]

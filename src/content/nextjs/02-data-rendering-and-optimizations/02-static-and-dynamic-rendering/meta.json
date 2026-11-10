@@ -1,0 +1,21 @@
+{
+  "title": "Static and Dynamic Rendering with generateStaticParams",
+  "summary": "Understand build-time Static Rendering vs request-time Dynamic Rendering, pre-render dynamic routes with generateStaticParams and dynamicParams, identify dynamic request APIs, and prepare for PPR and declarative caching.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Server Rendering Strategies",
+      "url": "https://nextjs.org/docs/app/getting-started/partial-prerendering"
+    },
+    {
+      "title": "Next.js API Reference: generateStaticParams",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/generate-static-params"
+    },
+    {
+      "title": "Next.js API Reference: Route Segment Config",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config"
+    }
+  ]
+}

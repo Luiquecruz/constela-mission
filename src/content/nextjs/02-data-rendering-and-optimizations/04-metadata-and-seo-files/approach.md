@@ -1,0 +1,4 @@
+1. In `resolvePageMetadata(parentMeta, pageMetaOrFn, context)`, evaluate `pageMetaOrFn` when it is a function, apply `parentMeta.title.template` when child `title` is non-empty, fall back to `parentMeta.title.default` when absent, resolve `description`, and merge `openGraph` while defaulting `openGraph.title` and `openGraph.description`.
+2. In `buildSitemap(baseUrl, posts)`, trim trailing slashes from `baseUrl` and return the root entry (`priority: 1`) followed by each post mapped to `/blog/${post.slug}` (`priority: 0.8`).
+3. In `buildRobots(baseUrl, disallowPaths)`, trim trailing slashes from `baseUrl` and return the `MetadataRoute.Robots`-shaped object with `rules` and `sitemap`.
+4. In `<SeoPreviewApp />`, wire a `<select>` over Home and sample posts so selecting a post updates the resolved `<title>`, Open Graph card, `robots.txt` block, and `sitemap.xml` entries.

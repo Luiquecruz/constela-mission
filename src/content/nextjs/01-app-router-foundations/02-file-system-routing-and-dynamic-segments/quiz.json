@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Which public URL does the file app/(marketing)/pricing/page.tsx resolve to?",
+    "options": [
+      "/(marketing)/pricing",
+      "/marketing/pricing",
+      "/pricing",
+      "It is ignored because parentheses mark private folders"
+    ],
+    "answer": 2,
+    "explanation": "Folders wrapped in parentheses like (marketing) are Route Groups. Next.js uses them to organize files and share layouts, and strips them completely from the public URL."
+  },
+  {
+    "question": "What happens if a developer places a file at app/dashboard/_widgets/MetricsChart.tsx (or even app/dashboard/_widgets/page.tsx)?",
+    "options": [
+      "Any folder prefixed with an underscore is opted out of routing and never creates a public URL",
+      "Next.js renders it only for authenticated admin users",
+      "It resolves to /dashboard/widgets with the underscore stripped",
+      "It acts as a global fallback route for 404 errors"
+    ],
+    "answer": 0,
+    "explanation": "Prefixing a folder with an underscore (_widgets) marks it as a private folder. The App Router excludes private folders and their descendants from URL routing."
+  },
+  {
+    "question": "Given app/docs/[...slug]/page.tsx (with no app/docs/page.tsx), which URL does NOT match?",
+    "options": [
+      "/docs/getting-started",
+      "/docs/routing/dynamic-segments",
+      "/docs",
+      "/docs/api/reference/link"
+    ],
+    "answer": 2,
+    "explanation": "A single-bracket catch-all segment ([...slug]) requires at least one segment after /docs. To match /docs itself without a separate page.tsx, you must use an optional catch-all [[...slug]]."
+  },
+  {
+    "question": "If both app/blog/featured/page.tsx and app/blog/[slug]/page.tsx exist, which component renders for /blog/featured?",
+    "options": [
+      "Next.js throws a duplicate route build error",
+      "app/blog/[slug]/page.tsx with params.slug = 'featured'",
+      "Whichever file was modified most recently",
+      "app/blog/featured/page.tsx because static segments have higher precedence than dynamic segments"
+    ],
+    "answer": 3,
+    "explanation": "App Router route resolution prioritizes static segments over dynamic [param] segments, which in turn take precedence over catch-all [...param] and optional catch-all [[...param]] routes."
+  }
+]

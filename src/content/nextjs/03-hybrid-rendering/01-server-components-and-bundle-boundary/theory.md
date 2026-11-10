@@ -1,6 +1,6 @@
 # Server Components and the Bundle Boundary
 
-In the Next.js App Router, every component is a **React Server Component (RSC)** by default. Unlike traditional full-page Server-Side Rendering (SSR), where component code still ships to the browser for hydration, Server Components execute **exclusively on the server**. Their JavaScript dependencies, database queries, and internal secrets never enter the client bundle.
+In the foundations modules, you saw how `app/` routes work and how `async` Server Components fetch data on the server while keeping browser-only state in client islands. Now we examine the **React Server Components (RSC)** execution and serialization model underneath. Unlike traditional full-page Server-Side Rendering (SSR), where component code still ships to the browser for hydration, Server Components execute **exclusively on the server**. Their JavaScript dependencies, database queries, and internal secrets never enter the client bundle.
 
 When a UI element needs browser interactivity (`useState`, `useEffect`, DOM event listeners, or Web APIs), you mark its file with the `'use client'` directive at the very top. That directive establishes the **bundle boundary**: a line in your module import graph where code execution transitions from the server-only graph to the shared client bundle.
 

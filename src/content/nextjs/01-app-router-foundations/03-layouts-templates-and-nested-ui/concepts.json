@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Nested Layout (layout.tsx)",
+    "description": "A route segment wrapper component that composes from root to leaf and preserves React state and DOM nodes across sibling navigations."
+  },
+  {
+    "term": "Template (template.tsx)",
+    "description": "A segment wrapper placed inside layout.tsx that creates a fresh component instance and re-runs effects on every route navigation."
+  },
+  {
+    "term": "Partial Rendering",
+    "description": "The App Router optimization where shared parent layouts remain mounted while only the changing child route segments re-render."
+  },
+  {
+    "term": "Root Layout",
+    "description": "The top-level app/layout.tsx component that wraps every route and defines the mandatory HTML and body document tags."
+  }
+]

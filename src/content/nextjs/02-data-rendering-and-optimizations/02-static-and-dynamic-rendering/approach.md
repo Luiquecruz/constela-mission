@@ -1,0 +1,3 @@
+1. Implement `generatePostStaticParams(posts)` by mapping `posts` to `{ slug: post.slug }` objects.
+2. Implement `classifyRouteExecution` by extracting the last segment of `pathname`, checking membership in `staticParams`, and branching in order: un-prerendered + `dynamicParams === false` -> `'not-found'`; `usesDynamicApi` -> `'dynamic'`; un-prerendered + `dynamicParams === true` -> `'dynamic'`; otherwise `'static'`.
+3. In `<RenderModeExplorerApp>`, store `selectedSlug`, `dynamicParams`, and `usesDynamicApi` in `useState`, derive the classification result on render, and display the mode badge (`data-testid="execution-mode"`) alongside the reason.

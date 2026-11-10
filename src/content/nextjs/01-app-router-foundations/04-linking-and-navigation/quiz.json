@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why should a filter control clone useSearchParams() into a new URLSearchParams instance instead of building a brand-new query string like `?category=${value}`?",
+    "options": [
+      "URLSearchParams automatically encrypts query parameters for security",
+      "Cloning preserves unrelated parameters like ?sort=popular or ?page=2 instead of wiping them out when one filter changes",
+      "Next.js throws a runtime error if router.replace receives a string template",
+      "Cloning converts client state into a React Server Component automatically"
+    ],
+    "answer": 1,
+    "explanation": "Building `?category=${value}` directly discards every other query parameter in the URL. Cloning `new URLSearchParams(searchParams.toString())` lets you update or delete one key while preserving all existing filters."
+  },
+  {
+    "question": "What happens if you call redirect('/login') inside a try/catch block in a Server Component?",
+    "options": [
+      "The catch block intercepts Next.js's internal redirect error, preventing the redirect from executing unless you rethrow it",
+      "Next.js automatically bypasses try/catch blocks for all functions from next/navigation",
+      "The browser performs a client-side router.push instead of an HTTP redirect",
+      "It upgrades the response from a 307 temporary redirect to a 308 permanent redirect"
+    ],
+    "answer": 0,
+    "explanation": "redirect() and permanentRedirect() work by throwing a special Next.js control-flow error. If wrapped inside a try/catch without rethrowing, your catch block swallows the redirect."
+  },
+  {
+    "question": "Which combination of hook and accessibility attribute is recommended for marking the active link in a Next.js navigation bar?",
+    "options": [
+      "useRouter().pathname with data-selected='true'",
+      "window.location.href with aria-pressed='true'",
+      "usePathname() with aria-current='page'",
+      "useSearchParams() with role='status'"
+    ],
+    "answer": 2,
+    "explanation": "usePathname() returns the current pathname inside a Client Component, and setting aria-current='page' on the matching <Link> communicates the active route clearly to screen readers and CSS."
+  },
+  {
+    "question": "When updating a sort dropdown in the URL, why is router.replace() often preferred over router.push()?",
+    "options": [
+      "router.push() reloads the entire browser document from the server",
+      "router.replace() updates the current URL without adding an extra back-button entry for every filter tweak",
+      "router.replace() skips calling useSearchParams() on re-render",
+      "router.push() only works inside Server Components"
+    ],
+    "answer": 1,
+    "explanation": "router.replace() swaps the current browser history entry, so pressing the Back button takes the user back to the previous page rather than stepping backwards through every sort or filter change."
+  }
+]

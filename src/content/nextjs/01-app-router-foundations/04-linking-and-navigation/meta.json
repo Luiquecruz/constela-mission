@@ -1,0 +1,25 @@
+{
+  "title": "Linking, Navigation Hooks and Redirects",
+  "summary": "Transition smoothly on the client with <Link>, highlight active links with usePathname(), preserve existing query filters with useSearchParams() and useRouter(), and enforce route guards with redirect().",
+  "level": "intermediate",
+  "tags": ["core", "foundations", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "label": "Next.js Docs: Linking and Navigating",
+      "url": "https://nextjs.org/docs/app/getting-started/linking-and-navigating"
+    },
+    {
+      "label": "Next.js API Reference: <Link>",
+      "url": "https://nextjs.org/docs/app/api-reference/components/link"
+    },
+    {
+      "label": "Next.js API Reference: usePathname",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/use-pathname"
+    },
+    {
+      "label": "Next.js API Reference: redirect",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/redirect"
+    }
+  ]
+}

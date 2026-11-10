@@ -1,0 +1,46 @@
+[
+  {
+    "question": "If app/layout.tsx defines `title: { default: 'Constela', template: '%s | Constela' }` and app/blog/page.tsx omits the `title` field, what <title> does Next.js render?",
+    "options": [
+      "An empty <title> tag",
+      " | Constela",
+      "Constela",
+      "undefined | Constela"
+    ],
+    "answer": 2,
+    "explanation": "When a child page omits `title`, Next.js uses the parent layout's `title.default` value ('Constela') without applying the `%s` template."
+  },
+  {
+    "question": "Why can both generateMetadata() and Page() call the same data-fetching function without doubling database or fetch work in Next.js?",
+    "options": [
+      "Next.js runs generateMetadata only in the browser after hydration",
+      "Request memoization deduplicates identical GET fetch() and React cache() calls within the same server render pass",
+      "generateMetadata runs once per year at domain registration",
+      "Page() receives the raw HTML returned by generateMetadata()"
+    ],
+    "answer": 1,
+    "explanation": "Next.js memoizes identical GET fetch() calls and React cache()-wrapped reads across generateMetadata and the Server Component page in the same request."
+  },
+  {
+    "question": "What does app/sitemap.ts export to generate /sitemap.xml automatically?",
+    "options": [
+      "A React component rendering raw <urlset> JSX tags",
+      "A default function returning an array of typed MetadataRoute.Sitemap entries ({ url, lastModified, changeFrequency, priority })",
+      "A CSS stylesheet containing canonical URLs",
+      "A NextResponse redirect to Google Search Console"
+    ],
+    "answer": 1,
+    "explanation": "app/sitemap.ts exports a default function returning an array of MetadataRoute.Sitemap objects that Next.js serializes into valid XML at /sitemap.xml."
+  },
+  {
+    "question": "What is the primary purpose of app/robots.ts in a Next.js App Router application?",
+    "options": [
+      "To authenticate user sessions before middleware runs",
+      "To compress PNG images before they are uploaded",
+      "To configure automated browser unit tests",
+      "To declare crawler allow/disallow rules and link search engines to your sitemap.xml endpoint"
+    ],
+    "answer": 3,
+    "explanation": "app/robots.ts generates /robots.txt with structured user-agent allow/disallow rules and the canonical sitemap URL for search engine crawlers."
+  }
+]

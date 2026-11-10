@@ -1,0 +1,21 @@
+{
+  "title": "Fetching Data in Server Components",
+  "summary": "Replace client-side useEffect fetch waterfalls with async Server Components, handle loading, empty, and error states cleanly, and serialize data safely across the Server-to-Client boundary.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Fetching Data",
+      "url": "https://nextjs.org/docs/app/getting-started/fetching-data"
+    },
+    {
+      "title": "Next.js Docs: Server and Client Components",
+      "url": "https://nextjs.org/docs/app/getting-started/server-and-client-components"
+    },
+    {
+      "title": "React Reference: Server Components",
+      "url": "https://react.dev/reference/rsc/server-components"
+    }
+  ]
+}

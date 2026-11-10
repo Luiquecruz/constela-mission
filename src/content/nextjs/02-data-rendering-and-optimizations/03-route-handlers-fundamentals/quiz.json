@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What happens if you place both page.tsx and route.ts inside the same app/dashboard/ directory?",
+    "options": [
+      "Next.js merges them so GET returns HTML and POST returns JSON",
+      "Next.js throws a build/routing conflict because both files map to the exact same /dashboard URL segment",
+      "route.ts silently overrides page.tsx for all HTTP methods",
+      "page.tsx renders inside an iframe returned by route.ts"
+    ],
+    "answer": 1,
+    "explanation": "Both page.tsx and route.ts claim the same route segment URL, so Next.js forbids placing both in the same folder. Place API routes in app/api/... or separate folders."
+  },
+  {
+    "question": "Which HTTP status code should a POST Route Handler return when creating a new resource succeeds vs. when required JSON fields are missing?",
+    "options": [
+      "201 Created on success and 400 Bad Request when validation fails",
+      "200 OK on success and 404 Not Found when validation fails",
+      "204 No Content on success and 500 Internal Server Error when fields are missing",
+      "302 Found on success and 401 Unauthorized when fields are missing"
+    ],
+    "answer": 0,
+    "explanation": "201 Created accurately signals that a new resource was persisted, while 400 Bad Request signals that the client submitted an invalid or incomplete payload."
+  },
+  {
+    "question": "When should you choose a Route Handler instead of a Server Action?",
+    "options": [
+      "When submitting a standard HTML contact form inside your React UI",
+      "When triggering an optimistic like toggle inside a Client Component",
+      "When receiving a public webhook from a payment provider or serving a REST API for a mobile app",
+      "When reading initial data inside a Server Component page"
+    ],
+    "answer": 2,
+    "explanation": "Public webhooks, third-party integrations, and non-React clients require stable HTTP endpoints with explicit methods and status codes, which Route Handlers provide."
+  },
+  {
+    "question": "Why should a Server Component NOT call fetch('/api/notes') against its own app's GET Route Handler during server rendering?",
+    "options": [
+      "fetch() is unavailable inside Server Components",
+      "Route Handlers cannot return JSON to Server Components",
+      "Server Components can only call POST endpoints, not GET endpoints",
+      "The Server Component already executes on the server and can call the shared data function directly without an extra HTTP round-trip"
+    ],
+    "answer": 3,
+    "explanation": "Calling your own Route Handler from a Server Component adds unnecessary HTTP serialization and network overhead when you can directly await the shared server data module."
+  }
+]

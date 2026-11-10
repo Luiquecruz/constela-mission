@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Static Rendering",
+    "description": "Rendering a route once at build time so its HTML and RSC payload can be cached and served directly from a CDN."
+  },
+  {
+    "term": "Dynamic Rendering",
+    "description": "Rendering a route on the server at request time for each incoming visitor when output depends on live request context."
+  },
+  {
+    "term": "generateStaticParams",
+    "description": "An exported async route function that returns an array of param objects telling Next.js which dynamic segments to prerender at build time."
+  },
+  {
+    "term": "dynamicParams",
+    "description": "A route segment flag controlling whether dynamic slugs omitted from generateStaticParams render on demand or immediately return 404."
+  },
+  {
+    "term": "Dynamic Request APIs",
+    "description": "Request-scoped Next.js APIs such as cookies(), headers(), searchParams, and connection() that switch rendering to request time."
+  }
+]
