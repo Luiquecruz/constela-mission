@@ -1,0 +1,22 @@
+[
+  {
+    "term": "SLSA Framework",
+    "description": "Security specification defining progressive build levels (L1-L3) to protect software artifact integrity."
+  },
+  {
+    "term": "Provenance Attestation",
+    "description": "Cryptographically signed metadata document certifying the build origin, commit SHA, and subject digest of an artifact."
+  },
+  {
+    "term": "In-Toto Format",
+    "description": "Open standard schema used to structure supply chain metadata attestations."
+  },
+  {
+    "term": "Sigstore / Cosign",
+    "description": "Keyless cryptographic signing infrastructure using short-lived OIDC tokens to sign container images and provenance."
+  },
+  {
+    "term": "Software Bill of Materials",
+    "description": "Nested inventory manifest listing all first-party and third-party software components contained in an artifact."
+  }
+]
