@@ -1,0 +1,19 @@
+{
+  "title": "Deciding Canary Rollout Steps",
+  "summary": "Decide at each check of a canary rollout whether to hold, advance, promote or roll back, from the error rate and latency of the new version and a minimum amount of traffic.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Istio: Traffic management",
+      "url": "https://istio.io/latest/docs/concepts/traffic-management/"
+    },
+    {
+      "label": "Argo Rollouts: Canary",
+      "url": "https://argo-rollouts.readthedocs.io/en/stable/features/canary/"
+    }
+  ]
+}

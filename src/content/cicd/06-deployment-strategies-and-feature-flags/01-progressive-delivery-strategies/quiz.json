@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which deployment strategy maintains two identical physical environments and switches user traffic instantly via load balancers?",
+    "options": [
+      "Rolling Update.",
+      "Recompile per Customer.",
+      "Blue-Green Deployment.",
+      "Dark Launching."
+    ],
+    "answer": 2,
+    "explanation": "Blue-Green deployment maintains parallel Blue and Green environments, switching live traffic instantly once Green passes validation."
+  },
+  {
+    "question": "What is the primary operational trade-off of a Blue-Green deployment strategy?",
+    "options": [
+      "It requires double the infrastructure capacity during active deployment windows.",
+      "It forces the application to run without database backups.",
+      "It requires deleting Git repository branches after every deploy.",
+      "It makes rollback impossible if a failure occurs."
+    ],
+    "answer": 0,
+    "explanation": "Blue-Green deployment requires provisioning two complete duplicate infrastructure environments, doubling capacity requirements during deployments."
+  },
+  {
+    "question": "How does a Canary Release protect end-user experience during a deployment?",
+    "options": [
+      "By deploying code only on weekends.",
+      "By encrypting source code files with AES-256.",
+      "By requiring manual phone call sign-offs for every HTTP request.",
+      "By exposing the new version to a small initial percentage of traffic and monitoring telemetry before expanding."
+    ],
+    "answer": 3,
+    "explanation": "Canary rollouts limit blast radius by exposing a tiny fraction of live traffic to the new version while monitoring real-time metrics."
+  },
+  {
+    "question": "What database requirement is mandatory when executing a Rolling Update strategy?",
+    "options": [
+      "Database schemas must be deleted before starting the update.",
+      "Database schema changes must maintain backwards compatibility because old and new app versions run concurrently.",
+      "Database tables must be converted into plain text CSV files.",
+      "Databases must be hosted on developer workstations."
+    ],
+    "answer": 1,
+    "explanation": "Rolling updates run old and new code versions simultaneously, requiring backwards-compatible schema changes."
+  },
+  {
+    "question": "What trigger should cause an automated progressive delivery engine to abort a canary rollout?",
+    "options": [
+      "A developer opening a new pull request.",
+      "The completion of the daily automated backup job.",
+      "Telemetry metrics crossing failure thresholds (e.g., HTTP 5xx error rate spiking above limit).",
+      "A change in developer local workstation time zones."
+    ],
+    "answer": 2,
+    "explanation": "Spikes in error rates or latency crossing configured threshold limits must trigger immediate automated rollbacks."
+  }
+]

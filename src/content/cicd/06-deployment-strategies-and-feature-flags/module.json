@@ -1,0 +1,4 @@
+{
+  "title": "Deployment Strategies and Feature Flags",
+  "description": "Master progressive delivery strategies including Rolling Updates, Blue-Green deployments, Canary rollouts, and Feature Flags."
+}

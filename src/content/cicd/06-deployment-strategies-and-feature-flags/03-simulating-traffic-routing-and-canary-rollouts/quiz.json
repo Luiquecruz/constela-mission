@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What happens to the canary traffic weight when an automated rollback is triggered due to elevated error rates?",
+    "options": [
+      "Canary traffic weight is increased to 100%.",
+      "Canary traffic weight remains at 50% indefinitely.",
+      "Canary traffic weight is instantly set to 0%, restoring 100% traffic to stable.",
+      "The server power supply is disconnected."
+    ],
+    "answer": 2,
+    "explanation": "Automated rollbacks immediately reset canary traffic weight to 0%, shifting all requests back to the stable version."
+  },
+  {
+    "question": "How is the error rate percentage calculated from canary telemetry data?",
+    "options": [
+      "Error count divided by total requests (errorCount / totalRequests).",
+      "Total requests multiplied by latency.",
+      "Total requests divided by CPU core count.",
+      "Lines of code divided by test count."
+    ],
+    "answer": 0,
+    "explanation": "Error rate is calculated as total error count divided by total request volume in a sample window."
+  },
+  {
+    "question": "What is the traffic weight distribution upon successful completion of a canary rollout?",
+    "options": [
+      "Stable: 50%, Canary: 50%.",
+      "Stable: 100%, Canary: 0%.",
+      "Stable: 25%, Canary: 75%.",
+      "Stable: 0%, Canary: 100%."
+    ],
+    "answer": 3,
+    "explanation": "Upon successful canary completion, the canary version receives 100% of traffic, becoming the new stable release."
+  },
+  {
+    "question": "Why must zero request volume (totalRequests === 0) be guarded during telemetry evaluation?",
+    "options": [
+      "To speed up compiler performance.",
+      "To prevent divide-by-zero runtime errors when calculating error rates.",
+      "To delete old log files from disk.",
+      "To force developers to write unit tests."
+    ],
+    "answer": 1,
+    "explanation": "Guarding against zero request volume prevents divide-by-zero mathematical exceptions during rate calculation."
+  },
+  {
+    "question": "What is the purpose of step-by-step weight progression (e.g., 5% -> 25% -> 50% -> 100%) in canary rollouts?",
+    "options": [
+      "To delay deployments as long as possible.",
+      "To allow developers to edit code live in production.",
+      "To incrementally validate system stability under increasing load while controlling blast radius.",
+      "To compress database tables."
+    ],
+    "answer": 2,
+    "explanation": "Incremental weight progression validates system stability under increasing load while minimizing blast radius."
+  }
+]

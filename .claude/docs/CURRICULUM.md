@@ -514,7 +514,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-environment-lifecycle-and-isolation **(challenge)** ✓ · 02-declarative-artifact-promotion **(challenge)** ✓ · 03-building-an-environment-promotion-engine **(challenge)** ✓
 
 ### 06-deployment-strategies-and-feature-flags — Deployment Strategies and Feature Flags
-01-progressive-delivery-strategies **(challenge)** · 02-decoupling-deploy-from-release-with-feature-flags **(challenge)** · 03-simulating-traffic-routing-and-canary-rollouts **(challenge)**
+01-progressive-delivery-strategies **(challenge)** ✓ · 02-decoupling-deploy-from-release-with-feature-flags **(challenge)** ✓ · 03-simulating-traffic-routing-and-canary-rollouts **(challenge)** ✓
 
 ### 07-secrets-identity-and-supply-chain-security — Secrets, Identity, and Supply Chain Security
 01-secretless-authentication-via-oidc-and-pbac **(challenge)** · 02-software-supply-chain-security-and-slsa-provenance **(challenge)** · 03-validating-oidc-policies-and-slsa-attestations **(challenge)**
