@@ -12,7 +12,7 @@ function buildTrack(moduleCount: number, lessonsPerModule: number): Track {
     const id = `module-${moduleIndex + 1}`;
     return { id, number: moduleIndex + 1, trackId: 'demo', title: id, description: '', optional: false, lessons: Array.from({ length: lessonsPerModule }, (__, lessonIndex) => lesson(`${id}-lesson-${lessonIndex + 1}`, id)) };
   });
-  return { id: 'demo', engine: 'typescript', languages: [], order: 1, title: 'Demo', monogram: 'D', description: '', version: '1', modules, lessons: modules.flatMap((module) => module.lessons) };
+  return { id: 'demo', engine: 'typescript', languages: [], providers: [], order: 1, title: 'Demo', monogram: 'D', description: '', version: '1', modules, lessons: modules.flatMap((module) => module.lessons) };
 }
 
 function progressWith(completed: string[], lastLesson?: string, visited: string[] = []): ProgressState {
@@ -20,6 +20,7 @@ function progressWith(completed: string[], lastLesson?: string, visited: string[
     challenges: Object.fromEntries(completed.map((id) => [`demo/${id}`, true as const])),
     challengeLanguages: {},
     language: {},
+    provider: {},
     quizzes: {},
     visited: Object.fromEntries(visited.map((id) => [`demo/${id}`, true as const])),
     code: {},

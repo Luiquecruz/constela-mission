@@ -36,7 +36,7 @@ const lesson: Lesson = {
   challenge, variants: [], quiz: [], resources: [],
 };
 const track: Track = {
-  id: 'test', engine: 'typescript', languages: [], order: 0, title: 'Test', monogram: 'T',
+  id: 'test', engine: 'typescript', languages: [], providers: [], order: 0, title: 'Test', monogram: 'T',
   description: '', version: '', modules: [], lessons: [lesson],
 };
 

@@ -1,10 +1,12 @@
 import clsx from 'clsx';
 import { useId, useState } from 'react';
-import type { Challenge, Lesson, LessonEntry, Track } from '@/content';
+import { PROVIDERS, type Challenge, type Lesson, type LessonEntry, type Track } from '@/content';
 import { InlineMarkdown, Markdown } from '@/shared/ui/Markdown';
+import { providersIn } from '@/shared/ui/providerBlocks';
+import { ProviderSwitch } from './ProviderSwitch';
 import { TestName } from './TestName';
 import { Quiz } from './Quiz';
-import { isLessonComplete, useProgress } from '@/entities/progress';
+import { isLessonComplete, progress, useProgress } from '@/entities/progress';
 import type { Report } from './runner';
 import { BulbIcon, CheckIcon, CircleIcon, CrossIcon, KeyIcon, MapIcon } from '@/shared/ui/icons';
 import { Link } from 'react-router';
@@ -119,7 +121,7 @@ export function LessonPanel({ track, lesson, challenge, tab, onTabChange, testNa
 
       <div className="flex-1 overflow-y-auto px-6.5 pt-4.5 pb-10 max-wide:flex-none max-wide:overflow-visible max-wide:px-4 max-wide:pt-3.5 max-wide:pb-8">
         <div key={tab} id={`${id}-panel-${tab}`} role="tabpanel" aria-labelledby={`${id}-tab-${tab}`} tabIndex={0} className="enter" style={{ ['--enter-delay' as string]: '60ms' }}>
-          {tab === 'learn' && <LearnTab lesson={lesson} onStart={() => onTabChange(lesson.challenge ? 'challenge' : 'quiz')} />}
+          {tab === 'learn' && <LearnTab track={track} lesson={lesson} onStart={() => onTabChange(lesson.challenge ? 'challenge' : 'quiz')} />}
           {tab === 'challenge' && challenge && (
             <ChallengeTab key={challenge.language} challenge={challenge} testNames={testNames} report={report} running={running} onRevealSolution={onRevealSolution} />
           )}
@@ -145,10 +147,16 @@ export function LessonPanel({ track, lesson, challenge, tab, onTabChange, testNa
   );
 }
 
-function LearnTab({ lesson, onStart }: { lesson: Lesson; onStart(): void }) {
+function LearnTab({ track, lesson, onStart }: { track: Track; lesson: Lesson; onStart(): void }) {
+  const saved = useProgress().provider[track.id];
+  const provider = saved && track.providers.includes(saved) ? saved : track.providers[0];
+  const showSwitch = track.providers.length > 1 && providersIn(lesson.theory).length > 0;
   return (
     <>
-      <Markdown source={lesson.theory} />
+      {showSwitch && provider && (
+        <ProviderSwitch options={track.providers.map((id) => ({ id, label: PROVIDERS[id]?.label ?? id }))} value={provider} onChange={(next) => progress.chooseProvider(track.id, next)} />
+      )}
+      <Markdown source={lesson.theory} provider={provider} />
       {lesson.concepts.length > 0 && (
         <section>
           <h2 className={SECTION_TITLE_CLASS}>Key concepts</h2>

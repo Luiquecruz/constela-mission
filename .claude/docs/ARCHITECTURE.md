@@ -244,6 +244,10 @@ Most new tracks do not need a new engine. `react-state` (State Management) uses 
 
 No change is needed in the runner, sandbox, loader, pages or features: they read the engine of each challenge (`challenge.engine`, the track engine for single-language tracks), and the home carousel, curriculum, progress, stats, logo and ambient scene pick the track up from `track.json` and its accent rule.
 
+## Provider examples
+
+A track can list `providers` in `track.json` (registry in `content/providers.ts`). The Briefing then shows a `ProviderSwitch` (`features/lesson`, pinned at the top of the scrolling panel on wide screens) when the theory has `::: <provider id>` blocks placed under the concepts they illustrate, the choice is stored per track in the progress store (`provider`, `progress.chooseProvider`) and `shared/ui/Markdown` receives it as `provider`: `providerBlocks.selectProviderBlocks` keeps the chosen block, unwrapped, and drops the others before `marked` runs. Challenges are not affected; the language switch of the editor is independent.
+
 ## Multi-language challenges
 
 Generic tracks (AI Engineering and System Design) are not tied to one language: the learner picks the language of each challenge, and the same lesson ships one challenge per language. Registered language/framework entries are Node.js (`node`), Python (`python`), C# (`csharp`), React (`react`) and Angular (`angular`), each mapped to its matching engine. State Management keeps its public `react-state` route and uses framework-specific lessons with only one shipped variant. React challenges retain their lesson keys; `legacyStateProgress.ts` migrates their former unqualified saved drafts to `#react` without replacing newer drafts, and preserves prior completion as a React pass.
@@ -353,14 +357,15 @@ Every track has a blueprint logo, and every new track **must** ship one in the s
 Accent rules, enforced by `src/verify/trackPresentation.test.ts`:
 
 - At least 4.5:1 contrast against `void` (`#0a0f18`), `panel` (`#121c2a`) and `elevated` (`#1b293a`), and at least 4.5:1 for the dark `on-accent` text drawn on top of it.
-- At least 30° of hue away from the accent of every other track shown to learners, so tracks stay distinguishable (also for color-blind users; the logo glyph and title are the second cue). Tracks hidden in `src/content/featureFlags.ts` never share a screen with the others and are left out; enabling one whose hue collides fails the test, and the accents are revisited then.
+- At least 30° of hue away from the accent of every other colored track shown to learners (neutral accents, saturation under 15%, are exempt), so tracks stay distinguishable (also for color-blind users; the logo glyph and title are the second cue). Tracks hidden in `src/content/featureFlags.ts` never share a screen with the others and are left out; enabling one whose hue collides fails the test, and the accents are revisited then.
 - `--accent-rgb` must be the same color as `--accent` written as `R G B`.
 
-Current accents and their hues. Twelve tracks are shown, so every band is shared out in steps of 30°, and each framework track takes the band of its logo where the bands allow: Angular red, Architecture orange, Python yellow, Java and Spring Boot lime green, Node green, System Design mint, React cyan, Next.js sky blue, TypeScript indigo blue, Redux purple (State Management), C# violet and AI Engineering rose. Hidden Vue may share a band until its release color is chosen.
+Current accents and their hues. Twelve tracks are shown, so every band is shared out in steps of 30°, and each framework track takes the band of its logo where the bands allow: Angular red, Architecture orange, Python yellow, Java and Spring Boot lime green, Node green, System Design mint, React cyan, Next.js sky blue, TypeScript indigo blue, Redux purple (State Management), C# violet and AI Engineering rose. CI/CD takes a neutral steel accent instead of a band, because twelve colored tracks already fill every 30° step; the hue rule exempts accents with saturation under 15%. Hidden Vue may share a band until its release color is chosen.
 
 | Track | Accent | Hue |
 | --- | --- | --- |
 | angular | `#ff7070` | 0° |
+| cicd | `#dbe3f0` | neutral |
 | architecture | `#ffb973` | 30° |
 | python | `#ffff73` | 60° |
 | java-spring | `#b9ff73` | 90° |

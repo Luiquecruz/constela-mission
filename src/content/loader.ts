@@ -1,4 +1,4 @@
-import type { Challenge, Concept, EngineId, LanguageId, LanguageRegistry, Lesson, LessonContent, LessonEntry, Level, Module, ProjectFiles, QuizQuestion, Track, TrackId } from './types.ts';
+import type { Challenge, Concept, EngineId, LanguageId, LanguageRegistry, ProviderId, Lesson, LessonContent, LessonEntry, Level, Module, ProjectFiles, QuizQuestion, Track, TrackId } from './types.ts';
 
 export interface ContentSources {
   textFiles: Record<string, string>;
@@ -19,6 +19,7 @@ interface LessonMeta {
 interface TrackMeta {
   engine?: EngineId;
   languages?: LanguageId[];
+  providers?: ProviderId[];
   order?: number;
   title: string;
   shortTitle?: string;
@@ -127,13 +128,13 @@ export function buildTracks({ textFiles, jsonFiles }: ContentSources, languages:
     const segments = path.split('/');
     const trackId = segments[1];
     if (segments.length === 3 && segments[2] === 'track.json') {
-      const { engine, languages: trackLanguages = [], order = 100, ...meta } = jsonFiles[path] as TrackMeta;
+      const { engine, languages: trackLanguages = [], providers: trackProviders = [], order = 100, ...meta } = jsonFiles[path] as TrackMeta;
       const unknown = trackLanguages.filter((language) => !languages[language]);
       if (unknown.length > 0) {
         throw new Error(`Track "${trackId}" declares unknown languages: ${unknown.join(', ')}`);
       }
       const defaultEngine = engine ?? (trackLanguages[0] ? languages[trackLanguages[0]].engine : (trackId as EngineId));
-      tracks.set(trackId, { ...meta, id: trackId, engine: defaultEngine, languages: trackLanguages, order, modules: [], lessons: [] });
+      tracks.set(trackId, { ...meta, id: trackId, engine: defaultEngine, languages: trackLanguages, providers: trackProviders, order, modules: [], lessons: [] });
     }
     if (segments.length === 4 && segments[3] === 'module.json') {
       const meta = jsonFiles[path] as ModuleMeta;

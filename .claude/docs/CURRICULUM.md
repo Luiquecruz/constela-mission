@@ -493,3 +493,34 @@ Plan and decisions: [java-spring-track.md](java-spring-track.md). Every module i
 
 ### 11-capstone — Capstone: Course Catalog API
 01-capstone-requirements-and-design ✓ · 02-capstone-the-spring-api ✓ · 03-capstone-persistence-and-migrations ✓ · 04-capstone-security ✓ · 05-capstone-review-and-delivery ✓
+
+## CI/CD (`src/content/cicd`, languages `node`, `python` and `csharp`)
+
+Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson is theory + quiz and has a graded challenge that models one mechanism as plain functions (a CI frequency check, a branch policy, a DAG scheduler, a cache resolver, a policy engine, a provider-neutral pipeline normalizer, an environment promotion planner, a canary decision, a feature flag, an OIDC and SLSA gate, a GitOps reconciler, DORA metrics, a YAML linter, an infrastructure planner and a plan reviewer, and a capstone release check), in TypeScript, Python or C# as the learner chooses. 9 modules, 27 lessons, 27 graded challenges. The theory carries examples for GitHub Actions, Azure Pipelines, AWS (CodeBuild, CodePipeline, CloudFormation) and Google Cloud (Cloud Build, Cloud Run, Cloud Deploy); the challenges use neutral models, and the pipeline normalizer converts the formats of the providers. Lessons carry no dates, no changelog and no bridges from other languages (`src/verify/cicd.test.ts`). Every lesson has a case study, examples under each concept for the platform the learner picks in the Briefing and a hands-on exercise. Hidden (`TRACK_FLAGS.cicd = false`) until all nine modules are merged.
+
+### 01-introduction-to-cicd-and-version-control — Introduction to CI/CD and Version Control
+01-introduction-to-continuous-integration **(challenge)** · 02-branching-strategies-for-cicd **(challenge)** · 03-modeling-branch-policies-and-triggers **(challenge)**
+
+### 02-build-test-and-dependency-management — Build, Test, and Dependency Management
+01-automated-build-and-commit-suite **(challenge)** · 02-dependency-management-and-security-scanning **(challenge)** · 03-validating-build-and-test-workflows **(challenge)**
+
+### 03-artifacts-immutability-and-caching — Artifacts, Immutability, and Caching
+01-artifact-immutability-and-digest-management **(challenge)** · 02-caching-strategies-in-cicd **(challenge)** · 03-modeling-artifact-registry-and-cache-integrity **(challenge)**
+
+### 04-pipeline-as-code-and-quality-gates — Pipeline as Code and Quality Gates
+01-declarative-pipeline-architecture **(challenge)** · 02-quality-gates-and-policy-enforcement **(challenge)** · 03-implementing-pipeline-validation-and-quality-gates **(challenge)**
+
+### 05-environments-and-declarative-promotion — Environments and Declarative Promotion
+01-environment-lifecycle-and-isolation **(challenge)** · 02-declarative-artifact-promotion **(challenge)** · 03-building-an-environment-promotion-engine **(challenge)**
+
+### 06-deployment-strategies-and-feature-flags — Deployment Strategies and Feature Flags
+01-progressive-delivery-strategies **(challenge)** · 02-decoupling-deploy-from-release-with-feature-flags **(challenge)** · 03-simulating-traffic-routing-and-canary-rollouts **(challenge)**
+
+### 07-secrets-identity-and-supply-chain-security — Secrets, Identity, and Supply Chain Security
+01-secretless-authentication-via-oidc-and-pbac **(challenge)** · 02-software-supply-chain-security-and-slsa-provenance **(challenge)** · 03-validating-oidc-policies-and-slsa-attestations **(challenge)**
+
+### 08-opengitops-observability-and-capstone-project — OpenGitOps, Observability, and Capstone Project
+01-opengitops-principles-and-pull-based-reconciliation **(challenge)** · 02-pipeline-observability-dora-metrics-and-sre **(challenge)** · 03-capstone-end-to-end-pipeline-engine **(challenge)**
+
+### 09-infrastructure-as-code-and-yaml — Infrastructure as Code and YAML
+01-yaml-without-surprises **(challenge)** · 02-planning-infrastructure-changes **(challenge)** · 03-reviewing-an-infrastructure-plan **(challenge)**

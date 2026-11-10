@@ -3,7 +3,7 @@ import type { ProgressState } from './progressStore';
 import { migrateStateManagementProgress } from './legacyStateProgress';
 
 function state(overrides: Partial<ProgressState>): ProgressState {
-  return { challenges: {}, challengeLanguages: {}, language: {}, quizzes: {}, visited: {}, code: {}, quizAnswers: {}, lastLesson: {}, ...overrides };
+  return { challenges: {}, challengeLanguages: {}, language: {}, provider: {}, quizzes: {}, visited: {}, code: {}, quizAnswers: {}, lastLesson: {}, ...overrides };
 }
 
 describe('State Management progress compatibility', () => {

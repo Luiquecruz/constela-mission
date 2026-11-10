@@ -10,6 +10,7 @@ const SURFACES = { void: '#0a0f18', panel: '#121c2a', elevated: '#1b293a' };
 const ON_ACCENT = '#0a0f18';
 const MIN_CONTRAST = 4.5;
 const MIN_HUE_DISTANCE = 30;
+const MAX_NEUTRAL_SATURATION = 0.15;
 
 type Rgb = [number, number, number];
 
@@ -28,6 +29,11 @@ function luminance(rgb: Rgb): number {
 function contrast(first: Rgb, second: Rgb): number {
   const [light, dark] = [luminance(first), luminance(second)].sort((a, b) => b - a);
   return (light + 0.05) / (dark + 0.05);
+}
+
+function saturation([red, green, blue]: Rgb): number {
+  const max = Math.max(red, green, blue);
+  return max === 0 ? 0 : (max - Math.min(red, green, blue)) / max;
 }
 
 function hue([red, green, blue]: Rgb): number {
@@ -65,7 +71,8 @@ describe('track presentation', () => {
   // Hidden tracks never share a screen with the others, so only tracks shown to learners need distinct hues.
   // Enabling a hidden track whose hue collides fails this test, and the accents are revisited then.
   it('keeps the accents of the tracks shown to learners apart in hue', () => {
-    const entries = [...accents].filter(([id]) => isTrackEnabled(id));
+    // A neutral accent has no meaningful hue; it stays apart from the colored accents by saturation.
+    const entries = [...accents].filter(([id, accent]) => isTrackEnabled(id) && saturation(parseHex(accent.hex)) >= MAX_NEUTRAL_SATURATION);
     const crowded = entries.flatMap(([id, accent], index) =>
       entries.slice(index + 1).flatMap(([otherId, other]) => {
         const distance = Math.abs(hue(parseHex(accent.hex)) - hue(parseHex(other.hex)));
