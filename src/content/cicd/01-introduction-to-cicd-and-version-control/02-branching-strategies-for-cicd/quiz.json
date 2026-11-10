@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is a primary characteristic of Trunk-Based Development?",
+    "options": [
+      "Developers maintain feature branches isolated for at least six weeks.",
+      "Deployments are only permitted from long-lived release branches.",
+      "All developers merge small, tested code changes into a single main branch daily.",
+      "Code reviews are completely eliminated from the pipeline."
+    ],
+    "answer": 2,
+    "explanation": "Trunk-Based Development relies on developers integrating small changes into a single main branch at least once per day."
+  },
+  {
+    "question": "Why are long-lived feature branches considered an antipattern in high-performing CI/CD teams?",
+    "options": [
+      "They cause severe merge conflicts, delayed bug discovery, and integration fear.",
+      "They increase Git repository storage costs exponentially.",
+      "They prevent developers from using local terminal commands.",
+      "They disable syntax highlighting in code editors."
+    ],
+    "answer": 0,
+    "explanation": "Divergent long-lived branches accumulate unintegrated changes that lead to complex merge conflicts and hidden defects."
+  },
+  {
+    "question": "Which branching strategy relies on permanent parallel 'main' and 'develop' branches?",
+    "options": [
+      "GitHub Flow.",
+      "Trunk-Based Development.",
+      "Dark Launching Flow.",
+      "GitFlow."
+    ],
+    "answer": 3,
+    "explanation": "GitFlow is characterized by its structure of permanent parallel development and production branches."
+  },
+  {
+    "question": "How does GitHub Flow handle feature branch promotion?",
+    "options": [
+      "Branches are merged into develop, staged for a month, and manually moved to main.",
+      "Feature branches are merged into main via PR after passing tests and deployed immediately.",
+      "Feature branches are directly committed to production without passing tests.",
+      "Developers email patch files to a release manager."
+    ],
+    "answer": 1,
+    "explanation": "GitHub Flow tests short-lived feature branches in PRs and deploys to production immediately upon merging into main."
+  },
+  {
+    "question": "What is the recommended approach to manage environment variations without creating environment branches?",
+    "options": [
+      "Hardcode database credentials directly inside application source files.",
+      "Delete and recreate the Git repository before every deployment.",
+      "Use directory overlays or configuration manifests while maintaining a single main branch.",
+      "Use GitFlow with separate branches for every customer."
+    ],
+    "answer": 2,
+    "explanation": "Environment configuration should be managed via directory overlays or configuration values while keeping source code on a unified main branch."
+  }
+]

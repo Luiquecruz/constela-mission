@@ -1,0 +1,19 @@
+{
+  "title": "Introduction to Continuous Integration",
+  "summary": "Understand the core principles of CI, the four DORA delivery performance metrics, and the distinction between technical deployment and functional release.",
+  "level": "beginner",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "DORA research",
+      "url": "https://dora.dev/research/"
+    },
+    {
+      "label": "Martin Fowler: Continuous Integration",
+      "url": "https://martinfowler.com/articles/continuousIntegration.html"
+    }
+  ]
+}

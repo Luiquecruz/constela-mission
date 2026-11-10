@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What primary operational problem does Continuous Integration solve?",
+    "options": [
+      "High server hosting costs caused by unused infrastructure.",
+      "Lack of relational database schema backups before deployments.",
+      "Integration friction and late bug discovery caused by long-lived unmerged code.",
+      "Slow network speeds during large file downloads."
+    ],
+    "answer": 2,
+    "explanation": "Continuous Integration prevents integration friction and late defect discovery by forcing frequent code merges and automated build validations."
+  },
+  {
+    "question": "Which of the following describes the Lead Time for Changes metric?",
+    "options": [
+      "The time elapsed from code commit check-in to deployment in production.",
+      "The duration of the daily engineering standup meeting.",
+      "The total time spent writing unit tests for a new feature.",
+      "The CPU execution time required by a CI runner."
+    ],
+    "answer": 0,
+    "explanation": "Lead Time for Changes measures the total pipeline velocity from the initial commit up to running live in production."
+  },
+  {
+    "question": "How does technical deployment differ from functional release?",
+    "options": [
+      "Deployment is done by developers; release is done by database administrators.",
+      "Deployment occurs in production; release only occurs in staging.",
+      "Deployment requires manual approval; release is always automated.",
+      "Deployment installs code in an environment; release makes features accessible to end users."
+    ],
+    "answer": 3,
+    "explanation": "Decoupling deployment (technical installation) from release (user access exposure) reduces deployment risk and enables continuous delivery."
+  },
+  {
+    "question": "Which DORA metric measures how often a deployment causes a degraded service and needs immediate remediation, such as a hotfix or a rollback?",
+    "options": [
+      "Deployment Frequency.",
+      "Change Failure Rate.",
+      "Lead Time for Changes.",
+      "Code Review Speed."
+    ],
+    "answer": 1,
+    "explanation": "Change Failure Rate is the percentage of production deployments that need remediation. It counts failed changes per deployment, while frequency and lead time count how fast changes flow."
+  },
+  {
+    "question": "What is an immediate requirement when a Continuous Integration pipeline build fails on the main branch?",
+    "options": [
+      "Bypass the pipeline and deploy the code manually.",
+      "Delete the failing automated test from the repository.",
+      "Stop new feature work and fix the build immediately.",
+      "Wait until the end of the month to investigate log files."
+    ],
+    "answer": 2,
+    "explanation": "Maintaining a healthy build requires fixing broken main pipelines immediately so the entire team can continue integrating safely."
+  }
+]

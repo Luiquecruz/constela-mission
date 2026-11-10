@@ -1,0 +1,26 @@
+[
+  {
+    "term": "Trunk-Based Development",
+    "description": "Branching model where developers merge small, frequent updates into a single main branch daily."
+  },
+  {
+    "term": "GitHub Flow",
+    "description": "Lightweight branch-based workflow where short-lived feature branches are merged into main after PR approval and automated testing."
+  },
+  {
+    "term": "GitFlow",
+    "description": "Legacy branching model using multiple long-lived branches for development, releases, and hotfixes."
+  },
+  {
+    "term": "Merge Conflict",
+    "description": "Condition occurring when competing code changes are made to the same file, requiring reconciliation before integration."
+  },
+  {
+    "term": "Integration Fear",
+    "description": "Operational friction where developers avoid merging long-lived branches due to high conflict complexity."
+  },
+  {
+    "term": "Short-Lived Branch",
+    "description": "Git branch intended to exist for less than 24 hours before being merged back into the primary trunk."
+  }
+]
