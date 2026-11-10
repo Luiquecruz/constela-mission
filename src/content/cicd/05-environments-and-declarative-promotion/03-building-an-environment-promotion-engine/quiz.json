@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What condition must be met before an artifact digest can be promoted to 'production' in a sequential promotion engine?",
+    "options": [
+      "The artifact must be deleted from the container registry.",
+      "The developer must create a new Git repository.",
+      "The exact SHA256 digest must already be successfully deployed and verified in 'staging'.",
+      "The application source code must be recompiled on a local machine."
+    ],
+    "answer": 2,
+    "explanation": "Production promotion requires that the exact artifact digest was previously deployed and verified in staging."
+  },
+  {
+    "question": "What does the planner do when the artifact digest has an invalid SHA256 format?",
+    "options": [
+      "It throws an Error with the message Invalid artifact digest format.",
+      "It returns a PROMOTED result with a warning.",
+      "It deploys to the first environment automatically.",
+      "It waits for approval indefinitely."
+    ],
+    "answer": 0,
+    "explanation": "The format check comes first and is not a normal outcome of a plan: the planner throws an Error, so a malformed digest never reaches the gate or the history."
+  },
+  {
+    "question": "What does the planner return when a request targets 'production' and 'staging' has no VERIFIED entry for the same digest?",
+    "options": [
+      "The request is converted into a promotion to staging.",
+      "The engine wipes the staging environment.",
+      "It throws an exception about a sequential order violation.",
+      "A plan with success false, the reason Verification missing in staging and no patch."
+    ],
+    "answer": 3,
+    "explanation": "Each environment needs proof from the one before it, so the planner returns a failed plan whose reason names the missing environment, and it produces no patch."
+  },
+  {
+    "question": "What does the patch of a successful plan contain?",
+    "options": [
+      "The developer's home address and credit card number.",
+      "The path overlays/<environment>/kustomization.yaml and an images entry with the service name and the digest.",
+      "A copy of the entire operating system kernel.",
+      "Uncompiled C++ source code files."
+    ],
+    "answer": 1,
+    "explanation": "The patch is the Git change that pins the digest: a path in the overlay of the target environment and an images entry that names the service and the digest."
+  },
+  {
+    "question": "Why must quality gate results be verified during promotion evaluation?",
+    "options": [
+      "To increase pipeline bandwidth consumption.",
+      "To delete old Git commits from history.",
+      "To ensure that artifacts with unmitigated vulnerabilities or failing tests cannot be promoted to higher environments.",
+      "To disable browser cookies in staging."
+    ],
+    "answer": 2,
+    "explanation": "Verifying quality gate status ensures that non-compliant or failing artifacts are blocked from environment promotion."
+  }
+]

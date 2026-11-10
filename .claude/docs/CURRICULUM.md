@@ -511,7 +511,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-declarative-pipeline-architecture **(challenge)** ✓ · 02-quality-gates-and-policy-enforcement **(challenge)** ✓ · 03-implementing-pipeline-validation-and-quality-gates **(challenge)** ✓
 
 ### 05-environments-and-declarative-promotion — Environments and Declarative Promotion
-01-environment-lifecycle-and-isolation **(challenge)** · 02-declarative-artifact-promotion **(challenge)** · 03-building-an-environment-promotion-engine **(challenge)**
+01-environment-lifecycle-and-isolation **(challenge)** ✓ · 02-declarative-artifact-promotion **(challenge)** ✓ · 03-building-an-environment-promotion-engine **(challenge)** ✓
 
 ### 06-deployment-strategies-and-feature-flags — Deployment Strategies and Feature Flags
 01-progressive-delivery-strategies **(challenge)** · 02-decoupling-deploy-from-release-with-feature-flags **(challenge)** · 03-simulating-traffic-routing-and-canary-rollouts **(challenge)**

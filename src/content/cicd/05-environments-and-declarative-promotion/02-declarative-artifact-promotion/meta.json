@@ -1,0 +1,19 @@
+{
+  "title": "Declarative Artifact Promotion",
+  "summary": "Master declarative manifest promotion, SHA256 digest references, sequential environment gates, and post-deployment smoke verification.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OpenGitOps principles",
+      "url": "https://opengitops.dev/"
+    },
+    {
+      "label": "Argo CD documentation",
+      "url": "https://argo-cd.readthedocs.io/en/stable/"
+    }
+  ]
+}

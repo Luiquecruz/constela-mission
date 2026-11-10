@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Environment State",
+    "description": "Record tracking currently deployed artifact digests and active configuration manifests across environments."
+  },
+  {
+    "term": "Sequential Order Rule",
+    "description": "Promotion constraint requiring artifacts to be verified in staging prior to production deployment."
+  },
+  {
+    "term": "Manifest Patch",
+    "description": "Generated configuration diff recording the updated SHA256 digest reference and promotion metadata."
+  },
+  {
+    "term": "Promotion Status",
+    "description": "Result outcome indicating whether a promotion request was approved (PROMOTED) or rejected (REJECTED)."
+  }
+]
