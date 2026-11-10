@@ -1,0 +1,19 @@
+{
+  "title": "OpenGitOps Principles and Pull-Based Reconciliation",
+  "summary": "Master the OpenGitOps framework, pull-based reconciliation loops, drift detection, and self-healing cluster architecture.",
+  "level": "advanced",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OpenGitOps principles",
+      "url": "https://opengitops.dev/"
+    },
+    {
+      "label": "Argo CD: Architecture",
+      "url": "https://argo-cd.readthedocs.io/en/stable/operator-manual/architecture/"
+    }
+  ]
+}

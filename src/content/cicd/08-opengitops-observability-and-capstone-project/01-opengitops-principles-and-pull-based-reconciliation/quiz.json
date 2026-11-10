@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which requirement is one of the four foundational principles of the OpenGitOps specification?",
+    "options": [
+      "Target system state must be compiled into executable binary files.",
+      "Deployments must be initiated via manual SSH terminal connections.",
+      "Desired system state must be expressed declaratively and stored in a version-controlled repository.",
+      "Build scripts must run on developer personal laptops."
+    ],
+    "answer": 2,
+    "explanation": "OpenGitOps mandates that system state must be expressed declaratively and managed in a version-controlled repository (Git)."
+  },
+  {
+    "question": "What primary security advantage does a pull-based GitOps controller have over traditional push-based CI pipelines?",
+    "options": [
+      "In-cluster agents pull manifests locally, eliminating the need to expose cluster admin credentials to external CI runners.",
+      "It speeds up source code compilation times by 50%.",
+      "It removes the need to write unit tests.",
+      "It automatically converts YAML manifests into HTML pages."
+    ],
+    "answer": 0,
+    "explanation": "Pull-based agents operate inside cluster networks, removing the security risk of storing cluster admin keys on CI runners."
+  },
+  {
+    "question": "What action does a GitOps reconciler take when it detects configuration drift caused by manual cluster edits?",
+    "options": [
+      "It deletes the Git repository history automatically.",
+      "It ignores the drift and logs out of the cluster.",
+      "It sends an email to all developers and halts the cluster.",
+      "It re-applies the declared Git manifest, overwriting manual edits to restore system state."
+    ],
+    "answer": 3,
+    "explanation": "GitOps reconcilers automatically remediate drift by re-applying the declared state stored in Git over manual cluster edits."
+  },
+  {
+    "question": "Why is running imperative build scripts inside a GitOps controller considered an antipattern?",
+    "options": [
+      "Because Git repositories do not support text files.",
+      "Because GitOps controllers are designed strictly for declarative state reconciliation, not for executing build steps.",
+      "Because Kubernetes clusters cannot run container images.",
+      "Because unit tests require specialized hardware servers."
+    ],
+    "answer": 1,
+    "explanation": "GitOps controllers handle continuous state reconciliation; build compilation and unit testing belong in CI runners."
+  },
+  {
+    "question": "What is the single source of truth in an OpenGitOps-compliant infrastructure architecture?",
+    "options": [
+      "The live memory state of production server nodes.",
+      "The local file system of the lead developer's laptop.",
+      "The version-controlled Git repository storing declarative configuration manifests.",
+      "The temporary cache directory of a CI build runner."
+    ],
+    "answer": 2,
+    "explanation": "GitOps establishes the version-controlled Git repository as the definitive single source of truth."
+  }
+]
