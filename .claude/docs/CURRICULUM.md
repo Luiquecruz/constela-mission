@@ -520,7 +520,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-secretless-authentication-via-oidc-and-pbac **(challenge)** ✓ · 02-software-supply-chain-security-and-slsa-provenance **(challenge)** ✓ · 03-validating-oidc-policies-and-slsa-attestations **(challenge)** ✓
 
 ### 08-opengitops-observability-and-capstone-project — OpenGitOps, Observability, and Capstone Project
-01-opengitops-principles-and-pull-based-reconciliation **(challenge)** · 02-pipeline-observability-dora-metrics-and-sre **(challenge)** · 03-capstone-end-to-end-pipeline-engine **(challenge)**
+01-opengitops-principles-and-pull-based-reconciliation **(challenge)** ✓ · 02-pipeline-observability-dora-metrics-and-sre **(challenge)** ✓ · 03-capstone-end-to-end-pipeline-engine **(challenge)** ✓
 
 ### 09-infrastructure-as-code-and-yaml — Infrastructure as Code and YAML
 01-yaml-without-surprises **(challenge)** · 02-planning-infrastructure-changes **(challenge)** · 03-reviewing-an-infrastructure-plan **(challenge)**

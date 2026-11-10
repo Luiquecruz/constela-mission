@@ -1,0 +1,19 @@
+{
+  "title": "Capstone: the Release Check",
+  "summary": "Orchestrate a release check from the building blocks of the course: build order, quality gate, workload identity, provenance and promotion, stopping at the first failing stage with a report that names it.",
+  "level": "advanced",
+  "tags": [
+    "practice",
+    "capstone"
+  ],
+  "resources": [
+    {
+      "label": "OpenGitOps principles",
+      "url": "https://opengitops.dev/"
+    },
+    {
+      "label": "DORA research",
+      "url": "https://dora.dev/research/"
+    }
+  ]
+}

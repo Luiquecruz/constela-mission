@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Deployment Frequency",
+    "description": "DORA velocity metric measuring how often code is successfully released to production."
+  },
+  {
+    "term": "Lead Time for Changes",
+    "description": "DORA velocity metric measuring time elapsed from code commit to production execution."
+  },
+  {
+    "term": "Change Failure Rate",
+    "description": "DORA stability metric measuring percentage of deployments causing production degradation."
+  },
+  {
+    "term": "Failed Service Recovery Time",
+    "description": "DORA stability metric measuring time required to restore service health after an outage."
+  },
+  {
+    "term": "Error Budget",
+    "description": "SRE operational allowance (100% - SLO) defining acceptable system error or downtime margin."
+  }
+]
