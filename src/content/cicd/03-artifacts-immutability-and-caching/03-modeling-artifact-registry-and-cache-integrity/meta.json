@@ -1,0 +1,19 @@
+{
+  "title": "Modeling an Immutable Artifact Registry",
+  "summary": "Model the record that ties a version number to one digest: validate sha256 digests, store them normalized, refuse to overwrite a published version and resolve versions to the exact bytes they stand for.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OCI Distribution Specification",
+      "url": "https://github.com/opencontainers/distribution-spec/blob/main/spec.md"
+    },
+    {
+      "label": "GitHub Docs: Security hardening for GitHub Actions",
+      "url": "https://docs.github.com/en/actions/security-for-github-actions/security-guides/security-hardening-for-github-actions"
+    }
+  ]
+}

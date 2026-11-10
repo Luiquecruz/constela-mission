@@ -1,0 +1,19 @@
+{
+  "title": "Artifact Immutability and Digest Management",
+  "summary": "Master the 'Build Once, Deploy Anywhere' principle, SHA256 digest pinning, and the hazards of rebuilding per environment.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OCI Image Format Specification",
+      "url": "https://github.com/opencontainers/image-spec/blob/main/spec.md"
+    },
+    {
+      "label": "OWASP CICD-SEC-9: Improper Artifact Integrity Validation",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-09-Improper-Artifact-Integrity-Validation"
+    }
+  ]
+}

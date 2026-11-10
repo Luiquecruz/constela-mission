@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary risk of rebuilding a software binary separately for production deployment?",
+    "options": [
+      "It decreases the overall CPU usage of the local developer workstation.",
+      "It forces the Git repository to switch to a read-only state.",
+      "It can introduce dependency variations and invalidates testing completed on previous builds.",
+      "It automatically deletes previous commits from version control."
+    ],
+    "answer": 2,
+    "explanation": "Rebuilding binaries for production can introduce subtle dependency differences and renders previous staging test results invalid."
+  },
+  {
+    "question": "Why are cryptographic SHA256 digests preferred over mutable tags (e.g., ':latest') in production manifests?",
+    "options": [
+      "Digests provide an immutable hash reference that guarantees the exact binary tested is the exact binary executed.",
+      "Digests make container images smaller in storage size.",
+      "Mutable tags require manual phone call authorizations.",
+      "Digests automatically generate unit test code."
+    ],
+    "answer": 0,
+    "explanation": "SHA256 digests cryptographically lock the exact byte sequence of an image, preventing accidental or malicious tag overwrites."
+  },
+  {
+    "question": "How should environment-specific configurations (e.g., database URLs) be handled when using immutable artifacts?",
+    "options": [
+      "Hardcode values into the source code before running the build stage.",
+      "Recompile the binary for each target environment using different compiler flags.",
+      "Store configuration values inside public Git commit messages.",
+      "Inject configuration values at runtime via environment variables or external configuration manifests."
+    ],
+    "answer": 3,
+    "explanation": "Immutable artifacts decouple code from configuration by injecting environment-specific variables dynamically at runtime."
+  },
+  {
+    "question": "What does the 'Build Once, Deploy Anywhere' principle mandate?",
+    "options": [
+      "Run the build stage on developer laptops before every Git commit.",
+      "Compile a single artifact, validate it, and promote that identical binary across all environments.",
+      "Rebuild source code every time an environment branch changes.",
+      "Deploy code to production without running test suites."
+    ],
+    "answer": 1,
+    "explanation": "Build Once, Deploy Anywhere requires generating a single tested artifact and promoting that exact binary across all deployment stages."
+  },
+  {
+    "question": "Which artifact registry practice allows safe promotion without modifying binary content?",
+    "options": [
+      "Re-downloading source code and running npm build inside production.",
+      "Deleting the container image and rebuilding it from scratch.",
+      "Attaching metadata or promotion tags to the existing SHA256 digest inside the registry.",
+      "Renaming source code files in the Git repository."
+    ],
+    "answer": 2,
+    "explanation": "Artifact promotion attaches metadata status or tags to the verified SHA256 digest without altering the underlying binary layers."
+  }
+]

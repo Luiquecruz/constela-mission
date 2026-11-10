@@ -505,7 +505,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-automated-build-and-commit-suite **(challenge)** ✓ · 02-dependency-management-and-security-scanning **(challenge)** ✓ · 03-validating-build-and-test-workflows **(challenge)** ✓
 
 ### 03-artifacts-immutability-and-caching — Artifacts, Immutability, and Caching
-01-artifact-immutability-and-digest-management **(challenge)** · 02-caching-strategies-in-cicd **(challenge)** · 03-modeling-artifact-registry-and-cache-integrity **(challenge)**
+01-artifact-immutability-and-digest-management **(challenge)** ✓ · 02-caching-strategies-in-cicd **(challenge)** ✓ · 03-modeling-artifact-registry-and-cache-integrity **(challenge)** ✓
 
 ### 04-pipeline-as-code-and-quality-gates — Pipeline as Code and Quality Gates
 01-declarative-pipeline-architecture **(challenge)** · 02-quality-gates-and-policy-enforcement **(challenge)** · 03-implementing-pipeline-validation-and-quality-gates **(challenge)**

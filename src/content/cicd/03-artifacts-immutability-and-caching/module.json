@@ -1,0 +1,4 @@
+{
+  "title": "Artifacts, Immutability, and Caching",
+  "description": "Learn how to generate immutable build artifacts, manage SHA256 digests, avoid rebuilding per environment, and implement secure pipeline caching strategies."
+}
