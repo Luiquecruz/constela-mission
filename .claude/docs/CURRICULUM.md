@@ -508,7 +508,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-artifact-immutability-and-digest-management **(challenge)** ✓ · 02-caching-strategies-in-cicd **(challenge)** ✓ · 03-modeling-artifact-registry-and-cache-integrity **(challenge)** ✓
 
 ### 04-pipeline-as-code-and-quality-gates — Pipeline as Code and Quality Gates
-01-declarative-pipeline-architecture **(challenge)** · 02-quality-gates-and-policy-enforcement **(challenge)** · 03-implementing-pipeline-validation-and-quality-gates **(challenge)**
+01-declarative-pipeline-architecture **(challenge)** ✓ · 02-quality-gates-and-policy-enforcement **(challenge)** ✓ · 03-implementing-pipeline-validation-and-quality-gates **(challenge)** ✓
 
 ### 05-environments-and-declarative-promotion — Environments and Declarative Promotion
 01-environment-lifecycle-and-isolation **(challenge)** · 02-declarative-artifact-promotion **(challenge)** · 03-building-an-environment-promotion-engine **(challenge)**

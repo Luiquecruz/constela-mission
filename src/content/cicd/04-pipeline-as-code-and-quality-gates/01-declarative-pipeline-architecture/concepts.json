@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Pipeline as Code",
+    "description": "Engineering practice of defining build, test, and deployment workflows in version-controlled declarative code files."
+  },
+  {
+    "term": "Declarative Pipeline",
+    "description": "Structured manifest specifying desired pipeline outcomes and dependencies rather than procedural shell commands."
+  },
+  {
+    "term": "Pipeline-Based Access Control",
+    "description": "Security framework (CICD-SEC-5) governing permissions and execution authorization for pipeline code changes."
+  },
+  {
+    "term": "Reusable Workflow",
+    "description": "Versioned, standardized pipeline template providing pre-configured build and security steps across repositories."
+  },
+  {
+    "term": "Golden Path",
+    "description": "Supported, pre-packaged platform engineering path enabling application teams to ship code securely with minimal friction."
+  }
+]

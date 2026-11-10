@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What status must a quality gate return when all pipeline metrics satisfy configured policy rules?",
+    "options": [
+      "WARNING with a 24-hour delay.",
+      "REJECTED, requiring manual re-compilation.",
+      "PASSED, authorizing the pipeline to proceed to deployment stages.",
+      "ARCHIVED, deleting all test results."
+    ],
+    "answer": 2,
+    "explanation": "When all metrics satisfy policy rules, the quality gate returns PASSED and authorizes deployment."
+  },
+  {
+    "question": "What is required to execute a valid emergency quality gate override?",
+    "options": [
+      "A policy that permits overrides (allowOverride: true) and an audited written justification string.",
+      "Disabling the build server power supply.",
+      "Deleting the Git repository commit history.",
+      "Changing the project name in package.json."
+    ],
+    "answer": 0,
+    "explanation": "Valid emergency overrides require policy permission and a mandatory audited written justification for compliance."
+  },
+  {
+    "question": "Why should a quality gate evaluator collect all failure reasons instead of stopping at the first failure?",
+    "options": [
+      "To increase the size of the Git repository on disk.",
+      "To delay the build process as long as possible.",
+      "To prevent automated unit tests from executing.",
+      "To provide developers with a complete list of all policy violations requiring remediation in a single feedback loop."
+    ],
+    "answer": 3,
+    "explanation": "Returning all failure reasons allows developers to address all issues at once without repeated trial-and-error runs."
+  },
+  {
+    "question": "Which metric evaluation causes a quality gate failure when minimum coverage is set to 80% and actual line coverage is 75%?",
+    "options": [
+      "The gate passes because 75% is close enough to 80%.",
+      "The gate fails with a coverage violation reason because 75% is less than the required 80% threshold.",
+      "The gate converts the source code to plain text.",
+      "The gate triggers a database restoration."
+    ],
+    "answer": 1,
+    "explanation": "Coverage below the configured threshold (75% < 80%) violates policy and causes a quality gate block."
+  },
+  {
+    "question": "What audit log entry must be generated during an emergency quality gate override?",
+    "options": [
+      "No log entry is needed for emergency overrides.",
+      "A copy of the developer's web browser search history.",
+      "An audit log recording the timestamp, author, and justification string.",
+      "A random 32-character string without context."
+    ],
+    "answer": 2,
+    "explanation": "Audit logs must record the timestamp, author, and justification to maintain compliance tracking during overrides."
+  }
+]

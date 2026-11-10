@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What primary operational advantage does Pipeline as Code offer over manual GUI-based server configuration?",
+    "options": [
+      "It completely eliminates the need for unit testing.",
+      "It speeds up internet connection bandwidth on developer laptops.",
+      "Pipeline workflows become version-controlled, auditable, and reproducible across environments.",
+      "It automatically converts relational database schemas into GraphQL endpoints."
+    ],
+    "answer": 2,
+    "explanation": "Storing pipelines as code ensures that workflow definitions are version-controlled, auditable via PRs, and fully reproducible."
+  },
+  {
+    "question": "Which OWASP CI/CD security risk category addresses unauthorized modifications to pipeline workflow files?",
+    "options": [
+      "CICD-SEC-5: Insufficient Pipeline-Based Access Control (PBAC).",
+      "CICD-SEC-1: Flow Control Inadequacy.",
+      "CICD-SEC-9: Improper Artifact Integrity Validation.",
+      "CICD-SEC-10: Insufficient Logging and Visibility."
+    ],
+    "answer": 0,
+    "explanation": "CICD-SEC-5 explicitly deals with vulnerabilities arising from insufficient access controls on pipeline definition files."
+  },
+  {
+    "question": "How do Reusable Workflows (Golden Paths) improve enterprise software security?",
+    "options": [
+      "They allow developers to bypass branch protection rules.",
+      "They compress Git repository commit histories automatically.",
+      "They disable static code analysis for Pull Requests.",
+      "They encapsulate mandatory security and compliance steps into central templates referenced across repositories."
+    ],
+    "answer": 3,
+    "explanation": "Reusable workflows standardize compliance and security checks by centralizing workflow templates maintained by platform teams."
+  },
+  {
+    "question": "What is a security hazard of using inline shell scripts with hardcoded credentials inside workflow files?",
+    "options": [
+      "It increases the screen resolution of build dashboards.",
+      "Secrets can be exposed in execution logs and scripts bypass static schema validation.",
+      "It causes the Git repository to reject incoming commits.",
+      "It forces the compiler to switch to a different programming language."
+    ],
+    "answer": 1,
+    "explanation": "Inlined shell scripts with embedded secrets bypass schema checking and risk exposing sensitive tokens in raw build logs."
+  },
+  {
+    "question": "Which permission model should be applied to execution jobs within a declarative pipeline?",
+    "options": [
+      "Grant full administrative privileges to every job in the pipeline.",
+      "Disable all authentication tokens completely.",
+      "Apply Least Privilege, granting elevated permissions only to specific jobs that require them.",
+      "Allow unreviewed external forks to access production credentials."
+    ],
+    "answer": 2,
+    "explanation": "Least privilege dictates that pipeline jobs receive only the exact permissions necessary for their specific tasks."
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "title": "Declarative Pipeline Architecture",
+  "summary": "Learn Pipeline as Code fundamentals, declarative manifest structures, reusable workflows, and OWASP PBAC security (CICD-SEC-5).",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OWASP CICD-SEC-5: Insufficient PBAC",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-05-Insufficient-PBAC"
+    },
+    {
+      "label": "GitHub Docs: Reusing workflows",
+      "url": "https://docs.github.com/en/actions/sharing-automations/reusing-workflows"
+    }
+  ]
+}
