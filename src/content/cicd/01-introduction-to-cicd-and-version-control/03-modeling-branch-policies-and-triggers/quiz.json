@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary function of a branch protection policy?",
+    "options": [
+      "To automatically delete old Git repositories after 30 days.",
+      "To compress source code files into zip archives.",
+      "To enforce mandatory review approvals and passing status checks before code merges into main.",
+      "To prevent developers from installing local IDE extensions."
+    ],
+    "answer": 2,
+    "explanation": "Branch protection policies prevent unverified or unapproved code from reaching protected branches by requiring mandatory status checks and reviews."
+  },
+  {
+    "question": "Which set of pipeline stages should typically run when a 'pull_request' event is opened?",
+    "options": [
+      "Fast validation stages such as linting, unit testing, and static security scanning.",
+      "Production deployment, database wiping, and domain DNS update.",
+      "Ordering hardware servers from cloud vendors.",
+      "No stages should run until after the branch is merged."
+    ],
+    "answer": 0,
+    "explanation": "PR events should execute lightweight validation checks to give immediate feedback before code is integrated."
+  },
+  {
+    "question": "What security risk is created when administrators are granted bypass rights on branch protection?",
+    "options": [
+      "It decreases the network bandwidth of the developer workstation.",
+      "It causes the Git repository to switch from HTTPS to SSH automatically.",
+      "It increases the CPU temperature of the production server.",
+      "It introduces a single point of failure where unreviewed code can enter main (CICD-SEC-1)."
+    ],
+    "answer": 3,
+    "explanation": "Allowing bypasses violates flow control security (CICD-SEC-1) and permits unreviewed code into production."
+  },
+  {
+    "question": "When should production deployment stages be triggered in a standard GitHub Flow pipeline?",
+    "options": [
+      "On every commit push to any feature branch.",
+      "Only after code is merged into the main branch following successful PR review and tests.",
+      "Every Friday at midnight regardless of branch state.",
+      "Only when a developer manually runs a command on their local terminal."
+    ],
+    "answer": 1,
+    "explanation": "Production deployments should trigger after PRs pass automated checks and are merged into the main branch."
+  },
+  {
+    "question": "What is a mandatory status check in a CI pipeline?",
+    "options": [
+      "A manual phone call approval from the project manager.",
+      "A payment transaction validation with an external bank.",
+      "An automated pipeline job result (such as unit tests) that must pass before merging.",
+      "A check ensuring the developer has typed more than 100 lines of code."
+    ],
+    "answer": 2,
+    "explanation": "Mandatory status checks require automated validation jobs to return success before version control permits a merge."
+  }
+]

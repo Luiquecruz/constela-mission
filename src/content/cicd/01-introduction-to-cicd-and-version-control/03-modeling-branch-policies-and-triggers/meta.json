@@ -1,0 +1,19 @@
+{
+  "title": "Modeling Branch Policies and Pipeline Triggers",
+  "summary": "Implement an automated evaluator in TypeScript for branch protection policies and pipeline execution triggers.",
+  "level": "beginner",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "GitHub Docs: About protected branches",
+      "url": "https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches"
+    },
+    {
+      "label": "OWASP Top 10 CI/CD Security Risks",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/"
+    }
+  ]
+}

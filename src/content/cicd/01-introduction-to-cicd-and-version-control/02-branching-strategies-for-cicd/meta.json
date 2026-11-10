@@ -1,0 +1,19 @@
+{
+  "title": "Branching Strategies for CI/CD",
+  "summary": "Compare Trunk-Based Development, GitHub Flow, and GitFlow, and evaluate the operational cost of long-lived feature branches.",
+  "level": "beginner",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Martin Fowler: Patterns for Managing Source Code Branches",
+      "url": "https://martinfowler.com/articles/branching-patterns.html"
+    },
+    {
+      "label": "Trunk Based Development",
+      "url": "https://trunkbaseddevelopment.com/"
+    }
+  ]
+}
