@@ -1,0 +1,22 @@
+[
+  {
+    "term": "OpenGitOps",
+    "description": "CNCF standard defining principles for declarative, version-controlled, pull-based automated reconciliation."
+  },
+  {
+    "term": "Pull-Based Deployment",
+    "description": "Architecture where in-cluster agents pull desired state from Git, eliminating external cluster credential exposure."
+  },
+  {
+    "term": "Reconciliation Loop",
+    "description": "Continuous process comparing declared state in Git against live cluster state and applying updates to resolve differences."
+  },
+  {
+    "term": "Drift Detection",
+    "description": "Automated capability identifying divergence between live production resources and declared Git manifests."
+  },
+  {
+    "term": "Self-Healing",
+    "description": "Automated remediation action restoring cluster state to match declared Git manifests when drift occurs."
+  }
+]

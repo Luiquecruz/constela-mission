@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Traffic Weight",
+    "description": "Percentage of incoming live user requests routed to a specific application version."
+  },
+  {
+    "term": "Canary Step",
+    "description": "Configured milestone weight stage (e.g., 10%) evaluated for a specified duration before expanding."
+  },
+  {
+    "term": "Telemetry Evaluation",
+    "description": "Continuous analysis comparing real-time error rates and latency against threshold limits."
+  },
+  {
+    "term": "Rolled Back Status",
+    "description": "State reached when a canary deployment fails telemetry thresholds and traffic is reverted to zero."
+  }
+]

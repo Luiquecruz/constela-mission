@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What happens to an ephemeral preview environment when its associated Pull Request is merged or closed?",
+    "options": [
+      "It is converted into a permanent production database.",
+      "It is renamed to 'master' and saved indefinitely.",
+      "The environment and its temporary infrastructure resources are automatically destroyed.",
+      "It triggers a hardware server reboot in the cloud region."
+    ],
+    "answer": 2,
+    "explanation": "Ephemeral preview environments are short-lived resources designed to be automatically torn down when PRs are closed."
+  },
+  {
+    "question": "Why is maintaining permanent Git branches per environment (e.g., 'staging' and 'prod' branches) considered an antipattern?",
+    "options": [
+      "Branches inevitably diverge, creating merge conflicts and untested configuration drift between environments.",
+      "It increases the cost of developer laptops.",
+      "It prevents text editors from opening source code files.",
+      "It forces all pipelines to use Windows servers."
+    ],
+    "answer": 0,
+    "explanation": "Permanent environment branches diverge over time, making promotion merge conflicts and drift common."
+  },
+  {
+    "question": "How does the declarative overlays pattern (e.g., Kustomize overlays) manage environment differences?",
+    "options": [
+      "By recompiling the application binary separately for every customer.",
+      "By writing database password credentials in public README files.",
+      "By disabling automated quality gates entirely.",
+      "By maintaining environment-specific configuration directories on a unified primary branch."
+    ],
+    "answer": 3,
+    "explanation": "Declarative overlays maintain environment-specific parameter directories on a single main branch without branch divergence."
+  },
+  {
+    "question": "Which security practice is mandatory to ensure environment isolation?",
+    "options": [
+      "Allowing staging pipelines to read production database credentials.",
+      "Enforcing strict separation of credentials, networks, and sanitized data between environments.",
+      "Sharing SSH private keys across all developer accounts.",
+      "Storing production API tokens in Git commit messages."
+    ],
+    "answer": 1,
+    "explanation": "Environment isolation requires strict boundaries separating networks, IAM credentials, and data tiers."
+  },
+  {
+    "question": "What operational problem is solved by using ephemeral preview environments for Pull Requests?",
+    "options": [
+      "Eliminating the need to write unit tests.",
+      "Automatically fixing code syntax errors.",
+      "Preventing developers from overwriting a single shared staging server during concurrent feature reviews.",
+      "Reducing the size of compiled container images."
+    ],
+    "answer": 2,
+    "explanation": "Ephemeral environments provide isolated runtimes per PR, eliminating staging server resource contention."
+  }
+]

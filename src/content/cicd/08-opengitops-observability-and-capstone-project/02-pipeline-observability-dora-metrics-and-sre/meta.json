@@ -1,0 +1,19 @@
+{
+  "title": "Pipeline Observability, DORA Metrics, and SRE",
+  "summary": "Compute the four DORA measures for a period, place a team in a performance tier by its weakest measure and turn a service level objective into an error budget that gates releases.",
+  "level": "advanced",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "DORA metrics guide",
+      "url": "https://dora.dev/guides/dora-metrics/"
+    },
+    {
+      "label": "Google SRE Book: Embracing Risk",
+      "url": "https://sre.google/sre-book/embracing-risk/"
+    }
+  ]
+}

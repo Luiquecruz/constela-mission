@@ -1,0 +1,4 @@
+{
+  "title": "Pipeline as Code and Quality Gates",
+  "description": "Learn how to define pipelines declaratively as version-controlled code, enforce policy controls, and implement automated quality gates."
+}

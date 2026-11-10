@@ -1,0 +1,30 @@
+[
+  {
+    "term": "Continuous Integration",
+    "description": "Software development practice where developers merge code changes into a central repository frequently, triggering automated builds and tests."
+  },
+  {
+    "term": "Deployment Frequency",
+    "description": "DORA throughput metric measuring how often code is successfully deployed to production."
+  },
+  {
+    "term": "Lead Time for Changes",
+    "description": "DORA throughput metric measuring the time elapsed from code commit to running in production."
+  },
+  {
+    "term": "Change Failure Rate",
+    "description": "DORA stability metric measuring the percentage of production deployments requiring immediate remediation."
+  },
+  {
+    "term": "Failed Deployment Recovery Time",
+    "description": "DORA stability metric measuring the time required to restore service after a deployment failure."
+  },
+  {
+    "term": "Deployment",
+    "description": "The technical installation of a verified software artifact into an execution environment."
+  },
+  {
+    "term": "Release",
+    "description": "The business action of enabling end-user access to a deployed software feature."
+  }
+]

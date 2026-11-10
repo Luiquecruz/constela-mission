@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Dependency Caching",
+    "description": "Storing and restoring downloaded third-party libraries across pipeline runs to accelerate build speeds."
+  },
+  {
+    "term": "Cache Key",
+    "description": "Deterministic identifier, typically generated from lockfile hashes, used to store and retrieve cache archives."
+  },
+  {
+    "term": "Fallback Restore Key",
+    "description": "Prefix-matched cache key used to restore partial cache entries when an exact lockfile match is missed."
+  },
+  {
+    "term": "Cache Poisoning",
+    "description": "Security exploit where malicious code or corrupted files are injected into shared pipeline caches."
+  },
+  {
+    "term": "Cache Isolation",
+    "description": "Security control restricting write access to shared build caches exclusively to protected main branches."
+  }
+]

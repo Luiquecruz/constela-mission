@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What primary security hazard is eliminated by implementing OIDC secretless authentication?",
+    "options": [
+      "Slow network speeds during container image downloads.",
+      "Syntax errors in TypeScript application source code.",
+      "The exfiltration and compromise of long-lived static cloud API credentials.",
+      "High CPU temperature on build runner hardware."
+    ],
+    "answer": 2,
+    "explanation": "OIDC secretless authentication removes static long-lived API keys from CI runners, preventing secret exfiltration."
+  },
+  {
+    "question": "What does a CI runner present to a cloud provider IAM endpoint during an OIDC workload identity exchange?",
+    "options": [
+      "A short-lived, cryptographically signed JSON Web Token (JWT) containing build identity claims.",
+      "A static password stored in a text file.",
+      "A zipped archive of the application source code.",
+      "The developer's SSH private key."
+    ],
+    "answer": 0,
+    "explanation": "The runner presents a short-lived OIDC JWT token issued by the CI platform containing verifiable identity claims."
+  },
+  {
+    "question": "Which claim condition should be present in a cloud IAM trust policy restricting production deployment access?",
+    "options": [
+      "Allow all requests regardless of repository or branch.",
+      "Require developer local time to match UTC.",
+      "Require the Git commit message to contain more than 10 words.",
+      "Require the OIDC subject claim to match the exact protected repository and main branch (e.g., repo:org/app:ref:refs/heads/main)."
+    ],
+    "answer": 3,
+    "explanation": "Restricting subject claims to exact repositories and main branches ensures only authorized production workflows obtain credentials."
+  },
+  {
+    "question": "What framework provides cryptographically verifiable workload identities (SPIFFE IDs) across heterogeneous environments?",
+    "options": [
+      "Docker BuildKit.",
+      "SPIFFE / SPIRE.",
+      "npm package manager.",
+      "HTML5 Web Workers."
+    ],
+    "answer": 1,
+    "explanation": "SPIFFE/SPIRE provides cryptographically verifiable workload identity standards (SVIDs) for microservices and runners."
+  },
+  {
+    "question": "What is the consequence of configuring an OIDC cloud trust policy with a wildcard repository claim (sub: repo:org/*)?",
+    "options": [
+      "It speeds up pipeline execution times.",
+      "It forces all pipelines to fail automatically.",
+      "It allows any repository in the organization to assume elevated production cloud roles, violating least privilege.",
+      "It encrypts all Git commits in the repository."
+    ],
+    "answer": 2,
+    "explanation": "Wildcard subject claims allow any workflow or unreviewed repository in an organization to claim production permissions."
+  }
+]

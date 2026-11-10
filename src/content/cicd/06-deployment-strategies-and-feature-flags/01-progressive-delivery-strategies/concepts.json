@@ -1,0 +1,26 @@
+[
+  {
+    "term": "Progressive Delivery",
+    "description": "Deployment methodology releasing software changes incrementally while monitoring real-time telemetry to limit blast radius."
+  },
+  {
+    "term": "Rolling Update",
+    "description": "Deployment pattern incrementally replacing instances of an old version with a new version across a cluster."
+  },
+  {
+    "term": "Blue-Green Deployment",
+    "description": "Strategy maintaining two identical environments, switching live network traffic instantly from Blue to Green."
+  },
+  {
+    "term": "Canary Release",
+    "description": "Technique routing a small percentage of live user traffic to a new version before expanding to full deployment."
+  },
+  {
+    "term": "Blast Radius",
+    "description": "Maximum scope of end users or business operations impacted when a deployment failure occurs."
+  },
+  {
+    "term": "Automated Rollback",
+    "description": "System action automatically reverting traffic to a previous stable version upon detecting metric threshold failures."
+  }
+]

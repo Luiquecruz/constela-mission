@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Directed Acyclic Graph",
+    "description": "Mathematical structure of nodes connected by directed edges containing no closed loops, used to model task dependencies."
+  },
+  {
+    "term": "Topological Sort",
+    "description": "Algorithm ordering DAG nodes such that for every directed edge from A to B, node A precedes node B."
+  },
+  {
+    "term": "Parallel Batching",
+    "description": "Execution technique running tasks with satisfied dependencies concurrently in execution batches."
+  },
+  {
+    "term": "Quality Gate Threshold",
+    "description": "Configured severity limit (e.g., high or critical) above which detected vulnerabilities block pipeline progression."
+  }
+]

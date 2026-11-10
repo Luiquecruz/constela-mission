@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Lockfile",
+    "description": "Version-controlled manifest recording exact versions and cryptographic hashes of all project dependencies."
+  },
+  {
+    "term": "Static Application Security Testing",
+    "description": "Analysis mechanism scanning first-party source code for security vulnerabilities without executing the program."
+  },
+  {
+    "term": "Software Composition Analysis",
+    "description": "Analysis mechanism inspecting third-party dependencies for known security flaws and license risks."
+  },
+  {
+    "term": "Dependency Chain Abuse",
+    "description": "OWASP risk category (CICD-SEC-3) covering attacks exploiting package resolution and maintainer compromise."
+  },
+  {
+    "term": "Dependency Confusion",
+    "description": "Attack vector tricking package managers into downloading malicious public packages instead of private internal libraries."
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "title": "Environment Lifecycle and Isolation",
+  "summary": "Understand persistent vs ephemeral preview environments, environment security isolation, and the declarative overlays pattern.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Kubernetes: Namespaces",
+      "url": "https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/"
+    },
+    {
+      "label": "OpenGitOps principles",
+      "url": "https://opengitops.dev/"
+    }
+  ]
+}

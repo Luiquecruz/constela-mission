@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Pipeline Orchestrator",
+    "description": "Core engine coordinating task scheduling, security scans, identity checks, and environment promotion."
+  },
+  {
+    "term": "Execution Report",
+    "description": "Consolidated audit document capturing pipeline stage outcomes, security statuses, and DORA metrics."
+  },
+  {
+    "term": "Short-Circuiting",
+    "description": "Pipeline execution pattern immediately halting downstream stages upon quality gate or policy failure."
+  },
+  {
+    "term": "DORA Performance Tier",
+    "description": "Classification (Elite, High, Medium, Low) derived from lead time for changes and change failure rate."
+  }
+]

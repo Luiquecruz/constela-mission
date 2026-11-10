@@ -126,6 +126,11 @@
   --accent-rgb: 176 255 115;
 }
 
+[data-trail='cicd'] {
+  --accent: #ffc266;
+  --accent-rgb: 255 194 102;
+}
+
 @theme {
   --color-void: #0a0f18;
   --color-panel: #121c2a;

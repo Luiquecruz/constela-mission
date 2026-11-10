@@ -1,0 +1,18 @@
+[
+  {
+    "term": "OIDC Token Claim",
+    "description": "Key-value attributes inside a JWT payload asserting identity information such as issuer, audience, and repository."
+  },
+  {
+    "term": "Audience Validation",
+    "description": "Verification step confirming that an OIDC token was intended specifically for the receiving service endpoint."
+  },
+  {
+    "term": "Subject Digest Matching",
+    "description": "Validation step ensuring the cryptographic hash of an artifact matches the subject payload inside an attestation."
+  },
+  {
+    "term": "Trusted Builder URI",
+    "description": "Authenticated identifier of an authorized SLSA build workflow permitted to generate provenance."
+  }
+]

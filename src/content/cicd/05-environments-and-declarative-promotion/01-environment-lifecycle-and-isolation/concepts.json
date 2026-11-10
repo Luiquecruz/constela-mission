@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Persistent Environment",
+    "description": "Long-lived deployment environment (such as Staging or Production) with permanent infrastructure resources."
+  },
+  {
+    "term": "Ephemeral Environment",
+    "description": "Short-lived preview environment dynamically created for a Pull Request and destroyed upon branch closure."
+  },
+  {
+    "term": "Environment Isolation",
+    "description": "Security and network boundary preventing non-production systems from accessing production credentials or data."
+  },
+  {
+    "term": "Declarative Overlay Pattern",
+    "description": "Configuration management pattern using directory overlays to manage environment variations on a single main branch."
+  },
+  {
+    "term": "Data Masking",
+    "description": "Process of sanitizing sensitive customer data before populating non-production testing environments."
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Artifact Immutability",
+    "description": "Principle asserting that once an artifact is compiled and tested, its binary contents must never be modified or rebuilt."
+  },
+  {
+    "term": "SHA256 Digest",
+    "description": "Immutable 256-bit cryptographic hash uniquely identifying the exact binary contents of an artifact."
+  },
+  {
+    "term": "Mutable Tag",
+    "description": "Pointers or version labels in an artifact registry that can be overwritten or moved to point to different binaries."
+  },
+  {
+    "term": "Rebuild Per Environment",
+    "description": "Antipattern of recompiling source code separately for each deployment environment, invalidating prior test results."
+  },
+  {
+    "term": "Artifact Promotion",
+    "description": "Process of advancing a verified immutable artifact to higher deployment environments after passing quality gates."
+  }
+]

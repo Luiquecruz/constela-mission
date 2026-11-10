@@ -1,0 +1,57 @@
+[
+  {
+    "question": "In a declarative continuous delivery architecture, how is a software release promoted to production?",
+    "options": [
+      "By logging into the production server via SSH and running git pull.",
+      "By recompiling the application source code on the production database server.",
+      "By updating the environment configuration manifest in Git to point to the verified SHA256 digest.",
+      "By deleting the staging environment configuration files."
+    ],
+    "answer": 2,
+    "explanation": "Declarative promotion advances releases by updating version digest references in environment manifest files in Git."
+  },
+  {
+    "question": "Why is sequential promotion (Staging -> Production) enforced in delivery pipelines?",
+    "options": [
+      "To ensure artifacts pass integration and performance tests in staging before reaching live production users.",
+      "To increase the size of compiled container image layers.",
+      "To require developers to re-write unit tests every day.",
+      "To force all database tables to be converted to CSV format."
+    ],
+    "answer": 0,
+    "explanation": "Sequential promotion guarantees that code is thoroughly validated in staging before being exposed to production traffic."
+  },
+  {
+    "question": "What operational hazard occurs if promotion manifests reference mutable tags (e.g., ':staging') instead of SHA256 digests?",
+    "options": [
+      "Build server network speeds drop to zero.",
+      "Git commit messages are deleted automatically.",
+      "The application editor converts TypeScript code to Java.",
+      "The underlying image binary can change unpredictably without changing the configuration text, causing non-deterministic deploys."
+    ],
+    "answer": 3,
+    "explanation": "Mutable tags allow the underlying binary content to change without manifest modification, breaking release determinism."
+  },
+  {
+    "question": "What is the function of automated smoke testing following an environment manifest update?",
+    "options": [
+      "To format source code indentation automatically.",
+      "To verify basic health, endpoint availability, and database connectivity immediately after deployment.",
+      "To delete unneeded developer user accounts.",
+      "To calculate developer lines of code per day."
+    ],
+    "answer": 1,
+    "explanation": "Post-deployment smoke tests verify basic system functionality and endpoint responsiveness immediately after deployment."
+  },
+  {
+    "question": "Which requirement must be met before promoting an artifact SHA256 digest to production?",
+    "options": [
+      "The source code must be re-compiled using production build flags.",
+      "The developer must delete their local Git repository.",
+      "The artifact must have successfully passed all pre-promotion quality gates and staging verification checks.",
+      "The production database must be reset to empty state."
+    ],
+    "answer": 2,
+    "explanation": "Production promotion requires satisfying all quality gates and staging verification checks."
+  }
+]

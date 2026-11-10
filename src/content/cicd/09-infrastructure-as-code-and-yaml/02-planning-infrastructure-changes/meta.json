@@ -1,0 +1,35 @@
+{
+  "title": "Planning Infrastructure Changes",
+  "summary": "Understand infrastructure as code by writing its core calculation: compare desired and current resources, order them by dependency and produce a plan of creates, updates, replacements and deletes.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Terraform: State",
+      "url": "https://developer.hashicorp.com/terraform/language/state"
+    },
+    {
+      "label": "Microsoft Learn: Bicep what-if",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/deploy-what-if"
+    },
+    {
+      "label": "AWS CloudFormation: Updating stacks using change sets",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html"
+    },
+    {
+      "label": "AWS CloudFormation: AWS::S3::Bucket",
+      "url": "https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-s3-bucket.html"
+    },
+    {
+      "label": "Microsoft Learn: Bicep file structure and syntax",
+      "url": "https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/file"
+    },
+    {
+      "label": "Google Cloud: Cloud Storage buckets",
+      "url": "https://docs.cloud.google.com/storage/docs/buckets"
+    }
+  ]
+}

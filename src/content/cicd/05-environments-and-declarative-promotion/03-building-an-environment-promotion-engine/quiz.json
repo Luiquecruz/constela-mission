@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What condition must be met before an artifact digest can be promoted to 'production' in a sequential promotion engine?",
+    "options": [
+      "The artifact must be deleted from the container registry.",
+      "The developer must create a new Git repository.",
+      "The exact SHA256 digest must already be successfully deployed and verified in 'staging'.",
+      "The application source code must be recompiled on a local machine."
+    ],
+    "answer": 2,
+    "explanation": "Production promotion requires that the exact artifact digest was previously deployed and verified in staging."
+  },
+  {
+    "question": "What status does the promotion engine return when an invalid SHA256 digest format is provided?",
+    "options": [
+      "REJECTED with an explicit invalid digest error reason.",
+      "PROMOTED with a warning.",
+      "DEPLOYED to production automatically.",
+      "PENDING approval indefinitely."
+    ],
+    "answer": 0,
+    "explanation": "Malformed or invalid SHA256 digests fail precondition checks and return a REJECTED promotion status."
+  },
+  {
+    "question": "What happens if a promotion request attempts to deploy directly to 'production' without running in 'staging' first?",
+    "options": [
+      "The request is automatically converted into a blog post.",
+      "The engine wipes the staging environment.",
+      "The pipeline runs unit tests 100 times.",
+      "The promotion engine rejects the request with a sequential order violation error."
+    ],
+    "answer": 3,
+    "explanation": "Bypassing staging violates sequential promotion constraints, causing the engine to reject the promotion request."
+  },
+  {
+    "question": "What information is captured in a generated environment manifest patch?",
+    "options": [
+      "The developer's home address and credit card number.",
+      "The target manifest path, updated SHA256 digest, promoter identity, and timestamp.",
+      "A copy of the entire operating system kernel.",
+      "Uncompiled C++ source code files."
+    ],
+    "answer": 1,
+    "explanation": "Manifest patches record target paths, new digest hashes, promoter identities, and timestamp metadata."
+  },
+  {
+    "question": "Why must quality gate results be verified during promotion evaluation?",
+    "options": [
+      "To increase pipeline bandwidth consumption.",
+      "To delete old Git commits from history.",
+      "To ensure that artifacts with unmitigated vulnerabilities or failing tests cannot be promoted to higher environments.",
+      "To disable browser cookies in staging."
+    ],
+    "answer": 2,
+    "explanation": "Verifying quality gate status ensures that non-compliant or failing artifacts are blocked from environment promotion."
+  }
+]

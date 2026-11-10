@@ -1,0 +1,19 @@
+{
+  "title": "Building an Environment Promotion Planner",
+  "summary": "Plan a promotion through ordered environments: check the gate and the proof from the previous environment, then generate the Kustomize overlay that pins the release to its digest.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Kubernetes: Declarative management with Kustomize",
+      "url": "https://kubernetes.io/docs/tasks/manage-kubernetes-objects/kustomization/"
+    },
+    {
+      "label": "Argo CD documentation",
+      "url": "https://argo-cd.readthedocs.io/en/stable/"
+    }
+  ]
+}

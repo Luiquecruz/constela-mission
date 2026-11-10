@@ -1,0 +1,19 @@
+{
+  "title": "Caching Strategies in CI/CD",
+  "summary": "Build deterministic cache keys and resolve a restore request the way CI services do: exact key first, ordered fallback keys, a time to live and branch scoping that keeps one branch from poisoning another.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "GitHub Docs: Dependency caching",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/dependency-caching"
+    },
+    {
+      "label": "Docker Docs: Build cache",
+      "url": "https://docs.docker.com/build/cache/"
+    }
+  ]
+}

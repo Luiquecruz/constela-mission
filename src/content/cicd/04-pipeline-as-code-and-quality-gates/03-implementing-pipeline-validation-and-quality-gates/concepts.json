@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Telemetry Evaluation",
+    "description": "Process of checking pipeline execution data against configured quality and security policy limits."
+  },
+  {
+    "term": "Gate Status",
+    "description": "Evaluation outcome indicating whether a pipeline is authorized to proceed (PASSED) or halted (BLOCKED)."
+  },
+  {
+    "term": "Audited Override",
+    "description": "Emergency exception mechanism bypassing quality gate blocks while recording mandatory justification logs."
+  },
+  {
+    "term": "Policy Rule Set",
+    "description": "Configured collection of thresholds governing coverage, security findings, and peer approvals."
+  }
+]

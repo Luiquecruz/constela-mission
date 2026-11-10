@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary operational benefit of implementing dependency caching on ephemeral CI runners?",
+    "options": [
+      "It eliminates the need to run static application security testing.",
+      "It automatically converts container images into executable desktop binaries.",
+      "It avoids downloading unchanged third-party packages on every run, drastically reducing build times.",
+      "It encrypts Git commit messages using private keys."
+    ],
+    "answer": 2,
+    "explanation": "Dependency caching avoids downloading unchanged third-party libraries on ephemeral runners, speeding up builds."
+  },
+  {
+    "question": "Why should cache keys be generated using cryptographic hashes of dependency lockfiles (e.g., package-lock.json)?",
+    "options": [
+      "To ensure that cache entries automatically invalidate whenever project dependencies are updated.",
+      "To compress source code files before committing to Git.",
+      "To prevent developers from opening Pull Requests on GitHub.",
+      "To allow pipeline tasks to run without CPU access."
+    ],
+    "answer": 0,
+    "explanation": "Lockfile hashes guarantee that any change to project dependencies automatically generates a new cache key, preventing stale cache use."
+  },
+  {
+    "question": "What security vulnerability occurs when unreviewed PR branches are allowed to overwrite the main branch cache?",
+    "options": [
+      "Denial of Service (DoS) attack on domain DNS servers.",
+      "SQL injection in the staging database.",
+      "Buffer overflow in the local developer text editor.",
+      "Cache Poisoning, where malicious files injected in a PR infect subsequent main branch builds."
+    ],
+    "answer": 3,
+    "explanation": "Allowing PR branches to write to shared caches risks Cache Poisoning, where malicious code infects main branch builds."
+  },
+  {
+    "question": "What is the function of a fallback restore key in CI cache configuration?",
+    "options": [
+      "To delete all previous Git branches automatically.",
+      "To restore partial dependencies using prefix matching when an exact lockfile match is missed.",
+      "To force the pipeline to fail immediately if a cache hit occurs.",
+      "To upload secrets to a public cloud storage bucket."
+    ],
+    "answer": 1,
+    "explanation": "Fallback keys allow pipelines to restore partial cache archives via prefix matching when exact lockfile matches are unavailable."
+  },
+  {
+    "question": "Which cache isolation rule is recommended for pull request pipelines?",
+    "options": [
+      "PR pipelines should have full read and write access to production database backups.",
+      "PR pipelines should store cache files in plaintext on public web servers.",
+      "PR pipelines may read main branch caches but must never overwrite main branch cache entries.",
+      "PR pipelines must disable caching entirely for all users."
+    ],
+    "answer": 2,
+    "explanation": "Restricting cache write permissions to protected main branches prevents unreviewed PRs from poisoning team caches."
+  }
+]

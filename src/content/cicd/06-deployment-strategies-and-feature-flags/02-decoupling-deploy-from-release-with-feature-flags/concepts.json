@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Feature Flag",
+    "description": "Runtime software configuration point enabling or disabling code execution paths without redeploying binaries."
+  },
+  {
+    "term": "Dark Launching",
+    "description": "Technique deploying new application features to production in a dormant state to validate performance."
+  },
+  {
+    "term": "Branch by Abstraction",
+    "description": "Refactoring pattern introducing an abstraction layer on main to replace systems incrementally without long-lived branches."
+  },
+  {
+    "term": "Kill Switch",
+    "description": "Operational feature flag configured to instantly disable a malfunctioning system component during incidents."
+  },
+  {
+    "term": "Flag Debt",
+    "description": "Technical debt accumulated when retired feature flags are left uncleaned in source code repositories."
+  }
+]

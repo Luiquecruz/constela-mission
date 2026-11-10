@@ -1,0 +1,30 @@
+[
+  {
+    "term": "Declarative infrastructure",
+    "description": "A description of the infrastructure that should exist, leaving the tool to work out the steps."
+  },
+  {
+    "term": "Plan",
+    "description": "The list of changes a tool would make to bring real infrastructure to the desired state, shown before anything is applied."
+  },
+  {
+    "term": "State",
+    "description": "The record a tool keeps of the real resources it manages, stored remotely and locked during a run."
+  },
+  {
+    "term": "Drift",
+    "description": "A difference between the recorded state and the real resources, usually caused by a manual change."
+  },
+  {
+    "term": "Immutable property",
+    "description": "A property that cannot be changed on an existing resource, so changing it forces a replacement."
+  },
+  {
+    "term": "Replacement",
+    "description": "A change that creates a new resource and deletes the old one, with the data that lived in it."
+  },
+  {
+    "term": "Idempotent apply",
+    "description": "An apply that changes nothing when the real infrastructure already matches the files."
+  }
+]

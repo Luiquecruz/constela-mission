@@ -1,0 +1,57 @@
+[
+  {
+    "question": "A pull request renames a storage bucket in the files, and the name is an immutable property. What does the plan show?",
+    "options": [
+      "An in-place update of the name",
+      "A replacement: create the new bucket and delete the old one",
+      "No change, because names are ignored",
+      "An error that blocks the plan"
+    ],
+    "answer": 1,
+    "explanation": "A property that cannot be edited on a living resource forces a replacement, which creates a new resource and removes the old one with its data."
+  },
+  {
+    "question": "In which order does a tool normally delete a network, a subnet and a virtual machine that depend on one another in that order?",
+    "options": [
+      "Network, subnet, virtual machine",
+      "Subnet, network, virtual machine",
+      "Virtual machine, subnet, network",
+      "All at the same time"
+    ],
+    "answer": 2,
+    "explanation": "Deletion walks the dependency graph backwards, so the cloud never refuses to remove something that another resource still uses."
+  },
+  {
+    "question": "What is drift?",
+    "options": [
+      "A slow apply that takes several minutes",
+      "A difference between the recorded state and the real resources",
+      "A plan that contains a deletion",
+      "A change of cloud provider"
+    ],
+    "answer": 1,
+    "explanation": "Drift is real infrastructure that no longer matches what the tool recorded, typically after a manual change in a console."
+  },
+  {
+    "question": "Why must remote state be locked during an apply?",
+    "options": [
+      "To make the apply faster",
+      "To hide the secrets in it from the team",
+      "To stop two runs from changing the same infrastructure at once",
+      "To convert the state to YAML"
+    ],
+    "answer": 2,
+    "explanation": "Two concurrent applies could each plan from the same record and then write conflicting changes, so the tool takes a lock for the duration of a run."
+  },
+  {
+    "question": "What does it mean that applying a declarative configuration twice is idempotent?",
+    "options": [
+      "The second apply deletes everything",
+      "The second apply needs a new plan file",
+      "The second apply runs in a different order",
+      "The second apply finds nothing to change"
+    ],
+    "answer": 3,
+    "explanation": "Once the real infrastructure matches the files, the plan is empty, so repeating the apply is safe."
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "title": "Decoupling Deploy from Release with Feature Flags",
+  "summary": "Evaluate a feature flag with a kill switch, segment targeting and a deterministic percentage rollout based on a stable hash of the user, so a release can be gradual, targeted and reversible without a deploy.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Martin Fowler: Feature Toggles",
+      "url": "https://martinfowler.com/articles/feature-toggles.html"
+    },
+    {
+      "label": "Martin Fowler: Branch By Abstraction",
+      "url": "https://martinfowler.com/bliki/BranchByAbstraction.html"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Branch Protection Policy",
+    "description": "Rule set enforcing mandatory approvals, status checks, and push restrictions on protected branches."
+  },
+  {
+    "term": "Status Check",
+    "description": "Automated CI verification result (such as test pass/fail) required before merging code."
+  },
+  {
+    "term": "Pipeline Trigger",
+    "description": "Version control event condition that initiates pipeline workflow execution."
+  },
+  {
+    "term": "Pull Request",
+    "description": "Proposed code change submission allowing peer review and automated testing before branch integration."
+  }
+]

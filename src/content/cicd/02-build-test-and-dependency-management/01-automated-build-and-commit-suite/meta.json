@@ -1,0 +1,19 @@
+{
+  "title": "Automated Build and Commit Suite",
+  "summary": "Understand deterministic builds, SHA256 artifact verification, and how to structure fast commit test suites for rapid feedback.",
+  "level": "beginner",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Martin Fowler: Deployment Pipeline",
+      "url": "https://martinfowler.com/bliki/DeploymentPipeline.html"
+    },
+    {
+      "label": "Google SRE Book: Release Engineering",
+      "url": "https://sre.google/sre-book/release-engineering/"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "title": "Progressive Delivery Strategies",
+  "summary": "Master Rolling Updates, Blue-Green deployments, Canary rollouts, blast radius control, and automated rollback triggers.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Martin Fowler: Blue Green Deployment",
+      "url": "https://martinfowler.com/bliki/BlueGreenDeployment.html"
+    },
+    {
+      "label": "Martin Fowler: Canary Release",
+      "url": "https://martinfowler.com/bliki/CanaryRelease.html"
+    }
+  ]
+}

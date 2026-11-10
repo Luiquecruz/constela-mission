@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Why is committing lockfiles (e.g., package-lock.json) into version control essential for CI/CD pipelines?",
+    "options": [
+      "It reduces the file size of the Git repository history.",
+      "It automatically converts TypeScript code into C++ binaries.",
+      "It enforces exact dependency version pinning and checksum verification across all build environments.",
+      "It bypasses the need for running unit test suites."
+    ],
+    "answer": 2,
+    "explanation": "Lockfiles ensure deterministic builds by fixing exact package versions and checksums across all build runners."
+  },
+  {
+    "question": "What is the primary operational focus of Software Composition Analysis (SCA)?",
+    "options": [
+      "Inspecting third-party dependencies for known vulnerabilities (CVEs) and license compliance.",
+      "Measuring developer typing speed during code commits.",
+      "Compressing image assets before web deployment.",
+      "Formatting HTML template files automatically."
+    ],
+    "answer": 0,
+    "explanation": "SCA scans imported open-source libraries and third-party dependencies against vulnerability databases."
+  },
+  {
+    "question": "How does Static Application Security Testing (SAST) differ from SCA?",
+    "options": [
+      "SAST runs only in production; SCA runs only on developer laptops.",
+      "SAST measures CPU temperature; SCA measures memory consumption.",
+      "SAST requires manual human inspection; SCA is fully automated.",
+      "SAST scans first-party source code for flaws; SCA inspects third-party dependencies."
+    ],
+    "answer": 3,
+    "explanation": "SAST targets first-party source code patterns, whereas SCA analyzes imported third-party libraries."
+  },
+  {
+    "question": "Which attack vector describes publishing a malicious public package with an internal private package name?",
+    "options": [
+      "Cross-Site Scripting (XSS).",
+      "Dependency Confusion (CICD-SEC-3).",
+      "Buffer Overflow Attack.",
+      "Distributed Denial of Service (DDoS)."
+    ],
+    "answer": 1,
+    "explanation": "Dependency confusion exploits package resolution rules by uploading public packages matching internal names."
+  },
+  {
+    "question": "What is the security outcome of using floating version ranges (e.g., '^1.2.0') without lockfiles in CI builds?",
+    "options": [
+      "Builds become faster and consume zero network bandwidth.",
+      "Compiler tools automatically fix all code bugs.",
+      "Builds become non-deterministic and vulnerable to malicious package updates.",
+      "Source code files are encrypted using private SSH keys."
+    ],
+    "answer": 2,
+    "explanation": "Floating versions allow arbitrary package updates during build execution, creating security risks and build non-determinism."
+  }
+]

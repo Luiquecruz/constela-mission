@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What action does an automated quality gate take when code fails a required security scan threshold?",
+    "options": [
+      "It emails the CEO and deletes the server disk.",
+      "It deploys the code to production anyway and logs a warning.",
+      "It immediately halts the pipeline, preventing the unverified code from progressing to deployment.",
+      "It automatically rewrites the source code to fix the vulnerability."
+    ],
+    "answer": 2,
+    "explanation": "Quality gates halt pipeline execution immediately when required criteria fail, stopping unverified code from reaching production."
+  },
+  {
+    "question": "What is a primary benefit of adopting Policy as Code (PaC) for regulatory compliance?",
+    "options": [
+      "Compliance rules become executable, version-controlled, and evaluated deterministically in pipelines.",
+      "It allows developers to write code without installing compilers.",
+      "It eliminates the need for version control systems.",
+      "It guarantees 100% CPU utilization on build servers."
+    ],
+    "answer": 0,
+    "explanation": "Policy as Code makes governance rules executable, auditable in Git, and enforced deterministically inside pipelines."
+  },
+  {
+    "question": "Which security risk does OWASP CICD-SEC-1 (Insufficient Flow Control Mechanisms) describe?",
+    "options": [
+      "Slow network response times during database queries.",
+      "Excessive memory usage by web browsers.",
+      "Failure to format HTML CSS style sheets.",
+      "Scenarios where attackers or unauthorized users bypass reviews or quality gates to deploy unverified code."
+    ],
+    "answer": 3,
+    "explanation": "CICD-SEC-1 addresses scenarios where weak flow controls allow unreviewed or non-compliant code into production."
+  },
+  {
+    "question": "What does the '4-eyes principle' mandate in software release governance?",
+    "options": [
+      "Developers must wear corrective eyewear while coding.",
+      "Every production change must be reviewed and approved by at least two independent people.",
+      "Pipelines must execute on four separate build servers simultaneously.",
+      "Source code files must contain at least four comments per function."
+    ],
+    "answer": 1,
+    "explanation": "The 4-eyes principle requires multi-party approval, ensuring at least one independent reviewer approves changes before merge."
+  },
+  {
+    "question": "Why is allowing repository administrators to bypass status checks considered a compliance risk?",
+    "options": [
+      "It increases cloud storage billing costs.",
+      "It causes compiler software to fail with syntax errors.",
+      "It creates a single-point-of-failure bypass where unreviewed code can enter production unmonitored.",
+      "It disables dark mode in developer text editors."
+    ],
+    "answer": 2,
+    "explanation": "Permitting admin bypasses breaches flow control governance and allows unverified code to enter production without peer oversight."
+  }
+]

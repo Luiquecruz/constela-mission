@@ -1,0 +1,4 @@
+{
+  "title": "Environments and Declarative Promotion",
+  "description": "Learn environment isolation patterns, ephemeral preview environments, and how to implement declarative immutable artifact promotion across staging and production."
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "term": "Mapping",
+    "description": "A set of key and value pairs, written as `key: value` lines at the same indentation."
+  },
+  {
+    "term": "Sequence",
+    "description": "An ordered list whose items each start with a dash and a space."
+  },
+  {
+    "term": "Scalar typing",
+    "description": "The parser choice of a type for a plain value from its shape, so `true`, `20` and `null` are not text."
+  },
+  {
+    "term": "Block scalar",
+    "description": "A multi-line text value, literal with a pipe to keep line breaks or folded with a greater-than sign to join them."
+  },
+  {
+    "term": "Anchor and alias",
+    "description": "A name given to a block with an ampersand and a reference to it with an asterisk, used to reuse content."
+  },
+  {
+    "term": "YAML 1.1 booleans",
+    "description": "The older rule that reads yes, no, on and off as booleans, which YAML 1.2 no longer does."
+  },
+  {
+    "term": "Duplicate key",
+    "description": "A key that appears twice in one mapping, which many parsers accept while silently keeping only the last value."
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Deterministic Build",
+    "description": "Build process that produces identical output artifacts given identical source code and build parameters."
+  },
+  {
+    "term": "Commit Test Suite",
+    "description": "Fast suite of automated unit tests and static checks executed on every code commit."
+  },
+  {
+    "term": "Ephemeral Runner",
+    "description": "Isolated, short-lived build execution environment discarded immediately after job completion."
+  },
+  {
+    "term": "Fast Feedback Loop",
+    "description": "Principle of returning automated build and test results to developers within minutes of code check-in."
+  },
+  {
+    "term": "Static Code Analysis",
+    "description": "Automated examination of source code for syntax errors and style violations without executing the program."
+  }
+]

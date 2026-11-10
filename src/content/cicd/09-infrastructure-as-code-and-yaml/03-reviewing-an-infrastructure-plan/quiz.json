@@ -1,0 +1,57 @@
+[
+  {
+    "question": "A plan lists a resource with the actions \"delete\" and \"create\". What will the tool do?",
+    "options": [
+      "Update the resource in place",
+      "Replace the resource: delete the old one and create a new one",
+      "Ignore the resource",
+      "Read the resource without changing it"
+    ],
+    "answer": 1,
+    "explanation": "A replacement appears as a delete and a create, in either order, which is why a scan for \"delete\" finds every change that destroys a resource."
+  },
+  {
+    "question": "What does terraform plan with the detailed exit code return when the plan is not empty?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "3"
+    ],
+    "answer": 2,
+    "explanation": "The detailed exit code is 0 for an empty plan, 1 for an error and 2 when the plan succeeded and contains changes."
+  },
+  {
+    "question": "Why should the cloud role of the plan job be read-only?",
+    "options": [
+      "Plans are faster with read access",
+      "Write access hides the plan output",
+      "The state file only needs a read role",
+      "The plan runs on every pull request, so it must not be able to change infrastructure"
+    ],
+    "answer": 3,
+    "explanation": "The plan runs for every pull request, including from branches that many people can push, so a write role would let any change run with write access."
+  },
+  {
+    "question": "A plan review finds a protected database being replaced and no other problem. What should the decision be?",
+    "options": [
+      "Reject, always",
+      "Approve, because the plan is valid",
+      "Require approval from a person",
+      "Delete the database first"
+    ],
+    "answer": 2,
+    "explanation": "Destroying data is allowed when someone accepts the risk, so the pipeline holds the apply for an explicit approval instead of rejecting it."
+  },
+  {
+    "question": "What risk comes from applying a freshly computed plan instead of the plan that was reviewed?",
+    "options": [
+      "The apply is slower",
+      "A change that landed after the review reaches production unseen",
+      "The state is deleted",
+      "The cloud role changes"
+    ],
+    "answer": 1,
+    "explanation": "Between review and apply the code or the real infrastructure can change, so applying the saved plan or refusing a different one keeps the review meaningful."
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Which two metrics represent delivery velocity in the DORA framework?",
+    "options": [
+      "Lines of Code Written and Number of Meetings Attended.",
+      "CPU Utilization and Memory Allocation.",
+      "Deployment Frequency and Lead Time for Changes.",
+      "Database File Size and Network Bandwidth."
+    ],
+    "answer": 2,
+    "explanation": "Deployment Frequency and Lead Time for Changes are the two core velocity metrics defined by DORA."
+  },
+  {
+    "question": "What is the benchmark Lead Time for Changes performance target achieved by Elite DORA teams?",
+    "options": [
+      "Less than 1 hour.",
+      "Between 1 month and 6 months.",
+      "Exactly 24 hours.",
+      "Between 1 week and 2 weeks."
+    ],
+    "answer": 0,
+    "explanation": "Elite DORA performers achieve a Lead Time for Changes of less than 1 hour from commit to production deployment."
+  },
+  {
+    "question": "How is Change Failure Rate (CFR) calculated in pipeline telemetry?",
+    "options": [
+      "Total commits divided by total developer user accounts.",
+      "Total lines of code deleted per week.",
+      "Number of open pull requests in GitHub.",
+      "Percentage of production deployments that result in service degradation requiring immediate hotfixes or rollbacks."
+    ],
+    "answer": 3,
+    "explanation": "Change Failure Rate measures the percentage of releases that cause production service degradation or require rollbacks."
+  },
+  {
+    "question": "What is an SRE Error Budget?",
+    "options": [
+      "The annual financial budget allocated for buying developer software licenses.",
+      "The maximum acceptable error or downtime margin calculated as 100% minus the Service Level Objective (SLO).",
+      "The memory storage limit of a Redis database node.",
+      "The number of syntax errors permitted in a TypeScript file."
+    ],
+    "answer": 1,
+    "explanation": "An Error Budget represents the allowable operational failure margin (100% - SLO) before feature releases must pause."
+  },
+  {
+    "question": "What action should an automated delivery pipeline take when an application's Error Budget is exhausted?",
+    "options": [
+      "Increase deployment frequency to 100 times per day.",
+      "Delete all unit test files from the Git repository.",
+      "Freeze non-emergency feature releases and direct engineering focus toward reliability remediation.",
+      "Recompile source code using debug flags."
+    ],
+    "answer": 2,
+    "explanation": "Exhausted Error Budgets trigger release gates to freeze non-emergency feature deployments until system reliability is restored."
+  }
+]

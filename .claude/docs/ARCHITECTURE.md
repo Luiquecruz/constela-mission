@@ -372,6 +372,7 @@ Current accents and their hues. Eleven tracks are shown, so every band is shared
 | angular | `#ff6179` | 351° |
 | csharp | `#e980ff` | 290° |
 | java-spring | `#b0ff73` | 94° |
+| cicd (hidden) | `#ffc266` | 37° |
 
 ## Adding a framework track (step by step)
 

@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the security outcome when an OIDC token's repository claim does not match the cloud IAM policy requirement?",
+    "options": [
+      "The cloud IAM service grants administrative access automatically.",
+      "The token is converted into an SSH key.",
+      "The policy validator rejects the request and denies cloud credential access.",
+      "The CI pipeline deletes the application source repository."
+    ],
+    "answer": 2,
+    "explanation": "Claim mismatches cause the policy validator to reject authentication, preventing unauthorized access."
+  },
+  {
+    "question": "Why must a SLSA provenance verifier compare the binary artifact's SHA256 hash against the subject digest in the attestation?",
+    "options": [
+      "To ensure that the provenance document belongs to the exact binary being deployed and not a substituted file.",
+      "To increase internet download speed.",
+      "To recompile the binary in a different programming language.",
+      "To format the JSON file."
+    ],
+    "answer": 0,
+    "explanation": "Matching subject digests guarantees that the attestation corresponds to the exact byte sequence of the binary."
+  },
+  {
+    "question": "Which OIDC claim prevents token replay attacks between different service endpoints?",
+    "options": [
+      "The issuer (iss) claim.",
+      "The developer email claim.",
+      "The Git commit message claim.",
+      "The audience (aud) claim."
+    ],
+    "answer": 3,
+    "explanation": "The audience (aud) claim specifies the intended target recipient, preventing tokens from being replayed elsewhere."
+  },
+  {
+    "question": "What must a SLSA verifier do if the builder.id in an attestation is not in the list of trusted builder URIs?",
+    "options": [
+      "Approve the deployment anyway.",
+      "Reject the attestation verification and block the deployment.",
+      "Re-sign the attestation with a local key.",
+      "Delete the container registry."
+    ],
+    "answer": 1,
+    "explanation": "Untrusted builder IDs violate SLSA compliance rules, requiring the verifier to reject the attestation."
+  },
+  {
+    "question": "What claim format specifies a GitHub main branch push event in a standard OIDC token subject?",
+    "options": [
+      "user:root:admin.",
+      "http://localhost:8080.",
+      "repo:org/app:ref:refs/heads/main.",
+      "env:production:all."
+    ],
+    "answer": 2,
+    "explanation": "Standard OIDC subject claims record exact repository and git reference branch formats."
+  }
+]

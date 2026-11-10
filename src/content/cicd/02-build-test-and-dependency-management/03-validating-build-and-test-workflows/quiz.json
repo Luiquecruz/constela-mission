@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Why is a Directed Acyclic Graph (DAG) used to represent build pipeline tasks?",
+    "options": [
+      "Because build tasks must always run in alphabetical order by filename.",
+      "Because DAGs allow pipelines to run without downloading source code.",
+      "Because tasks have explicit dependency relationships and execution must not contain circular loops.",
+      "Because DAGs compress binary files into smaller image sizes."
+    ],
+    "answer": 2,
+    "explanation": "DAGs represent task dependency relationships while guaranteeing that execution graphs contain no circular deadlocks."
+  },
+  {
+    "question": "What is the goal of parallel batching in pipeline execution engines?",
+    "options": [
+      "To execute tasks whose dependencies are satisfied simultaneously, reducing total build time.",
+      "To run all tasks strictly one by one on a single CPU thread.",
+      "To delay pipeline execution until off-peak hours.",
+      "To automatically delete test result log files."
+    ],
+    "answer": 0,
+    "explanation": "Parallel batching groups independent tasks into concurrent execution batches to minimize build duration."
+  },
+  {
+    "question": "What should occur when a build task graph contains a cyclic dependency (e.g., Task A depends on Task B, Task B depends on Task A)?",
+    "options": [
+      "The engine should run both tasks forever in an infinite loop.",
+      "The engine should ignore Task B and run Task A twice.",
+      "The engine should deploy the application to production immediately.",
+      "The engine should detect the cycle and throw an explicit error before execution."
+    ],
+    "answer": 3,
+    "explanation": "Cycle detection must throw an error during graph resolution to prevent infinite scheduling deadlocks."
+  },
+  {
+    "question": "How does a security quality gate evaluate a scan containing 'critical' vulnerability findings when the threshold is set to 'high'?",
+    "options": [
+      "It passes the build and emails the developer next week.",
+      "It fails the quality gate because 'critical' meets or exceeds the 'high' severity threshold.",
+      "It deletes the source code from the Git repository.",
+      "It automatically changes the severity label to 'low'."
+    ],
+    "answer": 1,
+    "explanation": "Findings with severity meeting or exceeding the threshold (critical >= high) block the quality gate."
+  },
+  {
+    "question": "What happens if a task references a dependency ID that does not exist in the task list?",
+    "options": [
+      "The pipeline ignores the task and passes the build.",
+      "The missing dependency is automatically downloaded from npm.",
+      "The resolver throws an error indicating a missing dependency.",
+      "The task runs with root administrative privileges."
+    ],
+    "answer": 2,
+    "explanation": "Referencing undefined dependency IDs must throw a missing dependency error during DAG resolution."
+  }
+]

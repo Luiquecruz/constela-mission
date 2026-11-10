@@ -1,0 +1,27 @@
+{
+  "title": "Validating OIDC Policies and SLSA Attestations",
+  "summary": "Check a workload identity token the way AWS and Azure each trust it, verify the artifact against its SLSA provenance, and report every failed check before a deployment signs in.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "GitHub Docs: OpenID Connect in GitHub Actions",
+      "url": "https://docs.github.com/en/actions/concepts/security/openid-connect"
+    },
+    {
+      "label": "GitHub Docs: Configuring OpenID Connect in Amazon Web Services",
+      "url": "https://docs.github.com/en/actions/how-tos/secure-your-work/security-harden-deployments/oidc-in-aws"
+    },
+    {
+      "label": "Microsoft Learn: Authenticate to Azure from GitHub Actions by OpenID Connect",
+      "url": "https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure-openid-connect"
+    },
+    {
+      "label": "SLSA: Build provenance",
+      "url": "https://slsa.dev/spec/v1.0/provenance"
+    }
+  ]
+}
