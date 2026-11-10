@@ -1,0 +1,57 @@
+[
+  {
+    "question": "A workflow matrix lists python-version values 3.9 and 3.10 without quotes. What does the second entry become?",
+    "options": [
+      "The text \"3.10\"",
+      "The number 3.1",
+      "An error, because versions need quotes",
+      "The list [3, 10]"
+    ],
+    "answer": 1,
+    "explanation": "An unquoted 3.10 is a number, and the trailing zero is lost, so the job asks for 3.1 and may install a different runtime."
+  },
+  {
+    "question": "Which of these is not allowed for indentation in YAML?",
+    "options": [
+      "Two spaces",
+      "Four spaces",
+      "A tab character",
+      "Different depths for different mappings"
+    ],
+    "answer": 2,
+    "explanation": "YAML forbids tabs for indentation, because their width is not defined; use spaces and a consistent step."
+  },
+  {
+    "question": "A parser follows YAML 1.1 and reads the line \"mode: off\". What value does mode get?",
+    "options": [
+      "false",
+      "The text \"off\"",
+      "null",
+      "The key is rejected"
+    ],
+    "answer": 0,
+    "explanation": "YAML 1.1 treats off, no, n, on, yes and y as booleans, so the value is false unless it is quoted."
+  },
+  {
+    "question": "What is the main risk of a key that appears twice in the same mapping?",
+    "options": [
+      "The file stops being valid YAML in every tool",
+      "The second occurrence is always ignored",
+      "Many parsers keep the last value without any warning",
+      "The pipeline runs twice"
+    ],
+    "answer": 2,
+    "explanation": "The specification asks for unique keys, but a parser that accepts the file usually keeps one value silently, so a linter must catch it."
+  },
+  {
+    "question": "Which block scalar keeps the line breaks of a multi-line shell script?",
+    "options": [
+      "The folded block started with >",
+      "The literal block started with |",
+      "A quoted string",
+      "An anchor"
+    ],
+    "answer": 1,
+    "explanation": "The pipe starts a literal block that keeps each line break, which is what a script needs; the greater-than sign folds lines into one."
+  }
+]

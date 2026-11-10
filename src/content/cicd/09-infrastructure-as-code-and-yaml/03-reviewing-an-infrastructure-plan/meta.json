@@ -1,0 +1,27 @@
+{
+  "title": "Reviewing an Infrastructure Plan",
+  "summary": "Read the JSON plan of an infrastructure change in a pipeline: classify its actions, count the changes and apply rules for destruction, missing tags and exposure to approve, hold or reject it.",
+  "level": "advanced",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Terraform: JSON output format",
+      "url": "https://developer.hashicorp.com/terraform/internals/json-format"
+    },
+    {
+      "label": "Terraform: plan command",
+      "url": "https://developer.hashicorp.com/terraform/cli/commands/plan"
+    },
+    {
+      "label": "Google Cloud: Terraform on Google Cloud",
+      "url": "https://docs.cloud.google.com/docs/terraform"
+    },
+    {
+      "label": "GitHub Docs: Workflow syntax for GitHub Actions",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    }
+  ]
+}

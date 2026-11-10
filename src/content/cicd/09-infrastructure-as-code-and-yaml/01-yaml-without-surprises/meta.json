@@ -1,0 +1,35 @@
+{
+  "title": "YAML Without Surprises",
+  "summary": "Read and write the YAML of pipelines and templates with confidence: mappings, sequences and block scalars, and the traps of typing, duplicate keys and indentation that a linter can catch.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "YAML 1.2 specification",
+      "url": "https://yaml.org/spec/1.2.2/"
+    },
+    {
+      "label": "GitHub Docs: Workflow syntax for GitHub Actions",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax"
+    },
+    {
+      "label": "yamllint: Rules",
+      "url": "https://yamllint.readthedocs.io/en/stable/rules.html"
+    },
+    {
+      "label": "YAML Merge Key type (YAML 1.1)",
+      "url": "https://yaml.org/type/merge.html"
+    },
+    {
+      "label": "GitHub Docs: Reusing workflow configurations",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/reusing-workflow-configurations"
+    },
+    {
+      "label": "GitHub Docs: Building and testing Python",
+      "url": "https://docs.github.com/en/actions/tutorials/build-and-test-code/python"
+    }
+  ]
+}

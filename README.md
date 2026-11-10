@@ -130,7 +130,7 @@ npm run csharp:vendor                              # download, verify and assemb
 - Lessons that use the fake model (`dojo_ai`) are graded only under Pyodide; the CPython suite skips them.
 - A synchronous infinite loop in Python cannot be interrupted inside Pyodide: the worker is terminated and only that test fails.
 - Progress lives in the browser (`localStorage`); there are no accounts or sync between devices.
-- Vue and CI/CD remain hidden (CI/CD is added module by module until all nine are merged). Angular and Java and Spring Boot are public; the Angular six planned follow-up lessons are listed in [the release audit](.claude/docs/angular-release-audit.md).
+- Vue remains hidden. CI/CD is public with 27 lessons in 9 modules, each with a real case study, examples for the platform the learner picks (GitHub Actions, Azure Pipelines, AWS or Google Cloud) and a graded challenge in TypeScript, Python or C#; its accent is a neutral steel because every 30° hue band is taken. Angular and Java and Spring Boot are public; the Angular six planned follow-up lessons are listed in [the release audit](.claude/docs/angular-release-audit.md).
 
 ## Security
 

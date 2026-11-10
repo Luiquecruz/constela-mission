@@ -1,0 +1,4 @@
+{
+  "title": "Infrastructure as Code and YAML",
+  "description": "Read and write the YAML that every pipeline and cloud template is made of, plan infrastructure changes from a desired and a current state, and review an infrastructure plan before a pipeline applies it."
+}
