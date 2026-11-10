@@ -517,7 +517,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-progressive-delivery-strategies **(challenge)** ✓ · 02-decoupling-deploy-from-release-with-feature-flags **(challenge)** ✓ · 03-simulating-traffic-routing-and-canary-rollouts **(challenge)** ✓
 
 ### 07-secrets-identity-and-supply-chain-security — Secrets, Identity, and Supply Chain Security
-01-secretless-authentication-via-oidc-and-pbac **(challenge)** · 02-software-supply-chain-security-and-slsa-provenance **(challenge)** · 03-validating-oidc-policies-and-slsa-attestations **(challenge)**
+01-secretless-authentication-via-oidc-and-pbac **(challenge)** ✓ · 02-software-supply-chain-security-and-slsa-provenance **(challenge)** ✓ · 03-validating-oidc-policies-and-slsa-attestations **(challenge)** ✓
 
 ### 08-opengitops-observability-and-capstone-project — OpenGitOps, Observability, and Capstone Project
 01-opengitops-principles-and-pull-based-reconciliation **(challenge)** · 02-pipeline-observability-dora-metrics-and-sre **(challenge)** · 03-capstone-end-to-end-pipeline-engine **(challenge)**

@@ -1,0 +1,22 @@
+[
+  {
+    "term": "OpenID Connect Federation",
+    "description": "Authentication protocol enabling CI runners to exchange signed JWT tokens for short-lived cloud credentials."
+  },
+  {
+    "term": "Secretless Authentication",
+    "description": "Architecture eliminating static long-lived credentials from pipeline settings in favor of short-lived tokens."
+  },
+  {
+    "term": "SPIFFE ID",
+    "description": "Cryptographically verifiable workload identity URI uniquely identifying ephemeral software components."
+  },
+  {
+    "term": "Insufficient Credential Hygiene",
+    "description": "OWASP risk category (CICD-SEC-6) covering vulnerabilities caused by hardcoded, long-lived or poorly protected secrets."
+  },
+  {
+    "term": "Subject Claim",
+    "description": "Field inside an OIDC JWT token specifying the exact repository, branch, and event triggering the build."
+  }
+]

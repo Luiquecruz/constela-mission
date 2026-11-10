@@ -1,0 +1,19 @@
+{
+  "title": "Secretless Authentication via OIDC and PBAC",
+  "summary": "Eliminate static cloud credentials using OpenID Connect (OIDC), SPIFFE/SPIRE workload identity, and PBAC least privilege.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "SPIFFE overview",
+      "url": "https://spiffe.io/docs/latest/spiffe-about/overview/"
+    },
+    {
+      "label": "OWASP CICD-SEC-6: Insufficient Credential Hygiene",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-06-Insufficient-Credential-Hygiene"
+    }
+  ]
+}

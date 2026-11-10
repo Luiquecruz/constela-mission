@@ -1,0 +1,19 @@
+{
+  "title": "Software Supply Chain Security and SLSA Provenance",
+  "summary": "Master SLSA Build Levels L1-L3, in-toto provenance attestations, SBOM inventory tracking, and Sigstore keyless signing.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "SLSA specification",
+      "url": "https://slsa.dev/spec/v1.0/"
+    },
+    {
+      "label": "Sigstore documentation",
+      "url": "https://docs.sigstore.dev/"
+    }
+  ]
+}
