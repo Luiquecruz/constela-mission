@@ -1,0 +1,26 @@
+[
+  {
+    "term": "Saved plan",
+    "description": "A plan written to a file so that the same changes that were reviewed can be applied later."
+  },
+  {
+    "term": "Plan JSON",
+    "description": "The machine-readable form of a plan, with a resource_changes list that a policy can read."
+  },
+  {
+    "term": "Detailed exit code",
+    "description": "A plan option that returns 0 for no changes, 1 for an error and 2 when changes are present."
+  },
+  {
+    "term": "Policy on a plan",
+    "description": "Rules that read the changes of a plan and decide whether to approve it, require approval or reject it."
+  },
+  {
+    "term": "Plan and apply roles",
+    "description": "Two separate cloud identities, a read-only one for planning and a privileged one for applying."
+  },
+  {
+    "term": "Change set",
+    "description": "The CloudFormation form of a plan, which lists the changes of an update and waits for an explicit execution."
+  }
+]
