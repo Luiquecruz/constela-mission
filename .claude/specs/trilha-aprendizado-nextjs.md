@@ -419,27 +419,27 @@ A trilha roda em `src/content/nextjs` (track `nextjs`, engine `react`) e o plano
 
 | Módulo | Item da spec / competência expert | Lição | Formato |
 | --- | --- | --- | --- |
-| `01-hybrid-rendering` | RSC, redução de bundle, fronteira `'use client'` e padrão Donut (`children`) | `01-server-components-and-bundle-boundary` | Desafio |
-| `01-hybrid-rendering` | Streaming com `<Suspense>`, pré-carregamento paralelo e eliminação de waterfalls | `02-streaming-suspense-and-waterfalls` | Desafio |
-| `01-hybrid-rendering` | Server Actions (`'use server'`), `<Form>` (`next/form`), validação e `useActionState` | `03-server-actions-and-progressive-forms` | Desafio |
-| `01-hybrid-rendering` | Decisão arquitetural da fronteira servidor/cliente e mutações | `04-hybrid-rendering-adr` | ADR (Desafio) |
-| `02-async-request-apis` | `params`, `searchParams`, `cookies()` e `headers()` assíncronos | `01-async-request-context` | Desafio |
-| `02-async-request-apis` | Partial Prerendering (PPR): casca estática vs lacunas dinâmicas em `<Suspense>` | `02-partial-prerendering-and-dynamic-holes` | Desafio |
-| `02-async-request-apis` | Data Access Layer (DAL), DTOs seguros e memoização por requisição (`React.cache`) | `03-data-access-layer-and-request-memoization` | Desafio |
-| `02-async-request-apis` | Automação com `@next/codemod`, `next typegen` e migração de APIs síncronas | `04-async-migration-and-codemods` | Quiz |
-| `03-declarative-caching` | Inversão do padrão de cache (dinâmico por padrão, `staleTime: 0`, `cacheComponents`) | `01-caching-paradigm-inversion` | Quiz |
-| `03-declarative-caching` | Diretiva `'use cache'`, chaves de cache, closures e perfis `cacheLife` | `02-use-cache-and-cache-life-profiles` | Desafio |
-| `03-declarative-caching` | `cacheTag`, `revalidateTag(tag, profile)` (SWR) vs `updateTag(tag)` (Read-Your-Writes) | `03-tag-invalidation-and-read-your-writes` | Desafio |
-| `03-declarative-caching` | Decisão arquitetural de perfis `cacheLife` e topologia de invalidação | `04-caching-architecture-adr` | ADR (Desafio) |
-| `04-post-response-and-observability` | Ciclo de vida do `after()`, limites pós-resposta e `waitUntil` | `01-after-post-response-lifecycle` | Desafio |
-| `04-post-response-and-observability` | `instrumentation.ts`, `register()` por runtime e captura estruturada em `onRequestError` | `02-server-instrumentation-and-on-request-error` | Desafio |
-| `04-post-response-and-observability` | Route Handlers (`route.ts`), verificação de webhooks, `revalidateTag` e `after()` | `03-route-handlers-and-webhooks` | Desafio |
-| `04-post-response-and-observability` | Decisão entre `after()`, filas duráveis/outbox e observabilidade | `04-observability-and-reliability-adr` | ADR (Desafio) |
-| `05-advanced-routing` | Parallel Routes (`@slot`), preservação em soft navigation e fallback `default.tsx` | `01-parallel-routes-and-slot-states` | Desafio |
-| `05-advanced-routing` | Intercepting Routes (`(.)`, `(..)`) e modais `<dialog>` orientados à URL | `02-intercepting-routes-and-url-modals` | Desafio |
-| `05-advanced-routing` | Isolamento de erros por slot (`error.tsx`, `reset()`, `not-found.tsx`, `global-error.tsx`) | `03-error-boundaries-not-found-and-slot-isolation` | Desafio |
-| `05-advanced-routing` | Decisão arquitetural de slots paralelos e rotas interceptadas | `04-routing-architecture-adr` | ADR (Desafio) |
-| `06-proxy-migration-and-production` | De `middleware.ts` para `proxy.ts` no Node.js e defesa em profundidade com DAL | `01-from-middleware-to-node-proxy` | Desafio |
-| `06-proxy-migration-and-production` | `generateMetadata`, guardrails de `next/image` (`qualities`, `minimumCacheTTL`) e CSP | `02-metadata-images-and-security-headers` | Quiz |
-| `06-proxy-migration-and-production` | Auditoria de migração, codemods, Turbopack e `cacheHandler` para self-hosting | `03-migration-playbook-and-runtime-lifecycle` | Desafio |
-| `06-proxy-migration-and-production` | Projeto Final (Capstone): motor full-stack com `proxy`, DAL, `'use cache'`, `updateTag`, `after()` e `@modal` | `04-capstone-commerce-architecture` | Desafio Multi-arquivo |
+| `03-hybrid-rendering` | RSC, redução de bundle, fronteira `'use client'` e padrão Donut (`children`) | `01-server-components-and-bundle-boundary` | Desafio |
+| `03-hybrid-rendering` | Streaming com `<Suspense>`, pré-carregamento paralelo e eliminação de waterfalls | `02-streaming-suspense-and-waterfalls` | Desafio |
+| `03-hybrid-rendering` | Server Actions (`'use server'`), `<Form>` (`next/form`), validação e `useActionState` | `03-server-actions-and-progressive-forms` | Desafio |
+| `03-hybrid-rendering` | Decisão arquitetural da fronteira servidor/cliente e mutações | `04-hybrid-rendering-adr` | ADR (Desafio) |
+| `04-async-request-apis` | `params`, `searchParams`, `cookies()` e `headers()` assíncronos | `01-async-request-context` | Desafio |
+| `04-async-request-apis` | Partial Prerendering (PPR): casca estática vs lacunas dinâmicas em `<Suspense>` | `02-partial-prerendering-and-dynamic-holes` | Desafio |
+| `04-async-request-apis` | Data Access Layer (DAL), DTOs seguros e memoização por requisição (`React.cache`) | `03-data-access-layer-and-request-memoization` | Desafio |
+| `04-async-request-apis` | Automação com `@next/codemod`, `next typegen` e migração de APIs síncronas | `04-async-migration-and-codemods` | Quiz |
+| `05-declarative-caching` | Inversão do padrão de cache (dinâmico por padrão, `staleTime: 0`, `cacheComponents`) | `01-caching-paradigm-inversion` | Quiz |
+| `05-declarative-caching` | Diretiva `'use cache'`, chaves de cache, closures e perfis `cacheLife` | `02-use-cache-and-cache-life-profiles` | Desafio |
+| `05-declarative-caching` | `cacheTag`, `revalidateTag(tag, profile)` (SWR) vs `updateTag(tag)` (Read-Your-Writes) | `03-tag-invalidation-and-read-your-writes` | Desafio |
+| `05-declarative-caching` | Decisão arquitetural de perfis `cacheLife` e topologia de invalidação | `04-caching-architecture-adr` | ADR (Desafio) |
+| `06-post-response-and-observability` | Ciclo de vida do `after()`, limites pós-resposta e `waitUntil` | `01-after-post-response-lifecycle` | Desafio |
+| `06-post-response-and-observability` | `instrumentation.ts`, `register()` por runtime e captura estruturada em `onRequestError` | `02-server-instrumentation-and-on-request-error` | Desafio |
+| `06-post-response-and-observability` | Route Handlers (`route.ts`), verificação de webhooks, `revalidateTag` e `after()` | `03-route-handlers-and-webhooks` | Desafio |
+| `06-post-response-and-observability` | Decisão entre `after()`, filas duráveis/outbox e observabilidade | `04-observability-and-reliability-adr` | ADR (Desafio) |
+| `07-advanced-routing` | Parallel Routes (`@slot`), preservação em soft navigation e fallback `default.tsx` | `01-parallel-routes-and-slot-states` | Desafio |
+| `07-advanced-routing` | Intercepting Routes (`(.)`, `(..)`) e modais `<dialog>` orientados à URL | `02-intercepting-routes-and-url-modals` | Desafio |
+| `07-advanced-routing` | Isolamento de erros por slot (`error.tsx`, `reset()`, `not-found.tsx`, `global-error.tsx`) | `03-error-boundaries-not-found-and-slot-isolation` | Desafio |
+| `07-advanced-routing` | Decisão arquitetural de slots paralelos e rotas interceptadas | `04-routing-architecture-adr` | ADR (Desafio) |
+| `08-proxy-migration-and-production` | De `middleware.ts` para `proxy.ts` no Node.js e defesa em profundidade com DAL | `01-from-middleware-to-node-proxy` | Desafio |
+| `08-proxy-migration-and-production` | `generateMetadata`, guardrails de `next/image` (`qualities`, `minimumCacheTTL`) e CSP | `02-metadata-images-and-security-headers` | Quiz |
+| `08-proxy-migration-and-production` | Auditoria de migração, codemods, Turbopack e `cacheHandler` para self-hosting | `03-migration-playbook-and-runtime-lifecycle` | Desafio |
+| `08-proxy-migration-and-production` | Projeto Final (Capstone): motor full-stack com `proxy`, DAL, `'use cache'`, `updateTag`, `after()` e `@modal` | `04-capstone-commerce-architecture` | Desafio Multi-arquivo |
