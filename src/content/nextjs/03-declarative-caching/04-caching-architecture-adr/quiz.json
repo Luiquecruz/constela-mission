@@ -1,0 +1,46 @@
+[
+  {
+    "question": "In a multi-vendor marketplace with cacheComponents: true, how should a live checkout inventory reservation check (checkout-stock-hold) be architected?",
+    "options": [
+      "Mark it with 'use cache' and cacheLife('seconds') so inventory locks are shared across users for 1 second.",
+      "Keep it uncached inside a <Suspense> boundary with no tag invalidation so every checkout request verifies live stock.",
+      "Cache it indefinitely with 'use cache' and call revalidateTag('stock', 'max') once an hour.",
+      "Export dynamic = 'force-static' at the top of the checkout page."
+    ],
+    "answer": 1,
+    "explanation": "Live transactional state such as an inventory hold is per-user and lock-sensitive; it must never be served from a shared cache and instead streams dynamically inside a <Suspense> boundary."
+  },
+  {
+    "question": "Why should a supplier catalog sync webhook use revalidateTag('catalog', 'max') whereas a seller's interactive price-edit Server Action uses updateTag(`product-${id}`)?",
+    "options": [
+      "Webhooks cannot import next/cache, so only Server Actions can invalidate tags.",
+      "Background supplier syncs benefit from non-blocking stale-while-revalidate (revalidateTag), while the seller who just submitted a price change needs immediate read-your-own-writes consistency (updateTag).",
+      "updateTag deletes the entire database table, whereas revalidateTag only updates CSS styles.",
+      "revalidateTag is only for Client Components, whereas updateTag is for Middleware."
+    ],
+    "answer": 1,
+    "explanation": "Shoppers browsing during a background supplier sync should receive fast stale-while-revalidate responses via revalidateTag(tag, 'max'), whereas a seller submitting a form in a Server Action needs updateTag(tag) to see their new price immediately."
+  },
+  {
+    "question": "Which combination of strategy and invalidation is appropriate for a global navigation taxonomy that changes weekly via a CMS webhook?",
+    "options": [
+      "strategy: 'dynamic-suspense' with invalidation: 'updateTag'",
+      "strategy: 'use-cache' with invalidation: 'revalidateTag'",
+      "strategy: 'dynamic-suspense' with invalidation: 'none'",
+      "strategy: 'use-cache' with invalidation: 'none' and no cacheLife"
+    ],
+    "answer": 1,
+    "explanation": "Global navigation is shared by all visitors and changes infrequently via an external CMS webhook, making 'use cache' paired with revalidateTag(tag, 'max') the ideal fit."
+  },
+  {
+    "question": "In an Architecture Decision Record (ADR) for declarative caching, why is documenting negative consequences just as important as positive ones?",
+    "options": [
+      "Because Next.js refuses to compile next.config.ts unless an ADR markdown file is present.",
+      "Because every caching choice introduces real trade-offs—such as brief staleness windows during SWR or maintaining consistent tag naming across loaders and mutations—that engineers must manage.",
+      "Because negative consequences automatically disable cacheComponents in production.",
+      "To list deprecated Pages Router APIs that are no longer used."
+    ],
+    "answer": 1,
+    "explanation": "A rigorous ADR records operational trade-offs—such as bounded staleness during background revalidation and discipline around cacheTag naming—so the team understands both the benefits and maintenance costs."
+  }
+]

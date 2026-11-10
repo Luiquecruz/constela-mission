@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What is the primary danger of caching authenticated user queries in a top-level `const cache = new Map()` inside a Node.js module instead of using `React.cache()`?",
+    "options": [
+      "A top-level `Map` cannot store Promises and will throw a syntax error in TypeScript",
+      "A module-level `Map` persists across separate HTTP requests in the same server process, risking cross-user data leaks",
+      "Next.js automatically clears all module-level `Map` instances before each component renders",
+      "`Map` objects are serialized into the client bundle even when marked with `import 'server-only'`"
+    ],
+    "answer": 1,
+    "explanation": "In a server environment, module-level variables live for the lifetime of the worker process and are shared by concurrent requests from different users, whereas `React.cache()` is scoped to a single request render pass."
+  },
+  {
+    "question": "Why is it safe and recommended for every DAL query function (such as `getOrdersByTenant`, `getInvoicesByTenant`, and `getTeamMembers`) to call `await getCurrentUser()` internally?",
+    "options": [
+      "Because `getCurrentUser()` is wrapped in `React.cache()`, so the underlying cookie read and session lookup execute only once per request",
+      "Because Next.js skips `await` statements inside functions that start with the prefix `get`",
+      "Because `cookies()` caches database rows across all connected browsers in the CDN",
+      "Because `getCurrentUser()` runs on the client browser before the server request starts"
+    ],
+    "answer": 0,
+    "explanation": "When `getCurrentUser` is memoized per request with `React.cache()`, multiple DAL functions and components can call it during the same render pass to enforce authorization without repeating the session lookup."
+  },
+  {
+    "question": "Why should a DAL function map database records to a safe DTO before returning them to a Server Component?",
+    "options": [
+      "Because Server Components cannot read objects that have more than three properties",
+      "To prevent sensitive fields like `supplierCost` or `passwordHash` from accidentally being serialized into the RSC payload if passed to a Client Component",
+      "Because `React.cache()` only caches objects whose keys are sorted alphabetically",
+      "Because TypeScript interfaces are stripped at runtime unless mapped to a new object"
+    ],
+    "answer": 1,
+    "explanation": "If a Server Component passes a raw database object as a prop to a Client Component, all of its enumerable properties are serialized into the RSC payload sent to the browser, even if the Client Component never renders those fields."
+  },
+  {
+    "question": "What happens if three different Server Components in the same route tree call `await getOrdersByTenant('acme')` when `getOrdersByTenant` is memoized per request?",
+    "options": [
+      "The database query runs three times, once for each component boundary",
+      "The database query runs once for `'acme'`, and all three components receive the shared promise result for that request",
+      "Next.js throws a duplicate key error unless two of the components are Client Components",
+      "Only the first component receives the orders; the other two receive `undefined`"
+    ],
+    "answer": 1,
+    "explanation": "Per-request memoization deduplicates calls with matching arguments (`'acme'`) within the same request scope, sharing the in-flight or resolved Promise across all callers in that render tree."
+  }
+]

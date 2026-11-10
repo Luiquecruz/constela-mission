@@ -1,0 +1,5 @@
+{
+  "title": "Advanced Routing: Parallel, Intercepting Routes and Error Boundaries",
+  "description": "Compose multi-slot dashboards with Parallel Routes (@slot) and default.tsx fallbacks, build shareable URL-driven modals with Intercepting Routes, and isolate failures per slot with error.tsx and not-found.tsx."
+}
+

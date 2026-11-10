@@ -1,0 +1,46 @@
+[
+  {
+    "question": "PulseCommerce has a ProductMarkdownSpecification component that imports a 180 KB Markdown and syntax-highlighting library and requires zero browser interactivity. Which boundary should it use?",
+    "options": [
+      "A Client Component ('use client') wrapped in useMemo so the browser caches the parsed HTML",
+      "A Server Component (no directive) so the 180 KB library executes on the server and adds 0 KB to the client JavaScript bundle",
+      "A Server Action ('use server') invoked inside useEffect after hydration",
+      "A next/form <Form> component with a POST action"
+    ],
+    "answer": 1,
+    "explanation": "Server Components run exclusively on the server. Keeping ProductMarkdownSpecification as a Server Component ensures the 180 KB library is never downloaded, parsed, or executed by the browser."
+  },
+  {
+    "question": "SupplierWholesaleMarginCalculator reads confidential supplier wholesale contracts to compute public retail price tiers and has no browser state. Why must it be a Server Component?",
+    "options": [
+      "Because browser JavaScript cannot perform floating-point multiplication accurately",
+      "Because executing wholesale contract logic in a Server Component (guarded by server-only) ensures confidential supplier rates never enter the client bundle or serialized RSC payload",
+      "Because Client Components cannot render numbers inside HTML tables",
+      "Because Next.js automatically encrypts all Client Component props with the user's password"
+    ],
+    "answer": 1,
+    "explanation": "Running confidential pricing logic inside a Server Component keeps wholesale contract data and secrets strictly on the server, sending only the computed public retail price tiers to the browser."
+  },
+  {
+    "question": "Why should CatalogFilterSearchForm (which navigates to /search?q=... with URL query parameters) use <Form> from next/form instead of a 'use server' Server Action?",
+    "options": [
+      "Because Server Actions cannot read strings longer than 10 characters",
+      "Because <Form action=\"/search\"> serializes inputs into shareable URL search parameters, prefetches the /search layout and loading state, and performs a soft GET navigation",
+      "Because next/form automatically indexes the user's local filesystem",
+      "Because Server Actions only work in production builds and fail in development"
+    ],
+    "answer": 1,
+    "explanation": "Search and filter forms represent idempotent GET navigations that belong in the URL query string. <Form action=\"/search\"> from next/form provides layout prefetching and soft client navigation with URL search parameters."
+  },
+  {
+    "question": "In an Architecture Decision Record (ADR), why is documenting negative consequences just as important as documenting positive consequences?",
+    "options": [
+      "It satisfies linter rules that count the number of bullet points in a file",
+      "It makes the engineering trade-offs explicit—such as React Flight prop serialization rules and strict server/client import boundaries—so the team anticipates and designs around them",
+      "It prevents Next.js from compiling the application if any trade-off is omitted",
+      "It automatically generates unit tests from negative bullet points"
+    ],
+    "answer": 1,
+    "explanation": "Every architectural choice involves trade-offs. Recording negative consequences (like prop serialization constraints across 'use client' boundaries) helps engineers understand the operational rules of the chosen architecture."
+  }
+]

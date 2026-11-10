@@ -1,0 +1,18 @@
+[
+  {
+    "term": "next-async-request-api Codemod",
+    "description": "An automated AST transformation in `@next/codemod` that updates `params`, `searchParams`, `cookies()`, `headers()`, and `draftMode()` to use `await` or `React.use()`."
+  },
+  {
+    "term": "next typegen",
+    "description": "A CLI command (`npx next typegen`) that generates static route types (`PageProps`, `LayoutProps`, `RouteContext`) from the `app/` filesystem without requiring a full build."
+  },
+  {
+    "term": "PageProps & LayoutProps",
+    "description": "Auto-generated global TypeScript helper types that strongly type `params` (as a `Promise` of route segment keys) and `searchParams` (for pages) or slot props (for layouts)."
+  },
+  {
+    "term": "UnsafeUnwrappedCookies",
+    "description": "A temporary migration type inserted by the codemod alongside `@next-codemod-error` when `cookies()` is called inside a synchronous helper function that requires manual async refactoring."
+  }
+]

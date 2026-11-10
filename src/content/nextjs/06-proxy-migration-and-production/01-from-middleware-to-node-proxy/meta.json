@@ -1,0 +1,17 @@
+{
+  "title": "From middleware.ts to proxy.ts: Network Boundary and Defense-in-Depth",
+  "summary": "Replace Edge middleware.ts with Node.js proxy.ts for multi-tenant rewrites, correlation headers, and optimistic redirects while enforcing defense-in-depth at the Data Access Layer.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js File Conventions: proxy.ts",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/proxy"
+    },
+    {
+      "title": "Next.js Authentication and Data Access Layer Guide",
+      "url": "https://nextjs.org/docs/app/guides/authentication"
+    }
+  ]
+}

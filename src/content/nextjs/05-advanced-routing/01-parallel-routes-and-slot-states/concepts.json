@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Named Slot (@folder)",
+    "description": "A directory prefixed with @ (such as @analytics or @modal) that passes its rendered route branch as a prop to the sibling layout.tsx without adding a segment to the URL path."
+  },
+  {
+    "term": "Implicit @children Slot",
+    "description": "The standard page.tsx and nested route segments inside a layout directory, which behave identically to a parallel slot named children."
+  },
+  {
+    "term": "Soft Navigation Slot Retention",
+    "description": "During client-side navigation, if a slot does not have a route matching the new URL, Next.js keeps rendering that slot's previously active view from client state."
+  },
+  {
+    "term": "Hard Navigation Slot Resolution",
+    "description": "On a full-page load or browser refresh, Next.js has no previous slot state in memory and must match either the exact URL route or a default.tsx file in every slot."
+  },
+  {
+    "term": "default.tsx Fallback",
+    "description": "A special file inside a slot (or the root of a parallel route segment) that renders on hard navigation when the current URL does not match any explicit route inside that slot."
+  }
+]

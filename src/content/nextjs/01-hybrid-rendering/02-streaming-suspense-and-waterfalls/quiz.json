@@ -1,0 +1,46 @@
+[
+  {
+    "question": "In a Server Component, getProduct(id) takes 80ms, getInventory(id) takes 120ms, and getReviews(id) takes 300ms. None of them depend on each other's output. How long does the data fetching step take when awaited with Promise.all versus sequential await statements?",
+    "options": [
+      "500ms with Promise.all versus 300ms with sequential await statements",
+      "300ms with Promise.all versus 500ms with sequential await statements",
+      "80ms with Promise.all because Promise.all resolves as soon as the fastest promise completes",
+      "Both take 500ms because Node.js executes async functions on a single thread"
+    ],
+    "answer": 1,
+    "explanation": "Initiating all three requests immediately and awaiting Promise.all runs their network I/O concurrently, so total latency equals the slowest request (300ms) instead of the sequential sum (80 + 120 + 300 = 500ms)."
+  },
+  {
+    "question": "Why does wrapping <ReviewsList reviews={reviews} /> in <Suspense> fail to stream the page early if const reviews = await getReviews(id) is called at the top of the parent Page component?",
+    "options": [
+      "Suspense only works inside Client Components marked with 'use client'",
+      "The parent Page component already suspended and blocked execution on await getReviews(id) before React could ever reach or render the JSX return statement",
+      "Next.js disables streaming whenever a prop named reviews is passed to a child component",
+      "Suspense boundaries require loading.tsx to be deleted before they can activate"
+    ],
+    "answer": 1,
+    "explanation": "An await inside the parent component pauses the parent function before it returns any JSX. To stream early, the async await must occur inside the child component rendered beneath the <Suspense> boundary."
+  },
+  {
+    "question": "How can you start fetching a slow resource in a parent Server Component immediately while allowing a child Client Component to render its Suspense fallback until the data arrives?",
+    "options": [
+      "Create the Promise in the Server Component without awaiting it, pass the Promise as a prop to the Client Component wrapped in <Suspense>, and read it with React.use(promise)",
+      "Pass an async Server Component function as a callback prop and invoke it inside useEffect",
+      "Store the Promise in window.localStorage on the server and read it on the client",
+      "Use JSON.stringify on the pending Promise before passing it across the boundary"
+    ],
+    "answer": 0,
+    "explanation": "React Flight can serialize a Promise created on the server and stream its resolution to a Client Component. Calling use(promise) inside the Client Component suspends only the surrounding <Suspense> boundary until the server promise resolves."
+  },
+  {
+    "question": "What does adding a loading.tsx file inside an App Router route folder (such as app/dashboard/loading.tsx) do under the hood?",
+    "options": [
+      "It polls the server every second until the database connection is idle",
+      "It automatically wraps app/dashboard/page.tsx and any nested children inside a React <Suspense> boundary using loading.tsx as the fallback UI",
+      "It converts all Server Components inside app/dashboard into static HTML at build time",
+      "It blocks the browser from rendering layouts until all API routes complete"
+    ],
+    "answer": 1,
+    "explanation": "Next.js uses loading.tsx as a file-system convention that wraps the sibling page.tsx segment inside a <Suspense fallback={<Loading />}> boundary inside the route layout."
+  }
+]

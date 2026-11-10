@@ -1,0 +1,5 @@
+{
+  "title": "Async Request APIs, PPR and the Data Access Layer",
+  "description": "Await params, searchParams, cookies() and headers() as Promises, push dynamic reads inside Suspense boundaries for Partial Prerendering, deduplicate queries per request in a Data Access Layer, and automate upgrades with codemods and typegen."
+}
+

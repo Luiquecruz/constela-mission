@@ -1,0 +1,24 @@
+{
+  "title": "Dynamic Invalidation: cacheTag, revalidateTag vs updateTag",
+  "summary": "Tag cached functions with cacheTag(), use two-argument revalidateTag(tag, profile) for background stale-while-revalidate, and use updateTag(tag) in Server Actions for immediate read-your-own-writes.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Function Reference — cacheTag",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/cacheTag",
+      "type": "docs"
+    },
+    {
+      "title": "Next.js Function Reference — revalidateTag",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag",
+      "type": "docs"
+    },
+    {
+      "title": "Next.js Function Reference — updateTag",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/updateTag",
+      "type": "docs"
+    }
+  ]
+}

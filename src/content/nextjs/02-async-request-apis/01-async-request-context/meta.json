@@ -1,0 +1,21 @@
+{
+  "title": "Async Request APIs: params, searchParams, cookies and headers",
+  "summary": "Await route params, searchParams, cookies(), and headers() as Promises in Server Components and unwrap request Promises in Client Components.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: cookies() Function Reference",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/cookies"
+    },
+    {
+      "title": "Next.js Docs: headers() Function Reference",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/headers"
+    },
+    {
+      "title": "React Docs: use() API Reference",
+      "url": "https://react.dev/reference/react/use"
+    }
+  ]
+}

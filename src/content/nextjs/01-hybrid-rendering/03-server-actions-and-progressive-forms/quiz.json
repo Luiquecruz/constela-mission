@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What does <Form action=\"/catalog\"> from next/form do differently from a standard HTML <form action=\"/catalog\"> when submitted?",
+    "options": [
+      "It converts all GET inputs into an encrypted POST request body",
+      "It prefetches the /catalog layout and loading state and performs a client-side navigation with URL search parameters instead of a full browser page reload",
+      "It automatically writes form inputs into the browser's IndexedDB before navigating",
+      "It blocks navigation until a 'use server' directive is added to the target page"
+    ],
+    "answer": 1,
+    "explanation": "When given a string action, <Form> from next/form prefetches shared layouts and loading.tsx UI, serializes form fields into the URL query string, and performs a soft client-side navigation."
+  },
+  {
+    "question": "Why must every Server Action ('use server') validate its inputs and verify user authorization inside the function body, even if the button calling it is hidden from unauthorized users?",
+    "options": [
+      "Because TypeScript strips types during client hydration",
+      "Because Next.js compiles each exported Server Action into a publicly reachable HTTP POST endpoint that an attacker can invoke directly with arbitrary payloads",
+      "Because Server Actions execute inside a Web Worker inside the user's browser",
+      "Because React automatically retries failed Server Actions without sending cookies"
+    ],
+    "answer": 1,
+    "explanation": "Every exported Server Action is exposed as an HTTP POST endpoint identified by its Action ID. Any client can send a custom POST request directly to that endpoint, so server-side validation and auth checks are mandatory."
+  },
+  {
+    "question": "How should a Server Action report expected user input validation errors (such as an invalid price or short product name) back to a form using useActionState?",
+    "options": [
+      "Throw a new Error('Validation failed') so the nearest error.tsx boundary catches it",
+      "Return a plain serializable state object such as { ok: false, error: 'Price must be greater than zero' } so the form preserves user input and displays the message",
+      "Call process.exit(1) to abort the serverless function",
+      "Pass a callback function from the Client Component into the Server Action"
+    ],
+    "answer": 1,
+    "explanation": "Throwing an uncaught error triggers the route's error.tsx boundary and unmounts the form, losing what the user typed. Returning a structured state object via useActionState keeps the form mounted and displays inline errors."
+  },
+  {
+    "question": "What happens if you call redirect('/dashboard') inside a try { ... } catch (err) { ... } block inside a Server Action?",
+    "options": [
+      "Next.js immediately redirects before entering the catch block",
+      "redirect() works by throwing a special internal error, so the catch block intercepts it and prevents the redirect unless rethrown or called outside try/catch",
+      "redirect() is only allowed inside Client Components, so the build fails",
+      "The browser opens /dashboard in a new popup window"
+    ],
+    "answer": 1,
+    "explanation": "In Next.js, redirect() throws a special NEXT_REDIRECT control-flow exception. Wrapping it inside a try/catch block catches that exception and stops the navigation unless you call redirect() after the try/catch block."
+  }
+]

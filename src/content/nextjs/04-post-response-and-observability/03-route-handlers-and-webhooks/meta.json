@@ -1,0 +1,21 @@
+{
+  "title": "Route Handlers, Streaming Responses and Webhook Pipelines",
+  "summary": "Build uncached Web Request/Response Route Handlers that verify raw webhook signatures, trigger revalidateTag() invalidation, and offload audit persistence to after().",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Documentation: route.ts File Convention",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route"
+    },
+    {
+      "title": "Next.js Documentation: revalidateTag()",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/revalidateTag"
+    },
+    {
+      "title": "MDN Web Docs: Request.text()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/Request/text"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why did Next.js transition from middleware.ts to proxy.ts?",
+    "options": [
+      "To clarify its role as a network boundary layer and run on the standard Node.js runtime by default instead of a constrained Edge environment",
+      "To execute routing logic inside the user's browser Service Worker before requests reach the server",
+      "To automatically encrypt all SQL queries inside Client Components without a Data Access Layer",
+      "To replace Server Actions as the primary place where form mutations write to the database"
+    ],
+    "answer": 0,
+    "explanation": "Renaming middleware.ts to proxy.ts makes the network boundary explicit and shifts execution to the full Node.js runtime, eliminating Edge API compatibility issues."
+  },
+  {
+    "question": "What happens in the user's browser address bar when proxy.ts returns a rewrite for acme.app.local/settings to /tenants/acme/settings?",
+    "options": [
+      "The browser address bar changes to acme.app.local/tenants/acme/settings via an HTTP 307 redirect",
+      "The browser address bar stays at acme.app.local/settings while Next.js internally renders the /tenants/acme/settings route",
+      "Next.js blocks the request because rewrites cannot cross dynamic route segments",
+      "The browser reloads the page twice to synchronize the pathname with the server"
+    ],
+    "answer": 1,
+    "explanation": "A proxy rewrite maps an incoming URL to an internal destination transparently on the server without changing the URL visible in the browser."
+  },
+  {
+    "question": "Why is relying solely on proxy.ts for authentication and authorization considered an anti-pattern?",
+    "options": [
+      "Because proxy.ts cannot read request cookies or headers on incoming HTTP requests",
+      "Because matcher misconfigurations or optimistic cookie checks at the proxy boundary cannot replace authoritative role and tenant verification at the Data Access Layer and Server Actions",
+      "Because proxy.ts only executes during static build generation and never runs at request time",
+      "Because NextResponse.redirect automatically grants admin privileges to subsequent requests"
+    ],
+    "answer": 1,
+    "explanation": "Defense-in-depth requires verifying sessions, roles, and tenant ownership inside your DAL and Server Actions so that a matcher mistake or stale cookie at the proxy boundary never exposes sensitive data."
+  },
+  {
+    "question": "Why should static asset paths like /_next/static and /favicon.ico be excluded from proxy execution?",
+    "options": [
+      "Because static assets are served only over WebSockets",
+      "To avoid running proxy logic, header allocation, and redirect checks on every static asset request",
+      "Because Next.js deletes static files if they pass through proxy.ts",
+      "Because browsers refuse to parse CSS files that contain custom response headers"
+    ],
+    "answer": 1,
+    "explanation": "Skipping /_next assets and /favicon.ico prevents unnecessary compute and latency overhead on high-volume static asset requests."
+  }
+]

@@ -1,0 +1,5 @@
+{
+  "title": "Post-Response Processing (after) and Observability",
+  "description": "Schedule non-blocking telemetry and side effects after the response streams with after(), capture structured server exceptions through instrumentation.ts and onRequestError, and build verified webhook Route Handlers."
+}
+

@@ -1,0 +1,21 @@
+{
+  "title": "Migration Playbook: Codemods, Turbopack and Self-Hosted Cache Handlers",
+  "summary": "Audit runtime baselines, run @next/codemod transformations for async request APIs and proxy.ts, update tag invalidation signatures, and configure distributed cache handlers for multi-replica self-hosting.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Upgrade Guide: Version 16",
+      "url": "https://nextjs.org/docs/app/guides/upgrading/version-16"
+    },
+    {
+      "title": "Next.js CLI: Codemods",
+      "url": "https://nextjs.org/docs/app/guides/upgrading/codemods"
+    },
+    {
+      "title": "Deploying and Self-Hosting Next.js",
+      "url": "https://nextjs.org/docs/app/building-your-application/deploying"
+    }
+  ]
+}

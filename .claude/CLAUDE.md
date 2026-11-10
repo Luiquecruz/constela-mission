@@ -2,7 +2,7 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-Constela Mission (formerly Dev Dojo; UI vocabulary: track → mission, module → stage, lesson → waypoint, curriculum → star map, Learn → Briefing, see ARCHITECTURE.md "Track presentation") is a browser-only learning platform (theory, test-validated coding challenges, hints, quizzes) for TypeScript, React, State Management, Frontend Architecture, AI Engineering (Node.js and Python variants), Node.js, Python, C# and .NET (on the C# engine; theory and quizzes, graded challenges in the optional fundamentals module 00 and in modules 02–04, 08–10, 12 and 14), System Design (theory and quizzes, graded challenges in TypeScript on the Node.js engine, Python or C#, chosen by the learner), Vue and Angular. There is no backend: grading, previews, a fake REST API and a fake model provider all run client-side. Everything (code, content, docs, commit messages) is written in English. The project has more than one contributor: workflow, commit format and the documentation upkeep rule are in `.claude/docs/CONTRIBUTING.md`.
+Constela Mission (formerly Dev Dojo; UI vocabulary: track → mission, module → stage, lesson → waypoint, curriculum → star map, Learn → Briefing, see ARCHITECTURE.md "Track presentation") is a browser-only learning platform (theory, test-validated coding challenges, hints, quizzes) for TypeScript, React, State Management, Frontend Architecture, Next.js, AI Engineering (Node.js and Python variants), Node.js, Python, C# and .NET (on the C# engine; theory and quizzes, graded challenges in the optional fundamentals module 00 and in modules 02–04, 08–10, 12 and 14), System Design (theory and quizzes, graded challenges in TypeScript on the Node.js engine, Python or C#, chosen by the learner), Vue, Angular and Java and Spring Boot. There is no backend: grading, previews, a fake REST API and a fake model provider all run client-side. Everything (code, content, docs, commit messages) is written in English. The project has more than one contributor: workflow, commit format and the documentation upkeep rule are in `.claude/docs/CONTRIBUTING.md`.
 
 ## Commands
 
@@ -15,7 +15,7 @@ npm run test                                                   # unit + architec
 npm run verify                                                 # lesson verification (src/verify): solution passes, starter fails
 npx vitest run src/shared/motion                               # one folder of unit tests
 npm run docs:check                                             # changed areas whose documents were not updated (.claude/hooks/docs-sync.mjs)
-npx vitest run src/verify/<track>.test.ts                      # one track (typescript, react, react-state, architecture, ai-engineering, node, python, csharp, system-design, vue, angular)
+npx vitest run src/verify/<track>.test.ts                      # one track (typescript, react, react-state, architecture, nextjs, ai-engineering, node, python, csharp, system-design, vue, angular, java-spring)
 npx vitest run src/verify/csharpSandbox.test.ts                # C# engine regression tests in Node: loop kills, tampering, lock-down probes, escape scan
 npm run python:new -- <NN-module> <NN-lesson-id>               # scaffold a Python track lesson (writes meta.json.draft)
 npm run python:curriculum                                      # regenerate the Python section of CURRICULUM.md (-- --check to verify)

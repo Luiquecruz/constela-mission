@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Domain Caching Matrix",
+    "description": "An architectural mapping that assigns each business domain to either 'use cache' (shared cache with cacheLife and tags) or dynamic <Suspense> streaming based on scope and consistency."
+  },
+  {
+    "term": "Webhook SWR Invalidation",
+    "description": "Using revalidateTag(tag, 'max') inside Route Handlers triggered by external CMS or supplier webhooks so readers never block on cold cache rebuilds."
+  },
+  {
+    "term": "Interactive Mutation Expiration",
+    "description": "Using updateTag(tag) inside Server Actions when an authenticated seller or author mutates cached data and must immediately observe their updated state."
+  },
+  {
+    "term": "Uncached Transactional Boundary",
+    "description": "Keeping live inventory locks, cart holds, and per-user session checks outside 'use cache' and streaming them inside <Suspense> boundaries."
+  }
+]

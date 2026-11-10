@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What is included in the initial static HTML shell when a route uses Partial Prerendering (PPR)?",
+    "options": [
+      "Only the `<head>` tag; the entire `<body>` is always rendered on the client",
+      "All static components plus the `<Suspense fallback={...}>` UI for each dynamic component boundary",
+      "The resolved HTML of `cookies()` and `headers()` from the build server's environment",
+      "An empty HTML document that triggers a client-side `fetch()` for all Server Components"
+    ],
+    "answer": 1,
+    "explanation": "With Partial Prerendering, Next.js prerenders all static components along with the fallback UI of `<Suspense>` boundaries into the static shell, then streams the dynamic components at request time."
+  },
+  {
+    "question": "Why does calling `await cookies()` at the top of `Page()` and passing the value as a prop into `<Suspense><UserBanner cookie={val} /></Suspense>` prevent prerendering the page shell?",
+    "options": [
+      "Because props passed across a `<Suspense>` boundary cannot be strings",
+      "Because `await cookies()` executes inside `Page()` before `Page()` returns its JSX, above the `<Suspense>` boundary",
+      "Because `cookies()` can only be called inside Client Components",
+      "Because `<Suspense>` boundaries only work with `headers()`, not `cookies()`"
+    ],
+    "answer": 1,
+    "explanation": "A `<Suspense>` boundary only catches asynchronous suspensions that occur inside its children. If `Page()` awaits `cookies()` before returning JSX, `Page()` itself suspends outside of any `<Suspense>` boundary."
+  },
+  {
+    "question": "How should you refactor a layout that reads a session cookie to show a user avatar so that the layout shell remains static?",
+    "options": [
+      "Move the `await cookies()` call into a child `<UserAvatar />` Server Component and wrap `<UserAvatar />` in `<Suspense>` inside the layout",
+      "Keep `await cookies()` in the layout but wrap the layout's `children` prop in `<Suspense>`",
+      "Convert the entire `RootLayout` into a Client Component with `'use client'`",
+      "Call `cookies()` without `await` so that it executes synchronously at build time"
+    ],
+    "answer": 0,
+    "explanation": "By moving `await cookies()` into `<UserAvatar />` and wrapping `<UserAvatar />` in `<Suspense fallback={<AvatarSkeleton />}>`, the layout itself does not block on request data and can be statically prerendered."
+  },
+  {
+    "question": "When multiple dynamic `<Suspense>` holes exist on the same page in Partial Prerendering, how are they resolved at request time?",
+    "options": [
+      "In separate HTTP requests initiated one by one after hydration completes",
+      "Concurrently on the server, streaming each resolved chunk in the same HTTP response as soon as it finishes",
+      "Strictly sequentially from top to bottom of the DOM tree, waiting for each hole before starting the next",
+      "Only the first `<Suspense>` hole is streamed; remaining holes fall back to client-side rendering"
+    ],
+    "answer": 1,
+    "explanation": "Next.js executes dynamic Server Component subtrees in parallel on the server and streams their HTML chunks over the same initial HTTP connection as each `<Suspense>` boundary resolves."
+  }
+]

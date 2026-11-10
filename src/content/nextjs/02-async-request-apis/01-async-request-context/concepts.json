@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Async Request APIs",
+    "description": "Next.js functions and props (`params`, `searchParams`, `cookies()`, `headers()`, `draftMode()`) that return Promises so the framework can decouple static route preparation from request-time I/O."
+  },
+  {
+    "term": "params Promise",
+    "description": "A Promise passed to pages, layouts, route handlers, and metadata functions that resolves to an object containing the dynamic route segment values for the current URL."
+  },
+  {
+    "term": "searchParams Promise",
+    "description": "A Promise passed to page components that resolves to the parsed URL query string parameters, opting the reading subtree into dynamic rendering when awaited."
+  },
+  {
+    "term": "next/headers (cookies & headers)",
+    "description": "Server-only asynchronous helpers that resolve to read-only stores during Server Component rendering and mutable cookie stores inside Server Actions and Route Handlers."
+  },
+  {
+    "term": "React.use() Unwrapping",
+    "description": "The React hook used inside synchronous Client Components to read the resolved value of a `params` or `searchParams` Promise passed down from a Server Component."
+  }
+]

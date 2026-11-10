@@ -64,7 +64,7 @@ describe('affectedChecks', () => {
   });
 
   it('verifies every track graded by a changed engine', () => {
-    expect(checksFor('src/engines/react/adapter.ts').suites).toEqual([STRUCTURE_SUITE, 'architecture', 'react', 'react-state']);
+    expect(checksFor('src/engines/react/adapter.ts').suites).toEqual([STRUCTURE_SUITE, 'architecture', 'nextjs', 'react', 'react-state']);
     expect(checksFor('src/engines/python/worker.ts')).toMatchObject({ suites: [STRUCTURE_SUITE, 'ai-engineering', 'python', 'system-design'], python: true });
   });
 

@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Best-Effort Post-Response Work",
+    "description": "Short-lived, non-critical side effects scheduled with after() that run in the current instance via waitUntil() without persistent retry guarantees."
+  },
+  {
+    "term": "Durable Queue Dispatch",
+    "description": "Persisting a job payload to an external message broker or workflow engine before returning the HTTP response so retries survive process restarts."
+  },
+  {
+    "term": "At-Most-Once vs At-Least-Once",
+    "description": "after() provides at-most-once execution bounded by the instance lifetime, whereas a durable queue provides at-least-once delivery with backoff and dead-letter queues."
+  },
+  {
+    "term": "Observability Layer ADR",
+    "description": "An architectural decision record defining how server startup telemetry (register), uncaught error reporting (onRequestError), and post-response tasks (after) are governed."
+  }
+]

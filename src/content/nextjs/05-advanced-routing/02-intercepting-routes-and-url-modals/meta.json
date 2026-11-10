@@ -1,0 +1,17 @@
+{
+  "title": "Intercepting Routes ((.), (..)) and URL-Driven Modals",
+  "summary": "Combine @modal slots with (.) and (..) intercepting routes so in-app clicks open contextual overlays while direct visits and refreshes render canonical standalone pages.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Intercepting Routes",
+      "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes"
+    },
+    {
+      "title": "Next.js Docs: Parallel Routes Modals",
+      "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes#modals"
+    }
+  ]
+}

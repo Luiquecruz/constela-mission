@@ -14,7 +14,7 @@
 ![Vitest](https://img.shields.io/badge/Vitest-5-6E9F18?logo=vitest&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-10-4B32C3?logo=eslint&logoColor=white)
 
-Constela Mission (formerly Dev Dojo) is a freeCodeCamp-style learning platform for front-end, back-end and AI engineering: theory, hands-on challenges validated by automated tests, progressive hints, a solution path, reference solutions and quizzes. Everything runs in the browser, with no backend: grading, previews, a fake REST API and a fake model provider are all client-side. 873 lessons in 12 tracks, 829 of them public.
+Constela Mission (formerly Dev Dojo) is a freeCodeCamp-style learning platform for front-end, back-end and AI engineering: theory, hands-on challenges validated by automated tests, progressive hints, a solution path, reference solutions and quizzes. Everything runs in the browser, with no backend: grading, previews, a fake REST API and a fake model provider are all client-side. 897 lessons in 13 tracks, 853 of them public.
 
 ## Tracks
 
@@ -32,6 +32,7 @@ Constela Mission (formerly Dev Dojo) is a freeCodeCamp-style learning platform f
 | Vue | Vue | 44 | hidden while in progress |
 | Angular | Angular | 52 | standalone components, signals, DI, RxJS, change detection, routing, forms, HTTP, testing, legacy Angular and SSR |
 | Java and Spring Boot | theory and quizzes plus local Java backend projects (no graded challenges) | 77 | Java from zero, language fundamentals, Maven and tests, Spring Boot REST APIs, persistence with locking and Redis, security, Kafka messaging, delivery, hexagonal and modular architecture, resilience and a backend course-catalog capstone |
+| Next.js | React | 24 | App Router execution model (Server and Client Components, streaming Suspense, Server Actions and `next/form`), async request APIs (`params`, `searchParams`, `cookies`, `headers`), Partial Prerendering and Data Access Layers, declarative caching (`'use cache'`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`), post-response tasks (`after()`) and `instrumentation.ts`, Parallel and Intercepting Routes, Node.js `proxy.ts` and production migrations |
 
 Hidden tracks are toggled in `src/content/featureFlags.ts`. Module and lesson plans live in [CURRICULUM.md](.claude/docs/CURRICULUM.md).
 

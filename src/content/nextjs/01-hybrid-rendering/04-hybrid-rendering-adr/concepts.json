@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Architecture Decision Record (ADR)",
+    "description": "A concise engineering document that captures an architectural context, the chosen decision, rejected alternatives with reasons, and both positive and negative consequences."
+  },
+  {
+    "term": "Zero-Bundle Server Component",
+    "description": "A component rendered exclusively on the server whose third-party dependencies (such as Markdown parsers or syntax highlighters) contribute 0 KB to the browser JavaScript bundle."
+  },
+  {
+    "term": "Interactive Leaf Isolation",
+    "description": "Pushing the 'use client' directive down to the smallest stateful UI leaf (such as a variant picker) so surrounding layouts and data sections remain Server Components."
+  },
+  {
+    "term": "Progressive Search Form (next/form)",
+    "description": "Using <Form action=\"/search\"> for GET filter navigation so Next.js prefetches target layouts and updates URL search parameters without a full-page reload."
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Route Group Shell Partitioning",
+    "Action": "Using parenthesized folders such as (marketing) and (console) to give distinct application sections separate layouts without adding URL prefixes.",
+    "reason": "Keeps public and workspace URLs clean while isolating navigation chrome and layout bundles."
+  },
+  {
+    "name": "Parallel Slot Fault Isolation",
+    "Action": "Defining @invoices and @usage parallel slots with independent loading.tsx and error.tsx boundaries.",
+    "reason": "Allows one dashboard panel to fail and retry without unmounting healthy sibling panels."
+  },
+  {
+    "name": "Dual-Context Intercepted Modal",
+    "Action": "Pairing a @modal parallel slot with an intercepting route like (.)asset/[id] alongside a canonical /asset/[id] route.",
+    "reason": "Preserves background context in an overlay on soft navigation while rendering a full standalone page on hard reload."
+  },
+  {
+    "name": "Hard-Reload Slot Fallback (default.tsx)",
+    "Action": "Providing a default.tsx file in every parallel @slot directory.",
+    "reason": "Prevents Next.js from returning a 404 when a hard reload hits a sub-route that only exists in a sibling slot."
+  }
+]
+

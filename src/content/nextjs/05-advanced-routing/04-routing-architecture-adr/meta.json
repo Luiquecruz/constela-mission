@@ -1,0 +1,21 @@
+{
+  "title": "Checkpoint: Advanced Routing ADR",
+  "summary": "Synthesize Route Groups, Parallel Routes, default.tsx fallbacks, and Intercepting Routes into a coherent Architectural Decision Record for a multi-shell platform.",
+  "level": "advanced",
+  "tags": ["core", "theory", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Docs: Parallel Routes",
+      "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes"
+    },
+    {
+      "title": "Next.js Docs: Intercepting Routes",
+      "url": "https://nextjs.org/docs/app/building-your-application/routing/intercepting-routes"
+    },
+    {
+      "title": "Documenting Architecture Decisions (Michael Nygard)",
+      "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions"
+    }
+  ]
+}

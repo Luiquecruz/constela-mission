@@ -47,7 +47,7 @@ All content is written in **English**.
 
 ## Installed versions
 
-React engine (tracks `react`, `react-state`, `architecture`): React 19.3 · react-dom 19.3 · react-router 7 · @tanstack/react-query 5 · zustand 5 (`zustand/middleware`, `zustand/middleware/immer`, `zustand/shallow`, `zustand/react/shallow`, `zustand/vanilla`) · jotai 3 (`jotai/utils`) · @reduxjs/toolkit 2 · react-redux 9 · react-hook-form 7 · @hookform/resolvers 5 · zod 4 · clsx 2 · `@reduxjs/toolkit/query(/react)` · mobx 7 · mobx-react-lite 5 · valtio 2 (`valtio/utils`) · xstate 5 · @xstate/react 6 · immer 11 · use-immer
+React engine (tracks `react`, `react-state`, `architecture`, `nextjs`): React 19.3 · react-dom 19.3 · react-router 7 · @tanstack/react-query 5 · zustand 5 (`zustand/middleware`, `zustand/middleware/immer`, `zustand/shallow`, `zustand/react/shallow`, `zustand/vanilla`) · jotai 3 (`jotai/utils`) · @reduxjs/toolkit 2 · react-redux 9 · react-hook-form 7 · @hookform/resolvers 5 · zod 4 · clsx 2 · `@reduxjs/toolkit/query(/react)` · mobx 7 · mobx-react-lite 5 · valtio 2 (`valtio/utils`) · xstate 5 · @xstate/react 6 · immer 11 · use-immer
 Vue 3.5 (full build with runtime template compiler) · vue-router 5 · pinia 4 · @vueuse/core 15 · @tanstack/vue-query 5 · vee-validate 4.15 · zod 4
 Angular 22 (zoneless by default, Signal Forms in `@angular/forms/signals`, `FetchBackend` default for HttpClient) · @ngrx/signals 22 · @ngrx/store 22 · rxjs 7.8 · zod 4
 TypeScript engine: TypeScript 6.0 compiler API (theory may cover TypeScript 7 native compiler)

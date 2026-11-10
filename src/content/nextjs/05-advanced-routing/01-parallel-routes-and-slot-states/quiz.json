@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Given `app/dashboard/@analytics/revenue/page.tsx`, what URL path renders this component?",
+    "options": [
+      "/dashboard/@analytics/revenue",
+      "/dashboard/revenue",
+      "/analytics/revenue",
+      "/dashboard?slot=analytics&path=revenue"
+    ],
+    "answer": 1,
+    "explanation": "Named slots prefixed with `@` are organizational route branches passed as props to the parent `layout.tsx` and are completely omitted from the public URL path."
+  },
+  {
+    "question": "Suppose `app/dashboard` defines both `settings/page.tsx` (in `@children`) and `@analytics/page.tsx`, with no `settings` route or `default.tsx` inside `@analytics`. What happens when a user clicks `<Link href=\"/dashboard/settings\">` from `/dashboard`?",
+    "options": [
+      "Next.js immediately renders the nearest 404 Not Found boundary.",
+      "`@children` updates to `settings/page.tsx` while `@analytics` stays mounted with its previously active `/dashboard` view.",
+      "`@analytics` unmounts and automatically renders `null`.",
+      "The browser performs a full-page reload to `/dashboard/settings`."
+    ],
+    "answer": 1,
+    "explanation": "On soft navigation (`<Link>`), Next.js retains the previously active view of any slot that does not have an explicit route matching the destination URL."
+  },
+  {
+    "question": "Using the same file structure from the previous question (no `default.tsx` in `@analytics`), what happens when the user refreshes the browser on `/dashboard/settings`?",
+    "options": [
+      "`@analytics` recovers its previous view from `sessionStorage`.",
+      "`@analytics` renders `null` while `@children` renders `settings/page.tsx`.",
+      "Next.js returns a 404 response because `@analytics` cannot match `/dashboard/settings` on a hard navigation and has no `default.tsx`.",
+      "Next.js redirects the user back to `/dashboard`."
+    ],
+    "answer": 2,
+    "explanation": "On a hard navigation, there is no prior in-memory slot state. Every parallel slot must match either the requested URL or provide a `default.tsx` fallback; otherwise Next.js renders a 404."
+  },
+  {
+    "question": "What happens if `@analytics/metrics/page.tsx` exists for `/dashboard/metrics`, `@analytics/default.tsx` exists, `app/dashboard/page.tsx` exists, and a user performs a hard reload on `/dashboard/metrics` without `app/dashboard/metrics/page.tsx` or `app/dashboard/default.tsx`?",
+    "options": [
+      "The page renders `@analytics/metrics/page.tsx` alongside `app/dashboard/page.tsx`.",
+      "Next.js returns a 404 because the implicit `@children` slot has neither `metrics/page.tsx` nor `app/dashboard/default.tsx`.",
+      "`@children` automatically falls back to `@analytics/default.tsx`.",
+      "Next.js renders only the `@analytics` slot and omits `children`."
+    ],
+    "answer": 1,
+    "explanation": "The standard `children` prop is an implicit parallel slot (`@children`). If a sibling slot introduces a sub-route like `/dashboard/metrics` that `@children` does not define, `app/dashboard/default.tsx` is required for hard reloads."
+  }
+]

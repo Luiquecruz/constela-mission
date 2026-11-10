@@ -1,0 +1,17 @@
+{
+  "title": "Partial Prerendering (PPR) and Pushing Dynamic Reads Down",
+  "summary": "Keep route shells statically prerenderable by pushing async cookies(), headers(), and searchParams reads into child Server Components wrapped in Suspense.",
+  "level": "advanced",
+  "tags": ["core", "modern", "performance", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Docs: Partial Prerendering",
+      "url": "https://nextjs.org/docs/app/getting-started/partial-prerendering"
+    },
+    {
+      "title": "React Docs: Suspense Boundary Reference",
+      "url": "https://react.dev/reference/react/Suspense"
+    }
+  ]
+}

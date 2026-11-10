@@ -1,0 +1,20 @@
+{
+  "title": "Dynamic Metadata, Image Guardrails and Content Security Policy",
+  "summary": "Generate memoized dynamic metadata with async params, harden next/image with qualities and remotePatterns guardrails, eliminate font CLS, and wire per-request CSP nonces.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "performance", "theory"],
+  "resources": [
+    {
+      "title": "Next.js Functions: generateMetadata",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata"
+    },
+    {
+      "title": "Next.js Content Security Policy Guide",
+      "url": "https://nextjs.org/docs/app/guides/content-security-policy"
+    },
+    {
+      "title": "Next.js Image Component Configuration",
+      "url": "https://nextjs.org/docs/app/api-reference/components/image"
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Granular Error Recovery: error.tsx, not-found.tsx and Slot Isolation",
+  "summary": "Contain unexpected runtime crashes and 404 states to individual route segments and @slot branches using error.tsx, not-found.tsx, and global-error.tsx.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Error Handling",
+      "url": "https://nextjs.org/docs/app/building-your-application/routing/error-handling"
+    },
+    {
+      "title": "Next.js File Conventions: not-found.js",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/not-found"
+    }
+  ]
+}

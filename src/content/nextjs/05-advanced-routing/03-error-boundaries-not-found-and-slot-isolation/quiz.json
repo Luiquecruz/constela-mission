@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why does `app/dashboard/error.tsx` NOT catch an error thrown inside `app/dashboard/layout.tsx`?",
+    "options": [
+      "Layouts can only be Server Components and `error.tsx` only catches Client Component errors.",
+      "Next.js renders `<Layout>` outside of the segment's `<ErrorBoundary>` so the layout shell stays visible when `page.tsx` fails; layout errors bubble to the parent segment's boundary.",
+      "`error.tsx` only catches errors thrown inside Server Actions.",
+      "`layout.tsx` automatically suppresses all runtime errors."
+    ],
+    "answer": 1,
+    "explanation": "In the App Router component hierarchy, a segment's `layout.tsx` wraps its `error.tsx`. Therefore, an error thrown inside `app/dashboard/layout.tsx` must be caught by `app/error.tsx` or `app/global-error.tsx`."
+  },
+  {
+    "question": "What special requirement applies to `app/global-error.tsx` that does not apply to segment-level `error.tsx` files?",
+    "options": [
+      "It must be an `async` Server Component.",
+      "It must render its own `<html>` and `<body>` tags because it replaces the root `app/layout.tsx` when triggered.",
+      "It cannot accept a `reset` prop.",
+      "It must be placed inside the `public/` directory."
+    ],
+    "answer": 1,
+    "explanation": "When `global-error.tsx` activates, it replaces the root `app/layout.tsx` where `<html>` and `<body>` normally live, so `global-error.tsx` must define both tags itself."
+  },
+  {
+    "question": "What happens if you call `notFound()` inside a `try` block and your `catch (err)` block logs the error and throws `new Error('Failed to load')`?",
+    "options": [
+      "Next.js still renders `not-found.tsx` because `notFound()` sets a global flag.",
+      "Because `notFound()` works by throwing an internal Next.js error, catching it and throwing a generic `Error` causes `error.tsx` to render instead of `not-found.tsx`.",
+      "The page renders an empty response with status 204.",
+      "The build fails with a TypeScript compilation error."
+    ],
+    "answer": 1,
+    "explanation": "`notFound()` throws a special internal error token so React stops rendering the current tree. Swallowing that token in a `catch` block and throwing a normal `Error` diverts execution into `error.tsx`."
+  },
+  {
+    "question": "In a dashboard with `app/dashboard/page.tsx` and `app/dashboard/@analytics/page.tsx`, how do you ensure a crash in `@analytics` never unmounts user input inside the main workspace?",
+    "options": [
+      "Place a single `error.tsx` at `app/error.tsx`.",
+      "Place a dedicated `app/dashboard/@analytics/error.tsx` boundary inside the `@analytics` slot.",
+      "Add `export const dynamic = 'force-static'` to `app/dashboard/layout.tsx`.",
+      "Use `default.tsx` inside `@analytics` instead of `error.tsx`."
+    ],
+    "answer": 1,
+    "explanation": "Adding `app/dashboard/@analytics/error.tsx` scopes the error boundary strictly to the `@analytics` slot prop, keeping the sibling `@children` tree mounted and interactive."
+  }
+]

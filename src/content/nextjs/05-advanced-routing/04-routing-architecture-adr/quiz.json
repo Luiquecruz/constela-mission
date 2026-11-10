@@ -1,0 +1,50 @@
+[
+  {
+    "id": "q1",
+    "question": "Why is a client-state modal driven only by `?assetId=123` rejected when the product requires both an in-context gallery overlay and a standalone shareable asset page?",
+    "options": [
+      "Next.js blocks query parameters inside Server Components",
+      "A query-parameter modal always requires loading the entire gallery route even on direct visits, whereas pairing `@modal/(.)asset/[id]` with `/asset/[id]` renders a lightweight overlay on soft navigation and a dedicated standalone Server Component page on hard navigation",
+      "Query parameters cannot be read on the client",
+      "Intercepting routes automatically compress images"
+    ],
+    "answer": 1,
+    "explanation": "With Parallel + Intercepting Routes, clicking from `/gallery` intercepts `/asset/42` into `@modal` over the gallery, while opening `/asset/42` directly in a new tab renders only the standalone asset route."
+  },
+  {
+    "id": "q2",
+    "question": "What is the primary operational risk of introducing multiple Parallel Route slots (`@invoices`, `@usage`, `@modal`) into a layout?",
+    "options": [
+      "Parallel slots disable TypeScript type checking",
+      "Every slot must maintain a `default.tsx` fallback for unmatched sub-routes, otherwise hard browser reloads on a sub-route will fail with a 404",
+      "Parallel slots force all child components to become Client Components",
+      "Parallel slots cannot use `error.tsx`"
+    ],
+    "answer": 1,
+    "explanation": "On a hard reload, Next.js has no in-memory router state for unmatched slots and falls back to `default.tsx`; if any slot lacks both a matching segment and `default.tsx`, the whole route 404s."
+  },
+  {
+    "id": "q3",
+    "question": "Which routing convention lets `/pricing` and `/dashboard` use completely separate layouts without changing their URLs to `/marketing/pricing` and `/console/dashboard`?",
+    "options": [
+      "Parallel slots `@marketing` and `@console`",
+      "Route Groups `(marketing)/pricing` and `(console)/dashboard`",
+      "Intercepting routes `(.)pricing` and `(.)dashboard`",
+      "Private folders `_marketing` and `_console`"
+    ],
+    "answer": 1,
+    "explanation": "Route Groups `(folder)` partition the layout tree while omitting the group name from the public URL path."
+  },
+  {
+    "id": "q4",
+    "question": "How do `error.tsx` boundaries inside Parallel Route slots (`@invoices/error.tsx` and `@usage/error.tsx`) improve dashboard resilience?",
+    "options": [
+      "They automatically retry database queries on the server without re-rendering",
+      "They isolate runtime errors to the failing slot so sibling panels remain interactive and mounted while the failing slot shows its recovery UI",
+      "They convert all Server Components into static HTML at build time",
+      "They suppress all HTTP 500 status codes globally"
+    ],
+    "answer": 1,
+    "explanation": "Giving each parallel slot its own `error.tsx` boundary contains failures to that specific panel and lets users invoke `reset()` on the failed slot without losing state in healthy sibling slots."
+  }
+]

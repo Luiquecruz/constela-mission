@@ -1,0 +1,22 @@
+{
+  "title": "Checkpoint: Post-Response and Observability ADR",
+  "summary": "Author an Architecture Decision Record and task dispatch plan separating best-effort next/server after() callbacks from durable queues alongside instrumentation.ts observability.",
+  "level": "advanced",
+  "tags": ["core", "theory", "practice"],
+  "preview": false,
+  "entry": "adr.ts",
+  "resources": [
+    {
+      "title": "Next.js Documentation: after() Function Reference",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/after"
+    },
+    {
+      "title": "Next.js Documentation: instrumentation.ts File Convention",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation"
+    },
+    {
+      "title": "Documenting Architecture Decisions (Michael Nygard)",
+      "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions"
+    }
+  ]
+}

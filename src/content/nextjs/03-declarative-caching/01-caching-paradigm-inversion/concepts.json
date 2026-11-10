@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Uncached-by-Default I/O",
+    "description": "The modern App Router baseline where fetch() calls, ORM queries, and GET Route Handlers execute dynamically per request unless explicitly opted into caching."
+  },
+  {
+    "term": "cacheComponents",
+    "description": "The next.config.ts setting (formerly experimental dynamicIO) that unifies Partial Prerendering and function-level caching, requiring all async I/O to use either 'use cache' or a <Suspense> boundary."
+  },
+  {
+    "term": "Client Router Cache staleTime",
+    "description": "The client-side cache duration for visited route segments, which defaults to 0 seconds for page segments so back/forward and link navigations reflect fresh server state."
+  },
+  {
+    "term": "Boundary Enforcement Invariant",
+    "description": "The build and runtime check under cacheComponents that throws an error if uncached asynchronous I/O is awaited outside a <Suspense> fallback boundary."
+  }
+]

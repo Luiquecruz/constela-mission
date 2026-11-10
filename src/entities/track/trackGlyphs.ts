@@ -182,4 +182,20 @@ export const TRACK_GLYPHS: Record<string, TrackGlyph> = {
     ],
     key: [24, 17],
   },
+  nextjs: {
+    concept: 'hybrid rendering prism and a streaming trajectory ray',
+    lines: [
+      'M11 35L22 11L33 35Z',
+      'M16.5 23L38 13',
+      'M27.5 23L38 35',
+    ],
+    stars: [
+      [11, 35],
+      [22, 11],
+      [33, 35],
+      [38, 13],
+      [38, 35],
+    ],
+    key: [27.5, 23],
+  },
 };

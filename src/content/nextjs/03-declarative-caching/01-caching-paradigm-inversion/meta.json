@@ -1,0 +1,23 @@
+{
+  "title": "The Uncached-by-Default Model and cacheComponents",
+  "summary": "Understand the shift from implicit fetch and Route Handler caching to dynamic-by-default execution, and enforce explicit 'use cache' or <Suspense> boundaries with cacheComponents.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "theory"],
+  "resources": [
+    {
+      "title": "Next.js Documentation — Caching and Revalidating",
+      "url": "https://nextjs.org/docs/app/getting-started/caching-and-revalidating",
+      "type": "docs"
+    },
+    {
+      "title": "Next.js Config Reference — cacheComponents",
+      "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheComponents",
+      "type": "docs"
+    },
+    {
+      "title": "React Reference — Suspense",
+      "url": "https://react.dev/reference/react/Suspense",
+      "type": "docs"
+    }
+  ]
+}

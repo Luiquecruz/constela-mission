@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Server Action ('use server')",
+    "description": "An async server function compiled into a public HTTP POST endpoint that can be invoked progressively from forms or called from Client Components to mutate data and revalidate caches."
+  },
+  {
+    "term": "next/form (<Form>)",
+    "description": "Next.js form component that prefetches target route layouts and loading states for string actions, converting form submissions into soft client-side URL search parameter navigations."
+  },
+  {
+    "term": "useActionState",
+    "description": "React hook that binds a Server Action or async form action to component state, returning [state, formAction, isPending] so validation errors and loading states render declaratively."
+  },
+  {
+    "term": "useOptimistic",
+    "description": "React hook that projects an immediate speculative UI state while an async action is in flight, automatically reconciling once the server response settles."
+  },
+  {
+    "term": "Action Closure Encryption",
+    "description": "Next.js security mechanism that encrypts server-scoped variables bound to inline Server Actions so they cannot be tampered with when round-tripped through hidden form inputs."
+  }
+]

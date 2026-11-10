@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Bundle Boundary ('use client')",
+    "description": "The directive placed at the top of a file that marks the transition from the server-only module graph to the client JavaScript bundle, pulling all of its transitive imports into the browser bundle."
+  },
+  {
+    "term": "React Flight Serialization",
+    "description": "The wire protocol Next.js uses to stream rendered Server Component trees and serialize props passed across a 'use client' boundary, prohibiting plain functions and class instances."
+  },
+  {
+    "term": "Donut Pattern (Slot Composition)",
+    "description": "Passing a Server Component as children or a ReactNode prop into a Client Component so the client wrapper can manage interactive state around pre-rendered server markup without importing it."
+  },
+  {
+    "term": "Public Data Transfer Object (DTO)",
+    "description": "An explicit, stripped-down object created on the server before passing data to a Client Component so internal fields like supplier costs or tokens are never serialized into the browser payload."
+  },
+  {
+    "term": "server-only Poison Pill",
+    "description": "A build-time guard module that triggers a compilation error if any Client Component directly or transitively imports a server-restricted file."
+  }
+]

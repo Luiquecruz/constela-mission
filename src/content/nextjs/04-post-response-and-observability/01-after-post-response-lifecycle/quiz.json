@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What happens when a Server Action calls after(logAudit) and then immediately calls redirect('/dashboard')?",
+    "options": [
+      "The redirect() call throws an internal control-flow exception, the 307 redirect response is sent to the client, and logAudit still executes afterward.",
+      "The redirect() exception aborts the request context immediately and cancels any pending after() callbacks.",
+      "The server waits for logAudit to resolve before sending the 307 redirect headers to the browser.",
+      "Next.js throws a build error because after() cannot be combined with navigation helpers in Server Actions."
+    ],
+    "answer": 0,
+    "explanation": "In Next.js, redirect() works by throwing a special control-flow exception after the after() callback has already been registered in the request store. The framework flushes the redirect response and then drains all queued after() callbacks via waitUntil()."
+  },
+  {
+    "question": "Why does calling (await cookies()).set('theme', 'dark') inside an after() callback throw an error?",
+    "options": [
+      "Because cookies() is only accessible inside middleware and client components.",
+      "Because the HTTP Set-Cookie header must be sent with the response headers, which have already been flushed to the client before after() runs.",
+      "Because AsyncLocalStorage is cleared before the after() callback begins executing.",
+      "Because cookies can only be mutated during static prerendering."
+    ],
+    "answer": 1,
+    "explanation": "Setting a cookie requires emitting a Set-Cookie HTTP response header. Since after() callbacks execute after the response headers and body have been committed to the client, modifying response headers or cookies is impossible and throws an error."
+  },
+  {
+    "question": "How does Next.js prevent serverless platforms from freezing the CPU before an after() callback finishes?",
+    "options": [
+      "By holding the HTTP chunked response stream open with invisible whitespace until the callback resolves.",
+      "By spawning an independent OS child process that detaches from the serverless container.",
+      "By passing a Promise representing the drained after() queue to the platform's waitUntil() lifecycle extension.",
+      "By serializing the callback closure into a browser cookie and re-invoking it from the client."
+    ],
+    "answer": 2,
+    "explanation": "Next.js collects all callbacks registered via after() in request-scoped AsyncLocalStorage and hands the resulting drainage Promise to the platform's waitUntil() API so the runtime stays alive after closing the HTTP response."
+  },
+  {
+    "question": "Which of the following tasks is a poor fit for after() and should instead use a durable background queue?",
+    "options": [
+      "Recording a non-critical analytics beacon after a product page renders.",
+      "Writing a diagnostic latency metric to an observability sink after a Route Handler returns.",
+      "Executing a multi-step financial ledger settlement that requires exponential backoff retries across process restarts.",
+      "Warming an secondary read cache after a Server Action updates a user profile."
+    ],
+    "answer": 2,
+    "explanation": "after() is bounded by the serverless or container invocation timeout and offers no persistence or automatic retry if the instance crashes. Legally or financially critical tasks requiring multi-hour retry guarantees belong in a durable queue."
+  }
+]

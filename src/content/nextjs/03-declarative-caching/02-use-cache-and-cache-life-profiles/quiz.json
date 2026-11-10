@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Which combination of inputs does the Next.js compiler use to construct the cache key for a function marked with 'use cache'?",
+    "options": [
+      "Only the URL pathname and query string of the incoming HTTP request.",
+      "The buildId, compiler function identifier, serialized arguments, and serialized variables captured from outer closures.",
+      "A manually supplied string array passed as the second argument to 'use cache'.",
+      "The user's session cookie combined with the component display name."
+    ],
+    "answer": 1,
+    "explanation": "Next.js automatically generates deterministic cache keys by hashing the deployment buildId, the function's unique compiler ID, its serialized arguments, and any serializable variables captured from lexical closures."
+  },
+  {
+    "question": "What happens when a cached Server Component accepts a dynamic <Suspense> subtree via its children prop and renders {children} without inspecting it?",
+    "options": [
+      "The build fails because 'use cache' components cannot accept ReactNode children.",
+      "The children prop is treated as an opaque pass-through reference excluded from the cache key, so the wrapper stays cached while children stream dynamically.",
+      "The entire children subtree is forcibly converted into a static cached snapshot.",
+      "The outer component's cache is bypassed on every request because children changes identity."
+    ],
+    "answer": 1,
+    "explanation": "Because the cached component does not introspect children, Next.js passes it through as an opaque slot reference without including it in the cache key hash."
+  },
+  {
+    "question": "In a cacheLife({ stale, revalidate, expire }) profile, what is the exact role of the revalidate vs expire window on the server?",
+    "options": [
+      "revalidate deletes the cache immediately, whereas expire only clears the browser's localStorage.",
+      "After revalidate seconds, requests still receive the cached value immediately while triggering a background refresh; after expire seconds, the entry is too old to serve and the next request must wait for a fresh computation.",
+      "revalidate controls client-side router caching, whereas expire controls server background revalidation.",
+      "Both do the exact same thing; expire is simply a deprecated alias for revalidate."
+    ],
+    "answer": 1,
+    "explanation": "Between revalidate and expire, the server serves the stale entry immediately and refreshes it asynchronously in the background (SWR). Once age reaches expire, the entry cannot be served stale and blocks on a fresh loader execution."
+  },
+  {
+    "question": "If an outer cached function configured with cacheLife({ stale: 600, revalidate: 3600, expire: 86400 }) calls a helper that declares cacheLife({ stale: 60, revalidate: 300, expire: 7200 }) within the same cache scope, how are the lifetimes resolved?",
+    "options": [
+      "The outer function overrides the inner helper, keeping 600 / 3600 / 86400.",
+      "Next.js throws a runtime conflict error whenever two cacheLife calls appear in the same call stack.",
+      "The scope propagates the shortest (minimum) values across each dimension: stale 60, revalidate 300, expire 7200.",
+      "The durations are summed together to produce a longer combined lifetime."
+    ],
+    "answer": 2,
+    "explanation": "When multiple cacheLife declarations execute inside the same cached scope, Next.js conservatively merges them by taking the minimum of stale, revalidate, and expire so fresher requirements are never violated."
+  }
+]

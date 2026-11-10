@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Where must instrumentation.ts be placed in a Next.js repository that uses the src/ directory convention?",
+    "options": [
+      "Inside src/app/instrumentation.ts alongside layout.tsx.",
+      "Directly inside src/instrumentation.ts (at the root of the src directory, outside app/).",
+      "Inside src/app/api/instrumentation/route.ts.",
+      "Inside public/instrumentation.ts so both browser and server can fetch it."
+    ],
+    "answer": 1,
+    "explanation": "Next.js only discovers instrumentation.ts at the project root or directly inside the src/ folder (src/instrumentation.ts). Placing it inside app/ or pages/ prevents Next.js from loading it."
+  },
+  {
+    "question": "Why should Node.js OpenTelemetry SDKs be loaded with dynamic import() inside an if (process.env.NEXT_RUNTIME === 'nodejs') check in register()?",
+    "options": [
+      "Because ES module static imports are not supported in TypeScript files.",
+      "Because register() is executed inside the user's browser before hydration.",
+      "Because Next.js compiles instrumentation.ts for both Node.js and Edge runtimes, and static top-level imports of Node-only modules break the Edge bundle.",
+      "Because dynamic imports automatically redact sensitive HTTP headers."
+    ],
+    "answer": 2,
+    "explanation": "When an application uses Edge runtime routes or Middleware, instrumentation.ts is compiled for both 'nodejs' and 'edge'. Conditional dynamic imports ensure Node-specific native dependencies are excluded from the Edge bundle."
+  },
+  {
+    "question": "What is the primary advantage of context.routePath (e.g. '/invoices/[id]') over request.path (e.g. '/invoices/9481') in onRequestError?",
+    "options": [
+      "context.routePath contains the full query string and URL hash fragment.",
+      "context.routePath provides the low-cardinality parameterized route pattern, making it easy to group errors and alert by route template.",
+      "context.routePath is encrypted using the server's private key.",
+      "context.routePath automatically retries the failed Server Action."
+    ],
+    "answer": 1,
+    "explanation": "Grouping observability metrics or error alerts by raw URL path creates high-cardinality explosion. context.routePath gives the parameterized route template ('/invoices/[id]') alongside context.routeType ('render' | 'route' | 'action' | 'middleware')."
+  },
+  {
+    "question": "Which security practice is essential before forwarding request.headers from onRequestError to an external observability service?",
+    "options": [
+      "Converting all header values to base64 strings.",
+      "Redacting or stripping sensitive authentication headers such as 'authorization', 'cookie', and 'x-api-key'.",
+      "Deleting the err.digest property so attackers cannot guess the route.",
+      "Replacing the HTTP method with 'HEAD'."
+    ],
+    "answer": 1,
+    "explanation": "The request object passed to onRequestError includes raw incoming headers. Sensitive credentials in 'cookie', 'authorization', or 'x-api-key' must be redacted before shipping telemetry payloads outside your infrastructure."
+  }
+]

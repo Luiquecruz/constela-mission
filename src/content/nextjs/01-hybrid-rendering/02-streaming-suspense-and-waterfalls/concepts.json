@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Server Request Waterfall",
+    "Action": "Sequential awaits inside a Server Component hierarchy where independent network queries wait for earlier queries to finish before starting.",
+    "reason": "Multiplies tail latencies and inflates Time to First Byte (TTFB) unnecessarily."
+  },
+  {
+    "name": "Parallel Promise Initiation",
+    "Action": "Starting independent async calls concurrently and awaiting them with Promise.all or passing unawaited promises to child components.",
+    "reason": "Collapses total wait time from the sum of latencies to the maximum single latency."
+  },
+  {
+    "name": "Granular <Suspense> Boundary",
+    "Action": "Wrapping slow non-critical subtrees in <Suspense fallback={...}> while rendering critical above-the-fold content immediately.",
+    "reason": "Flushes the primary page shell over HTTP right away and streams secondary chunks as they resolve."
+  },
+  {
+    "name": "Streaming with React.use()",
+    "Action": "Creating a promise in a Server Component and passing it as a prop to a Client Component that unwraps it with use(promise) inside Suspense.",
+    "reason": "Starts data fetching on the server immediately without blocking the Server Component render pass."
+  }
+]
+

@@ -1,0 +1,21 @@
+{
+  "title": "Streaming, Suspense Boundaries and Eliminating Waterfalls",
+  "summary": "Eliminate sequential server-side data waterfalls with parallel Promise initiation and stream slow non-critical UI sections using granular React Suspense boundaries.",
+  "level": "advanced",
+  "tags": ["core", "modern", "performance", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Fetching Data and Streaming",
+      "url": "https://nextjs.org/docs/app/getting-started/fetching-data"
+    },
+    {
+      "title": "React Reference: <Suspense>",
+      "url": "https://react.dev/reference/react/Suspense"
+    },
+    {
+      "title": "React Reference: use() Hook",
+      "url": "https://react.dev/reference/react/use"
+    }
+  ]
+}

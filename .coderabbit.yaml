@@ -73,7 +73,7 @@ reviews:
         Workflows keep least-privilege permissions and set persist-credentials: false on every checkout. CI holds no deploy secrets; flag any new secret, and never let a pull_request job reach one. Every action and reusable workflow is pinned to a full commit SHA with the version in a comment, and every Docker image to a digest (zizmor enforces it). CI and deploy are described in .claude/docs/CONTRIBUTING.md "CI and deploy" and the reason for each control in .claude/docs/CI_SECURITY.md; flag changes that make either stale. Renaming a job changes its required check name: the same pull request must update the required status checks in .claude/docs/CONTRIBUTING.md.
     - path: "{README.md,.claude/**/*.md}"
       instructions: |
-        Documentation describes the current state, not a changelog. Flag statements that contradict the code in the same pull request, broken relative links, and non-English text (the visual spec in .claude/specs/ is the only Portuguese document).
+        Documentation describes the current state, not a changelog. Flag statements that contradict the code in the same pull request, broken relative links, and non-English text outside .claude/specs/ (the visual and track specs in .claude/specs/ may be in Portuguese).
   pre_merge_checks:
     docstrings:
       mode: "off"
@@ -82,7 +82,7 @@ reviews:
       requirements: |
         Conventional commit format: `type(scope): subject` or `type: subject` (the scope is optional).
         Types: feat, fix, docs, perf, refactor, test, chore, ci.
-        Scope, when present, is one of: typescript, react, react-state, architecture, ai-engineering, node, python, csharp, system-design, vue, angular, engines, sandbox, verify, content, curriculum, lesson, routing, scene, motion, ui, deps, ci, review, docs, harness.
+        Scope, when present, is one of: typescript, react, react-state, architecture, nextjs, ai-engineering, node, python, csharp, system-design, vue, angular, java-spring, engines, sandbox, verify, content, curriculum, lesson, routing, scene, motion, ui, deps, ci, review, docs, harness.
         The subject starts with a lowercase imperative verb (add, fix, remove, update, move, mark...); product and language names keep their casing after it (add CodeRabbit configuration). No trailing period.
     description:
       mode: "warning"

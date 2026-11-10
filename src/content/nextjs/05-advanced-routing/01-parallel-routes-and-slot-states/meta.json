@@ -1,0 +1,17 @@
+{
+  "title": "Parallel Routes (@slot), Active States and default.tsx",
+  "summary": "Compose multi-panel layouts with named @slot directories, preserve active slot views across soft navigations, and prevent 404s on hard reloads with default.tsx.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Parallel Routes",
+      "url": "https://nextjs.org/docs/app/building-your-application/routing/parallel-routes"
+    },
+    {
+      "title": "Next.js File Conventions: default.js",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/default"
+    }
+  ]
+}

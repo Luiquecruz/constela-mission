@@ -1,0 +1,24 @@
+{
+  "title": "The 'use cache' Directive, Cache Keys and cacheLife Profiles",
+  "summary": "Apply 'use cache' at file, component, and function boundaries, understand automatic cache key derivation and pass-through children slots, and govern stale, revalidate, and expire windows with cacheLife.",
+  "level": "advanced",
+  "tags": ["core", "modern", "performance", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Directive Reference — use cache",
+      "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache",
+      "type": "docs"
+    },
+    {
+      "title": "Next.js Function Reference — cacheLife",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/cacheLife",
+      "type": "docs"
+    },
+    {
+      "title": "Next.js Config Reference — cacheLife",
+      "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/cacheLife",
+      "type": "docs"
+    }
+  ]
+}
