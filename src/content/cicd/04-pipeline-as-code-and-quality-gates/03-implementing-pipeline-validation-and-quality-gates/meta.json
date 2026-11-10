@@ -1,0 +1,19 @@
+{
+  "title": "Implementing Pipeline Validation and Quality Gates",
+  "summary": "Implement a quality gate evaluation engine and an audited emergency override manager in TypeScript.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "SonarQube documentation: Quality gates",
+      "url": "https://docs.sonarsource.com/sonarqube-server/quality-standards-administration/managing-quality-gates/introduction-to-quality-gates/"
+    },
+    {
+      "label": "Open Policy Agent documentation",
+      "url": "https://www.openpolicyagent.org/docs"
+    }
+  ]
+}

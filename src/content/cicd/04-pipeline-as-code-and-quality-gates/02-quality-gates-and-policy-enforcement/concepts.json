@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Quality Gate",
+    "description": "Automated validation checkpoint halting pipeline execution if code quality, coverage, or security criteria are missed."
+  },
+  {
+    "term": "Policy as Code",
+    "description": "Practice of defining, versioning, and enforcing governance and security rules using executable code."
+  },
+  {
+    "term": "Flow Control Mechanism",
+    "description": "Security control (CICD-SEC-1) ensuring code passes mandatory reviews and checks before production deployment."
+  },
+  {
+    "term": "Four-Eyes Principle",
+    "description": "Governance rule requiring at least two independent individuals to review and approve changes prior to release."
+  },
+  {
+    "term": "Test Coverage Threshold",
+    "description": "Configured percentage of code statements or branches that must be executed by automated tests."
+  }
+]

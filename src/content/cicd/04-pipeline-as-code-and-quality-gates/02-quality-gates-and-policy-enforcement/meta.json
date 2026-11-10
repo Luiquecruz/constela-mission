@@ -1,0 +1,19 @@
+{
+  "title": "Quality Gates and Policy as Code",
+  "summary": "Express deployment rules as data and evaluate them against facts about a release, failing closed on missing facts, the way policy engines such as Open Policy Agent gate a pipeline.",
+  "level": "intermediate",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "OWASP CICD-SEC-1: Insufficient Flow Control Mechanisms",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-01-Insufficient-Flow-Control-Mechanisms"
+    },
+    {
+      "label": "Open Policy Agent documentation",
+      "url": "https://www.openpolicyagent.org/docs"
+    }
+  ]
+}
