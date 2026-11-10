@@ -6,7 +6,7 @@ Traditional nested routing maps a single URL path to a linear hierarchy of layou
 
 Parallel routes are created using named **slots** prefixed with `@`, such as `app/dashboard/@analytics/page.tsx` and `app/dashboard/@team/page.tsx`. Slots are not route segments and **do not affect the URL structure**—the URL `/dashboard/settings` can match `app/dashboard/@team/settings/page.tsx` while the URL remains `/dashboard/settings`, never `/dashboard/@team/settings`.
 
-Every slot in a folder is automatically passed as a prop to the sibling `layout.tsx` at that same level. In Fact, the standard `page.tsx` file is simply an implicit slot named `@children`:
+Every slot in a folder is automatically passed as a prop to the sibling `layout.tsx` at that same level. In fact, the standard `page.tsx` file is simply an implicit slot named `@children`:
 
 ```tsx
 // app/dashboard/layout.tsx
@@ -36,7 +36,7 @@ export default function DashboardLayout({
 
 Because each slot is a full route branch, you can place independent `loading.tsx` and `error.tsx` files inside `@analytics` and `@team` so slow metrics never block the team roster.
 
-## Soft Navigation vs. Hard Navigation in Slots
+## Soft Navigation vs. Hard Navigation and Build-Time Verification
 
 The most subtle behavior of Parallel Routes is how Next.js resolves a slot when the URL changes to a sub-route that exists in **only one** of the slots.
 
@@ -47,14 +47,15 @@ Suppose your file tree looks like this:
 - `app/dashboard/settings/page.tsx` (`@children` matches `/dashboard/settings`)
 - `app/dashboard/@analytics/page.tsx` (`@analytics` matches `/dashboard`, but has **no** `/settings` folder)
 
-What happens when the user navigates from `/dashboard` to `/dashboard/settings`?
+What happens across build time, soft navigation, and hard navigation when navigating from `/dashboard` to `/dashboard/settings`?
 
-1. **Soft Navigation (Client-Side `<Link>` or `router.push`)**: Next.js keeps track of the previously active state of each slot in the client router cache. When transitioning to `/dashboard/settings`, `@children` updates to render `settings/page.tsx`. Even though `@analytics` has no `/settings` route, Next.js **retains the previously active view** of `@analytics` (`/dashboard/@analytics/page.tsx`) so the dashboard panel stays mounted without flickering.
-2. **Hard Navigation (Full-Page Load or Browser Refresh)**: When the browser requests `/dashboard/settings` directly from the server, there is no prior client state to preserve. Next.js attempts to match `/dashboard/settings` across all sibling slots (`@children` and `@analytics`). Since `@analytics` has no `settings/page.tsx`, Next.js looks for `app/dashboard/@analytics/default.tsx`. If `default.tsx` is missing, Next.js cannot reconstruct the slot and immediately renders a **404 Not Found** for the entire page.
+1. **Build-Time Enforcement (`default.tsx` Required)**: Next.js requires all parallel route slots to provide an explicit `default.tsx` file when they do not match every sibling route. If a named slot omits `default.tsx`, `next build` fails with a **build error** rather than silently deploying an incomplete slot tree.
+2. **Soft Navigation (Client-Side `<Link>` or `router.push`)**: Next.js keeps track of the previously active state of each slot in the client router cache. When transitioning to `/dashboard/settings`, `@children` updates to render `settings/page.tsx`. Even though `@analytics` has no `/settings` route, Next.js **retains the previously active view** of `@analytics` (`/dashboard/@analytics/page.tsx`) so the dashboard panel stays mounted without flickering.
+3. **Hard Navigation (Full-Page Load or Browser Refresh)**: When the browser requests `/dashboard/settings` directly from the server, there is no prior client state to preserve. Next.js matches `/dashboard/settings` in `@children` and falls back to `app/dashboard/@analytics/default.tsx` for `@analytics`. If that `default.tsx` calls `notFound()` from `next/navigation`, Next.js produces a runtime **404 Not Found** response.
 
 ## Guarding Slots with `default.tsx`
 
-A `default.tsx` file acts as the fallback component for a slot when Next.js cannot recover the slot's active state from the current URL during an initial or full-page load:
+A `default.tsx` file defines the explicit fallback contract for a slot when Next.js cannot recover the slot's active state from the current URL during an initial or full-page load:
 
 ```tsx
 // app/dashboard/@analytics/default.tsx
@@ -67,7 +68,7 @@ export default function AnalyticsDefault() {
 }
 ```
 
-For overlay slots like `@modal` that should remain hidden unless a modal route is active, both `app/dashboard/@modal/page.tsx` and `app/dashboard/@modal/default.tsx` simply return `null`:
+For overlay slots like `@modal` that should remain hidden unless a modal route is active, `app/dashboard/@modal/default.tsx` simply returns `null`:
 
 ```tsx
 // app/dashboard/@modal/default.tsx
@@ -76,10 +77,21 @@ export default function ModalDefault() {
 }
 ```
 
+When a sub-route should strictly 404 on hard reloads if a slot has no matching segment, call `notFound()` inside `default.tsx`:
+
+```tsx
+// app/dashboard/@analytics/default.tsx
+import { notFound } from 'next/navigation';
+
+export default function AnalyticsDefault() {
+  notFound();
+}
+```
+
 ## Common Pitfalls
 
-- **Forgetting `default.tsx` inside `@children`**: If `@team/members/page.tsx` exists at `/dashboard/members`, but `app/dashboard/members/page.tsx` does not exist in the implicit `@children` slot, a hard refresh on `/dashboard/members` will 404 unless you also provide `app/dashboard/default.tsx`.
-- **Testing only with `<Link>` clicks**: Because soft navigation preserves the previous slot view in memory, missing `default.tsx` files often go unnoticed during local development until a user refreshes the browser or shares a deep link.
+- **Forgetting `default.tsx` inside `@children`**: If `@team/members/page.tsx` exists at `/dashboard/members`, but `app/dashboard/members/page.tsx` does not exist in the implicit `@children` slot, you must provide `app/dashboard/default.tsx` so the build succeeds and hard reloads on `/dashboard/members` can resolve `@children`.
+- **Testing only with `<Link>` clicks in `next dev`**: Because soft navigation preserves the previous slot view in memory, engineers sometimes overlook how `default.tsx` behaves on a hard refresh or direct deep link until running `next build` or reloading the browser.
 
 ## When to choose it
 

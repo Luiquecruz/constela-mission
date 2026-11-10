@@ -43,6 +43,22 @@ export const TRACK_GLYPHS: Record<string, TrackGlyph> = {
     ],
     key: [24, 24],
   },
+  nextjs: {
+    concept: 'orbital ring pierced by a diagonal streaming ray',
+    lines: [
+      'M36.12 31A14 14 0 1 0 31 36.12',
+      'M15.5 32.5A12 12 0 0 1 32.5 15.5',
+      'M15.5 15.5L38 38',
+    ],
+    stars: [
+      [15.5, 15.5],
+      [32.5, 15.5],
+      [15.5, 32.5],
+      [36.12, 31],
+      [31, 36.12],
+    ],
+    key: [38, 38],
+  },
   'react-state': {
     concept: 'state cycle between store, view and action',
     lines: [
@@ -181,21 +197,5 @@ export const TRACK_GLYPHS: Record<string, TrackGlyph> = {
       [24, 41],
     ],
     key: [24, 17],
-  },
-  nextjs: {
-    concept: 'hybrid rendering prism and a streaming trajectory ray',
-    lines: [
-      'M11 35L22 11L33 35Z',
-      'M16.5 23L38 13',
-      'M27.5 23L38 35',
-    ],
-    stars: [
-      [11, 35],
-      [22, 11],
-      [33, 35],
-      [38, 13],
-      [38, 35],
-    ],
-    key: [27.5, 23],
   },
 };

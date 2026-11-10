@@ -11,9 +11,9 @@
     "explanation": "Named slots prefixed with `@` are organizational route branches passed as props to the parent `layout.tsx` and are completely omitted from the public URL path."
   },
   {
-    "question": "Suppose `app/dashboard` defines both `settings/page.tsx` (in `@children`) and `@analytics/page.tsx`, with no `settings` route or `default.tsx` inside `@analytics`. What happens when a user clicks `<Link href=\"/dashboard/settings\">` from `/dashboard`?",
+    "question": "Suppose `app/dashboard` defines both `settings/page.tsx` (in `@children`) and `@analytics/page.tsx`, plus `@analytics/default.tsx`. What happens when a user clicks `<Link href=\"/dashboard/settings\">` from `/dashboard`?",
     "options": [
-      "Next.js immediately renders the nearest 404 Not Found boundary.",
+      "Next.js immediately renders `@analytics/default.tsx`.",
       "`@children` updates to `settings/page.tsx` while `@analytics` stays mounted with its previously active `/dashboard` view.",
       "`@analytics` unmounts and automatically renders `null`.",
       "The browser performs a full-page reload to `/dashboard/settings`."
@@ -22,25 +22,25 @@
     "explanation": "On soft navigation (`<Link>`), Next.js retains the previously active view of any slot that does not have an explicit route matching the destination URL."
   },
   {
-    "question": "Using the same file structure from the previous question (no `default.tsx` in `@analytics`), what happens when the user refreshes the browser on `/dashboard/settings`?",
+    "question": "What happens in Next.js when a parallel route slot such as `@analytics` does not define a `default.tsx` file?",
     "options": [
       "`@analytics` recovers its previous view from `sessionStorage`.",
-      "`@analytics` renders `null` while `@children` renders `settings/page.tsx`.",
-      "Next.js returns a 404 response because `@analytics` cannot match `/dashboard/settings` on a hard navigation and has no `default.tsx`.",
+      "`@analytics` automatically renders `null` on unmatched routes.",
+      "`next build` fails with a build error because all parallel route slots require an explicit `default.tsx` fallback.",
       "Next.js redirects the user back to `/dashboard`."
     ],
     "answer": 2,
-    "explanation": "On a hard navigation, there is no prior in-memory slot state. Every parallel slot must match either the requested URL or provide a `default.tsx` fallback; otherwise Next.js renders a 404."
+    "explanation": "Next.js enforces at build time that parallel route slots provide an explicit `default.tsx` file; if you want an unmatched hard reload to return a 404 at runtime, `default.tsx` must call `notFound()`."
   },
   {
-    "question": "What happens if `@analytics/metrics/page.tsx` exists for `/dashboard/metrics`, `@analytics/default.tsx` exists, `app/dashboard/page.tsx` exists, and a user performs a hard reload on `/dashboard/metrics` without `app/dashboard/metrics/page.tsx` or `app/dashboard/default.tsx`?",
+    "question": "How should you configure `@analytics/default.tsx` if a hard reload on `/dashboard/settings` (a sub-route not defined inside `@analytics`) must produce a runtime 404 Not Found?",
     "options": [
-      "The page renders `@analytics/metrics/page.tsx` alongside `app/dashboard/page.tsx`.",
-      "Next.js returns a 404 because the implicit `@children` slot has neither `metrics/page.tsx` nor `app/dashboard/default.tsx`.",
-      "`@children` automatically falls back to `@analytics/default.tsx`.",
-      "Next.js renders only the `@analytics` slot and omits `children`."
+      "Delete `@analytics/default.tsx` so the build omits the slot.",
+      "Export a `default.tsx` component in `@analytics` that calls `notFound()` from `next/navigation`.",
+      "Return `undefined` from `@analytics/page.tsx`.",
+      "Add `'use client'` at the top of `app/dashboard/layout.tsx`."
     ],
     "answer": 1,
-    "explanation": "The standard `children` prop is an implicit parallel slot (`@children`). If a sibling slot introduces a sub-route like `/dashboard/metrics` that `@children` does not define, `app/dashboard/default.tsx` is required for hard reloads."
+    "explanation": "Because omitting `default.tsx` causes a build error, triggering a runtime 404 on unmatched hard reloads is done by calling `notFound()` inside the slot's `default.tsx`."
   }
 ]

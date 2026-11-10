@@ -76,6 +76,11 @@
   --accent-rgb: 102 240 240;
 }
 
+[data-trail='nextjs'] {
+  --accent: #73b9ff;
+  --accent-rgb: 115 185 255;
+}
+
 [data-trail='react-state'] {
   --accent: #c387ff;
   --accent-rgb: 195 135 255;
@@ -124,11 +129,6 @@
 [data-trail='java-spring'] {
   --accent: #b9ff73;
   --accent-rgb: 185 255 115;
-}
-
-[data-trail='nextjs'] {
-  --accent: #73b9ff;
-  --accent-rgb: 115 185 255;
 }
 
 @theme {

@@ -13,31 +13,46 @@ test('closeInterceptedModal calls router.back() when historyLength > 1 and route
   expect(router.push).toHaveBeenCalledWith('/feed');
 });
 
-test('soft navigation from /feed opens the intercepted photo modal while keeping Photo Feed mounted', async () => {
+test('soft navigation from /feed opens the intercepted photo modal while keeping Photo Feed mounted and inert', async () => {
   const App = mod.PhotoFeedApp || mod.default;
   render(<App initialPath="/feed" initialNavType="soft" />);
 
-  expect(screen.getByRole('heading', { name: 'Photo Feed' })).toBeInTheDocument();
+  const feedHeading = screen.getByRole('heading', { name: 'Photo Feed' });
+  expect(feedHeading).toBeInTheDocument();
   expect(screen.queryByRole('dialog')).toBeNull();
 
-  await user.click(screen.getByRole('button', { name: /open nebula ridge/i }));
+  const openButton = screen.getByRole('button', { name: /open nebula ridge/i });
+  await user.click(openButton);
 
-  expect(screen.getByRole('heading', { name: 'Photo Feed' })).toBeInTheDocument();
+  expect(feedHeading).toBeInTheDocument();
+  expect(feedHeading.closest('section')?.hasAttribute('inert')).toBe(true);
+
   const dialog = screen.getByRole('dialog', { name: 'Nebula Ridge' });
   expect(dialog).toBeInTheDocument();
   expect(within(dialog).getByText(/Ada/)).toBeInTheDocument();
+  expect(dialog.contains(document.activeElement)).toBe(true);
 });
 
-test('closing the intercepted modal returns to /feed and unmounts the dialog', async () => {
+test('traps Tab focus inside the intercepted modal, closes on Escape, and restores focus to the invoking button', async () => {
   const App = mod.PhotoFeedApp || mod.default;
   render(<App initialPath="/feed" initialNavType="soft" />);
 
-  await user.click(screen.getByRole('button', { name: /open nebula ridge/i }));
-  expect(screen.getByRole('dialog', { name: 'Nebula Ridge' })).toBeInTheDocument();
+  const openButton = screen.getByRole('button', { name: /open nebula ridge/i });
+  await user.click(openButton);
 
-  await user.click(screen.getByRole('button', { name: /close modal/i }));
+  const dialog = screen.getByRole('dialog', { name: 'Nebula Ridge' });
+  const closeButton = within(dialog).getByRole('button', { name: /close modal/i });
+  const reloadButton = within(dialog).getByRole('button', { name: /simulate hard reload/i });
+
+  expect(document.activeElement).toBe(closeButton);
+
+  reloadButton.focus();
+  await user.keyboard('{Tab}');
+  expect(document.activeElement).toBe(closeButton);
+
+  await user.keyboard('{Escape}');
   expect(screen.queryByRole('dialog')).toBeNull();
-  expect(screen.getByRole('heading', { name: 'Photo Feed' })).toBeInTheDocument();
+  expect(document.activeElement).toBe(openButton);
 });
 
 test('hard navigation or Simulate hard reload renders the canonical photo page without the feed or modal dialog', async () => {

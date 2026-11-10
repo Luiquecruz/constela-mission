@@ -1,6 +1,6 @@
 {
   "engine": "python",
-  "order": 9,
+  "order": 10,
   "title": "Python",
   "monogram": "PY",
   "description": "Python 3.14 from the first program to production code: an optional foundations module for people who have never programmed, then the object model, functions and closures, classes and descriptors, iterators, context managers, the standard library, pattern matching, type hints, asyncio, metaprogramming, tooling and Pydantic validation, with when-to-choose guidance for every feature.",

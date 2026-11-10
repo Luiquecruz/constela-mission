@@ -13,7 +13,7 @@ export interface ResolveParallelSlotsInput {
 }
 
 export interface ResolveParallelSlotsResult {
-  status: 200 | 404;
+  status: 200 | 404 | 'build-error';
   missingSlot: string | null;
   rendered: Record<string, string | null> | null;
 }
@@ -35,11 +35,17 @@ export function resolveParallelSlots({
       previousState[slotName] !== undefined
     ) {
       rendered[slotName] = previousState[slotName];
+    } else if (slot.defaultView === 'notFound') {
+      return {
+        status: 404,
+        missingSlot: slotName,
+        rendered: null,
+      };
     } else if (slot.defaultView !== undefined) {
       rendered[slotName] = slot.defaultView;
     } else {
       return {
-        status: 404,
+        status: 'build-error',
         missingSlot: slotName,
         rendered: null,
       };
@@ -143,7 +149,9 @@ export function ParallelDashboardApp() {
         </div>
       ) : (
         <div role="alert">
-          404 Not Found: Missing default.tsx for slot {state.result.missingSlot}
+          {state.result.status === 'build-error'
+            ? `Build Error: Missing default.tsx for slot ${state.result.missingSlot}`
+            : `404 Not Found: default.tsx called notFound() in slot ${state.result.missingSlot}`}
         </div>
       )}
     </div>

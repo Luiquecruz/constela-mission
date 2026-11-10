@@ -13,15 +13,15 @@
   },
   {
     "id": "q2",
-    "question": "What is the primary operational risk of introducing multiple Parallel Route slots (`@invoices`, `@usage`, `@modal`) into a layout?",
+    "question": "What is the primary operational requirement of introducing multiple Parallel Route slots (`@invoices`, `@usage`, `@modal`) into a layout?",
     "options": [
       "Parallel slots disable TypeScript type checking",
-      "Every slot must maintain a `default.tsx` fallback for unmatched sub-routes, otherwise hard browser reloads on a sub-route will fail with a 404",
+      "Every slot must maintain an explicit `default.tsx` fallback for unmatched sub-routes (or call `notFound()` inside `default.tsx` for a 404), otherwise `next build` fails",
       "Parallel slots force all child components to become Client Components",
       "Parallel slots cannot use `error.tsx`"
     ],
     "answer": 1,
-    "explanation": "On a hard reload, Next.js has no in-memory router state for unmatched slots and falls back to `default.tsx`; if any slot lacks both a matching segment and `default.tsx`, the whole route 404s."
+    "explanation": "Next.js requires an explicit `default.tsx` in parallel route slots at build time, using it to render a fallback view (or trigger `notFound()`) on hard reloads when a slot has no matching segment."
   },
   {
     "id": "q3",

@@ -1,6 +1,6 @@
 # Challenge: Parallel Slot Resolution Engine & Dashboard
 
-When building multi-slot layouts in the Next.js App Router, understanding the difference between **soft navigation** (which retains active slot state) and **hard navigation** (which falls back to `default.tsx` or 404s) prevents broken deep links in production.
+When building multi-slot layouts in the Next.js App Router, understanding the difference between **soft navigation** (which retains active slot state), **hard navigation** (which renders `default.tsx` or triggers a runtime 404 when `default.tsx` calls `notFound()`), and **build-time validation** (which fails with a build error when a slot omits `default.tsx`) prevents broken deep links in production.
 
 ## Requirements
 
@@ -12,8 +12,9 @@ When building multi-slot layouts in the Next.js App Router, understanding the di
    - For each slot name in `slots`:
      1. If `pathname` is a key in `slot.routes` (`Object.prototype.hasOwnProperty.call(slot.routes, pathname)`), use `slot.routes[pathname]`.
      2. Otherwise, if `navigationType === 'soft'` and `previousState && previousState[slotName] !== undefined`, preserve `previousState[slotName]`.
-     3. Otherwise, if `slot.defaultView !== undefined` (note: `null` is a valid `defaultView`, such as an empty `@modal/default.tsx`), use `slot.defaultView`.
-     4. Otherwise, immediately return `{ status: 404, missingSlot: slotName, rendered: null }`.
+     3. Otherwise, if `slot.defaultView === 'notFound'`, immediately return `{ status: 404, missingSlot: slotName, rendered: null }` (modeling a `default.tsx` that calls `notFound()` at runtime).
+     4. Otherwise, if `slot.defaultView !== undefined` (note: `null` is a valid `defaultView`, such as an empty `@modal/default.tsx`), use `slot.defaultView`.
+     5. Otherwise (`slot.defaultView === undefined`), immediately return `{ status: 'build-error', missingSlot: slotName, rendered: null }` (modeling a slot without `default.tsx` failing the Next.js build).
    - When all slots resolve, return `{ status: 200, missingSlot: null, rendered: resolvedMap }`.
 
 2. Implement and export `<ParallelDashboardApp />` (and export it as `default`):

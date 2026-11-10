@@ -57,7 +57,7 @@ export const adr: RoutingADR = {
       'Soft navigation from /gallery opens /asset/[id] in a modal overlay while hard refreshes render the canonical standalone asset page.',
     ],
     negative: [
-      'Engineers must maintain default.tsx fallbacks across every parallel slot to prevent 404 errors during hard reloads on sub-routes.',
+      'Engineers must maintain default.tsx fallbacks across every parallel slot to satisfy build-time verification and define hard-reload behavior on sub-routes.',
     ],
   },
 };
@@ -85,6 +85,6 @@ export const routingDecisions: RoutingDecisionItem[] = [
     requirement: 'missing-default-fallback-guard',
     pattern: 'slot-default-tsx',
     reason:
-      'Providing default.tsx in each parallel slot prevents 404 responses on hard reloads when a slot lacks the active sub-route.',
+      'Providing default.tsx in each parallel slot satisfies Next.js build verification and defines hard-reload fallback rendering when a slot lacks the active sub-route.',
   },
 ];

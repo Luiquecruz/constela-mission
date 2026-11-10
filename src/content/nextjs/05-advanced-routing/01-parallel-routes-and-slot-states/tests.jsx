@@ -78,25 +78,50 @@ test('falls back to defaultView on hard navigation when a slot does not match th
   });
 });
 
-test('returns 404 and identifies the missingSlot when hard navigation hits an unmatched slot without defaultView', () => {
+test('distinguishes build-error for a slot missing default.tsx from runtime 404 when default.tsx calls notFound()', () => {
   const slotsWithoutDefault = {
     children: {
       routes: { '/': 'Home', '/settings': 'Settings' },
+      defaultView: 'DefaultChildren',
     },
     analytics: {
       routes: { '/': 'OverviewMetrics' },
-      // no defaultView defined
+      // no defaultView defined -> Next.js build error
     },
   };
 
-  const result = mod.resolveParallelSlots({
+  const buildErrorResult = mod.resolveParallelSlots({
     slots: slotsWithoutDefault,
     pathname: '/settings',
     navigationType: 'hard',
     previousState: null,
   });
 
-  expect(result).toEqual({
+  expect(buildErrorResult).toEqual({
+    status: 'build-error',
+    missingSlot: 'analytics',
+    rendered: null,
+  });
+
+  const slotsWithNotFoundDefault = {
+    children: {
+      routes: { '/': 'Home', '/settings': 'Settings' },
+      defaultView: 'DefaultChildren',
+    },
+    analytics: {
+      routes: { '/': 'OverviewMetrics' },
+      defaultView: 'notFound',
+    },
+  };
+
+  const notFoundResult = mod.resolveParallelSlots({
+    slots: slotsWithNotFoundDefault,
+    pathname: '/settings',
+    navigationType: 'hard',
+    previousState: null,
+  });
+
+  expect(notFoundResult).toEqual({
     status: 404,
     missingSlot: 'analytics',
     rendered: null,

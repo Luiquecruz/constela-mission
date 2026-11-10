@@ -1,6 +1,6 @@
 {
   "engine": "angular",
-  "order": 6,
+  "order": 7,
   "title": "Angular",
   "monogram": "A",
   "description": "Standalone components, signals, zoneless rendering, DI, RxJS, Router, forms, HTTP, testing and SSR, plus legacy Angular maintenance. Shared-state patterns continue in the State Management track.",

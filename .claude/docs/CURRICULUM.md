@@ -87,6 +87,28 @@ Folder plan for every track. `✓` = written (the lesson folder exists with a `m
 ### 15-ecosystem — Frameworks and Beyond
 01-ssr-ssg-and-hydration (renderToString challenge) ✓ · 02-nextjs-and-meta-frameworks **(quiz)** ✓ · 03-react-native **(quiz)** ✓ · 04-security-and-xss ✓ · 05-accessibility ✓
 
+## Next.js (`src/content/nextjs`, engine `react`)
+
+Spec: `.claude/specs/trilha-aprendizado-nextjs.md`. Full-stack App Router architecture on the React engine (`"engine": "react"`): Server and Client Component boundaries, streaming `<Suspense>`, Server Actions and `next/form`, async request APIs (`params`, `searchParams`, `cookies()`, `headers()`), Partial Prerendering and Data Access Layers, declarative caching (`'use cache'`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`), post-response execution (`after()`) and `instrumentation.ts`, Parallel and Intercepting Routes, Node.js `proxy.ts` and production migration. Every lesson has a 4–5 question quiz and ends with a **"When to choose it"** section; modules 01, 03, 04 and 05 close with an **(adr)** checkpoint, and module 06 ends with a multi-file commerce capstone. Verified by `src/verify/nextjs.test.ts`.
+
+### 01-hybrid-rendering — Hybrid Execution Model: RSC, Actions and React 19
+01-server-components-and-bundle-boundary ✓ · 02-streaming-suspense-and-waterfalls ✓ · 03-server-actions-and-progressive-forms ✓ · 04-hybrid-rendering-adr **(adr)** ✓
+
+### 02-async-request-apis — Async Request APIs, PPR and the Data Access Layer
+01-async-request-context ✓ · 02-partial-prerendering-and-dynamic-holes ✓ · 03-data-access-layer-and-request-memoization ✓ · 04-async-migration-and-codemods **(quiz)** ✓
+
+### 03-declarative-caching — Declarative Caching: use cache, cacheLife and Tags
+01-caching-paradigm-inversion **(quiz)** ✓ · 02-use-cache-and-cache-life-profiles ✓ · 03-tag-invalidation-and-read-your-writes ✓ · 04-caching-architecture-adr **(adr)** ✓
+
+### 04-post-response-and-observability — Post-Response Processing (after) and Observability
+01-after-post-response-lifecycle ✓ · 02-server-instrumentation-and-on-request-error ✓ · 03-route-handlers-and-webhooks ✓ · 04-observability-and-reliability-adr **(adr)** ✓
+
+### 05-advanced-routing — Advanced Routing: Parallel, Intercepting Routes and Error Boundaries
+01-parallel-routes-and-slot-states ✓ · 02-intercepting-routes-and-url-modals ✓ · 03-error-boundaries-not-found-and-slot-isolation ✓ · 04-routing-architecture-adr **(adr)** ✓
+
+### 06-proxy-migration-and-production — Network Proxy (proxy.ts), Production Hardening and Migration
+01-from-middleware-to-node-proxy ✓ · 02-metadata-images-and-security-headers **(quiz)** ✓ · 03-migration-playbook-and-runtime-lifecycle ✓ · 04-capstone-commerce-architecture ✓
+
 ## State Management (`src/content/react-state`, React and Angular variants)
 
 The public `react-state` id and existing React lesson keys are retained. Modules 01–04 demonstrate state concepts with React; modules 05 to 09 are an Angular path requiring Angular signals and dependency injection, not React. The last module compares ownership and tooling across frameworks and retains React-specific exercises and its React capstone. Each challenge declares the one framework it teaches through `variants/react` or `variants/angular`; the editor and grader use that variant engine. See [state-management-track.md](state-management-track.md).
@@ -465,25 +487,3 @@ Plan and decisions: [java-spring-track.md](java-spring-track.md). Every module i
 
 ### 11-capstone — Capstone: Course Catalog API
 01-capstone-requirements-and-design ✓ · 02-capstone-the-spring-api ✓ · 03-capstone-persistence-and-migrations ✓ · 04-capstone-security ✓ · 05-capstone-review-and-delivery ✓
-
-## Next.js (`src/content/nextjs`, engine `react`)
-
-Spec: `.claude/specs/trilha-aprendizado-nextjs.md`. Full-stack App Router architecture on the React engine (`"engine": "react"`): Server and Client Component boundaries, streaming `<Suspense>`, Server Actions and `next/form`, async request APIs (`params`, `searchParams`, `cookies()`, `headers()`), Partial Prerendering and Data Access Layers, declarative caching (`'use cache'`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`), post-response execution (`after()`) and `instrumentation.ts`, Parallel and Intercepting Routes, Node.js `proxy.ts` and production migration. Every lesson has a 4–5 question quiz and ends with a **"When to choose it"** section; modules 01, 03, 04 and 05 close with an **(adr)** checkpoint, and module 06 ends with a multi-file commerce capstone. Verified by `src/verify/nextjs.test.ts`.
-
-### 01-hybrid-rendering — Hybrid Execution Model: RSC, Actions and React 19
-01-server-components-and-bundle-boundary ✓ · 02-streaming-suspense-and-waterfalls ✓ · 03-server-actions-and-progressive-forms ✓ · 04-hybrid-rendering-adr **(adr)** ✓
-
-### 02-async-request-apis — Async Request APIs, PPR and the Data Access Layer
-01-async-request-context ✓ · 02-partial-prerendering-and-dynamic-holes ✓ · 03-data-access-layer-and-request-memoization ✓ · 04-async-migration-and-codemods **(quiz)** ✓
-
-### 03-declarative-caching — Declarative Caching: use cache, cacheLife and Tags
-01-caching-paradigm-inversion **(quiz)** ✓ · 02-use-cache-and-cache-life-profiles ✓ · 03-tag-invalidation-and-read-your-writes ✓ · 04-caching-architecture-adr **(adr)** ✓
-
-### 04-post-response-and-observability — Post-Response Processing (after) and Observability
-01-after-post-response-lifecycle ✓ · 02-server-instrumentation-and-on-request-error ✓ · 03-route-handlers-and-webhooks ✓ · 04-observability-and-reliability-adr **(adr)** ✓
-
-### 05-advanced-routing — Advanced Routing: Parallel, Intercepting Routes and Error Boundaries
-01-parallel-routes-and-slot-states ✓ · 02-intercepting-routes-and-url-modals ✓ · 03-error-boundaries-not-found-and-slot-isolation ✓ · 04-routing-architecture-adr **(adr)** ✓
-
-### 06-proxy-migration-and-production — Network Proxy (proxy.ts), Production Hardening and Migration
-01-from-middleware-to-node-proxy ✓ · 02-metadata-images-and-security-headers **(quiz)** ✓ · 03-migration-playbook-and-runtime-lifecycle ✓ · 04-capstone-commerce-architecture ✓

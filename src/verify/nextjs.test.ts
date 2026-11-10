@@ -47,6 +47,13 @@ describe('nextjs track standards', () => {
     expect(lesson.theory).toContain('## When to choose it');
     expect(lesson.concepts.length).toBeGreaterThanOrEqual(4);
     expect(lesson.concepts.length).toBeLessThanOrEqual(6);
+    lesson.concepts.forEach((concept) => {
+      expect(typeof concept.term).toBe('string');
+      expect(concept.term.trim().length).toBeGreaterThan(0);
+      expect(typeof concept.description).toBe('string');
+      expect(concept.description.trim().length).toBeGreaterThan(10);
+      expect(concept.description.trim().endsWith('.')).toBe(true);
+    });
     expect(lesson.quiz.length).toBeGreaterThanOrEqual(4);
     expect(lesson.quiz.length).toBeLessThanOrEqual(5);
     lesson.quiz.forEach((question) => {

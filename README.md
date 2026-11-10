@@ -22,6 +22,7 @@ Constela Mission (formerly Dev Dojo) is a freeCodeCamp-style learning platform f
 | --- | --- | --- | --- |
 | TypeScript | TypeScript compiler in Web Workers | 82 | types, narrowing, generics, type-level programming, tooling |
 | React | React | 100 | hooks, performance, React 19, routing, data fetching, forms, testing |
+| Next.js | React | 24 | App Router execution model (Server and Client Components, streaming Suspense, Server Actions and `next/form`), async request APIs (`params`, `searchParams`, `cookies`, `headers`), Partial Prerendering and Data Access Layers, declarative caching (`'use cache'`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`), post-response tasks (`after()`) and `instrumentation.ts`, Parallel and Intercepting Routes, Node.js `proxy.ts` and production migrations |
 | State Management | React and Angular, by lesson | 50 | React state and query libraries; Angular state foundations, signal services, server state, URL and persistence, SSR, NgRx SignalStore and Store, alternative stores, testing and an Angular capstone |
 | Frontend Architecture | React | 41 | static pages, MVC, SPA, SSR, streaming, SSG, ISR, islands, RSC, web vitals, feature-based and hexagonal code, URL state, modular monolith, BFF, micro-frontends, monorepos, Module Federation, ADRs |
 | AI Engineering | Node.js and Python (Pyodide), chosen per challenge | 122 | models, context, tools and MCP, RAG, knowledge graphs, memory, agents, harness and loops, multi-agent, evals, security, governance, agentic engineering |
@@ -32,7 +33,6 @@ Constela Mission (formerly Dev Dojo) is a freeCodeCamp-style learning platform f
 | Vue | Vue | 44 | hidden while in progress |
 | Angular | Angular | 52 | standalone components, signals, DI, RxJS, change detection, routing, forms, HTTP, testing, legacy Angular and SSR |
 | Java and Spring Boot | theory and quizzes plus local Java backend projects (no graded challenges) | 77 | Java from zero, language fundamentals, Maven and tests, Spring Boot REST APIs, persistence with locking and Redis, security, Kafka messaging, delivery, hexagonal and modular architecture, resilience and a backend course-catalog capstone |
-| Next.js | React | 24 | App Router execution model (Server and Client Components, streaming Suspense, Server Actions and `next/form`), async request APIs (`params`, `searchParams`, `cookies`, `headers`), Partial Prerendering and Data Access Layers, declarative caching (`'use cache'`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`), post-response tasks (`after()`) and `instrumentation.ts`, Parallel and Intercepting Routes, Node.js `proxy.ts` and production migrations |
 
 Hidden tracks are toggled in `src/content/featureFlags.ts`. Module and lesson plans live in [CURRICULUM.md](.claude/docs/CURRICULUM.md).
 

@@ -13,7 +13,7 @@ export interface ResolveParallelSlotsInput {
 }
 
 export interface ResolveParallelSlotsResult {
-  status: 200 | 404;
+  status: 200 | 404 | 'build-error';
   missingSlot: string | null;
   rendered: Record<string, string | null> | null;
 }
@@ -22,7 +22,8 @@ export function resolveParallelSlots({
   slots,
   pathname,
 }: ResolveParallelSlotsInput): ResolveParallelSlotsResult {
-  // TODO: Implement Next.js parallel slot resolution for soft vs hard navigation
+  // TODO: Implement Next.js parallel slot resolution for soft vs hard navigation,
+  // default.tsx calling notFound() (status 404), and missing default.tsx ('build-error')
   const rendered: Record<string, string | null> = {};
   for (const [slotName, slot] of Object.entries(slots)) {
     rendered[slotName] = slot.routes[pathname] ?? null;

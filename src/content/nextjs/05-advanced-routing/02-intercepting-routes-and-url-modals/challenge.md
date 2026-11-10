@@ -15,10 +15,11 @@ Build a photo feed that models Next.js `@modal` + `(.)photo/[id]` route intercep
    - If `historyLength > 1`, call `router.back()`.
    - Otherwise, call `router.push(fallbackPath)`.
 3. Implement and export `<PhotoFeedApp initialPath="/feed" initialNavType="soft" />` (and export it as `default`):
-   - When at `/feed`, render a heading `"Photo Feed"` and a button for each photo in `PHOTOS`: `"Open Nebula Ridge"` and `"Open Orbital Dawn"`.
+   - When at `/feed`, render a `<section>` containing a heading `"Photo Feed"` and a button for each photo in `PHOTOS`: `"Open Nebula Ridge"` and `"Open Orbital Dawn"`.
    - Clicking `"Open Nebula Ridge"` (or `"Open Orbital Dawn"`) performs a **soft** navigation to `/photo/1` (or `/photo/2`):
-     - Keep `"Photo Feed"` and its photo buttons mounted in the background (`@children` slot retention).
-     - Render an intercepted modal with `role="dialog"` and `aria-label={photo.title}` containing the photo title, author, a `"Close modal"` button (which returns to `/feed` and closes the dialog), and a `"Simulate hard reload"` button.
+     - Keep `"Photo Feed"` and its photo buttons mounted in the background (`@children` slot retention) and mark the background feed `<section>` as `inert` while the modal is open.
+     - Render an intercepted modal with `role="dialog"`, `aria-modal="true"`, and `aria-label={photo.title}` containing the photo title, author, a `"Close modal"` button (which returns to `/feed` and closes the dialog), and a `"Simulate hard reload"` button.
+     - Implement accessible modal keyboard behavior: move focus into the dialog when it opens, wrap `Tab` / `Shift+Tab` focus within the dialog, close the dialog on `Escape`, and restore focus to the invoking feed button when the dialog closes.
    - When rendered with `initialPath="/photo/1"` and `initialNavType="hard"` (or after clicking `"Simulate hard reload"` while viewing a photo), render the canonical standalone page:
      - Render a heading `"Canonical Photo Page: Nebula Ridge"` (matching the active photo's title).
      - Do **not** render `"Photo Feed"` or any `role="dialog"` modal.
