@@ -1,0 +1,16 @@
+{
+  "title": "Codemods, Typegen and Migrating Synchronous Request APIs",
+  "summary": "Migrate synchronous params, searchParams, cookies(), and headers() using @next/codemod and enforce compile-time route types with next typegen.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "theory"],
+  "resources": [
+    {
+      "title": "Next.js Docs: Codemods CLI Reference",
+      "url": "https://nextjs.org/docs/app/guides/upgrading/codemods"
+    },
+    {
+      "title": "Next.js Docs: TypeScript and Static Route Typegen",
+      "url": "https://nextjs.org/docs/app/api-reference/config/typescript"
+    }
+  ]
+}

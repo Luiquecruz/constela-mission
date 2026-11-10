@@ -1,0 +1,25 @@
+{
+  "title": "Metadata API, Open Graph, and SEO Files",
+  "summary": "Configure static metadata and dynamic generateMetadata() with title templates and Open Graph inheritance, plus typed app/sitemap.ts and app/robots.ts SEO file conventions.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Metadata and OG Images",
+      "url": "https://nextjs.org/docs/app/getting-started/metadata-and-og-images"
+    },
+    {
+      "title": "Next.js API Reference: generateMetadata",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/generate-metadata"
+    },
+    {
+      "title": "Next.js API Reference: sitemap.xml",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap"
+    },
+    {
+      "title": "Next.js API Reference: robots.txt",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots"
+    }
+  ]
+}

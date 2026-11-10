@@ -1,0 +1,21 @@
+{
+  "title": "File-System Routing and Dynamic Segments",
+  "summary": "Map folders inside app/ to URL segments, colocate helper files safely, omit (route-groups) from URLs, ignore _private folders, and match static, [slug], [...rest], and [[...rest]] routes by specificity.",
+  "level": "beginner",
+  "tags": ["core", "foundations", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "label": "Next.js Docs: Layouts and Pages",
+      "url": "https://nextjs.org/docs/app/getting-started/layouts-and-pages"
+    },
+    {
+      "label": "Next.js File Conventions: Dynamic Routes",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes"
+    },
+    {
+      "label": "Next.js File Conventions: Route Groups",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/route-groups"
+    }
+  ]
+}

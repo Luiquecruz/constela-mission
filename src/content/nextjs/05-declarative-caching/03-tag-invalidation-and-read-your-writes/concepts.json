@@ -1,0 +1,18 @@
+[
+  {
+    "term": "cacheTag()",
+    "description": "A function called inside a 'use cache' scope to associate one or more string tags with the cached entry for targeted on-demand invalidation."
+  },
+  {
+    "term": "revalidateTag(tag, profile)",
+    "description": "The two-argument invalidation API that marks tagged cache entries as stale according to a cacheLife profile (such as 'max'), serving stale data while refreshing in the background."
+  },
+  {
+    "term": "updateTag(tag)",
+    "description": "A Server Action-only invalidation API that immediately expires tagged cache entries so the next read waits for fresh data, guaranteeing read-your-own-writes consistency."
+  },
+  {
+    "term": "Read-Your-Own-Writes Consistency",
+    "description": "The guarantee that after a user performs a mutation in a Server Action, the immediately rendered UI reflects their newly written state rather than a stale cached snapshot."
+  }
+]

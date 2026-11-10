@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why does modern Next.js require a second argument in revalidateTag(tag, profile) such as revalidateTag('catalog', 'max')?",
+    "options": [
+      "The second argument specifies how many retries the database should attempt on failure.",
+      "It explicitly configures stale-while-revalidate semantics via a cacheLife profile so readers receive cached content immediately while a background refresh runs.",
+      "The second argument is a secret webhook token required for authentication.",
+      "It limits invalidation to a specific geographic region."
+    ],
+    "answer": 1,
+    "explanation": "Passing a cacheLife profile like 'max' as the second argument makes stale-while-revalidate explicit: incoming requests get the existing cached data without blocking while Next.js revalidates the tagged entry in the background."
+  },
+  {
+    "question": "A seller updates their product title in a form backed by a Server Action and is immediately redirected to the product page. Which invalidation function guarantees they see the updated title right away?",
+    "options": [
+      "revalidateTag(`product-${id}`, 'max') because background SWR finishes before redirects.",
+      "updateTag(`product-${id}`) because it immediately expires the tagged cache entry so the next read awaits fresh data.",
+      "cacheTag(`product-${id}`) called directly inside the Server Action.",
+      "window.location.reload() on the server."
+    ],
+    "answer": 1,
+    "explanation": "updateTag(tag) is built for Server Actions requiring read-your-own-writes consistency: it immediately expires matching cache entries so the subsequent render awaits fresh data from the data source."
+  },
+  {
+    "question": "Where is updateTag(tag) permitted to be called?",
+    "options": [
+      "Inside Server Actions only.",
+      "Inside GET Route Handlers and Client Components.",
+      "Inside 'use cache' functions alongside cacheTag().",
+      "Inside next.config.ts during build initialization."
+    ],
+    "answer": 0,
+    "explanation": "updateTag(tag) can only be invoked inside Server Actions to coordinate immediate expiration with the mutating user's UI update. Webhook Route Handlers should use revalidateTag(tag, 'max')."
+  },
+  {
+    "question": "An external headless CMS sends a POST webhook to /api/webhooks/cms when an editor updates a shared landing page. Which invalidation strategy is best suited for the Route Handler?",
+    "options": [
+      "Call updateTag('landing-page') so every visitor blocks on a cold database query.",
+      "Call revalidateTag('landing-page', 'max') so visitors continue receiving fast responses while Next.js refreshes the cache in the background.",
+      "Restart the Node.js server process to clear in-memory caches.",
+      "Call cacheLife('seconds') inside the webhook handler."
+    ],
+    "answer": 1,
+    "explanation": "In a webhook Route Handler, revalidateTag('landing-page', 'max') marks the entry stale and refreshes it asynchronously in the background without causing latency spikes for concurrent visitors."
+  }
+]

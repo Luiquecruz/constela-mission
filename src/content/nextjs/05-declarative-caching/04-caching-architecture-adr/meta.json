@@ -1,0 +1,25 @@
+{
+  "title": "Checkpoint: Declarative Caching ADR",
+  "summary": "Author an Architecture Decision Record and domain caching plan for a multi-vendor marketplace using 'use cache', <Suspense>, revalidateTag, and updateTag.",
+  "level": "advanced",
+  "tags": ["core", "theory", "practice"],
+  "preview": false,
+  "entry": "adr.ts",
+  "resources": [
+    {
+      "title": "Documenting Architecture Decisions — Michael Nygard",
+      "url": "https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions",
+      "type": "article"
+    },
+    {
+      "title": "Architecture Decision Records (ADR) Organization",
+      "url": "https://adr.github.io/",
+      "type": "docs"
+    },
+    {
+      "title": "Next.js Documentation — Caching and Revalidating",
+      "url": "https://nextjs.org/docs/app/getting-started/caching-and-revalidating",
+      "type": "docs"
+    }
+  ]
+}

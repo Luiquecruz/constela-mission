@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why do `params`, `searchParams`, `cookies()`, and `headers()` return Promises in the Next.js App Router?",
+    "options": [
+      "Because browser Fetch APIs require all server props to be serialized as Promises over the network",
+      "To allow Next.js to prepare and prerender static route shells before waiting on request-specific context",
+      "Because Node.js removed synchronous object access for incoming HTTP request headers",
+      "To force all components in the application to become Client Components using React.use()"
+    ],
+    "answer": 1,
+    "explanation": "Making request-specific APIs asynchronous decouples static route rendering from request-time data, allowing Next.js to prerender static shells and only wait on dynamic context when a component explicitly awaits it."
+  },
+  {
+    "question": "How should a Client Component (`'use client'`) consume the `params` Promise passed as a prop from a page or layout?",
+    "options": [
+      "Mark the Client Component function as `async` and use `await params` at the top level",
+      "Pass `params` into `React.use(params)` (or read route params via `useParams()` from `next/navigation`)",
+      "Call `params.value` synchronously because Next.js automatically unwraps Promises for Client Components",
+      "Import `cookies()` from `next/headers` inside the Client Component to unlock synchronous params"
+    ],
+    "answer": 1,
+    "explanation": "Client Components cannot be `async` functions. To read a Promise prop like `params` or `searchParams` inside a Client Component, you unwrap it with `React.use(params)` or use the `useParams()` / `useSearchParams()` client hooks."
+  },
+  {
+    "question": "Where are you allowed to call `(await cookies()).set('theme', 'dark')` in a Next.js App Router application?",
+    "options": [
+      "Directly inside the body of any async Server Component page or layout",
+      "Inside `generateStaticParams` during the production build phase",
+      "Inside a Server Action or a Route Handler where outgoing HTTP response headers can still be modified",
+      "Inside a `useEffect` hook in a Client Component that imports `next/headers`"
+    ],
+    "answer": 2,
+    "explanation": "Server Components stream HTML to the client and cannot mutate outgoing HTTP `Set-Cookie` headers mid-render. Setting or deleting cookies is only permitted in Server Actions, Route Handlers, or Middleware/Proxy."
+  },
+  {
+    "question": "What happens if a Server Component reads `(await searchParams).page` directly without wrapping the read in a child `<Suspense>` boundary?",
+    "options": [
+      "Next.js throws a build error unless `export const dynamic = 'error'` is configured",
+      "The component depends on request-time URL query values, causing the route segment or subtree to render dynamically at request time",
+      "The query parameter is ignored and always resolves to an empty object in production builds",
+      "Next.js caches the first visitor's `page` query parameter and serves it to all subsequent visitors"
+    ],
+    "answer": 1,
+    "explanation": "Because `searchParams` are only known when an HTTP request arrives with a specific URL query string, awaiting `searchParams` opts that rendering path into dynamic request-time execution."
+  }
+]

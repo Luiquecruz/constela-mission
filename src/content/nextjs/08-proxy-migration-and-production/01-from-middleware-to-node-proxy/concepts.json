@@ -1,0 +1,22 @@
+[
+  {
+    "term": "proxy.ts",
+    "description": "The root network boundary convention that replaces middleware.ts, executing on the Node.js runtime before cached routes and application handlers to perform rewrites, redirects, and header mutations."
+  },
+  {
+    "term": "Path Matcher (config.matcher)",
+    "description": "A route filter exported from proxy.ts that restricts which incoming URLs invoke the proxy function, typically excluding static assets and image optimization endpoints."
+  },
+  {
+    "term": "Multi-Tenant Subdomain Rewrite",
+    "description": "A proxy pattern that inspects the incoming Host header (such as acme.app.local) and transparently rewrites the URL to an internal dynamic route segment (/tenants/acme) while keeping the browser URL unchanged."
+  },
+  {
+    "term": "Optimistic Session Redirect",
+    "description": "A fast boundary check in proxy.ts that inspects the presence of a session cookie to redirect unauthenticated users early without querying a database."
+  },
+  {
+    "term": "Defense-in-Depth Authorization",
+    "description": "A security architecture where proxy.ts handles outer routing ergonomics while the Data Access Layer and Server Actions independently verify session validity, tenant ownership, and user roles before touching data."
+  }
+]

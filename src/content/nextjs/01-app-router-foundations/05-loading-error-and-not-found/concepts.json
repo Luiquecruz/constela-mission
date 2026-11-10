@@ -1,0 +1,18 @@
+[
+  {
+    "term": "loading.tsx (<Suspense> Boundary)",
+    "description": "A segment file convention that automatically wraps page.tsx in React Suspense to stream instant fallback UI while async work resolves."
+  },
+  {
+    "term": "error.tsx (Error Boundary)",
+    "description": "A mandatory 'use client' segment component that catches unexpected runtime errors inside its subtree and provides a reset() function to retry rendering."
+  },
+  {
+    "term": "notFound() / not-found.tsx",
+    "description": "A next/navigation helper and segment file that halt rendering on missing records and display a 404 UI without triggering error.tsx."
+  },
+  {
+    "term": "Segment Boundary Nesting",
+    "description": "The fixed Next.js wrapper hierarchy ordering layout, template, error, loading, not-found, and page from outermost to innermost."
+  }
+]

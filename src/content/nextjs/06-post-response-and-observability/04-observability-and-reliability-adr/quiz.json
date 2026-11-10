@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why must FinLedger dispatch 'invoice-tax-settlement' to a durable queue rather than scheduling it inside after()?",
+    "options": [
+      "Because after() cannot execute async functions or await Promises.",
+      "Because after() runs in-memory within the current invocation timeout and loses in-flight work without retry if the container crashes.",
+      "Because after() is only supported in the Pages Router.",
+      "Because next/server blocks outbound HTTPS requests inside after()."
+    ],
+    "answer": 1,
+    "explanation": "Legally required financial ledger settlements demand persisted retries across process crashes and multi-hour downstream outages, which in-memory after() callbacks cannot guarantee."
+  },
+  {
+    "question": "Why is after() the right mechanism for 'analytics-pageview-beacon' and 'search-cache-warm'?",
+    "options": [
+      "They are sub-second, best-effort or idempotent tasks that should not add latency to the HTTP response or incur durable queue persistence costs.",
+      "They require mutating response cookies after the HTML stream closes.",
+      "They need 72-hour exponential backoff retries across region failovers.",
+      "They must block the user's redirect() until the cache finishes warming."
+    ],
+    "answer": 0,
+    "explanation": "Both pageview beacons and read-cache warming are fast, non-critical operations where zero TTFB impact and low overhead outweigh the rare risk of an instance crash."
+  },
+  {
+    "question": "How do instrumentation.ts and error.tsx work together when an unhandled exception occurs during Server Component rendering?",
+    "options": [
+      "error.tsx runs on the server and rewrites instrumentation.ts on the fly.",
+      "onRequestError in instrumentation.ts logs the full server error and route context alongside err.digest, while error.tsx renders a safe client fallback displaying the matching digest.",
+      "instrumentation.ts sends the full stack trace and database credentials directly to the browser console.",
+      "error.tsx disables onRequestError whenever a client boundary is present."
+    ],
+    "answer": 1,
+    "explanation": "In production, Next.js strips sensitive error details sent to the client error.tsx boundary except for err.digest. onRequestError receives the full Error object and err.digest on the server so operators can correlate the two."
+  },
+  {
+    "question": "What happens if an after() callback is still running when a serverless platform reaches its hard background waitUntil() timeout?",
+    "options": [
+      "The platform automatically serializes the JavaScript closure to disk and resumes it on another container.",
+      "The execution environment is terminated and the unfinished callback is dropped without automatic retry.",
+      "The client's browser automatically re-submits the original Server Action.",
+      "Next.js converts the after() callback into a cron job."
+    ],
+    "answer": 1,
+    "explanation": "waitUntil() extends the lifetime of the invocation after the response is sent, but it is still strictly capped by the platform's maximum timeout. Once exceeded, the isolate or container is terminated."
+  }
+]

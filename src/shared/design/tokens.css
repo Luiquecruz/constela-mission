@@ -67,23 +67,28 @@
 }
 
 [data-trail='typescript'] {
-  --accent: #80a6ff;
-  --accent-rgb: 128 166 255;
+  --accent: #9494ff;
+  --accent-rgb: 148 148 255;
 }
 
 [data-trail='react'] {
-  --accent: #66e3ff;
-  --accent-rgb: 102 227 255;
+  --accent: #66f0f0;
+  --accent-rgb: 102 240 240;
+}
+
+[data-trail='nextjs'] {
+  --accent: #73b9ff;
+  --accent-rgb: 115 185 255;
 }
 
 [data-trail='react-state'] {
-  --accent: #b999ff;
-  --accent-rgb: 185 153 255;
+  --accent: #c387ff;
+  --accent-rgb: 195 135 255;
 }
 
 [data-trail='architecture'] {
-  --accent: #ff9e66;
-  --accent-rgb: 255 158 102;
+  --accent: #ffb973;
+  --accent-rgb: 255 185 115;
 }
 
 [data-trail='vue'] {
@@ -92,38 +97,38 @@
 }
 
 [data-trail='angular'] {
-  --accent: #ff6179;
-  --accent-rgb: 255 97 121;
+  --accent: #ff7070;
+  --accent-rgb: 255 112 112;
 }
 
 [data-trail='ai-engineering'] {
-  --accent: #ff80d5;
-  --accent-rgb: 255 128 213;
+  --accent: #ff7fbf;
+  --accent-rgb: 255 127 191;
 }
 
 [data-trail='node'] {
-  --accent: #73ff7e;
-  --accent-rgb: 115 255 126;
+  --accent: #73ff73;
+  --accent-rgb: 115 255 115;
 }
 
 [data-trail='python'] {
-  --accent: #ffef73;
-  --accent-rgb: 255 239 115;
+  --accent: #ffff73;
+  --accent-rgb: 255 255 115;
 }
 
 [data-trail='csharp'] {
-  --accent: #e980ff;
-  --accent-rgb: 233 128 255;
+  --accent: #f580f5;
+  --accent-rgb: 245 128 245;
 }
 
 [data-trail='system-design'] {
-  --accent: #40e6b0;
-  --accent-rgb: 64 230 176;
+  --accent: #52e69c;
+  --accent-rgb: 82 230 156;
 }
 
 [data-trail='java-spring'] {
-  --accent: #b0ff73;
-  --accent-rgb: 176 255 115;
+  --accent: #b9ff73;
+  --accent-rgb: 185 255 115;
 }
 
 @theme {

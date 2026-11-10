@@ -1,0 +1,4 @@
+{
+  "title": "Data, Rendering and Built-in Optimizations",
+  "description": "Fetch data directly inside async Server Components while respecting serialization boundaries, control build-time Static Rendering vs request-time Dynamic Rendering with generateStaticParams, build Web-standard Route Handlers, configure metadata and SEO files, apply next/image, next/font, and environment variable best practices, and assemble an intermediate Next.js content site."
+}

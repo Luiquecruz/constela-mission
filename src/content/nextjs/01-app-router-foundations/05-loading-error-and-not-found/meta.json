@@ -1,0 +1,25 @@
+{
+  "title": "Loading UI, Error Recovery and Not Found",
+  "summary": "Stream instant segment fallbacks with loading.tsx, isolate and recover from runtime failures using error.tsx and reset(), trigger missing-record UI via notFound(), and understand the App Router boundary nesting hierarchy.",
+  "level": "intermediate",
+  "tags": ["core", "foundations", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "label": "Next.js Docs: Error Handling",
+      "url": "https://nextjs.org/docs/app/getting-started/error-handling"
+    },
+    {
+      "label": "Next.js File Conventions: loading.js",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/loading"
+    },
+    {
+      "label": "Next.js File Conventions: error.js",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/error"
+    },
+    {
+      "label": "Next.js API Reference: notFound",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/not-found"
+    }
+  ]
+}

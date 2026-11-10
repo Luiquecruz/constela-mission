@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What must generateStaticParams() return for a dynamic route segment defined at app/blog/[slug]/page.tsx?",
+    "options": [
+      "An array of full URL strings like ['/blog/hello', '/blog/world']",
+      "An array of plain parameter objects matching the segment name, such as [{ slug: 'hello' }, { slug: 'world' }]",
+      "A boolean indicating whether the route should be cached",
+      "A Promise that resolves to a Response object"
+    ],
+    "answer": 1,
+    "explanation": "generateStaticParams() returns an array of parameter objects whose keys match the dynamic folder segments—for [slug], each object has a slug string property."
+  },
+  {
+    "question": "If app/docs/[slug]/page.tsx exports `export const dynamicParams = false` and a visitor requests `/docs/unknown-page` which was not returned by generateStaticParams(), what happens?",
+    "options": [
+      "Next.js renders the page dynamically on demand and caches it",
+      "Next.js redirects the visitor back to the root `/` page",
+      "Next.js immediately returns a 404 Not Found response without rendering the page component",
+      "Next.js throws a build-time TypeScript error"
+    ],
+    "answer": 2,
+    "explanation": "Setting dynamicParams = false locks the dynamic segment to only the paths returned by generateStaticParams(), returning 404 for any unmatched slug."
+  },
+  {
+    "question": "Which set of APIs automatically opts a route out of pure build-time static rendering into request-time dynamic rendering?",
+    "options": [
+      "cookies(), headers(), searchParams, and connection()",
+      "React.useMemo(), React.createElement(), and Array.map()",
+      "JSON.stringify(), Math.round(), and String.trim()",
+      "generateStaticParams() and export const dynamicParams = false"
+    ],
+    "answer": 0,
+    "explanation": "cookies(), headers(), searchParams, and connection() depend on live incoming HTTP request information that does not exist at build time."
+  },
+  {
+    "question": "Why does Module 02 establish static vs. dynamic rendering before Modules 04 (PPR) and 05 ('use cache')?",
+    "options": [
+      "Because 'use cache' completely forbids using generateStaticParams()",
+      "Because Partial Prerendering and 'use cache' refine how static shells and dynamic holes coexist instead of forcing an entire route to be all-static or all-dynamic",
+      "Because dynamic rendering is deprecated in favor of client-side SPAs",
+      "Because static routes cannot render Server Components"
+    ],
+    "answer": 1,
+    "explanation": "Understanding whole-route static vs. dynamic triggers explains the problem that Partial Prerendering (static shell + Suspense holes) and 'use cache' solve at component granularity."
+  }
+]

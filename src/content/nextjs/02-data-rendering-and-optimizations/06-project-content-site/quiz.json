@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why does a Next.js Root Layout preserve interactive state (such as a reader note or audio player) when navigating from `/` to `/articles/rsc-guide`?",
+    "options": [
+      "Layouts do not re-mount during client-side navigations between sibling routes; only the nested page segment swaps",
+      "Next.js saves all component state inside cookies on every click",
+      "Next.js reloads the entire HTML document on every Link click",
+      "React disables useState inside page.tsx files"
+    ],
+    "answer": 0,
+    "explanation": "In the App Router, layout.tsx wraps child page segments and stays mounted across route transitions, preserving local client state inside the layout shell."
+  },
+  {
+    "question": "Why should generateStaticParams(), generateMetadata(), and sitemap.ts all read from the same data access module (data.ts)?",
+    "options": [
+      "To force every article page into dynamic rendering on every request",
+      "So static build paths, page <title> tags, and /sitemap.xml URLs always stay synchronized with one canonical source of truth",
+      "Because Next.js forbids importing functions from more than one file",
+      "To expose raw database connection credentials to browser components"
+    ],
+    "answer": 1,
+    "explanation": "Sharing one data layer ensures static routes, metadata titles, and XML sitemaps reflect the exact same set of published articles without drift."
+  },
+  {
+    "question": "Which ARIA attribute should a persistent NavBar apply to the link matching the user's current route?",
+    "options": [
+      "aria-hidden='true'",
+      "role='status'",
+      "aria-current='page'",
+      "aria-disabled='true'"
+    ],
+    "answer": 2,
+    "explanation": "aria-current='page' is the standard accessibility attribute indicating which navigation link represents the currently active page."
+  },
+  {
+    "question": "What should an article detail route render when matchBlogRoute('/articles/unknown') extracts a slug that returns null from getPostBySlug()?",
+    "options": [
+      "An infinite loading spinner",
+      "An unhandled TypeError crash",
+      "The first article in the database instead",
+      "A clear not-found screen with a link back to the home article list"
+    ],
+    "answer": 3,
+    "explanation": "When a requested slug does not exist in the data store, rendering a dedicated not-found state (like calling notFound() in Next.js) gives users a clear recovery path."
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "term": "next/image remotePatterns",
+    "description": "A security allowlist in next.config.ts specifying trusted remote protocols, hostnames, and paths permitted for image optimization."
+  },
+  {
+    "term": "Cumulative Layout Shift (CLS)",
+    "description": "A Core Web Vital metric measuring unexpected visual movement caused by unsized images or late-loading web fonts."
+  },
+  {
+    "term": "next/font Self-Hosting",
+    "description": "Build-time bundling of Google or local fonts onto your own origin with size-adjusted fallback metrics for zero layout shift."
+  },
+  {
+    "term": "Script Loading Strategy",
+    "description": "The next/script strategy prop (beforeInteractive, afterInteractive, or lazyOnload) controlling when third-party scripts execute relative to hydration."
+  },
+  {
+    "term": "NEXT_PUBLIC_ Boundary",
+    "description": "The naming prefix that instructs Next.js to inline a public environment variable into the client JavaScript bundle at build time."
+  }
+]

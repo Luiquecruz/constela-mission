@@ -1,0 +1,46 @@
+[
+  {
+    "question": "In a modern Next.js App Router application, what is the default caching behavior of a standard fetch() call or GET Route Handler when no caching directives or options are specified?",
+    "options": [
+      "Both fetch() calls and GET Route Handlers are cached indefinitely until the next production deployment.",
+      "Both execute dynamically per request without caching unless explicitly opted into caching.",
+      "fetch() is cached for 60 seconds by default, while GET Route Handlers remain permanently static.",
+      "GET Route Handlers are cached on the edge CDN while fetch() is cached only in the browser Router Cache."
+    ],
+    "answer": 1,
+    "explanation": "Next.js inverted its legacy implicit caching model: fetch() requests, database calls, and GET Route Handlers execute dynamically on every request unless you explicitly opt in with 'use cache' or cache options."
+  },
+  {
+    "question": "When cacheComponents: true is enabled in next.config.ts, what happens if an async Server Component awaits an uncached database query without a parent <Suspense> boundary?",
+    "options": [
+      "Next.js silently converts the database query into a static build-time snapshot.",
+      "Next.js automatically injects a default loading spinner around the component.",
+      "Next.js throws a build/development error requiring either 'use cache' or a <Suspense> boundary.",
+      "The component renders only on the client browser using useEffect after hydration."
+    ],
+    "answer": 2,
+    "explanation": "With cacheComponents enabled, every async I/O operation must explicitly declare its rendering contract: either opt into the prerendered shell/cache via 'use cache' or stream dynamically inside a <Suspense> boundary."
+  },
+  {
+    "question": "Why does the client-side Router Cache default to staleTime: 0 for dynamic page segments in modern Next.js?",
+    "options": [
+      "Because client-side navigation was removed in favor of full-page browser reloads.",
+      "To ensure navigating to a route via <Link> fetches up-to-date server data instead of serving stale in-memory page snapshots.",
+      "Because React Server Components cannot serialize props across client transitions.",
+      "To prevent shared layouts from staying mounted when switching between sibling routes."
+    ],
+    "answer": 1,
+    "explanation": "Previously, a 30-second default client Router Cache caused users to see outdated UI after navigating away and back. Setting staleTime: 0 for page segments ensures dynamic pages fetch fresh server payloads while still preserving shared layouts."
+  },
+  {
+    "question": "Why does 'use cache' with cacheComponents replace legacy route segment config exports like export const revalidate = 60?",
+    "options": [
+      "Route segment exports applied a blunt setting to the entire route, whereas 'use cache' lets individual components and functions control their own cache lifetimes within the same route.",
+      "Route segment exports only worked in the Pages Router and never functioned in App Router.",
+      "The 'use cache' directive runs in the user's browser Service Worker instead of on the server.",
+      "Route segment exports prohibited the use of TypeScript interfaces in page components."
+    ],
+    "answer": 0,
+    "explanation": "Legacy segment config exports forced an entire page or layout into one rendering or revalidation mode. 'use cache' and cacheLife() operate at component and function granularity, enabling static shells and dynamic streams on the same page."
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "title": "Capstone: Full-Stack Next.js Commerce Engine",
+  "summary": "Build an end-to-end Next.js commerce engine combining tagged DAL caching, DTO sanitization, intercepted @modal quick-views, read-your-own-writes Server Actions, and after() audit logging.",
+  "level": "expert",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "entry": "App.tsx",
+  "resources": [
+    {
+      "title": "Next.js Directives: use cache",
+      "url": "https://nextjs.org/docs/app/api-reference/directives/use-cache"
+    },
+    {
+      "title": "Next.js Functions: updateTag",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/updateTag"
+    },
+    {
+      "title": "Next.js Functions: after",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/after"
+    }
+  ]
+}

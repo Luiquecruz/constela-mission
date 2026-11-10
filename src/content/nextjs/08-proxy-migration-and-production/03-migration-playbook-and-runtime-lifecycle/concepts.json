@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Runtime Baseline (Node.js 20.9+ & TypeScript 5.1+)",
+    "description": "The minimum runtime and compiler requirements for Next.js 16, aligned with Node.js Active LTS and Maintenance LTS stages and modern async Server Component type checking."
+  },
+  {
+    "term": "@next/codemod",
+    "description": "The official CLI tool that automates AST transformations such as awaiting async request APIs (next-async-request-api) and migrating middleware.ts to proxy.ts (middleware-to-proxy)."
+  },
+  {
+    "term": "revalidateTag(tag, profile) vs updateTag(tag)",
+    "description": "The two-argument revalidateTag API performs stale-while-revalidate invalidation using a cacheLife profile, whereas updateTag immediately expires cached data inside Server Actions."
+  },
+  {
+    "term": "Distributed cacheHandler",
+    "description": "A custom next.config.ts adapter that externalizes Next.js cache storage to a shared store like Redis so multiple self-hosted container replicas share invalidation events."
+  },
+  {
+    "term": "cacheMaxMemorySize: 0",
+    "description": "A next.config.ts setting that disables per-process in-memory LRU caching so multi-replica containers always read and invalidate through the shared external cacheHandler."
+  }
+]

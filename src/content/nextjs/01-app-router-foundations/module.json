@@ -1,0 +1,4 @@
+{
+  "title": "App Router Foundations: Routing, Layouts and Navigation",
+  "description": "Understand why Next.js extends React with file-system routing in the App Router, compose persistent nested layouts and per-navigation templates, link and synchronize URL state with navigation hooks, and contain loading, error, and not-found boundaries per segment."
+}

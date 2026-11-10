@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Partial Prerendering (PPR)",
+    "description": "A rendering model that serves an instant build-time static HTML shell while streaming dynamic request-time components into React `<Suspense>` boundaries within the same HTTP response."
+  },
+  {
+    "term": "Static Shell",
+    "description": "The portion of a route tree that does not depend on request-time APIs, including static components and the `<Suspense fallback>` markup for any dynamic holes."
+  },
+  {
+    "term": "Dynamic Hole",
+    "description": "An async Server Component subtree wrapped in `<Suspense>` that awaits `cookies()`, `headers()`, `searchParams`, or uncached data and streams in at request time."
+  },
+  {
+    "term": "Pushing Dynamic Reads Down",
+    "description": "Moving `await cookies()` or `await headers()` out of root layouts and pages into leaf Server Components wrapped in `<Suspense>` so the outer shell remains prerenderable."
+  },
+  {
+    "term": "Unguarded Dynamic Read",
+    "description": "Awaiting a dynamic request API in a component that has no ancestor `<Suspense>` boundary, forcing the route (or parent subtree) out of static shell prerendering."
+  }
+]

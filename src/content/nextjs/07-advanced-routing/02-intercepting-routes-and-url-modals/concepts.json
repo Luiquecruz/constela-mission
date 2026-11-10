@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Intercepting Route ((.), (..), (...))",
+    "description": "A Next.js folder convention that intercepts client-side navigations to another URL path and renders an alternate UI (such as a modal) within the current layout."
+  },
+  {
+    "term": "Route Segment vs. Filesystem Level",
+    "description": "Intercepting prefixes like (.) and (..) count URL route segments rather than physical folders, ignoring @slot and (group) directories completely."
+  },
+  {
+    "term": "Canonical Route Fallback",
+    "description": "The standard page.tsx route (e.g. app/photo/[id]/page.tsx) that renders a standalone page whenever a user visits the URL directly or refreshes the browser."
+  },
+  {
+    "term": "History-Aware Modal Dismissal",
+    "description": "Closing a URL-driven modal with router.back() when in-app history exists so the browser history stack unwinds cleanly back to the underlying page."
+  }
+]

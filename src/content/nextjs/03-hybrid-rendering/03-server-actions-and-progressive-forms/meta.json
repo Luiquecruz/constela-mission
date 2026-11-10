@@ -1,0 +1,21 @@
+{
+  "title": "Server Actions, <Form> and Optimistic Mutations",
+  "summary": "Build progressive GET search navigation with next/form and secure server-side mutations using 'use server' actions, input validation, and useActionState.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Updating Data with Server Actions and Form",
+      "url": "https://nextjs.org/docs/app/getting-started/updating-data"
+    },
+    {
+      "title": "Next.js API Reference: <Form> Component",
+      "url": "https://nextjs.org/docs/app/api-reference/components/form"
+    },
+    {
+      "title": "React Reference: useActionState",
+      "url": "https://react.dev/reference/react/useActionState"
+    }
+  ]
+}

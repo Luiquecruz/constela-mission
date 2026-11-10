@@ -87,6 +87,34 @@ Folder plan for every track. `✓` = written (the lesson folder exists with a `m
 ### 15-ecosystem — Frameworks and Beyond
 01-ssr-ssg-and-hydration (renderToString challenge) ✓ · 02-nextjs-and-meta-frameworks **(quiz)** ✓ · 03-react-native **(quiz)** ✓ · 04-security-and-xss ✓ · 05-accessibility ✓
 
+## Next.js (`src/content/nextjs`, engine `react`)
+
+Spec: `.claude/specs/trilha-aprendizado-nextjs.md`. Full-stack App Router architecture on the React engine (`"engine": "react"`), progressing from foundational framework mechanics to expert production architecture: file-system routing, layouts/templates, navigation and loading/error boundaries; data fetching, static vs dynamic rendering, basic Route Handlers, metadata/SEO and built-in optimizations (`next/image`, `next/font`, env vars) culminating in an intermediate content-site project; followed by Server and Client Component boundaries, streaming `<Suspense>`, Server Actions and `next/form`, async request APIs (`params`, `searchParams`, `cookies()`, `headers()`), Partial Prerendering and Data Access Layers, declarative caching (`'use cache'`, `cacheLife`, `cacheTag`, `revalidateTag`, `updateTag`), post-response execution (`after()`) and `instrumentation.ts`, Parallel and Intercepting Routes, Node.js `proxy.ts` and production migration. Every lesson has a 4–5 question quiz and ends with a **"When to choose it"** section; module 02 ends with an intermediate bridge project, modules 03, 05, 06 and 07 close with an **(adr)** checkpoint, and module 08 ends with a multi-file commerce capstone. Verified by `src/verify/nextjs.test.ts`.
+
+### 01-app-router-foundations — App Router Foundations: Routing, Layouts and Navigation
+01-what-is-nextjs-and-the-app-router **(quiz)** ✓ · 02-file-system-routing-and-dynamic-segments ✓ · 03-layouts-templates-and-nested-ui ✓ · 04-linking-and-navigation ✓ · 05-loading-error-and-not-found ✓
+
+### 02-data-rendering-and-optimizations — Data, Rendering and Built-in Optimizations
+01-fetching-data-in-server-components ✓ · 02-static-and-dynamic-rendering ✓ · 03-route-handlers-fundamentals ✓ · 04-metadata-and-seo-files ✓ · 05-images-fonts-styling-and-environment **(quiz)** ✓ · 06-project-content-site ✓
+
+### 03-hybrid-rendering — Hybrid Execution Model: RSC, Actions and React 19
+01-server-components-and-bundle-boundary ✓ · 02-streaming-suspense-and-waterfalls ✓ · 03-server-actions-and-progressive-forms ✓ · 04-hybrid-rendering-adr **(adr)** ✓
+
+### 04-async-request-apis — Async Request APIs, PPR and the Data Access Layer
+01-async-request-context ✓ · 02-partial-prerendering-and-dynamic-holes ✓ · 03-data-access-layer-and-request-memoization ✓ · 04-async-migration-and-codemods **(quiz)** ✓
+
+### 05-declarative-caching — Declarative Caching: use cache, cacheLife and Tags
+01-caching-paradigm-inversion **(quiz)** ✓ · 02-use-cache-and-cache-life-profiles ✓ · 03-tag-invalidation-and-read-your-writes ✓ · 04-caching-architecture-adr **(adr)** ✓
+
+### 06-post-response-and-observability — Post-Response Processing (after) and Observability
+01-after-post-response-lifecycle ✓ · 02-server-instrumentation-and-on-request-error ✓ · 03-route-handlers-and-webhooks ✓ · 04-observability-and-reliability-adr **(adr)** ✓
+
+### 07-advanced-routing — Advanced Routing: Parallel, Intercepting Routes and Error Boundaries
+01-parallel-routes-and-slot-states ✓ · 02-intercepting-routes-and-url-modals ✓ · 03-error-boundaries-not-found-and-slot-isolation ✓ · 04-routing-architecture-adr **(adr)** ✓
+
+### 08-proxy-migration-and-production — Network Proxy (proxy.ts), Production Hardening and Migration
+01-from-middleware-to-node-proxy ✓ · 02-metadata-images-and-security-headers **(quiz)** ✓ · 03-migration-playbook-and-runtime-lifecycle ✓ · 04-capstone-commerce-architecture ✓
+
 ## State Management (`src/content/react-state`, React and Angular variants)
 
 The public `react-state` id and existing React lesson keys are retained. Modules 01–04 demonstrate state concepts with React; modules 05 to 09 are an Angular path requiring Angular signals and dependency injection, not React. The last module compares ownership and tooling across frameworks and retains React-specific exercises and its React capstone. Each challenge declares the one framework it teaches through `variants/react` or `variants/angular`; the editor and grader use that variant engine. See [state-management-track.md](state-management-track.md).

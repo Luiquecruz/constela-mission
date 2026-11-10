@@ -1,0 +1,46 @@
+[
+  {
+    "question": "How are GET Route Handlers cached by default in modern Next.js (15+)?",
+    "options": [
+      "They are statically prerendered at build time unless dynamic = 'force-dynamic' is exported.",
+      "They are uncached by default and run dynamically on every request unless you explicitly opt into caching.",
+      "They are cached in the browser's localStorage for 60 seconds.",
+      "They are only cached when the request includes an Authorization header."
+    ],
+    "answer": 1,
+    "explanation": "In Next.js 15+, GET Route Handlers are uncached by default so API routes, health checks, and webhook endpoints always run dynamically unless explicitly opted into static caching."
+  },
+  {
+    "question": "Why should a webhook Route Handler read the body with await request.text() before parsing JSON?",
+    "options": [
+      "Because request.json() is deprecated in the Web Fetch specification.",
+      "Because cryptographic webhook signatures are computed over the exact raw request body bytes, and re-stringifying parsed JSON can alter whitespace or key order.",
+      "Because request.text() automatically validates the x-webhook-signature header.",
+      "Because JSON payloads larger than 1 KB cannot be parsed with request.json()."
+    ],
+    "answer": 1,
+    "explanation": "Webhook providers sign the exact raw byte payload sent over HTTP. Reading await request.text() lets you verify the signature against the exact string before calling JSON.parse()."
+  },
+  {
+    "question": "What happens if a webhook Route Handler calls revalidateTag() before verifying the x-webhook-signature header?",
+    "options": [
+      "Next.js automatically rolls back the cache invalidation if the handler later returns 401.",
+      "Unauthenticated callers can forge requests to purge your cache repeatedly, causing origin database overload and denial-of-wallet attacks.",
+      "revalidateTag() throws a runtime error when called before request.headers.get().",
+      "The webhook signature header is automatically deleted by next/cache."
+    ],
+    "answer": 1,
+    "explanation": "Cache invalidation takes effect immediately when revalidateTag() is invoked. Always authenticate the webhook signature and validate the payload before invalidating any cache tags."
+  },
+  {
+    "question": "Why is after() well-suited for writing webhook audit logs in a Route Handler after calling revalidateTag(tag, 'max')?",
+    "options": [
+      "Because after() encrypts the audit log payload before writing it.",
+      "Because it lets the Route Handler return a fast 202 response to the webhook provider while the audit log write completes in the background.",
+      "Because revalidateTag() only takes effect if an after() callback is registered in the same request.",
+      "Because after() converts a POST Route Handler into a static route."
+    ],
+    "answer": 1,
+    "explanation": "Webhook senders enforce tight response timeouts. Offloading non-critical audit trail persistence to after() keeps the HTTP response fast while ensuring the runtime waits for the log write via waitUntil()."
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Route Group ((group))",
+    "description": "A folder wrapped in parentheses that organizes app/ routes and shared layouts without appearing in the public URL path."
+  },
+  {
+    "term": "Private Folder (_folder)",
+    "description": "A folder prefixed with an underscore that opts itself and all nested subfolders completely out of Next.js routing."
+  },
+  {
+    "term": "Dynamic Segment ([param])",
+    "description": "A bracketed folder name that matches one variable URL segment and passes its string value inside params."
+  },
+  {
+    "term": "Catch-All Segment ([...param])",
+    "description": "A spread-bracket folder that captures one or more trailing URL segments into an array of strings."
+  },
+  {
+    "term": "Optional Catch-All ([[...param]])",
+    "description": "A double-bracket spread folder that matches zero or more trailing URL segments, including the parent route itself."
+  }
+]

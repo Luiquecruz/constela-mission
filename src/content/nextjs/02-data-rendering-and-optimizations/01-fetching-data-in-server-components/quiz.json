@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why does fetching data inside an async Server Component eliminate the initial-load waterfall common in React SPAs?",
+    "options": [
+      "Server Components automatically cache every database query in browser localStorage",
+      "The server awaits data directly before streaming rendered UI, removing the extra client mount -> useEffect -> API round-trip sequence",
+      "Next.js converts all async functions into synchronous Web Workers on the browser main thread",
+      "Server Components skip rendering child components until the user clicks a button"
+    ],
+    "answer": 1,
+    "explanation": "In an SPA, the browser must download JS, mount components, run useEffect, and then request JSON from an API. Async Server Components resolve data on the server before streaming UI."
+  },
+  {
+    "question": "Which value MUST be stripped or transformed before passing a raw database article record from a Server Component to a 'use client' component?",
+    "options": [
+      "An array of string tags such as ['nextjs', 'rsc']",
+      "A boolean flag indicating whether the article is published",
+      "A live database client handle, class method, or plain callback function attached to the record",
+      "A numeric initialLikes count"
+    ],
+    "answer": 2,
+    "explanation": "Live database clients, methods, and plain functions cannot cross the Server-to-Client serialization boundary. Always project an explicit DTO with serializable primitives, arrays, and plain objects."
+  },
+  {
+    "question": "Why is converting a Date field like publishedAt into an ISO-8601 string on the server recommended before passing it to a Client Component?",
+    "options": [
+      "ISO strings are JSON-safe primitives and prevent timezone-dependent hydration mismatches between server and client formatting",
+      "JavaScript Date objects are forbidden in TypeScript interfaces",
+      "Converting to a string automatically enables database indexing",
+      "Client Components cannot render <time> elements unless given a Date object"
+    ],
+    "answer": 0,
+    "explanation": "Normalizing Date values to ISO-8601 strings keeps DTOs pure JSON and ensures deterministic string output across server and browser timezones."
+  },
+  {
+    "question": "When is client-side fetching still preferable to fetching inside an async Server Component?",
+    "options": [
+      "When querying a PostgreSQL database using a secret connection string",
+      "When reading static documentation pages that rarely change",
+      "Whenever a page renders more than two paragraphs of text",
+      "When powering live client interactions after mount such as debounced typeahead search or real-time polling"
+    ],
+    "answer": 3,
+    "explanation": "Initial page data belongs in Server Components, while continuous post-mount interactions driven by browser input or polling benefit from client-side fetching."
+  }
+]

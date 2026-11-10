@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Route Handler",
+    "description": "A server-side HTTP endpoint defined in a route.ts file using Web-standard Request and Response objects."
+  },
+  {
+    "term": "Named HTTP Export",
+    "description": "An exported async function named GET, POST, PUT, PATCH, or DELETE in route.ts that handles matching HTTP method requests."
+  },
+  {
+    "term": "URLSearchParams",
+    "description": "The standard Web API accessed via new URL(request.url).searchParams to read query string filters safely."
+  },
+  {
+    "term": "Route Conflict Rule",
+    "description": "The App Router constraint prohibiting page.tsx and route.ts from living in the same route folder because both claim the same URL."
+  },
+  {
+    "term": "Server Action vs Route Handler",
+    "description": "The architectural split between UI-bound React form mutations using Server Actions and public HTTP APIs or webhooks using Route Handlers."
+  }
+]

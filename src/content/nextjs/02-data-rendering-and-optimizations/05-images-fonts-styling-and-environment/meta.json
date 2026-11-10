@@ -1,0 +1,24 @@
+{
+  "title": "Images, Fonts, Scripts, Styling, and Environment Variables",
+  "summary": "Optimize Core Web Vitals with next/image and next/font, schedule third-party scripts with next/script, style Server Components with zero-runtime CSS, and enforce NEXT_PUBLIC_ vs. server-only environment boundaries.",
+  "level": "intermediate",
+  "tags": ["core", "foundations", "theory"],
+  "resources": [
+    {
+      "title": "Next.js Docs: Image Optimization",
+      "url": "https://nextjs.org/docs/app/api-reference/components/image"
+    },
+    {
+      "title": "Next.js Docs: Font Optimization",
+      "url": "https://nextjs.org/docs/app/api-reference/components/font"
+    },
+    {
+      "title": "Next.js Docs: Script Component",
+      "url": "https://nextjs.org/docs/app/api-reference/components/script"
+    },
+    {
+      "title": "Next.js Docs: Environment Variables",
+      "url": "https://nextjs.org/docs/app/guides/environment-variables"
+    }
+  ]
+}

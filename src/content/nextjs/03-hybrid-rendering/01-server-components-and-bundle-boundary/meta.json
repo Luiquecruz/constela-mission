@@ -1,0 +1,21 @@
+{
+  "title": "Server Components and the Bundle Boundary",
+  "summary": "Separate Server Components from Client Components using the 'use client' bundle boundary, sanitize DTOs across React Flight serialization, and compose server-rendered slots via children.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "title": "Next.js Docs: Server and Client Components",
+      "url": "https://nextjs.org/docs/app/getting-started/server-and-client-components"
+    },
+    {
+      "title": "React Reference: 'use client' directive",
+      "url": "https://react.dev/reference/rsc/use-client"
+    },
+    {
+      "title": "React Reference: Server Components",
+      "url": "https://react.dev/reference/rsc/server-components"
+    }
+  ]
+}

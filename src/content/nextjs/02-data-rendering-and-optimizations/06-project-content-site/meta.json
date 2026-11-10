@@ -1,0 +1,26 @@
+{
+  "title": "Project: Next.js Engineering Content Site",
+  "summary": "Build a multi-file Next.js engineering blog combining serializable server DTO fetchers, static route matching with generateStaticParams, dynamic metadata templates and sitemaps, and a persistent root layout shell.",
+  "level": "intermediate",
+  "tags": ["core", "modern", "practice"],
+  "preview": true,
+  "entry": "App.tsx",
+  "resources": [
+    {
+      "title": "Next.js Docs: Layouts and Pages",
+      "url": "https://nextjs.org/docs/app/getting-started/layouts-and-pages"
+    },
+    {
+      "title": "Next.js Docs: Fetching Data",
+      "url": "https://nextjs.org/docs/app/getting-started/fetching-data"
+    },
+    {
+      "title": "Next.js Docs: Metadata and OG Images",
+      "url": "https://nextjs.org/docs/app/getting-started/metadata-and-og-images"
+    },
+    {
+      "title": "Next.js API Reference: generateStaticParams",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/generate-static-params"
+    }
+  ]
+}

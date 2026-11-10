@@ -1,0 +1,4 @@
+1. **Preserve unrelated query parameters**: Construct `new URLSearchParams(currentSearch)`, delete `key` when `value` is nullish or blank, otherwise set `key` to `value`, and return `params.toString()`.
+2. **Guard protected routes on the server**: In `guardAuthRoute`, check `!session?.userId`; if unauthenticated, call `redirect('/login?next=' + encodeURIComponent(targetPath))`. Otherwise return `{ allowed: true, userId: session.userId }`.
+3. **Accessible `<NavBar />`**: Invoke the injected `usePathname()` hook, compare `pathname === item.href`, set `aria-current="page"` on the active `<a>` tag, and delegate clicks to `onNavigate(item.href)`.
+4. **Interactive `<DocsNavApp />` router simulation**: Maintain a history stack of `{ pathname, search }` entries supporting `push`, `replace`, and `back`. Before navigating to `/dashboard`, run `guardAuthRoute` and redirect to `/login?next=%2Fdashboard` when signed out.

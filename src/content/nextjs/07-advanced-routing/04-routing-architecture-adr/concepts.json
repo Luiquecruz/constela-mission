@@ -1,0 +1,18 @@
+[
+  {
+    "term": "Route Group Shell Partitioning",
+    "description": "Using parenthesized folders such as (marketing) and (console) to give distinct application sections separate layouts without adding URL prefixes, keeping public and workspace URLs clean while isolating navigation chrome and layout bundles."
+  },
+  {
+    "term": "Parallel Slot Fault Isolation",
+    "description": "Defining @invoices and @usage parallel slots with independent loading.tsx and error.tsx boundaries so one dashboard panel can fail and retry without unmounting healthy sibling panels."
+  },
+  {
+    "term": "Dual-Context Intercepted Modal",
+    "description": "Pairing a @modal parallel slot with an intercepting route like (.)asset/[id] alongside a canonical /asset/[id] route to preserve background context in an overlay on soft navigation while rendering a full standalone page on hard reload."
+  },
+  {
+    "term": "Hard-Reload Slot Fallback (default.tsx)",
+    "description": "Providing a default.tsx file in every parallel @slot directory to supply a deterministic fallback on hard reloads when a sibling slot's sub-route is active, preventing build failures from missing slot defaults."
+  }
+]

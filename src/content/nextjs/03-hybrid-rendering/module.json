@@ -1,0 +1,5 @@
+{
+  "title": "Hybrid Execution Model: RSC, Actions and React 19",
+  "description": "Run Server Components on the server to keep bundles small and secrets off the client, stream progressive UI with Suspense without waterfalls, and handle mutations with Server Actions, next/form and React 19 optimistic hooks."
+}
+

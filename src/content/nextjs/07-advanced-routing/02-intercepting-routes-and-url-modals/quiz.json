@@ -1,0 +1,46 @@
+[
+  {
+    "question": "If your canonical photo route is `app/photo/[id]/page.tsx` and your modal slot is at the root `app/@modal`, what folder path inside `app/@modal` intercepts `/photo/[id]`?",
+    "options": [
+      "app/@modal/(..)/photo/[id]/page.tsx",
+      "app/@modal/(.)photo/[id]/page.tsx",
+      "app/@modal/(..)(..)photo/[id]/page.tsx",
+      "app/@modal/@photo/[id]/page.tsx"
+    ],
+    "answer": 1,
+    "explanation": "Because `@modal` is a parallel slot rather than a URL route segment, `app/@modal` is at the same root URL segment level as `app/photo/[id]`, so `(.)photo/[id]` is used."
+  },
+  {
+    "question": "What happens when a user opens `/photo/42` in an intercepted modal from `/feed` and then presses the browser Refresh button?",
+    "options": [
+      "The browser re-renders both `/feed` and the modal overlay.",
+      "Next.js bypasses the intercepting route on a hard request and renders the canonical `app/photo/[id]/page.tsx` standalone page.",
+      "Next.js redirects the user back to `/feed`.",
+      "Next.js throws a 404 error unless `(.)photo/[id]` has its own `default.tsx`."
+    ],
+    "answer": 1,
+    "explanation": "Intercepting routes only activate on soft client-side navigation. A hard navigation or refresh requests `/photo/42` from the server, rendering the canonical `app/photo/[id]/page.tsx`."
+  },
+  {
+    "question": "Why is `router.back()` preferred over `router.push('/feed')` when dismissing a modal that was opened via soft navigation from `/feed`?",
+    "options": [
+      "`router.push` always triggers a full browser reload.",
+      "`router.back()` pops the modal's URL entry off the history stack and restores the previous slot state without duplicating `/feed` in browser history.",
+      "`router.push` cannot be called inside Client Components.",
+      "`router.back()` automatically prefetches all images on `/feed`."
+    ],
+    "answer": 1,
+    "explanation": "Using `router.back()` reverses the soft navigation that opened the modal, unwinding the history stack cleanly and restoring `@modal` to its previous `null` state."
+  },
+  {
+    "question": "Which intercepting prefix matches a route starting from the root `app/` directory regardless of how deeply nested the current route segment is?",
+    "options": [
+      "(.)",
+      "(..)",
+      "(..)(..)",
+      "(...)"
+    ],
+    "answer": 3,
+    "explanation": "The `(...)` convention matches route segments relative to the root `app` directory, similar to an absolute path."
+  }
+]

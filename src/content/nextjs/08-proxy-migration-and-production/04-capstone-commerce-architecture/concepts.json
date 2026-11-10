@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Tagged Catalog Cache",
+    "description": "A caching boundary around Data Access Layer queries that associates cached results with semantic tags like 'catalog-products' for targeted invalidation."
+  },
+  {
+    "term": "DTO Sanitization",
+    "description": "The practice of mapping raw database rows to explicit Data Transfer Objects inside the DAL so sensitive fields like supplierSecret never leak to the client."
+  },
+  {
+    "term": "Read-Your-Own-Writes (updateTag)",
+    "description": "Immediate synchronous cache expiration inside a Server Action so the subsequent read in the same mutation lifecycle returns freshly updated data."
+  },
+  {
+    "term": "Post-Response Audit Hook (after)",
+    "description": "A non-blocking callback scheduled during a Server Action or render that executes side effects such as audit logging after the response has been sent."
+  },
+  {
+    "term": "Intercepted Quick-View (@modal)",
+    "description": "A parallel route slot combined with route interception that renders a product detail view inside an accessible dialog overlay without leaving the storefront page."
+  }
+]

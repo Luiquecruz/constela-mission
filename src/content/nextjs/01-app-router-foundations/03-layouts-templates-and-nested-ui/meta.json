@@ -1,0 +1,21 @@
+{
+  "title": "Layouts, Templates and Nested UI",
+  "summary": "Compose root and nested layout.tsx shells that preserve React state across sibling navigations, and choose template.tsx when segments require a fresh component instance per visit.",
+  "level": "beginner",
+  "tags": ["core", "foundations", "practice"],
+  "preview": true,
+  "resources": [
+    {
+      "label": "Next.js Docs: Layouts and Pages",
+      "url": "https://nextjs.org/docs/app/getting-started/layouts-and-pages"
+    },
+    {
+      "label": "Next.js File Conventions: layout.js",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/layout"
+    },
+    {
+      "label": "Next.js File Conventions: template.js",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/template"
+    }
+  ]
+}

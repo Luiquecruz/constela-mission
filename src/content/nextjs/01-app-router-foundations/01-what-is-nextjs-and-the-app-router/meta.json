@@ -1,0 +1,20 @@
+{
+  "title": "What Is Next.js and the App Router?",
+  "summary": "Understand what Next.js adds on top of React, how the App Router compares to the legacy Pages Router, the core project anatomy, and the default Server vs. Client Component split.",
+  "level": "beginner",
+  "tags": ["core", "foundations", "theory"],
+  "resources": [
+    {
+      "label": "Next.js Docs: Project Structure",
+      "url": "https://nextjs.org/docs/app/getting-started/project-structure"
+    },
+    {
+      "label": "Next.js Docs: Layouts and Pages",
+      "url": "https://nextjs.org/docs/app/getting-started/layouts-and-pages"
+    },
+    {
+      "label": "Next.js Docs: Server and Client Components",
+      "url": "https://nextjs.org/docs/app/getting-started/server-and-client-components"
+    }
+  ]
+}

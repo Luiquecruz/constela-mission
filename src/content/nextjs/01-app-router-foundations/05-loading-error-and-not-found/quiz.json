@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why does Next.js require the 'use client' directive at the top of every error.tsx file?",
+    "options": [
+      "error.tsx must access window.alert directly on the server",
+      "React Error Boundaries rely on client-side error lifecycle hooks and interactive recovery callbacks like reset()",
+      "Server Components are forbidden from rendering JSX paragraphs or buttons",
+      "Only Client Components are allowed to display HTTP 404 pages"
+    ],
+    "answer": 1,
+    "explanation": "React Error Boundaries catch client/rendering exceptions in the browser and expose interactive retry handlers like reset(), so Next.js requires error.tsx to be a Client Component."
+  },
+  {
+    "question": "In the App Router segment hierarchy, what happens if app/dashboard/layout.tsx itself throws an error?",
+    "options": [
+      "app/dashboard/error.tsx catches it automatically",
+      "app/dashboard/loading.tsx catches it and shows a spinner",
+      "app/dashboard/error.tsx does NOT catch it because layout.tsx wraps error.tsx; a parent error.tsx or global-error.tsx handles it",
+      "Next.js automatically converts the error into notFound()"
+    ],
+    "answer": 2,
+    "explanation": "Inside a folder, layout.tsx wraps error.tsx. Therefore, errors thrown in a segment's layout.tsx bubble up to the parent segment's error.tsx (or app/global-error.tsx for the root layout)."
+  },
+  {
+    "question": "A dynamic route app/courses/[slug]/page.tsx queries the database and gets null. What should the Server Component call?",
+    "options": [
+      "throw new Error('404')",
+      "notFound() from 'next/navigation'",
+      "reset() from 'next/navigation'",
+      "loading() from 'react'"
+    ],
+    "answer": 1,
+    "explanation": "Calling notFound() from next/navigation aborts rendering cleanly and renders the nearest not-found.tsx with HTTP 404 semantics rather than crashing into an unexpected 500 error boundary."
+  },
+  {
+    "question": "What is the exact nesting order of App Router boundary files from outermost to innermost within a segment?",
+    "options": [
+      "error -> layout -> template -> loading -> not-found -> page",
+      "layout -> loading -> error -> template -> not-found -> page",
+      "layout -> template -> error -> loading -> not-found -> page",
+      "template -> layout -> not-found -> error -> loading -> page"
+    ],
+    "answer": 2,
+    "explanation": "Next.js wraps each segment in order from outermost to innermost: layout -> template -> error (ErrorBoundary) -> loading (Suspense) -> not-found -> page."
+  }
+]

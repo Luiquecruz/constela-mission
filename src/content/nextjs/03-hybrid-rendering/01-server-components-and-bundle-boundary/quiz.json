@@ -1,0 +1,46 @@
+[
+  {
+    "question": "What happens when a file marked with 'use client' imports a helper utility module that does NOT have a 'use client' directive?",
+    "options": [
+      "Next.js throws a build error unless the helper utility also declares 'use client'",
+      "The helper utility remains on the server and its return values are fetched over HTTP",
+      "The helper utility becomes part of the client JavaScript bundle because 'use client' marks the boundary entry point for all transitive imports",
+      "The helper utility runs once at build time and is stripped from the browser bundle"
+    ],
+    "answer": 2,
+    "explanation": "'use client' sits at the boundary between server and client module graphs. Once a file declares 'use client', every module it imports is transitively bundled for the browser."
+  },
+  {
+    "question": "A Client Component <CollapsibleDrawer> needs to render a Server Component <ProductSpecsTable> that queries the database directly. How should you compose them?",
+    "options": [
+      "Import <ProductSpecsTable> directly inside CollapsibleDrawer.tsx and mark ProductSpecsTable with 'use server'",
+      "Render <ProductSpecsTable /> inside a parent Server Component and pass it to <CollapsibleDrawer> via the children prop or a ReactNode slot prop",
+      "Serialize the component function using JSON.stringify and pass it as a string prop",
+      "Add 'use client' to <ProductSpecsTable> so both components share the same execution environment"
+    ],
+    "answer": 1,
+    "explanation": "Client Components cannot import Server Components directly, nor does 'use server' create a Server Component (it creates Server Actions). Passing the rendered Server Component as a ReactNode prop or children allows the server to evaluate it first and stream the result into the client slot."
+  },
+  {
+    "question": "Which of the following values CANNOT be passed as a prop from a Server Component to a Client Component?",
+    "options": [
+      "A plain JavaScript callback function such as (id) => console.log(id) defined inside the Server Component",
+      "An async function marked with the 'use server' directive (a Server Action)",
+      "A rendered JSX element (<ServerBadge />) passed via a slot prop",
+      "A Promise created on the server to be unwrapped with React's use() hook on the client"
+    ],
+    "answer": 0,
+    "explanation": "Plain JavaScript functions cannot be serialized across the React Flight boundary because they may close over server memory. Only functions marked with 'use server' (Server Actions) can cross the boundary as callable references."
+  },
+  {
+    "question": "Why is passing a full database entity directly to a Client Component (<ProductCard product={dbProduct} />) dangerous even if the Client Component only renders product.name?",
+    "options": [
+      "React automatically deletes unused properties on the client, causing hydration mismatches",
+      "Every enumerable property on dbProduct is serialized into the RSC payload sent over the network, exposing sensitive fields in browser DevTools",
+      "Database entities contain Promises that crash the V8 garbage collector on the client",
+      "Next.js refuses to compile any component that receives more than five object properties"
+    ],
+    "answer": 1,
+    "explanation": "Next.js serializes the entire prop object passed across the 'use client' boundary into the RSC stream and HTML payload. Any sensitive field on the object (like supplierCost or internalSku) becomes publicly visible in the browser network inspector."
+  }
+]

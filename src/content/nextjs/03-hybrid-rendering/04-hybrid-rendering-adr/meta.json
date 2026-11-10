@@ -1,0 +1,22 @@
+{
+  "title": "Checkpoint: Hybrid Rendering ADR",
+  "summary": "Author an Architecture Decision Record for migrating PulseCommerce's product catalog to Next.js Server Components, Client Component leaves, and progressive next/form navigation.",
+  "level": "advanced",
+  "tags": ["core", "theory", "practice"],
+  "preview": false,
+  "entry": "adr.ts",
+  "resources": [
+    {
+      "title": "Next.js Docs: Server and Client Components",
+      "url": "https://nextjs.org/docs/app/getting-started/server-and-client-components"
+    },
+    {
+      "title": "Next.js API Reference: <Form> Component",
+      "url": "https://nextjs.org/docs/app/api-reference/components/form"
+    },
+    {
+      "title": "Architectural Decision Records (ADR GitHub Organization)",
+      "url": "https://adr.github.io/"
+    }
+  ]
+}

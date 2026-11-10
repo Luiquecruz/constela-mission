@@ -1,0 +1,22 @@
+[
+  {
+    "term": "after() Post-Response Hook",
+    "description": "A Next.js server function imported from next/server that schedules a callback to execute after the current HTTP response or prerender finishes flushing to the client."
+  },
+  {
+    "term": "waitUntil() Lifecycle Primitive",
+    "description": "The underlying runtime mechanism used by serverless and edge platforms to keep an execution context alive after the HTTP response stream closes until registered background promises settle."
+  },
+  {
+    "term": "Header & Cookie Immutability Window",
+    "description": "Once the response headers are committed and the lifecycle enters the after() execution phase, reading request headers or cookies remains allowed, but mutating cookies throws an error."
+  },
+  {
+    "term": "Control-Flow Exception Survival",
+    "description": "Because after() registers callbacks in request-scoped AsyncLocalStorage prior to control-flow throws, scheduled callbacks still run when redirect() or notFound() aborts the handler early."
+  },
+  {
+    "term": "Nested Post-Response Queue",
+    "description": "An after() callback can invoke after() again during its execution, appending follow-up tasks to the same request-scoped queue before waitUntil() resolves."
+  }
+]

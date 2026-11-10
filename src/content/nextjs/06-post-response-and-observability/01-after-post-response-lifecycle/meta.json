@@ -1,0 +1,21 @@
+{
+  "title": "Post-Response Execution with after()",
+  "summary": "Schedule non-blocking side effects after the HTTP response or prerender finishes using next/server after(), while respecting cookie immutability and platform waitUntil() semantics.",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Documentation: after() Function Reference",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/after"
+    },
+    {
+      "title": "Next.js Documentation: cookies() Function Reference",
+      "url": "https://nextjs.org/docs/app/api-reference/functions/cookies"
+    },
+    {
+      "title": "MDN Web Docs: ExtendableEvent.waitUntil()",
+      "url": "https://developer.mozilla.org/en-US/docs/Web/API/ExtendableEvent/waitUntil"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "term": "instrumentation.ts",
+    "description": "A special root-level Next.js file used to bootstrap server-side observability SDKs and register global request error hooks across Node.js and Edge runtimes."
+  },
+  {
+    "term": "register() Lifecycle Hook",
+    "description": "An exported function in instrumentation.ts invoked once per server instance startup to initialize OpenTelemetry tracers, metrics exporters, or runtime-specific monitoring agents."
+  },
+  {
+    "term": "NEXT_RUNTIME Environment Variable",
+    "description": "An environment variable set by Next.js to 'nodejs' or 'edge', used inside register() to conditionally import runtime-compatible telemetry libraries."
+  },
+  {
+    "term": "onRequestError(err, request, context)",
+    "description": "An instrumentation hook triggered on any uncaught server error across RSC rendering, Route Handlers, Server Actions, or Middleware, providing the error digest, request metadata, and route context."
+  },
+  {
+    "term": "Error Digest Correlation",
+    "description": "A deterministic hash attached to server errors (err.digest) that is safe to expose to client error.tsx boundaries while linking directly to the full stack trace captured by onRequestError."
+  }
+]

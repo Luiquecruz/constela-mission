@@ -1,0 +1,22 @@
+[
+  {
+    "term": "generateMetadata",
+    "description": "An async App Router function exported from a page.tsx or layout.tsx file that awaits route params and returns dynamic SEO and Open Graph metadata."
+  },
+  {
+    "term": "images.qualities",
+    "description": "An explicit allowlist in next.config.ts (defaulting to [75]) that restricts which quality values the Next.js Image Optimization API will accept, preventing CDN cache fragmentation."
+  },
+  {
+    "term": "images.minimumCacheTTL",
+    "description": "The minimum duration in seconds (defaulting to 14400, or 4 hours) that Next.js caches optimized remote images when upstream origin Cache-Control headers do not specify a longer TTL."
+  },
+  {
+    "term": "images.remotePatterns",
+    "description": "A security allowlist in next.config.ts specifying the exact protocol, hostname, port, and pathname globs permitted for external image optimization."
+  },
+  {
+    "term": "CSP Nonce via proxy.ts",
+    "description": "A per-request cryptographic token generated in proxy.ts and forwarded via x-nonce and Content-Security-Policy headers so Next.js and inline scripts can execute safely without unsafe-inline."
+  }
+]

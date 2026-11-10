@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Async Server Component",
+    "description": "A React component running exclusively on the server that can await databases or fetch calls directly inside its function body before rendering."
+  },
+  {
+    "term": "Fetch Waterfall",
+    "description": "Sequential data requests where a child component waits for a parent render or effect to finish before starting its own network call."
+  },
+  {
+    "term": "Serialization Boundary",
+    "description": "The transition from Server Components to 'use client' components where every passed prop must be serializable rather than a live database handle or plain function."
+  },
+  {
+    "term": "Data Transfer Object (DTO)",
+    "description": "A plain, explicit object shape containing only the sanitized, serializable fields a Client Component needs to render."
+  },
+  {
+    "term": "Co-located Data Fetching",
+    "description": "Placing a data read directly inside the Server Component that renders the data instead of hoisting all requests into a top-level client effect."
+  }
+]

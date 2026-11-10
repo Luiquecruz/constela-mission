@@ -1,0 +1,21 @@
+{
+  "title": "Server Observability with instrumentation.ts and onRequestError",
+  "summary": "Bootstrap runtime-aware OpenTelemetry SDKs once on startup with register() and capture structured, credential-redacted server error payloads with onRequestError().",
+  "level": "advanced",
+  "tags": ["core", "modern", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Documentation: instrumentation.ts File Convention",
+      "url": "https://nextjs.org/docs/app/api-reference/file-conventions/instrumentation"
+    },
+    {
+      "title": "Next.js Guide: OpenTelemetry Instrumentation",
+      "url": "https://nextjs.org/docs/app/guides/open-telemetry"
+    },
+    {
+      "title": "OpenTelemetry JavaScript Documentation",
+      "url": "https://opentelemetry.io/docs/languages/js/"
+    }
+  ]
+}

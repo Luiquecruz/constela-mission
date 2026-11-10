@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Route Handler (route.ts)",
+    "description": "An App Router file convention that exports HTTP verb functions (GET, POST, PUT, DELETE, PATCH) built on standard Web Request and Response APIs."
+  },
+  {
+    "term": "Dynamic-by-Default GET",
+    "description": "In modern Next.js, GET Route Handlers execute dynamically on every request unless explicitly configured for static caching."
+  },
+  {
+    "term": "Raw Body Signature Verification",
+    "description": "Reading the unparsed request body via request.text() to validate a cryptographic webhook signature before parsing JSON or mutating server state."
+  },
+  {
+    "term": "revalidateTag(tag, profile)",
+    "description": "A next/cache API that marks tagged cache entries as stale using a cache life profile such as 'max' for background stale-while-revalidate refresh."
+  },
+  {
+    "term": "Post-Webhook Audit Offloading",
+    "description": "Scheduling secondary webhook audit logging inside after() so the external webhook provider receives an immediate 2xx acknowledgment."
+  }
+]

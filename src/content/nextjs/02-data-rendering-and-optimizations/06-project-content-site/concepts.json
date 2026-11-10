@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Persistent Root Layout",
+    "description": "The top-level App Router shell wrapping pages that stays mounted across route navigations and preserves UI state."
+  },
+  {
+    "term": "Serializable Post DTO",
+    "description": "A plain JSON-safe article data object containing primitive fields and ISO date strings safe to cross Server-to-Client boundaries."
+  },
+  {
+    "term": "Dynamic Route Matcher",
+    "description": "Logic mapping URL pathnames such as '/' and '/articles/[slug]' to structured route views or a not-found fallback."
+  },
+  {
+    "term": "Title Template Inheritance",
+    "description": "Applying a root format pattern such as '%s | Constela Press' to child article titles while preserving a default home title."
+  },
+  {
+    "term": "Accessible Active Link",
+    "description": "Marking the currently active navigation link with aria-current='page' so screen readers and users know their active location."
+  }
+]

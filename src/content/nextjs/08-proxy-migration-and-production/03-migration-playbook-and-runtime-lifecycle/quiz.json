@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Which minimum Node.js and TypeScript versions are required before upgrading a project to Next.js 16?",
+    "options": [
+      "Node.js 16.14.0+ and TypeScript 4.5.0+",
+      "Node.js 20.9.0+ and TypeScript 5.1.0+",
+      "Node.js 18.0.0+ and TypeScript 3.9.0+",
+      "Deno 1.0+ only, as Node.js is no longer supported"
+    ],
+    "answer": 1,
+    "explanation": "Next.js 16 requires at least Node.js 20.9.0 (tracking Active and Maintenance LTS baselines) and TypeScript 5.1.0 for async Server Component types."
+  },
+  {
+    "question": "Which codemod automatically transforms synchronous accesses to params, searchParams, cookies(), and headers() into awaited Promises?",
+    "options": [
+      "npx @next/codemod@canary next-async-request-api .",
+      "npx @next/codemod@canary pages-to-app-router .",
+      "npx @next/codemod@canary remove-get-initial-props .",
+      "npx @next/codemod@canary built-in-next-font ."
+    ],
+    "answer": 0,
+    "explanation": "The next-async-request-api codemod scans routes, layouts, and server utilities to insert async/await around dynamic request APIs."
+  },
+  {
+    "question": "How must legacy single-argument revalidateTag('catalog') calls be updated in Next.js 16?",
+    "options": [
+      "Replace them with window.location.reload() inside Server Components",
+      "Pass a cacheLife profile as a second argument—such as revalidateTag('catalog', 'max')—or switch to updateTag('catalog') in Server Actions for immediate consistency",
+      "Pass a numeric HTTP status code as the first argument",
+      "Wrap them inside middleware.ts matcher arrays"
+    ],
+    "answer": 1,
+    "explanation": "Single-argument revalidateTag is deprecated; Next.js 16 requires a cacheLife profile second argument for background revalidation or updateTag(tag) in Server Actions."
+  },
+  {
+    "question": "Why must a self-hosted deployment running across 3 Kubernetes pods configure a custom cacheHandler in next.config.ts?",
+    "options": [
+      "Because Kubernetes blocks Node.js from reading environment variables without a cacheHandler",
+      "Because the default filesystem and in-memory cache is isolated per container, meaning tag invalidations on one pod will not invalidate stale cache entries on the other pods",
+      "Because Turbopack refuses to compile TypeScript files when replicas exceed one",
+      "Because next/font requires Redis to serve WOFF2 files"
+    ],
+    "answer": 1,
+    "explanation": "Without a shared cacheHandler (and cacheMaxMemorySize: 0), each container replica maintains its own isolated local cache and misses invalidation events triggered on sibling pods."
+  }
+]

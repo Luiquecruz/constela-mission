@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Viewport Prefetching (<Link>)",
+    "description": "Automatic background fetching performed by Next.js when a <Link> component enters the viewport so route transitions resolve immediately on click."
+  },
+  {
+    "term": "usePathname()",
+    "description": "A Client Component hook from next/navigation that returns the current URL pathname without query parameters for active navigation states."
+  },
+  {
+    "term": "useSearchParams()",
+    "description": "A Client Component hook returning a read-only URLSearchParams object used to read and clone query parameters without clobbering other filters."
+  },
+  {
+    "term": "useRouter() (next/navigation)",
+    "description": "A Client Component hook providing imperative navigation methods including push, replace, back, forward, and refresh."
+  },
+  {
+    "term": "redirect() vs. permanentRedirect()",
+    "description": "Server-side navigation helpers that throw a control-flow signal to issue a temporary 307/303 redirect or a cached 308 permanent redirect."
+  }
+]

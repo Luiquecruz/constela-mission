@@ -1,0 +1,18 @@
+[
+  {
+    "term": "error.tsx Client Boundary",
+    "description": "A Client Component ('use client') file convention that wraps a route segment or parallel slot in a React Error Boundary, receiving { error, reset } props."
+  },
+  {
+    "term": "notFound() and not-found.tsx",
+    "description": "The Next.js function and file convention used to abort rendering of a route segment when a requested entity does not exist, displaying a contextual 404 UI instead of an error boundary."
+  },
+  {
+    "term": "Parallel Slot Fault Isolation",
+    "description": "Placing separate error.tsx and not-found.tsx boundaries inside @slot directories so a failure in one dashboard panel leaves sibling panels mounted and interactive."
+  },
+  {
+    "term": "global-error.tsx",
+    "description": "The root-level error boundary that catches errors thrown in the root app/layout.tsx and must define its own <html> and <body> tags."
+  }
+]

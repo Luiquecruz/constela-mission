@@ -1,0 +1,57 @@
+[
+  {
+    "question": "Why does next/image require configuring `images.remotePatterns` in next.config.ts for external image URLs?",
+    "options": [
+      "To prevent your Next.js image optimizer from acting as an open proxy that fetches and processes arbitrary malicious third-party URLs",
+      "Because browsers refuse to render HTTPS images without a server-side allowlist",
+      "To convert all PNG files into SVG vectors during development",
+      "Because next/image disables caching unless remotePatterns has at least three hostnames"
+    ],
+    "answer": 0,
+    "explanation": "Allowlisting explicit hostnames and paths in remotePatterns protects your server from being abused as an open image-optimization proxy for untrusted external URLs."
+  },
+  {
+    "question": "Which combination of next/image props is best for an above-the-fold hero banner inside a fixed-aspect responsive container?",
+    "options": [
+      "loading='lazy' without width, height, or sizes",
+      "priority paired with explicit width/height (or fill + sizes) so the browser preloads the LCP asset and reserves space to prevent CLS",
+      "unoptimized={true} on every image across the entire site",
+      "omitting alt text so the image decodes faster"
+    ],
+    "answer": 1,
+    "explanation": "Setting priority preloads the above-the-fold LCP image instead of lazy-loading it, while width/height or fill + sizes prevents Cumulative Layout Shift and serves appropriately sized srcset candidates."
+  },
+  {
+    "question": "How does next/font eliminate external font network waterfalls and layout shift in production?",
+    "options": [
+      "It renders all typography inside HTML <canvas> elements",
+      "It skips custom fonts on mobile devices and forces Times New Roman",
+      "It downloads and self-hosts font files at build time and applies automatic size-adjust fallback CSS metrics",
+      "It injects a blocking synchronous XHR request inside beforeInteractive scripts"
+    ],
+    "answer": 2,
+    "explanation": "next/font bundles font assets at build time so no runtime request goes to external font CDNs, and computes fallback font metrics to prevent layout shifts."
+  },
+  {
+    "question": "Which next/script strategy should you choose for a non-critical customer support chat widget so it does not delay hydration?",
+    "options": [
+      "beforeInteractive",
+      "afterInteractive",
+      "syncBlocking",
+      "lazyOnload"
+    ],
+    "answer": 3,
+    "explanation": "lazyOnload defers loading non-essential scripts like chat widgets until browser idle time after page resources have loaded, keeping hydration fast."
+  },
+  {
+    "question": "What happens if you name a database password `NEXT_PUBLIC_DB_PASSWORD` and reference it inside a Client Component?",
+    "options": [
+      "Next.js throws a compile error and deletes the variable",
+      "Next.js inlines the secret string directly into the public client JavaScript bundle at build time, exposing it to every visitor",
+      "Next.js encrypts the variable using the user's session cookie",
+      "The variable evaluates to undefined in the browser because passwords are filtered automatically"
+    ],
+    "answer": 1,
+    "explanation": "Any environment variable prefixed with NEXT_PUBLIC_ is statically embedded into the browser JavaScript bundle at build time. Secrets must remain unprefixed and stay strictly on the server."
+  }
+]

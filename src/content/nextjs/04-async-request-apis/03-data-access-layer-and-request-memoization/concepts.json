@@ -1,0 +1,22 @@
+[
+  {
+    "term": "Data Access Layer (DAL)",
+    "description": "A dedicated server-only module boundary that centralizes session verification, authorization rules, database queries, and safe DTO projection."
+  },
+  {
+    "term": "React.cache() Request Memoization",
+    "description": "A React API that deduplicates calls to an async or synchronous function with identical arguments within a single server request render pass."
+  },
+  {
+    "term": "Safe Data Transfer Object (DTO)",
+    "description": "A narrowed plain object returned by the DAL that includes only the fields safe for UI consumption, stripping secrets such as `passwordHash` or `supplierCost`."
+  },
+  {
+    "term": "Per-Request Cache Isolation",
+    "description": "Scoping memoized results to a single incoming HTTP request so that authenticated user or tenant state is never shared across different visitors."
+  },
+  {
+    "term": "server-only Guard",
+    "description": "A package import (`import 'server-only'`) that triggers a build-time error if any Client Component transitively imports a server-side DAL module."
+  }
+]

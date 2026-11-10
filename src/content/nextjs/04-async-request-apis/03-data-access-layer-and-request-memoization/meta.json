@@ -1,0 +1,17 @@
+{
+  "title": "Data Access Layer (DAL) and Per-Request Memoization",
+  "summary": "Centralize authentication, tenant authorization, safe DTO projection, and per-request query deduplication using React.cache semantics.",
+  "level": "advanced",
+  "tags": ["core", "modern", "performance", "practice"],
+  "preview": false,
+  "resources": [
+    {
+      "title": "Next.js Docs: Data Security and Data Access Layer",
+      "url": "https://nextjs.org/docs/app/guides/data-security"
+    },
+    {
+      "title": "React Docs: cache() Reference",
+      "url": "https://react.dev/reference/react/cache"
+    }
+  ]
+}

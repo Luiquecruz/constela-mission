@@ -1,0 +1,22 @@
+[
+  {
+    "term": "title.template",
+    "description": "A root layout metadata pattern containing %s that wraps child page titles automatically with consistent site branding."
+  },
+  {
+    "term": "generateMetadata",
+    "description": "An exported server function on dynamic routes that computes page-specific SEO and Open Graph metadata from route params."
+  },
+  {
+    "term": "Open Graph Metadata",
+    "description": "Structured metadata tags such as og:title, og:description, and og:type used by social platforms to render rich link previews."
+  },
+  {
+    "term": "app/sitemap.ts",
+    "description": "A Next.js App Router file convention that returns typed URL entries serialized automatically into /sitemap.xml."
+  },
+  {
+    "term": "app/robots.ts",
+    "description": "A Next.js App Router file convention that returns crawler allow/disallow rules and sitemap pointers as /robots.txt."
+  }
+]

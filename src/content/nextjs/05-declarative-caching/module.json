@@ -1,0 +1,5 @@
+{
+  "title": "Declarative Caching: use cache, cacheLife and Tags",
+  "description": "Master the dynamic-by-default caching model and cacheComponents: opt in with the 'use cache' directive, configure stale, revalidate and expire windows with cacheLife profiles, and choose between revalidateTag for background SWR and updateTag for read-your-own-writes."
+}
+

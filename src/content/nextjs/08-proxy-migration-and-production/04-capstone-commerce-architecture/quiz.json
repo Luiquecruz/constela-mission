@@ -1,0 +1,46 @@
+[
+  {
+    "question": "Why must getProductsCatalog() strip supplierSecret inside the Data Access Layer before caching and returning products?",
+    "options": [
+      "Because JSON.stringify throws a syntax error whenever an object has more than four keys",
+      "To ensure confidential supplier margins are never serialized into the RSC payload or exposed to Client Components",
+      "Because React components can only render numeric props",
+      "Because updateTag deletes any object property whose name contains the word Secret"
+    ],
+    "answer": 1,
+    "explanation": "Sanitizing records into public DTOs inside the DAL prevents sensitive fields like supplierSecret from leaking into client-visible payloads."
+  },
+  {
+    "question": "When an admin updates a product price in a Server Action and expects the storefront UI to display the new price immediately, which invalidation primitive should run?",
+    "options": [
+      "updateTag('catalog-products') so the cache entry is expired immediately before re-reading the catalog",
+      "revalidateTag('catalog-products', 'max') so the stale price continues to be served on the next read",
+      "localStorage.clear() inside the Server Action",
+      "next/font preloading"
+    ],
+    "answer": 0,
+    "explanation": "updateTag expires the tagged cache entry immediately to provide read-your-own-writes consistency, whereas revalidateTag serves stale data while revalidating."
+  },
+  {
+    "question": "Why is recording a PRICE_UPDATED audit event scheduled inside after() rather than awaited before the Server Action returns?",
+    "options": [
+      "Because audit logs are only allowed to run inside Client Components",
+      "So the user-facing mutation finishes and updates the UI without waiting for non-critical audit or analytics side effects",
+      "Because after() automatically rolls back the database transaction if the user closes the modal",
+      "Because JavaScript Promises cannot resolve inside Server Actions without after()"
+    ],
+    "answer": 1,
+    "explanation": "after() decouples secondary side effects like audit logging and analytics from the critical response path so the caller gets an immediate response."
+  },
+  {
+    "question": "What happens if updatePriceAction only hides the price form from non-admin users in the UI but omits the role === 'admin' check on the server?",
+    "options": [
+      "Next.js automatically blocks the request using CSS pointer-events",
+      "Any caller can invoke the compiled Server Action endpoint directly and mutate product prices without authorization",
+      "The browser refuses to submit form inputs unless an admin badge is visible in the DOM",
+      "The cache store converts all prices to zero automatically"
+    ],
+    "answer": 1,
+    "explanation": "Server Actions are reachable HTTP endpoints; defense-in-depth requires enforcing role === 'admin' inside the action body regardless of UI visibility."
+  }
+]

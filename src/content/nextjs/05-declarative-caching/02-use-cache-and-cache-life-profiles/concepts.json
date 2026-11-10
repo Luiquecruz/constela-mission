@@ -1,0 +1,18 @@
+[
+  {
+    "term": "'use cache' Directive",
+    "description": "The compiler directive that marks a file, Server Component, or async function as cacheable, storing its serialized return value in the Next.js cache."
+  },
+  {
+    "term": "Automatic Cache Key Derivation",
+    "description": "The compiler mechanism that combines the deployment buildId, function hash, serialized arguments, and captured outer closure variables into a deterministic cache key."
+  },
+  {
+    "term": "Pass-Through Slot Exclusion",
+    "description": "The rule whereby uninspected JSX props such as children are passed as opaque references and omitted from the cache key hash, allowing cached wrappers to host dynamic children."
+  },
+  {
+    "term": "cacheLife Profile (stale, revalidate, expire)",
+    "description": "A three-part lifetime policy defining client cache reuse (stale), server background refresh threshold (revalidate), and hard eviction age (expire)."
+  }
+]

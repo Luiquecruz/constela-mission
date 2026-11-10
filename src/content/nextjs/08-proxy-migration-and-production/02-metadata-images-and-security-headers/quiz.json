@@ -1,0 +1,46 @@
+[
+  {
+    "question": "How do you prevent duplicate database or API queries when both generateMetadata and the default Page component need the same product record?",
+    "options": [
+      "Store the product record on the global window object inside generateMetadata",
+      "Wrap the shared data-fetching function in React.cache (or use fetch) so calls with identical arguments are memoized within the same request pass",
+      "Pass the return value of generateMetadata as a prop into the Page component",
+      "Disable generateMetadata on dynamic routes and inject meta tags inside useEffect"
+    ],
+    "answer": 1,
+    "explanation": "React.cache and Next.js fetch memoization deduplicate identical requests across generateMetadata, layouts, and page components during a single server render pass."
+  },
+  {
+    "question": "What security and cost risk does setting images.qualities: [75] in next.config.ts mitigate?",
+    "options": [
+      "It prevents users from right-clicking and saving images in the browser",
+      "It stops attackers from requesting arbitrary quality query parameters (such as q=1 through q=100) to trigger excessive image re-encoding and cache storage exhaustion",
+      "It forces all SVG icons to execute inline JavaScript inside the browser",
+      "It disables HTTPS certificate verification when fetching remote images"
+    ],
+    "answer": 1,
+    "explanation": "Restricting images.qualities to an explicit allowlist like [75] blocks malicious requests that vary the quality parameter to multiply image transformations and CDN cache entries."
+  },
+  {
+    "question": "How does next/font eliminate Cumulative Layout Shift (CLS) caused by web fonts?",
+    "options": [
+      "It hides the entire document body for five seconds until all third-party CDN scripts finish loading",
+      "It downloads font files at build time to self-host them with your static assets and applies size-adjusted CSS fallback metrics so text dimensions remain stable",
+      "It converts every paragraph of text into a raster PNG image on the server",
+      "It disables custom fonts on mobile viewports automatically"
+    ],
+    "answer": 1,
+    "explanation": "next/font self-hosts font files at build time—removing runtime requests to external font origins—and generates matching fallback font metrics to prevent layout shifts."
+  },
+  {
+    "question": "What is the rendering trade-off of generating a per-request Content Security Policy (CSP) nonce in proxy.ts and reading it via await headers() in a layout?",
+    "options": [
+      "The route must render dynamically per request because a cryptographic nonce cannot be reused across cached static HTML responses",
+      "Client Components inside the route can no longer attach onClick event handlers",
+      "All next/image components on the page revert to unstyled anchor tags",
+      "The browser disables HTTP/2 multiplexing for the entire domain"
+    ],
+    "answer": 0,
+    "explanation": "A CSP nonce must be freshly generated for every response; reading it from request headers opts the route into dynamic rendering so each visitor receives a unique nonce."
+  }
+]
