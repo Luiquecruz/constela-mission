@@ -1,0 +1,57 @@
+[
+  {
+    "question": "What is the primary function of a Feature Flag in continuous delivery?",
+    "options": [
+      "To compress binary files inside container images.",
+      "To delete unneeded Git commit messages.",
+      "To dynamically enable or disable code execution paths at runtime without redeploying binaries.",
+      "To automatically generate database backup files."
+    ],
+    "answer": 2,
+    "explanation": "Feature flags enable dynamic control over code execution paths at runtime, decoupling deployment from release."
+  },
+  {
+    "question": "What is Dark Launching?",
+    "options": [
+      "Deploying new code to production in a dormant state to test infrastructure load before user release.",
+      "Running deployments at night when cloud pricing is lower.",
+      "Deleting source code repositories from version control.",
+      "Disabling encryption on production database connections."
+    ],
+    "answer": 0,
+    "explanation": "Dark launching deploys features to production behind disabled flags to validate performance under live system load."
+  },
+  {
+    "question": "How does Branch by Abstraction facilitate large-scale software refactoring?",
+    "options": [
+      "By creating a long-lived feature branch that remains isolated for six months.",
+      "By rewriting the application in a different programming language.",
+      "By bypassing automated status checks in pull requests.",
+      "By placing an abstraction interface on main, allowing incremental implementation without long-lived branches."
+    ],
+    "answer": 3,
+    "explanation": "Branch by Abstraction uses an interface layer on main to build new implementations incrementally in daily commits."
+  },
+  {
+    "question": "What is an operational kill switch in feature flag management?",
+    "options": [
+      "A button that shuts down the entire cloud data center.",
+      "A flag configured to instantly disable a malfunctioning component in production without redeploying code.",
+      "A tool that deletes developer user accounts upon build failure.",
+      "A compiler command that halts build scripts."
+    ],
+    "answer": 1,
+    "explanation": "Kill switches allow operators to immediately disable failing features in production without executing emergency redeployments."
+  },
+  {
+    "question": "Why must engineering teams establish a mandatory feature flag cleanup process?",
+    "options": [
+      "Because Git repositories reject commits if files contain more than 10 lines of code.",
+      "To allow build servers to run without electricity.",
+      "To prevent flag debt accumulation and avoid unmaintained legacy flag code paths from causing incidents.",
+      "To force developers to write unit tests in HTML."
+    ],
+    "answer": 2,
+    "explanation": "Cleaning up retired feature flags eliminates technical debt and prevents dormant code paths from causing production bugs."
+  }
+]
