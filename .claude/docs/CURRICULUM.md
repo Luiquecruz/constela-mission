@@ -502,7 +502,7 @@ Multi-language track (`"languages": ["node", "python", "csharp"]`): every lesson
 01-introduction-to-continuous-integration **(challenge)** ✓ · 02-branching-strategies-for-cicd **(challenge)** ✓ · 03-modeling-branch-policies-and-triggers **(challenge)** ✓
 
 ### 02-build-test-and-dependency-management — Build, Test, and Dependency Management
-01-automated-build-and-commit-suite **(challenge)** · 02-dependency-management-and-security-scanning **(challenge)** · 03-validating-build-and-test-workflows **(challenge)**
+01-automated-build-and-commit-suite **(challenge)** ✓ · 02-dependency-management-and-security-scanning **(challenge)** ✓ · 03-validating-build-and-test-workflows **(challenge)** ✓
 
 ### 03-artifacts-immutability-and-caching — Artifacts, Immutability, and Caching
 01-artifact-immutability-and-digest-management **(challenge)** · 02-caching-strategies-in-cicd **(challenge)** · 03-modeling-artifact-registry-and-cache-integrity **(challenge)**

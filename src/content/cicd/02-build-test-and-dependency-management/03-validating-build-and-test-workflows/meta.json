@@ -1,0 +1,19 @@
+{
+  "title": "Validating Build and Test Workflows",
+  "summary": "Implement DAG task scheduling, parallel execution batching, and vulnerability threshold evaluation in TypeScript.",
+  "level": "beginner",
+  "tags": [
+    "practice",
+    "core"
+  ],
+  "resources": [
+    {
+      "label": "Nx: The task graph",
+      "url": "https://nx.dev/concepts/mental-model"
+    },
+    {
+      "label": "OWASP CICD-SEC-1: Insufficient Flow Control Mechanisms",
+      "url": "https://owasp.org/www-project-top-10-ci-cd-security-risks/CICD-SEC-01-Insufficient-Flow-Control-Mechanisms"
+    }
+  ]
+}
