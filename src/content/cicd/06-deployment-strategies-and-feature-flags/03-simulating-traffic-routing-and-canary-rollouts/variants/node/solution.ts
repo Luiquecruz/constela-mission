@@ -18,13 +18,13 @@ export interface CanaryDecision {
 }
 
 export function decideCanaryStep(steps: number[], currentWeight: number, metrics: CanaryMetrics, limits: CanaryLimits): CanaryDecision {
-  const errorRate = metrics.totalRequests === 0 ? 0 : (metrics.errorRequests / metrics.totalRequests) * 100;
-  const errorRatePercent = Number(errorRate.toFixed(2));
+  const hundredths = metrics.totalRequests === 0 ? 0n : (BigInt(metrics.errorRequests) * 20000n + BigInt(metrics.totalRequests)) / (2n * BigInt(metrics.totalRequests));
+  const errorRatePercent = Number(hundredths) / 100;
 
   if (metrics.totalRequests < limits.minRequests) {
     return { action: 'HOLD', nextWeight: currentWeight, reason: 'Not enough traffic to decide', errorRatePercent };
   }
-  if (errorRate > limits.maxErrorRatePercent) {
+  if (metrics.errorRequests * 100 > limits.maxErrorRatePercent * metrics.totalRequests) {
     return { action: 'ROLLBACK', nextWeight: 0, reason: 'Error rate exceeds limit', errorRatePercent };
   }
   if (metrics.latencyP99Ms > limits.maxLatencyP99Ms) {

@@ -12,6 +12,7 @@ public static class CanaryRouterTests
     {
         Assert.Equal(new CanaryDecision("ADVANCE", 10, "Canary healthy, advancing", 0.2), CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(1000, 2), Limits));
         Assert.Equal(0.38, CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(800, 3), Limits).ErrorRatePercent);
+        Assert.Equal(1.01, CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(20000, 201), new CanaryLimits(5, 500, 100)).ErrorRatePercent);
         Assert.Equal("ROLLBACK", CanaryRouter.DecideCanaryStep(Steps, 50, Metrics(25000, 1), new CanaryLimits(0, 500, 100)).Action);
     }
 

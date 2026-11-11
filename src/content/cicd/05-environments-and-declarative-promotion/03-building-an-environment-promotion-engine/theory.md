@@ -67,6 +67,7 @@ The planner returns only the `images` entry, as the challenge defines. The job t
 The patch the planner builds has to reach the environment. In GitHub Actions, a job commits the overlay and opens the pull request that a reviewer approves:
 
 ```yaml
+needs: plan
 permissions:
   contents: write
   pull-requests: write

@@ -8,14 +8,13 @@ public static class CanaryRouter
 {
     public static CanaryDecision DecideCanaryStep(int[] steps, int currentWeight, CanaryMetrics metrics, CanaryLimits limits)
     {
-        var rawRate = metrics.TotalRequests == 0 ? 0 : (double)metrics.ErrorRequests / metrics.TotalRequests * 100;
-        var errorRate = Math.Round(rawRate, 2, MidpointRounding.AwayFromZero);
+        var errorRate = metrics.TotalRequests == 0 ? 0 : (metrics.ErrorRequests * 20000 + metrics.TotalRequests) / (2 * metrics.TotalRequests) / 100.0;
 
         if (metrics.TotalRequests < limits.MinRequests)
         {
             return new CanaryDecision("HOLD", currentWeight, "Not enough traffic to decide", errorRate);
         }
-        if (rawRate > limits.MaxErrorRatePercent)
+        if (metrics.ErrorRequests * 100 > limits.MaxErrorRatePercent * metrics.TotalRequests)
         {
             return new CanaryDecision("ROLLBACK", 0, "Error rate exceeds limit", errorRate);
         }
