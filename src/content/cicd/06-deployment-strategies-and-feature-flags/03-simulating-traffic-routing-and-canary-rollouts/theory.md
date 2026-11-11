@@ -152,7 +152,7 @@ gcloud run services update-traffic api-service --to-revisions OLD_REVISION=100
 
 ## Across the platforms
 
-Every platform shifts traffic in steps and rolls back when an alarm or a check fails; the commands are in the platform examples above.
+Traffic can shift in steps and roll back when an alarm or a check fails. Some platforms evaluate the alarm for you; with others a pipeline or a controller has to evaluate the check and start the rollback, as the platform examples above show.
 
 What every tool needs is the same list of numbers the function takes: the steps, a minimum sample, an error limit and a latency limit. A canary with no minimum sample rolls back on its first failed request or promotes on its first success; a canary with no rollback rule is only a slow release.
 

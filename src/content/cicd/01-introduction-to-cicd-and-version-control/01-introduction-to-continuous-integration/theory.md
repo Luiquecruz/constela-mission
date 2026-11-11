@@ -42,7 +42,7 @@ jobs:
 :::
 
 ::: azure
-Azure Pipelines reads `azure-pipelines.yml` at the repository root:
+Azure Pipelines reads `azure-pipelines.yml` at the repository root. The `pr` trigger works for GitHub and Bitbucket Cloud repositories; for Azure Repos Git, configure a build validation branch policy on `main` instead:
 
 ```yaml
 trigger:
@@ -220,7 +220,7 @@ substitutions:
 
 Try it in a repository of your own, using the platform you chose above.
 
-1. Add the CI job from the examples so that it installs, lints and tests on every push and pull request.
+1. Add the CI job from the examples so that it installs, lints and tests on every push to the main branch and on every pull request into it.
 2. Break a test on purpose in a branch, open the pull request and read the failure in the pipeline. Note how long it took to tell you.
 3. Fix it and merge only when the check is green.
 
