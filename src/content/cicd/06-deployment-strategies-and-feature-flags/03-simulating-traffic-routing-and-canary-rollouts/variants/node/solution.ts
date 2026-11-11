@@ -18,9 +18,13 @@ export interface CanaryDecision {
 }
 
 function exceedsLimit(errorRequests: number, totalRequests: number, limitPercent: number): boolean {
-  const [whole, fraction = ''] = String(limitPercent).split('.');
-  const scale = 10n ** BigInt(fraction.length);
-  return BigInt(errorRequests) * 100n * scale > BigInt(whole + fraction) * BigInt(totalRequests);
+  const [mantissa, exponent = '0'] = limitPercent.toExponential().split('e');
+  const [whole, fraction = ''] = mantissa.split('.');
+  const digits = BigInt(whole + fraction);
+  const power = Number(exponent) - fraction.length;
+  const left = BigInt(errorRequests) * 100n * (power < 0 ? 10n ** BigInt(-power) : 1n);
+  const right = digits * (power > 0 ? 10n ** BigInt(power) : 1n) * BigInt(totalRequests);
+  return left > right;
 }
 
 export function decideCanaryStep(steps: number[], currentWeight: number, metrics: CanaryMetrics, limits: CanaryLimits): CanaryDecision {

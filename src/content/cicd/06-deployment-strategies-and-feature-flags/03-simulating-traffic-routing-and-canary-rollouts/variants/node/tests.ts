@@ -25,6 +25,7 @@ test('rolls back to zero when the error rate is above the limit and tolerates ex
   expect(mod.decideCanaryStep(STEPS, 25, metrics(1000, 11), LIMITS)).toEqual({ action: 'ROLLBACK', nextWeight: 0, reason: 'Error rate exceeds limit', errorRatePercent: 1.1 });
   expect(mod.decideCanaryStep(STEPS, 25, metrics(1000, 10), LIMITS).action).toBe('ADVANCE');
   expect(mod.decideCanaryStep(STEPS, 25, metrics(10000, 57), { ...LIMITS, maxErrorRatePercent: 0.57 }).action).toBe('ADVANCE');
+  expect(mod.decideCanaryStep(STEPS, 25, metrics(1000, 0), { ...LIMITS, maxErrorRatePercent: 1e-7 }).action).toBe('ADVANCE');
 });
 
 test('rolls back when the latency is above the limit and reports errors first when both fail', async () => {
