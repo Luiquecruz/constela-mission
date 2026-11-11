@@ -73,14 +73,17 @@ permissions:
 steps:
   - run: |
       git switch -c promote/api-service
-      (cd overlays/production && kustomize edit set image api-service=registry.example.com/api-service@sha256:DIGEST)
+      (cd overlays/production && kustomize edit set image "api-service=registry.example.com/api-service@$DIGEST")
       git add overlays/production/kustomization.yaml
       git commit -m "Promote api-service to production"
       git push -u origin promote/api-service
       gh pr create --title "Promote api-service to production" --body "Pins the image to the verified digest."
     env:
       GH_TOKEN: ${{ github.token }}
+      DIGEST: ${{ needs.plan.outputs.digest }}
 ```
+
+The `DIGEST` variable carries the digest that the planner approved, which the job that ran the planner exposes as an output; the job never types a digest by hand.
 
 The repository must allow GitHub Actions to create pull requests. Checks of a pull request created with the default token do not start until a person approves them; a token of a GitHub App avoids that step.
 :::

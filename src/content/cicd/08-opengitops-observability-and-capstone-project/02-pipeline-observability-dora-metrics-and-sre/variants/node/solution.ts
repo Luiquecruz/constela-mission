@@ -25,7 +25,7 @@ export interface ErrorBudget {
   releasesAllowed: boolean;
 }
 
-const round2 = (value: number): number => Math.round(value * 100) / 100;
+const round2 = (value: number): number => Number(value.toFixed(2));
 
 export function calculateDoraMetrics(deployments: DeploymentRecord[], incidents: IncidentRecord[], windowDays: number): DoraMetrics {
   if (windowDays <= 0) {

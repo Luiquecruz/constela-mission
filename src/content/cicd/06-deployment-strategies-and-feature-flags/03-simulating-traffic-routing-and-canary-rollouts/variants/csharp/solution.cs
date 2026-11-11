@@ -9,7 +9,7 @@ public static class CanaryRouter
     public static CanaryDecision DecideCanaryStep(int[] steps, int currentWeight, CanaryMetrics metrics, CanaryLimits limits)
     {
         var rawRate = metrics.TotalRequests == 0 ? 0 : (double)metrics.ErrorRequests / metrics.TotalRequests * 100;
-        var errorRate = Math.Floor(rawRate * 100 + 0.5) / 100;
+        var errorRate = Math.Round(rawRate, 2, MidpointRounding.AwayFromZero);
 
         if (metrics.TotalRequests < limits.MinRequests)
         {

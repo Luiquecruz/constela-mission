@@ -19,7 +19,7 @@ export interface CanaryDecision {
 
 export function decideCanaryStep(steps: number[], currentWeight: number, metrics: CanaryMetrics, limits: CanaryLimits): CanaryDecision {
   const errorRate = metrics.totalRequests === 0 ? 0 : (metrics.errorRequests / metrics.totalRequests) * 100;
-  const errorRatePercent = Math.round(errorRate * 100) / 100;
+  const errorRatePercent = Number(errorRate.toFixed(2));
 
   if (metrics.totalRequests < limits.minRequests) {
     return { action: 'HOLD', nextWeight: currentWeight, reason: 'Not enough traffic to decide', errorRatePercent };

@@ -8,7 +8,7 @@ public record ErrorBudget(double AllowedFailures, double RemainingFailures, bool
 
 public static class DoraCalculator
 {
-    private static double Round2(double value) => Math.Floor(value * 100 + 0.5) / 100;
+    private static double Round2(double value) => Math.Round(value, 2, MidpointRounding.AwayFromZero);
 
     public static DoraMetrics CalculateDoraMetrics(DeploymentRecord[] deployments, IncidentRecord[] incidents, double windowDays)
     {

@@ -1,8 +1,8 @@
-import math
+from decimal import ROUND_HALF_UP, Decimal
 
 
 def round2(value: float) -> float:
-    return math.floor(value * 100 + 0.5) / 100
+    return float(Decimal(value).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
 
 def calculate_dora_metrics(deployments: list, incidents: list, window_days: float) -> dict:

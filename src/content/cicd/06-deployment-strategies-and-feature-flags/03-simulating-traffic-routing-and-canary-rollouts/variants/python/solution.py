@@ -1,10 +1,10 @@
-import math
+from decimal import ROUND_HALF_UP, Decimal
 
 
 def decide_canary_step(steps: list, current_weight: int, metrics: dict, limits: dict) -> dict:
     total = metrics["totalRequests"]
     raw_rate = 0 if total == 0 else metrics["errorRequests"] / total * 100
-    error_rate = math.floor(raw_rate * 100 + 0.5) / 100
+    error_rate = float(Decimal(raw_rate).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
 
     if total < limits["minRequests"]:
         return {"action": "HOLD", "nextWeight": current_weight, "reason": "Not enough traffic to decide", "errorRatePercent": error_rate}
