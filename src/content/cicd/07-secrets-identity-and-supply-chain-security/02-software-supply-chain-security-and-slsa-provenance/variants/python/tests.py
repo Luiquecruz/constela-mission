@@ -29,6 +29,7 @@ def _():
         {"name": "api-service.tar.gz", "digest": {"sha256": DIGEST.upper()}},
     ]
     assert mod.verify_slsa_provenance(f"sha256:{DIGEST}", statement(subject=subjects), POLICY)["valid"] is True
+    assert mod.verify_slsa_provenance(f"sha256:{DIGEST.upper()}", statement(), POLICY)["valid"] is True
 
 
 # beginner mistake: trusting the builder and never comparing the artifact digest with the subjects

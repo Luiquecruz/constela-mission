@@ -82,7 +82,7 @@ A robust cache key strategy follows a structured pattern:
 A key derived from the lockfile changes whenever the dependencies change, so the build looks for a new cache entry instead of reusing a stale one. The old entry is not deleted, and a restore key can still select it, which is why fallback keys restore only partial matches.
 
 ::: github
-All four providers cache with the same three ideas: a key derived from the lockfile, optional fallback keys, and a path to save. GitHub Actions looks in the cache of the current branch first, the exact key and then each restore key in order, and only then in the cache of the base branch and of the default branch; a run never restores caches written by sibling branches. The challenge models a simplified version of that search:
+All four providers cache with the same three ideas: a key derived from the lockfile, optional fallback keys, and a path to save. GitHub Actions looks in the cache of the current branch first, the exact key, then a prefix match on the primary key, then each restore key in order, and only then in the cache of the base branch and of the default branch; a run never restores caches written by sibling branches. The challenge models a simplified version of that search:
 
 ```yaml
 - uses: actions/cache@v6

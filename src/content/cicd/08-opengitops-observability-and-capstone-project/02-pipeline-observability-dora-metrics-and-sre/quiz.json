@@ -1,6 +1,6 @@
 [
   {
-    "question": "Which two metrics represent delivery throughput in the DORA framework?",
+    "question": "Which pair of metrics contains throughput metrics of the DORA framework?",
     "options": [
       "Lines of Code Written and Number of Meetings Attended.",
       "CPU Utilization and Memory Allocation.",

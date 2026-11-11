@@ -1,5 +1,8 @@
+from decimal import Decimal
+
+
 def _is_number(raw) -> bool:
-    return isinstance(raw, (int, float)) and not isinstance(raw, bool)
+    return isinstance(raw, (int, float, Decimal)) and not isinstance(raw, bool)
 
 
 def _same_type_equal(fact, value) -> bool:

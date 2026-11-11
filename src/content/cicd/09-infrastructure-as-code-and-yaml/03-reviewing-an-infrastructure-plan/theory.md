@@ -80,6 +80,8 @@ jobs:
       - run: terraform -chdir=infra apply -input=false tfplan
 ```
 
+The saved plan and its JSON can contain sensitive values in cleartext, and anyone who can read the workflow artifacts can download them. If those values must stay private, keep the files in restricted storage or do not publish them as artifacts. The push to `main` creates a new plan, so the plan that is applied can differ from the one on the pull request: the approvers of the `production` environment should review the plan of that run.
+
 Two roles keep the privileges apart: the planning role can read, and only the applying role can write. The `production` environment holds the job for the approvers configured on it. Azure and Google Cloud follow the same pattern with their own identity step; Azure also offers `az deployment group what-if` for Bicep, and AWS CloudFormation offers change sets, which show the plan and wait for an explicit execution.
 
 ::: github

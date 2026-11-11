@@ -73,6 +73,7 @@ permissions:
 steps:
   - run: |
       git switch -c promote/api-service
+      (cd overlays/production && kustomize edit set image api-service=registry.example.com/api-service@sha256:DIGEST)
       git add overlays/production/kustomization.yaml
       git commit -m "Promote api-service to production"
       git push -u origin promote/api-service

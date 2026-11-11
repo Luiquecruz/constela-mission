@@ -12,7 +12,7 @@ public static class PolicyEngine
     {
         switch (raw)
         {
-            case int or long or short or float or double or decimal:
+            case byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal:
                 number = Convert.ToDouble(raw);
                 return true;
             default:

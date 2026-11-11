@@ -30,11 +30,11 @@ export function ProviderSwitch({ options, value, onChange }: ProviderSwitchProps
             tabIndex={selected ? 0 : -1}
             onClick={() => onChange(option.id)}
             onKeyDown={(event) => {
-              if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') {
+              if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(event.key)) {
                 return;
               }
               event.preventDefault();
-              const direction = event.key === 'ArrowRight' ? 1 : -1;
+              const direction = event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1;
               const next = options[(index + direction + options.length) % options.length];
               onChange(next.id);
               event.currentTarget.parentElement?.querySelectorAll<HTMLButtonElement>('[role="radio"]')[(index + direction + options.length) % options.length]?.focus();

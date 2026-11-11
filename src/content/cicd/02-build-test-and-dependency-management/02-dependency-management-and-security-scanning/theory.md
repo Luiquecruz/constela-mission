@@ -103,7 +103,7 @@ jobs:
 :::
 
 ::: azure
-A pipeline step publishes the test and coverage results so that a gate can read them. The gate applies a minimum coverage, a severity threshold and a list of violations, which is the evaluation the challenge models. Microsoft Defender for Cloud scans the images that Azure Container Registry stores.
+A pipeline step publishes the test and coverage results so that a gate can read them. The gate applies a minimum coverage, a severity threshold and a list of violations, which is the evaluation the challenge models. Microsoft Defender for Cloud scans the images that Azure Container Registry stores only when a Defender plan for container registries is enabled and has access to the registry.
 
 ```yaml
 # Azure Pipelines: publish test and coverage results so the gate can read them
@@ -187,7 +187,7 @@ steps:
 
 ## Across the platforms
 
-In every provider, a pipeline step reads the finding counts and applies the gate that the challenge models.
+Publishing results and enabling image scanning do not configure a gate by themselves. In every provider you add a pipeline step that retrieves the finding counts and applies the gate that the challenge models.
 
 ## Common mistakes
 

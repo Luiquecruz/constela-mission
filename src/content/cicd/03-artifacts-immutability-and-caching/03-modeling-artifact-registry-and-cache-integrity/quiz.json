@@ -41,7 +41,7 @@
       "Temporary experiment branches."
     ],
     "answer": 1,
-    "explanation": "The shared primary cache is writable only from the protected primary branch, so untrusted runs must not write it. GitHub scopes caches by branch, so a pull request writes only to its own scope."
+    "explanation": "The shared primary cache is writable only from the protected primary branch, so untrusted runs must not write it. GitHub scopes caches by ref, but a workflow that runs with the privileges of the base branch can still write to the base cache, so keep untrusted code away from it."
   },
   {
     "question": "What components form a primary cache key in a deterministic cache strategy?",
