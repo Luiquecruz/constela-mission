@@ -135,7 +135,7 @@ High-performing delivery pipelines integrate automated rollbacks into progressiv
 
 ## Across the platforms
 
-On AWS, CodeDeploy for Amazon ECS has canary and linear deployment configurations that shift traffic in steps, for example `CodeDeployDefault.ECSCanary10Percent5Minutes`, and returns it to the original task set if a check fails. A database migration is the exception to all of them: the old and the new version run against one schema at the same time, so the migration has to be compatible with both before any traffic moves.
+Each platform can shift traffic in steps and return to the previous version if a check fails, through weighted routing, a traffic split or a deployment configuration, as the platform examples show. A database migration is the exception to all of them: the old and the new version run against one schema at the same time, so the migration has to be compatible with both before any traffic moves.
 
 ## Common mistakes
 

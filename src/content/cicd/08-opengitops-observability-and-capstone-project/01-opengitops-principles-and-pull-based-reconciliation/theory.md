@@ -153,7 +153,7 @@ gcloud container fleet config-management status
 
 ## Across the platforms
 
-Google Kubernetes Engine offers Config Sync, and Amazon EKS runs Argo CD or Flux like any other cluster. In every one the model is pull-based: an agent inside the cluster fetches the desired state and applies it, so the pipeline does not need cluster credentials and a change made by hand is noticed and either reverted or reported on the next loop.
+Some platforms offer a managed agent for this model, and any cluster can run Argo CD or Flux. In every case the model is pull-based: an agent inside the cluster fetches the desired state and applies it, so the pipeline does not need cluster credentials and a change made by hand is noticed and either reverted or reported on the next loop.
 
 Turning on `prune` and `selfHeal` is a decision with consequences: it makes Git the only way to change the cluster, which is the point of GitOps, and it deletes things that were created outside Git. Teams usually start with reporting only and turn them on once the repository holds everything the cluster needs.
 

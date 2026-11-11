@@ -131,7 +131,7 @@ gcloud deploy releases create release-2041 \
 
 ## Across the platforms
 
-The CI job that promotes does not touch the cluster: it opens the pull request that changes the overlay. In the Git flow that keeps the cloud credentials in the controller, and the pipeline needs only permission to push a branch to the configuration repository. The AWS and Google Cloud commands above are the alternative that calls the service directly and needs its own permissions.
+The CI job that promotes does not touch the cluster: it opens the pull request that changes the overlay. In the Git flow that keeps the cloud credentials in the controller, and the pipeline needs only permission to push a branch to the configuration repository. The service commands in the platform examples above are the alternative that calls the service directly, and they need that service's own permissions.
 
 ## Common mistakes
 

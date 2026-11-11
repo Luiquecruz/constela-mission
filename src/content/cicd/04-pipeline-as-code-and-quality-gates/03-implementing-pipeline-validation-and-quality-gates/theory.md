@@ -141,7 +141,7 @@ gcloud builds submit --config=cloudbuild.yaml \
 
 ## Across the platforms
 
-Azure Pipelines records approvals and who gave them in the environment's history, and AWS CodePipeline stores the approver and the comment of a manual approval action. Whatever the provider, an override record should answer four questions without asking anyone: who, why, when and what was bypassed. Keep the time as an input rather than reading a clock deep inside the logic, so the same decision can be replayed in a test.
+Each provider records who approved a release: in the history of the environment or in the approval action of the pipeline. Whatever the provider, an override record should answer four questions without asking anyone: who, why, when and what was bypassed. Keep the time as an input rather than reading a clock deep inside the logic, so the same decision can be replayed in a test.
 
 ## Common mistakes
 
