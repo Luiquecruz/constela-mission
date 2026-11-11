@@ -164,7 +164,7 @@ On AWS, the role's trust policy accepts the token through `sts:AssumeRoleWithWeb
 ```
 :::
 
-Pin third-party actions to a full commit SHA in production workflows; a tag such as `@v4` can be moved to different code.
+Pin third-party components of a production pipeline, such as actions, templates or images, to an immutable reference like a full commit hash or a digest; a tag such as `@v4` can be moved to different code.
 
 ::: gcp
 On Google Cloud, a workload identity pool holds a provider that trusts the issuer. The attribute mapping copies claims into attributes, and the service account is bound to a principal set that names the one repository allowed to impersonate it:
