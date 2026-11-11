@@ -31,6 +31,7 @@ def _():
 def _():
     assert mod.decide_canary_step(STEPS, 25, metrics(1000, 11), LIMITS) == {"action": "ROLLBACK", "nextWeight": 0, "reason": "Error rate exceeds limit", "errorRatePercent": 1.1}
     assert mod.decide_canary_step(STEPS, 25, metrics(1000, 10), LIMITS)["action"] == "ADVANCE"
+    assert mod.decide_canary_step(STEPS, 25, metrics(10000, 57), {**LIMITS, "maxErrorRatePercent": 0.57})["action"] == "ADVANCE"
 
 
 @test("rolls back when the latency is above the limit and reports errors first when both fail")

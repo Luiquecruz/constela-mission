@@ -14,7 +14,7 @@ public static class CanaryRouter
         {
             return new CanaryDecision("HOLD", currentWeight, "Not enough traffic to decide", errorRate);
         }
-        if (metrics.ErrorRequests * 100 > limits.MaxErrorRatePercent * metrics.TotalRequests)
+        if (metrics.ErrorRequests * 100m > (decimal)limits.MaxErrorRatePercent * metrics.TotalRequests)
         {
             return new CanaryDecision("ROLLBACK", 0, "Error rate exceeds limit", errorRate);
         }

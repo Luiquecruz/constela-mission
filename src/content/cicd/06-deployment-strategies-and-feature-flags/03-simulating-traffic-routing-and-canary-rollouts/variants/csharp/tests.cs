@@ -36,6 +36,7 @@ public static class CanaryRouterTests
     {
         Assert.Equal(new CanaryDecision("ROLLBACK", 0, "Error rate exceeds limit", 1.1), CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(1000, 11), Limits));
         Assert.Equal("ADVANCE", CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(1000, 10), Limits).Action);
+        Assert.Equal("ADVANCE", CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(10000, 57), new CanaryLimits(0.57, 500, 100)).Action);
     }
 
     [Test("rolls back when the latency is above the limit and reports errors first when both fail")]

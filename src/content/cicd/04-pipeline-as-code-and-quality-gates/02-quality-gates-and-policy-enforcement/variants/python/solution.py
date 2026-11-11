@@ -2,7 +2,7 @@ from decimal import Decimal
 
 
 def _is_number(raw) -> bool:
-    return isinstance(raw, (int, float, Decimal)) and not isinstance(raw, bool) and not (isinstance(raw, (float, Decimal)) and raw != raw)
+    return isinstance(raw, (int, float, Decimal)) and not isinstance(raw, bool) and not (isinstance(raw, Decimal) and raw.is_nan()) and not (isinstance(raw, float) and raw != raw)
 
 
 def _same_type_equal(fact, value) -> bool:

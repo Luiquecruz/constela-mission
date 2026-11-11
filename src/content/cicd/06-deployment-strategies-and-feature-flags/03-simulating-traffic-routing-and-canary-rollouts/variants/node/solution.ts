@@ -17,6 +17,12 @@ export interface CanaryDecision {
   errorRatePercent: number;
 }
 
+function exceedsLimit(errorRequests: number, totalRequests: number, limitPercent: number): boolean {
+  const [whole, fraction = ''] = String(limitPercent).split('.');
+  const scale = 10n ** BigInt(fraction.length);
+  return BigInt(errorRequests) * 100n * scale > BigInt(whole + fraction) * BigInt(totalRequests);
+}
+
 export function decideCanaryStep(steps: number[], currentWeight: number, metrics: CanaryMetrics, limits: CanaryLimits): CanaryDecision {
   const hundredths = metrics.totalRequests === 0 ? 0n : (BigInt(metrics.errorRequests) * 20000n + BigInt(metrics.totalRequests)) / (2n * BigInt(metrics.totalRequests));
   const errorRatePercent = Number(hundredths) / 100;
@@ -24,7 +30,7 @@ export function decideCanaryStep(steps: number[], currentWeight: number, metrics
   if (metrics.totalRequests < limits.minRequests) {
     return { action: 'HOLD', nextWeight: currentWeight, reason: 'Not enough traffic to decide', errorRatePercent };
   }
-  if (metrics.errorRequests * 100 > limits.maxErrorRatePercent * metrics.totalRequests) {
+  if (exceedsLimit(metrics.errorRequests, metrics.totalRequests, limits.maxErrorRatePercent)) {
     return { action: 'ROLLBACK', nextWeight: 0, reason: 'Error rate exceeds limit', errorRatePercent };
   }
   if (metrics.latencyP99Ms > limits.maxLatencyP99Ms) {
