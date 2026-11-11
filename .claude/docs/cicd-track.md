@@ -131,10 +131,10 @@ Checked against the primary source while the track was reviewed; anything not li
 | --- | --- | --- |
 | 02-01 case study | a WAF rule regular expression exhausted the CPU, and the test suite had no check for CPU use | the provider's post-mortem of the outage |
 | 03-03 case study | a coverage uploader script was modified to send environment variables, found when a customer compared its checksum | the vendor's security update |
-| 04-03 case study | a mistyped command removed more capacity than intended, and the tool was changed to remove capacity more slowly and to keep a minimum | the cloud provider's post-event summary |
+| 05-03 case study | a mistyped command removed more capacity than intended, and the tool was changed to remove capacity more slowly and to keep a minimum | the cloud provider's post-event summary |
 | 06-01 case study | a content update with an undetected error crashed Windows computers, and the report lists a staggered deployment starting with a canary group | the vendor's preliminary post-incident report |
-| 06-02 case study | new code reached the equity router incorrectly, a loss of more than 460 million dollars in the first 45 minutes | the SEC press release on the order |
-| 07-03 case study | version tags were retargeted to a malicious commit and secrets were printed in logs; pinning to a full commit hash is the recommended defense | the security vendor's analysis |
+| 06-02 case study | new code reached the equity router incorrectly, unintended orders in the first 45 minutes of trading and an eventual loss of more than 460 million dollars | the SEC press release on the order |
+| 07-03 case study | version tags were retargeted to a malicious commit and runs of the action could print secrets found in runner memory into the logs; pinning to a full commit hash is the recommended defense | the security vendor's analysis |
 | 07-03 Azure example | a federated credential has `name`, `issuer`, `subject` and `audiences` (`api://AzureADTokenExchange`), all required | the Microsoft Graph `federatedIdentityCredential` reference |
 | 01-03 AWS example | a webhook filter has `type` and `pattern`; `EVENT` takes comma-separated events such as `PUSH`, `PULL_REQUEST_CREATED`; `HEAD_REF` takes an RE2 pattern; `filterGroups` is an array of arrays | the CodeBuild `WebhookFilter` and `Webhook` API references |
 | every provider example | each `gcloud`, `aws` and `az` command in the theory exists and accepts the flags used (for example `gcloud builds triggers create github --require-approval`, `aws deploy create-deployment --auto-rollback-configuration`, `az repos policy approver-count create`) | the command reference pages of Google Cloud, AWS and Azure |
