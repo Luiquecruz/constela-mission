@@ -48,6 +48,9 @@ Azure Pipelines reads `azure-pipelines.yml` at the repository root:
 trigger:
   branches:
     include: [main]
+pr:
+  branches:
+    include: [main]
 
 pool:
   vmImage: ubuntu-latest
@@ -59,6 +62,8 @@ steps:
       versionFilePath: .nvmrc
   - script: npm ci
     displayName: Install dependencies
+  - script: npm run lint
+    displayName: Lint
   - script: npm test
     displayName: Run tests
 ```
@@ -99,6 +104,10 @@ steps:
     name: node
     entrypoint: npm
     args: [ci]
+  - id: lint
+    name: node
+    entrypoint: npm
+    args: [run, lint]
   - id: test
     name: node
     entrypoint: npm
@@ -220,5 +229,5 @@ Then solve the challenge in the language you prefer: it models the rules the pip
 ## Check yourself
 
 1. What is the minimum recommended frequency for developers to integrate code into the main repository in Continuous Integration?
-2. Which two DORA metrics measure the throughput of software delivery?
+2. Name two DORA metrics that measure the throughput of software delivery.
 3. What is the fundamental difference between technical deployment and functional release?

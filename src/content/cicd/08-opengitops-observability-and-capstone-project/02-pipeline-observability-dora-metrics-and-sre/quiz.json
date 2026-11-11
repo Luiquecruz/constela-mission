@@ -8,7 +8,7 @@
       "Database File Size and Network Bandwidth."
     ],
     "answer": 2,
-    "explanation": "Deployment Frequency and Lead Time for Changes are the two core velocity metrics defined by DORA."
+    "explanation": "Deployment Frequency and Lead Time for Changes are two of the throughput metrics defined by DORA; Failed Deployment Recovery Time is the third."
   },
   {
     "question": "Which statement about Lead Time for Changes is correct?",
