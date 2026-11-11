@@ -6,7 +6,7 @@ You need: Artifact Immutability and Digest Management
 
 ## Case study
 
-Security researchers showed that a workflow with little privilege could write entries into the shared cache of a repository, and that a more privileged workflow that restored the same key would then run the poisoned content. Nothing was exploited through a bug in the cache itself: the key was predictable and the write access was too broad. A cache key must come from the content that matters, and what a low-trust job writes must not feed a high-trust job.
+In the analysis of the attack on a popular Python package, the registry operator reports that the attack targeted the GitHub Actions cache used during the build, so that releases carried code the project had not written. Nothing was exploited through a bug in the cache itself: what a low-trust run could write, a later build restored and trusted. A cache key must come from the content that matters, and what a low-trust job writes must not feed a high-trust job.
 
 ## Dependency and Build Layer Caching
 

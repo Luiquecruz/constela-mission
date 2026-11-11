@@ -6,7 +6,7 @@ You need: OpenGitOps Principles and Pull-Based Reconciliation
 
 ## Case study
 
-The research program behind the book Accelerate, led by Nicole Forsgren with Jez Humble and Gene Kim, surveyed thousands of organizations and found that four measures predict how well a software organization performs: deployment frequency, lead time for changes, change failure rate and time to restore service. The finding that speed and stability go together, and do not trade off, is why these four numbers are the ones a pipeline should report.
+The research program behind the book Accelerate, led by Nicole Forsgren with Jez Humble and Gene Kim, settled on four measures of software delivery performance: deployment frequency, lead time for changes, change failure rate and time to restore service. The DORA reports group them into throughput and stability, which is why a pipeline should report all four numbers and not only how fast it ships.
 
 ## The Four Core DORA Metrics
 

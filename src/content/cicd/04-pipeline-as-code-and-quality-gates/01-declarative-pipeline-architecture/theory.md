@@ -6,7 +6,7 @@ You need: Modeling an Immutable Artifact Registry
 
 ## Case study
 
-Travis CI popularized a simple idea: the pipeline is a file in the repository, declared rather than clicked together in a server's interface. The build then lives with the code, is reviewed in pull requests and can be copied to a new project. Every provider in this lesson followed it. The next step, which large teams take, is to share the common parts through templates or reusable workflows so that hundreds of repositories follow one reviewed path.
+CI services such as Travis CI read the pipeline from a file in the repository, declared rather than clicked together in a server's interface. The build then lives with the code, is reviewed in pull requests and can be copied to a new project. Every provider in this lesson follows the same idea. The next step, which large teams take, is to share the common parts through templates or reusable workflows so that hundreds of repositories follow one reviewed path.
 
 ## Declarative versus Imperative Pipeline Definitions
 

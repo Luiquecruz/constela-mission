@@ -6,7 +6,7 @@ You need: Validating Build and Test Workflows
 
 ## Case study
 
-A developer removed one tiny package, a function that pads a string on the left, from the public npm registry. Thousands of builds that depended on it broke within minutes, including those of very large projects. The registry then restricted unpublishing, because a version that can disappear or change is not a dependable input. The same rule applies to your own artifacts: a version identifies one digest forever, and deployments refer to the digest.
+A developer unpublished one tiny package, a function that pads a string on the left, from the public npm registry, along with hundreds of others. Many thousands of projects broke, with hundreds of failures per minute at the peak. The registry then announced that it would make unpublishing harder when it would break other packages, because a version that can disappear or change is not a dependable input. The same rule applies to your own artifacts: a version identifies one digest forever, and deployments refer to the digest.
 
 ## The Build Once, Deploy Anywhere Principle
 

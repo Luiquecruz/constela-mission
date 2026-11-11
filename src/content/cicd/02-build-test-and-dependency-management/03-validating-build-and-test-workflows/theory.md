@@ -6,7 +6,7 @@ You need: Dependency Management and Security Scanning
 
 ## Case study
 
-Google reported that a small share of its test runs gave a flaky result, and that a large fraction of its tests showed some flakiness at some point. At that scale a flaky test is not an annoyance: it trains engineers to rerun and ignore red builds, and it hides the failures that matter. Teams respond by isolating flaky tests, running independent work in parallel and keeping the gate deterministic. A workflow is validated when its order is right and its signals can be trusted.
+Google's testing blog describes flaky tests, which pass and fail without a change in the code, and how the company mitigates them at its scale. A flaky test is not an annoyance: it trains engineers to rerun and ignore red builds, and it hides the failures that matter. Teams respond by isolating flaky tests, running independent work in parallel and keeping the gate deterministic. A workflow is validated when its order is right and its signals can be trusted.
 
 ## DAG Task Scheduling and Parallel Batching
 

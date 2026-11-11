@@ -6,7 +6,7 @@ You need: Declarative Artifact Promotion
 
 ## Case study
 
-A command meant to remove a few servers from one subsystem of a cloud storage service was mistyped and removed a much larger set, which caused a widespread outage. The provider's summary says the tool now removes capacity more slowly and refuses to go below a minimum. The planner in this lesson applies the same thinking to promotion: the change is a reviewed patch, and the planner refuses it when its preconditions are missing.
+A command meant to remove a few servers from one subsystem of a cloud storage service had an input entered incorrectly and removed a larger set than intended, which caused a widespread outage. The provider's summary says it modified the tool to remove capacity more slowly and added safeguards against going below a minimum. The planner in this lesson applies the same thinking to promotion: the change is a reviewed patch, and the planner refuses it when its preconditions are missing.
 
 ## Promotion Engine State and Transition Rules
 

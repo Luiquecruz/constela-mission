@@ -6,7 +6,7 @@ You need: Branching Strategies for CI/CD
 
 ## Case study
 
-A popular Python package for computer vision shipped malicious releases after an attacker opened a pull request whose branch name contained shell commands. A workflow that ran on pull requests put that name straight into a shell step, so the commands ran with the project's publishing rights. The trigger decided who could start the workflow, and the missing separation between untrusted input and privileged steps did the rest. Triggers and branch policies are security controls, not only convenience.
+An attacker opened a pull request to a popular Python package for computer vision with shell commands in the name of the branch. A workflow that ran in the context of `pull_request_target` put that name straight into a shell step, which gave the attacker code execution in the project's CI; malicious releases followed, through a poisoned build cache and later a stolen token. The trigger decided who could start the workflow, and the missing separation between untrusted input and privileged steps did the rest. Triggers and branch policies are security controls, not only convenience.
 
 ## Branch Protection Policies
 

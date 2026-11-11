@@ -6,7 +6,7 @@ You need: Decoupling Deploy from Release with Feature Flags
 
 ## Case study
 
-Netflix and Google built Kayenta, an open source service that decides automatically whether a canary is healthy by comparing its metrics with those of the baseline. A person no longer stares at graphs: the system scores the canary and promotes it, waits or rolls back. The decision function you write in this lesson is the same idea in small: given the current state and the metrics, it returns the next step.
+Google and Netflix announced Kayenta, an open source automated canary analysis service that pulls the metrics of the canary and of the baseline, scores the difference and, from that score and its limits, can promote or fail the canary. A person no longer stares at graphs: the system decides. The decision function you write in this lesson is the same idea in small: given the current state and the metrics, it returns the next step.
 
 ## Canary Rollout State Machine and Step Evaluations
 

@@ -6,7 +6,7 @@ You need: Pipeline Observability, DORA Metrics, and SRE
 
 ## Case study
 
-Netflix built Spinnaker to give hundreds of teams one way to deliver software: a pipeline with stages for the build, the checks, the canary analysis and the promotion, with the same safety rules for all. What each team writes is small, and the platform enforces the order and the gates. The release check you build in this lesson is the same shape: facts go in, the stages run in order, and the result says whether the release may continue.
+Netflix developed Spinnaker, a continuous delivery platform whose unit is the pipeline, a sequence of stages such as finding the image, smoke tests, a canary and the deployment to each region. What each team writes is small, and the platform runs the stages in order. The release check you build in this lesson is the same shape: facts go in, the stages run in order, and the result says whether the release may continue.
 
 ## The Stages and Their Order
 

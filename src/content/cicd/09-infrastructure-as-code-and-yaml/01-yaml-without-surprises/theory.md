@@ -6,7 +6,7 @@ You need: Capstone: the Release Check
 
 ## Case study
 
-Version 1.1 of the YAML specification treats some plain words as booleans, so a list of country codes that contains `NO` for Norway is read as the value false by parsers that follow it. Engineers have lost data and failed deployments to this, and it is known as the Norway problem. A linter that knows the typing rules, and a habit of quoting values that must stay strings, turns that surprise into an error at review time.
+Version 1.1 of the YAML specification treats some plain words as booleans, so a list of country codes that contains `NO` for Norway is read as the value false by parsers that follow it. Engineers ran into it often enough to call it the Norway problem. A linter that knows the typing rules, and a habit of quoting values that must stay strings, turns that surprise into an error at review time.
 
 ## The Parts You Use Every Day
 

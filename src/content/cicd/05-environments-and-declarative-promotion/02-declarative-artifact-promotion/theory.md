@@ -6,7 +6,7 @@ You need: Environment Lifecycle and Isolation
 
 ## Case study
 
-Amazon describes in its engineering library how its pipelines promote a change through stages: first a pre-production environment, then a small slice of one region, then more regions in waves, with automated checks and alarms between the steps and a rollback when one fails. The same build moves through all of them. A promotion is a controlled decision between environments, with preconditions, and it never rebuilds what it promotes.
+Amazon describes in its Builders' Library how its pipelines move one immutable artifact through test and production stages, monitor each deployment and roll it back automatically, with no developer watching each step. A promotion is a controlled decision between environments, with preconditions, and it never rebuilds what it promotes.
 
 ## The Declarative Promotion Workflow
 
