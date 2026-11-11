@@ -217,7 +217,7 @@ gcloud builds triggers create github \
 
 ## Across the platforms
 
-In Google Cloud Build a trigger can be configured to require approval, and a user needs the Cloud Build Approver role to approve or reject the pending build. In all four, the guarantee is the same: the rule that decides sits outside the code being deployed, so the author of a change cannot edit it away in the same pull request.
+In every provider the guarantee is the same: the rule that decides sits outside the code being deployed, so the author of a change cannot edit it away in the same pull request.
 
 ## Common mistakes
 

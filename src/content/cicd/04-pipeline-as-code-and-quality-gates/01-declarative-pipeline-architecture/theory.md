@@ -227,7 +227,7 @@ steps:
 
 ## Across the platforms
 
-Google Cloud Build keeps one `cloudbuild.yaml` per pipeline and varies it with substitutions that a trigger fills in, and AWS CodeBuild takes the buildspec from the repository or from the project definition, so a platform team can own the project and each service the buildspec. What the four have in common is the part the challenge isolates: different files, the same neutral graph of tasks, dependencies and commands.
+Each provider shares pipeline code in its own way: reusable workflows, templates, substitutions that a trigger fills in, or a buildspec that the project definition owns, so a platform team can own the shared part and each service the rest. What the four have in common is the part the challenge isolates: different files, the same neutral graph of tasks, dependencies and commands.
 
 The reusable pieces are also where access control matters. A workflow or template that anyone can edit becomes a way to run code with the pipeline's credentials, so changes to shared pipeline code should require review and be pinned by tag or commit.
 

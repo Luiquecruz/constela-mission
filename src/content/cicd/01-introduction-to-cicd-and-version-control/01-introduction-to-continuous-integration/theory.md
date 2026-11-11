@@ -37,15 +37,19 @@ jobs:
           node-version-file: .nvmrc
           cache: npm
       - run: npm ci
+      - run: npm run lint
       - run: npm test
 ```
 :::
 
 ::: azure
-Azure Pipelines reads `azure-pipelines.yml` at the repository root:
+Azure Pipelines reads `azure-pipelines.yml` at the repository root. The `pr` trigger works for GitHub and Bitbucket Cloud repositories; for Azure Repos Git, configure a build validation branch policy on `main` instead:
 
 ```yaml
 trigger:
+  branches:
+    include: [main]
+pr:
   branches:
     include: [main]
 
@@ -59,6 +63,8 @@ steps:
       versionFilePath: .nvmrc
   - script: npm ci
     displayName: Install dependencies
+  - script: npm run lint
+    displayName: Lint
   - script: npm test
     displayName: Run tests
 ```
@@ -99,6 +105,10 @@ steps:
     name: node
     entrypoint: npm
     args: [ci]
+  - id: lint
+    name: node
+    entrypoint: npm
+    args: [run, lint]
   - id: test
     name: node
     entrypoint: npm
@@ -211,7 +221,7 @@ substitutions:
 
 Try it in a repository of your own, using the platform you chose above.
 
-1. Add the CI job from the examples so that it installs, lints and tests on every push and pull request.
+1. Add the CI job from the examples so that it installs, lints and tests on every push to the main branch and on every pull request into it.
 2. Break a test on purpose in a branch, open the pull request and read the failure in the pipeline. Note how long it took to tell you.
 3. Fix it and merge only when the check is green.
 
@@ -220,5 +230,5 @@ Then solve the challenge in the language you prefer: it models the rules the pip
 ## Check yourself
 
 1. What is the minimum recommended frequency for developers to integrate code into the main repository in Continuous Integration?
-2. Which two DORA metrics measure the throughput of software delivery?
+2. Name two DORA metrics that measure the throughput of software delivery.
 3. What is the fundamental difference between technical deployment and functional release?
