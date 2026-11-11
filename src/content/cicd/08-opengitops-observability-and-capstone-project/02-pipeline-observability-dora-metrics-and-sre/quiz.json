@@ -1,6 +1,6 @@
 [
   {
-    "question": "Which two metrics represent delivery velocity in the DORA framework?",
+    "question": "Which two metrics represent delivery throughput in the DORA framework?",
     "options": [
       "Lines of Code Written and Number of Meetings Attended.",
       "CPU Utilization and Memory Allocation.",
@@ -11,15 +11,15 @@
     "explanation": "Deployment Frequency and Lead Time for Changes are the two core velocity metrics defined by DORA."
   },
   {
-    "question": "What is the benchmark Lead Time for Changes performance target achieved by Elite DORA teams?",
+    "question": "Which statement about Lead Time for Changes is correct?",
     "options": [
-      "Less than 1 hour.",
-      "Between 1 month and 6 months.",
-      "Exactly 24 hours.",
-      "Between 1 week and 2 weeks."
+      "It is the time from a commit to running in production, and shorter is better.",
+      "It is the length of the daily standup meeting.",
+      "It is the time a pull request waits for a vacation approval.",
+      "It is the CPU time of the slowest test."
     ],
     "answer": 0,
-    "explanation": "Elite DORA performers achieve a Lead Time for Changes of less than 1 hour from commit to production deployment."
+    "explanation": "Lead Time for Changes measures how long a commit takes to reach production. DORA publishes performance levels for it, but the levels change between reports, so judge your own trend rather than a fixed number."
   },
   {
     "question": "How is Change Failure Rate (CFR) calculated in pipeline telemetry?",

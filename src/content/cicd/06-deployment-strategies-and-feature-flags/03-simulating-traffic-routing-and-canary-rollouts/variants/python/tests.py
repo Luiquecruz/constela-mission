@@ -9,6 +9,8 @@ def metrics(total, errors, latency=200):
 @test("advances to the first step when the canary starts healthy")
 def _():
     assert mod.decide_canary_step(STEPS, 0, metrics(1000, 2), LIMITS) == {"action": "ADVANCE", "nextWeight": 10, "reason": "Canary healthy, advancing", "errorRatePercent": 0.2}
+    assert mod.decide_canary_step(STEPS, 0, metrics(800, 3), LIMITS)["errorRatePercent"] == 0.38
+    assert mod.decide_canary_step(STEPS, 50, metrics(25000, 1), {**LIMITS, "maxErrorRatePercent": 0})["action"] == "ROLLBACK"
 
 
 @test("moves to the first step above the current weight, even when the weight is between steps")

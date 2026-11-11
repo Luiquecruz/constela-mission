@@ -58,14 +58,25 @@ jobs:
       - uses: actions/attest@v4
         with:
           subject-path: dist/api-service.tar.gz
+      - uses: actions/upload-artifact@v7
+        with:
+          name: dist
+          path: dist/api-service.tar.gz
   promote:
     needs: provenance
     runs-on: ubuntu-latest
     environment: production
     permissions:
-      contents: read
-      id-token: write
+      contents: write
+      pull-requests: write
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v7
+        with:
+          name: dist
+          path: dist
       - run: gh attestation verify dist/api-service.tar.gz -R org/api-service
       - run: ./open-promotion-pull-request.sh production
 ```

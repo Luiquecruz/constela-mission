@@ -8,16 +8,31 @@ public static class PolicyEngine
 {
     private static readonly string[] Operators = ["gte", "lte", "eq", "in"];
 
-    private static bool Holds(string op, object fact, object value) => op switch
+    private static bool TryNumber(object? raw, out double number)
     {
-        "gte" => Convert.ToDouble(fact) >= Convert.ToDouble(value),
-        "lte" => Convert.ToDouble(fact) <= Convert.ToDouble(value),
-        "eq" => fact is string || value is string
-            ? Convert.ToString(fact) == Convert.ToString(value)
-            : Convert.ToDouble(fact) == Convert.ToDouble(value),
-        "in" => value is string[] options && options.Contains(Convert.ToString(fact)),
-        _ => false,
-    };
+        switch (raw)
+        {
+            case int or long or short or float or double or decimal:
+                number = Convert.ToDouble(raw);
+                return true;
+            default:
+                number = 0;
+                return false;
+        }
+    }
+
+    private static bool Holds(string op, object? fact, object? value)
+    {
+        var numbers = TryNumber(fact, out var left) & TryNumber(value, out var right);
+        return op switch
+        {
+            "gte" => numbers && left >= right,
+            "lte" => numbers && left <= right,
+            "eq" => fact is string text ? value is string other && text == other : numbers && left == right,
+            "in" => fact is string member && value is string[] options && options.Contains(member),
+            _ => false,
+        };
+    }
 
     public static PolicyOutcome EvaluatePolicy(PolicyRule[] rules, Dictionary<string, object> facts)
     {

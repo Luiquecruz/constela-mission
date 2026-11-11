@@ -6,7 +6,7 @@ In the static class `CanaryRouter`, write `CanaryDecision DecideCanaryStep(int[]
 
 - `steps` is the ascending list of canary weights in percent, such as `[10, 25, 50]`.
 - `metrics` is `{ totalRequests, errorRequests, latencyP99Ms }` and `limits` is `{ maxErrorRatePercent, maxLatencyP99Ms, minRequests }`.
-- The error rate is `errorRequests / totalRequests * 100`, rounded to two decimals, and zero when there were no requests. Every decision reports it as `errorRatePercent`.
+- The error rate is `errorRequests / totalRequests * 100`, and zero when there were no requests. Decisions compare the unrounded rate with the limit; only the value reported as `errorRatePercent` is rounded to two decimals, with a half rounding up (0.375 becomes 0.38).
 
 Decide in this order:
 

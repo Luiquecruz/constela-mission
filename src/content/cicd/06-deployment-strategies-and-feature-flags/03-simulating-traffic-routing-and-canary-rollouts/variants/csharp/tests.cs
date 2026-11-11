@@ -11,6 +11,8 @@ public static class CanaryRouterTests
     public static void AdvancesFirst()
     {
         Assert.Equal(new CanaryDecision("ADVANCE", 10, "Canary healthy, advancing", 0.2), CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(1000, 2), Limits));
+        Assert.Equal(0.38, CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(800, 3), Limits).ErrorRatePercent);
+        Assert.Equal("ROLLBACK", CanaryRouter.DecideCanaryStep(Steps, 50, Metrics(25000, 1), new CanaryLimits(0, 500, 100)).Action);
     }
 
     [Test("moves to the first step above the current weight, even when the weight is between steps")]

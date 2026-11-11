@@ -37,7 +37,7 @@ description: >
   but read as a single line.
 ```
 
-A document can hold several documents separated by `---`, which Kubernetes manifests use to put a Deployment and a Service in one file, and `#` starts a comment.
+A file can hold several documents separated by `---`, which Kubernetes manifests use to put a Deployment and a Service in one file, and `#` starts a comment.
 
 ::: github
 In GitHub Actions the file is a workflow: mappings for the settings, a sequence for the steps and a literal block for the commands:

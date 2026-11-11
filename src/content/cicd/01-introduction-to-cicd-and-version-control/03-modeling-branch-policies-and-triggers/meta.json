@@ -1,6 +1,6 @@
 {
   "title": "Modeling Branch Policies and Pipeline Triggers",
-  "summary": "Implement an automated evaluator in TypeScript for branch protection policies and pipeline execution triggers.",
+  "summary": "Implement an automated evaluator for branch protection policies and pipeline execution triggers.",
   "level": "beginner",
   "tags": [
     "practice",

@@ -103,7 +103,7 @@ jobs:
 :::
 
 ::: azure
-The other clouds scan the artifact they store rather than the pull request: In all of them a pipeline step reads the finding counts and applies a gate, which is the evaluation the challenge models: a minimum coverage, a threshold severity and a list of violations.
+A pipeline step publishes the test and coverage results so that a gate can read them. The gate applies a minimum coverage, a severity threshold and a list of violations, which is the evaluation the challenge models. Microsoft Defender for Cloud scans the images that Azure Container Registry stores.
 
 ```yaml
 # Azure Pipelines: publish test and coverage results so the gate can read them
@@ -187,7 +187,7 @@ steps:
 
 ## Across the platforms
 
-In both clouds the pipeline then reads the findings and applies the gate that the challenge models.
+In every provider, a pipeline step reads the finding counts and applies the gate that the challenge models.
 
 ## Common mistakes
 

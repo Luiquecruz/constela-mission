@@ -1,8 +1,18 @@
+def _is_number(raw) -> bool:
+    return isinstance(raw, (int, float)) and not isinstance(raw, bool)
+
+
+def _same_type_equal(fact, value) -> bool:
+    if isinstance(fact, str):
+        return isinstance(value, str) and fact == value
+    return _is_number(fact) and _is_number(value) and fact == value
+
+
 OPERATORS = {
-    "gte": lambda fact, value: float(fact) >= float(value),
-    "lte": lambda fact, value: float(fact) <= float(value),
-    "eq": lambda fact, value: fact == value,
-    "in": lambda fact, value: isinstance(value, list) and str(fact) in value,
+    "gte": lambda fact, value: _is_number(fact) and _is_number(value) and fact >= value,
+    "lte": lambda fact, value: _is_number(fact) and _is_number(value) and fact <= value,
+    "eq": _same_type_equal,
+    "in": lambda fact, value: isinstance(fact, str) and isinstance(value, list) and fact in value,
 }
 
 

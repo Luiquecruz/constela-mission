@@ -13,13 +13,13 @@
   {
     "question": "How is the error rate percentage calculated from canary telemetry data?",
     "options": [
-      "Error count divided by total requests (errorCount / totalRequests).",
+      "Error requests divided by total requests, multiplied by 100 (errorRequests / totalRequests * 100).",
       "Total requests multiplied by latency.",
       "Total requests divided by CPU core count.",
       "Lines of code divided by test count."
     ],
     "answer": 0,
-    "explanation": "Error rate is calculated as total error count divided by total request volume in a sample window."
+    "explanation": "The error rate percentage is the error requests divided by the total requests and multiplied by 100: 5 errors in 20 requests is 25."
   },
   {
     "question": "What is the traffic weight distribution upon successful completion of a canary rollout?",
@@ -36,12 +36,12 @@
     "question": "Why must zero request volume (totalRequests === 0) be guarded during telemetry evaluation?",
     "options": [
       "To speed up compiler performance.",
-      "To prevent divide-by-zero runtime errors when calculating error rates.",
+      "So that zero requests produce an error rate of zero instead of an undefined result.",
       "To delete old log files from disk.",
       "To force developers to write unit tests."
     ],
     "answer": 1,
-    "explanation": "Guarding against zero request volume prevents divide-by-zero mathematical exceptions during rate calculation."
+    "explanation": "With no requests the rate has no meaning, so the guard defines it as zero. Some languages raise an error on a division by zero and others return infinity or not-a-number, so the guard keeps the result the same in every language."
   },
   {
     "question": "What is the purpose of step-by-step weight progression (e.g., 5% -> 25% -> 50% -> 100%) in canary rollouts?",

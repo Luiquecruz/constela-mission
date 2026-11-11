@@ -167,6 +167,7 @@ resources:
   repositories:
     - repository: templates
       type: github
+      endpoint: github-service-connection
       name: org/build-templates
       ref: refs/tags/v1.0
 

@@ -9,10 +9,10 @@
   },
   {
     "term": "Manifest Patch",
-    "description": "Generated configuration diff recording the updated SHA256 digest reference and promotion metadata."
+    "description": "Generated change that pins the promoted SHA256 digest in the overlay of the target environment."
   },
   {
-    "term": "Promotion Status",
-    "description": "Result outcome indicating whether a promotion request was approved (PROMOTED) or rejected (REJECTED)."
+    "term": "Promotion Plan",
+    "description": "Result of the planner: success or failure, a reason and, when the promotion is allowed, the patch."
   }
 ]

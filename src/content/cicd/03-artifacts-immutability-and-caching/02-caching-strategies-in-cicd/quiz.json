@@ -13,13 +13,13 @@
   {
     "question": "Why should cache keys be generated using cryptographic hashes of dependency lockfiles (e.g., package-lock.json)?",
     "options": [
-      "To ensure that cache entries automatically invalidate whenever project dependencies are updated.",
+      "So that a change in the dependencies produces a new cache key, and the build does not reuse a stale cache entry.",
       "To compress source code files before committing to Git.",
       "To prevent developers from opening Pull Requests on GitHub.",
       "To allow pipeline tasks to run without CPU access."
     ],
     "answer": 0,
-    "explanation": "Lockfile hashes guarantee that any change to project dependencies automatically generates a new cache key, preventing stale cache use."
+    "explanation": "A lockfile hash in the key means any dependency change creates a new primary key. The old entry is not deleted, so a fallback key can still restore it as a partial match."
   },
   {
     "question": "What security vulnerability occurs when unreviewed PR branches are allowed to overwrite the main branch cache?",

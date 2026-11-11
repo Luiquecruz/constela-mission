@@ -24,6 +24,17 @@ describe('selectProviderBlocks', () => {
   });
 });
 
+describe('selectProviderBlocks with fenced samples', () => {
+  const FENCED = ['::: github', 'Sample:', '', '```text', ':::', 'still inside the github block', '```', ':::', '', '::: azure', 'Azure text', ':::', ''].join('\n');
+
+  it('does not end a block at a bare delimiter inside a code fence', () => {
+    const azure = selectProviderBlocks(FENCED, 'azure');
+    expect(azure).toContain('Azure text');
+    expect(azure).not.toContain('still inside the github block');
+    expect(selectProviderBlocks(FENCED, 'github')).toContain('still inside the github block');
+  });
+});
+
 describe('providersIn', () => {
   it('lists the providers with a block, once each', () => {
     expect(providersIn(`${SOURCE}\n::: github\nmore\n:::\n`)).toEqual(['github', 'azure']);

@@ -16,7 +16,7 @@ Run these stages in order. A stage that fails ends the run:
 
 The report has the shape `{ outcome, stage, passedStages, reasons, batches, patch }`:
 
-- On success: `outcome` is `RELEASED`, `stage` is `promotion`, `passedStages` lists all five stages, `reasons` is empty, `batches` holds the build batches and `patch` the manifest patch from the promotion planner.
-- On a failure: `outcome` is `REJECTED`, `stage` is the stage that failed, `passedStages` lists the stages that passed before it, `reasons` lists the reasons of the failed stage, `patch` is empty and `batches` holds the build batches once the build stage passed (an empty list before that).
+- On success: `outcome` is `RELEASED`, `stage` is `promotion`, `passedStages` lists all five stages, `reasons` is an empty list, `batches` holds the build batches and `patch` the manifest patch from the promotion planner.
+- On a failure: `outcome` is `REJECTED`, `stage` is the stage that failed, `passedStages` lists the stages that passed before it, `reasons` lists the reasons of the failed stage, `patch` is `null` and `batches` holds the build batches once the build stage passed (an empty list before that).
 
 No later stage runs after a failure: a release that fails the gate and the promotion reports only the gate.

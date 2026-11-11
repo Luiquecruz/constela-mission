@@ -18,7 +18,7 @@ DORA research categorizes software delivery performance across four fundamental 
 
 ### Stability Metrics
 3. **Change Failure Rate (CFR)**: The percentage of production deployments that result in degraded service or severe outages requiring immediate hotfixes, rollbacks, or patches.
-4. **Failed Service Recovery Time (FSRT / MTTR)**: The time required to restore full service operational health following a production outage or degradation.
+4. **Failed Deployment Recovery Time (often called mean time to restore)**: The time required to restore service after a deployment causes a failure in production.
 
 High-performing organizations achieve high deployment frequency and low lead time while simultaneously maintaining low change failure rates and rapid service recovery times.
 

@@ -3,8 +3,8 @@ Evaluate test coverage and dependency security scan metrics against quality gate
 ### Requirements
 
 Implement `evaluate_test_and_security_summary(summary, policy)`:
-- `summary`: Dict `{ "lineCoveragePercent": float, "vulnerabilities": list[dict] }`, where each vulnerability is a dict with `id`, `package` and `severity`.
-- `policy`: Dict `{ "minLineCoveragePercent": float, "securityThreshold": str }`.
+- `summary`: Dict `{ "lineCoveragePercent": int | float, "vulnerabilities": list[dict] }`, where each vulnerability is a dict with `id`, `package` and `severity`.
+- `policy`: Dict `{ "minLineCoveragePercent": int | float, "securityThreshold": str }`.
 
 Severity ranks: `low` (1), `medium` (2), `high` (3), `critical` (4).
 

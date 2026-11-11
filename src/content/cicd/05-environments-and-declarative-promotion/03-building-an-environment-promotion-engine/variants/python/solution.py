@@ -1,10 +1,10 @@
 import re
 
-DIGEST_PATTERN = re.compile(r"^sha256:[a-f0-9]{64}$", re.IGNORECASE)
+DIGEST_PATTERN = re.compile(r"sha256:[a-f0-9]{64}", re.IGNORECASE)
 
 
 def plan_promotion(request: dict, gate: dict, history: list, environments: list) -> dict:
-    if not DIGEST_PATTERN.match(request["artifactDigest"]):
+    if not DIGEST_PATTERN.fullmatch(request["artifactDigest"]):
         raise ValueError("Invalid artifact digest format")
     digest = request["artifactDigest"].lower()
 

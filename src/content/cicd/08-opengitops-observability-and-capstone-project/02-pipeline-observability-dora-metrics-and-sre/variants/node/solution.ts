@@ -31,10 +31,6 @@ export function calculateDoraMetrics(deployments: DeploymentRecord[], incidents:
   if (windowDays <= 0) {
     throw new Error('Window must be positive');
   }
-  if (deployments.length === 0) {
-    return { deploymentFrequencyPerDay: 0, changeFailureRatePercent: 0, meanLeadTimeMinutes: 0, meanTimeToRestoreMinutes: 0 };
-  }
-
   const failed = deployments.filter((deployment) => deployment.status === 'FAILURE').length;
   const leadTotal = deployments.reduce((sum, deployment) => sum + deployment.leadTimeMinutes, 0);
   const resolved = incidents.filter((incident) => incident.resolvedTimestamp !== null);
@@ -42,8 +38,8 @@ export function calculateDoraMetrics(deployments: DeploymentRecord[], incidents:
 
   return {
     deploymentFrequencyPerDay: round2(deployments.length / windowDays),
-    changeFailureRatePercent: round2((failed / deployments.length) * 100),
-    meanLeadTimeMinutes: round2(leadTotal / deployments.length),
+    changeFailureRatePercent: deployments.length === 0 ? 0 : round2((failed / deployments.length) * 100),
+    meanLeadTimeMinutes: deployments.length === 0 ? 0 : round2(leadTotal / deployments.length),
     meanTimeToRestoreMinutes: resolved.length === 0 ? 0 : round2(restoreTotal / resolved.length / 60000),
   };
 }

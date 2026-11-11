@@ -1,9 +1,9 @@
 import re
 
-DIGEST_PATTERN = re.compile(r"^sha256:[a-f0-9]{64}$", re.IGNORECASE)
+DIGEST_PATTERN = re.compile(r"sha256:[a-f0-9]{64}", re.IGNORECASE)
 
 def verify_slsa_provenance(artifact_digest: str, provenance: dict, policy: dict) -> dict:
-    if not DIGEST_PATTERN.match(artifact_digest):
+    if not DIGEST_PATTERN.fullmatch(artifact_digest):
         raise ValueError("Invalid artifact digest format")
 
     if provenance.get("predicateType") != policy.get("expectedPredicateType"):

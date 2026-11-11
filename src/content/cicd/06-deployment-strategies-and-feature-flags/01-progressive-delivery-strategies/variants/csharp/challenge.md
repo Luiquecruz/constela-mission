@@ -8,7 +8,7 @@ Decide in this order:
 
 1. Less than 20% of the cluster capacity available: `DeploymentStrategyDecision(false, "NONE", "Insufficient cluster capacity")`. Exactly 20% is enough.
 2. A risk score of 70 or more, or a database migration, needs a canary:
-   - if `maxCanaryTrafficPercent` is zero or less: `DeploymentStrategyDecision(false, "NONE", "Canary traffic is not allowed on this cluster")`;
+   - if `MaxCanaryTrafficPercent` is zero or less: `DeploymentStrategyDecision(false, "NONE", "Canary traffic is not allowed on this cluster")`;
    - otherwise `DeploymentStrategyDecision(true, "CANARY", "High risk change requires canary deployment")`.
 3. Any other change: `DeploymentStrategyDecision(true, "ROLLING", "Low risk change suitable for rolling deployment")`.
 

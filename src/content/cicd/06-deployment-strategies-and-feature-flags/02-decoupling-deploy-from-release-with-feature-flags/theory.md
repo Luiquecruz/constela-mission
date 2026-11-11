@@ -47,7 +47,10 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - run: echo "Flag checkout-v2 set to ${{ inputs.enabled }} by ${{ github.actor }}"
+      - run: echo "Flag checkout-v2 set to $ENABLED by $ACTOR"
+        env:
+          ENABLED: ${{ inputs.enabled }}
+          ACTOR: ${{ github.actor }}
 ```
 :::
 
@@ -58,6 +61,8 @@ Azure App Configuration keeps feature flags next to settings, and the Microsoft.
 az appconfig feature set --name my-store --feature checkout-v2
 az appconfig feature enable --name my-store --feature checkout-v2
 ```
+
+The same `az appconfig feature` commands perform the change from an Azure Pipelines step.
 :::
 
 ::: aws
@@ -123,8 +128,6 @@ High-performing teams enforce strict flag lifecycle management: classifying flag
 ## Across the platforms
 
 Every flag needs an owner and a removal date in the team's tracker. A flag that outlives its rollout is debt: the old code path stays in the program, tested by nobody, until it breaks the day the flag is switched.
-
-On Azure, the `az appconfig feature` commands used earlier perform the same change from an Azure Pipelines step.
 
 ## Common mistakes
 

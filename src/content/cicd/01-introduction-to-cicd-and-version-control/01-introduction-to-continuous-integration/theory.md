@@ -73,12 +73,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: latest
+      nodejs: 22
   pre_build:
     commands:
       - npm ci
   build:
     commands:
+      - npm run lint
       - npm test
 
 reports:
@@ -86,20 +87,6 @@ reports:
     files:
       - "junit.xml"
     file-format: JUNITXML
-```
-
-AWS CodeBuild runs the commands of a `buildspec.yml` in the repository on every build that its webhook triggers:
-
-```yaml
-version: 0.2
-phases:
-  install:
-    commands:
-      - npm ci
-  build:
-    commands:
-      - npm run lint
-      - npm test
 ```
 :::
 

@@ -4,6 +4,8 @@ const metrics = (totalRequests: number, errorRequests: number, latencyP99Ms = 20
 
 test('advances to the first step when the canary starts healthy', async () => {
   expect(mod.decideCanaryStep(STEPS, 0, metrics(1000, 2), LIMITS)).toEqual({ action: 'ADVANCE', nextWeight: 10, reason: 'Canary healthy, advancing', errorRatePercent: 0.2 });
+  expect(mod.decideCanaryStep(STEPS, 0, metrics(800, 3), LIMITS).errorRatePercent).toBe(0.38);
+  expect(mod.decideCanaryStep(STEPS, 50, metrics(25000, 1), { ...LIMITS, maxErrorRatePercent: 0 }).action).toBe('ROLLBACK');
 });
 
 test('moves to the first step above the current weight, even when the weight is between steps', async () => {

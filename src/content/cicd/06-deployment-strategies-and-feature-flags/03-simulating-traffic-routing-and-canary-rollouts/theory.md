@@ -13,9 +13,10 @@ Netflix and Google built Kayenta, an open source service that decides automatica
 A Canary rollout progresses through discrete traffic weight steps (e.g., 5% -> 25% -> 50% -> 100%):
 
 - **Step Evaluation**: At each weight step, the router collects telemetry metrics (total requests, HTTP 5xx error count, p99 latency) for the canary version.
-- **Health Verification**:
-  - Calculate `errorRate = errorCount / totalRequests`.
-  - If `errorRate <= maxErrorRateThreshold` and `p99LatencyMs <= maxLatencyThresholdMs`, the step passes.
+- **Health Verification**, in this order:
+  - If `totalRequests` is below `minRequests`, hold: there is not enough traffic to decide.
+  - Calculate `errorRatePercent = errorRequests / totalRequests * 100`, which is zero when there were no requests, and compare the unrounded value with `maxErrorRatePercent`.
+  - If the error rate is within the limit and `latencyP99Ms <= maxLatencyP99Ms`, the step passes.
   - If metrics remain healthy throughout the step duration, the router advances to the next traffic weight step.
   - Upon completing the final step (100% weight), the rollout status transitions to `COMPLETED`.
 

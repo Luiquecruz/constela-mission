@@ -1,17 +1,17 @@
 import re
 
-DIGEST_PATTERN = re.compile(r"^sha256:[a-f0-9]{64}$", re.IGNORECASE)
+DIGEST_PATTERN = re.compile(r"sha256:[a-f0-9]{64}", re.IGNORECASE)
 
 def validate_environment_promotion(request: dict, history: list) -> dict:
     digest = request.get("artifactDigest", "")
-    if not DIGEST_PATTERN.match(digest):
+    if not DIGEST_PATTERN.fullmatch(digest):
         raise ValueError("Invalid artifact digest format")
 
     target_env = request.get("targetEnv", "")
 
     if target_env == "staging":
         failed_staging = any(
-            h.get("artifactDigest") == digest and h.get("env") == "staging" and h.get("status") == "FAILED"
+            h.get("artifactDigest", "").lower() == digest.lower() and h.get("env") == "staging" and h.get("status") == "FAILED"
             for h in history
         )
         if failed_staging:
@@ -27,7 +27,7 @@ def validate_environment_promotion(request: dict, history: list) -> dict:
 
     if target_env == "production":
         verified_staging = any(
-            h.get("artifactDigest") == digest and h.get("env") == "staging" and h.get("status") == "VERIFIED"
+            h.get("artifactDigest", "").lower() == digest.lower() and h.get("env") == "staging" and h.get("status") == "VERIFIED"
             for h in history
         )
         if not verified_staging:

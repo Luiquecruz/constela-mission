@@ -133,7 +133,7 @@ aws codebuild create-webhook --project-name api-service --filter-groups file://f
 :::
 
 ::: gcp
-Google Cloud Build defines triggers on the project, not in the repository. The command below starts a build for pushes to `main` and for version tags; a pull request trigger uses the same build file but is configured with the pull request event, in the console or through the API field `pullRequest`:
+Google Cloud Build defines triggers on the project, not in the repository. The command below creates the trigger for pushes to `main`; a tag trigger uses `--tag-pattern` instead of `--branch-pattern`, and a pull request trigger uses the same build file but is configured with the pull request event, in the console or through the API field `pullRequest`:
 
 ```bash
 gcloud builds triggers create github \
@@ -146,8 +146,6 @@ gcloud builds triggers create github \
 :::
 
 ## Across the platforms
-
-Use `--tag-pattern` instead of `--branch-pattern` for a tag trigger.
 
 The trigger only starts the checks. What blocks a merge is the protection on the target branch: required status checks and required reviewers in a GitHub ruleset, or required reviewers and build validation in an Azure Repos branch policy. A check that runs but is not required can fail without stopping anything.
 

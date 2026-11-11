@@ -73,7 +73,7 @@ public static class PlanReviewerTests
         var review = PlanReviewer.ReviewPlan([Change("aws_db_instance.main", "aws_db_instance", ["delete", "create"], after)], Policy);
         Assert.Equal("REJECT", review.Decision);
         Assert.Equal("protected-destroy,public-access", Rules(review));
-        var error = Assert.Throws<ArgumentException>(() => PlanReviewer.ReviewPlan([Change("x.y", "x", ["forget"])], Policy));
-        Assert.Contains("Unsupported actions: forget", error.Message);
+        var error = Assert.Throws<ArgumentException>(() => PlanReviewer.ReviewPlan([Change("x.y", "x", ["explode"])], Policy));
+        Assert.Contains("Unsupported actions: explode", error.Message);
     }
 }

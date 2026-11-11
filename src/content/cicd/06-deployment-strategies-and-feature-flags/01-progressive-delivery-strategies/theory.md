@@ -75,7 +75,9 @@ jobs:
         with:
           workload_identity_provider: projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider
           service_account: deploy@PROJECT_ID.iam.gserviceaccount.com
-      - run: gcloud run services update-traffic api-service --to-revisions NEW_REVISION=${{ inputs.weight }}
+      - run: gcloud run services update-traffic api-service --to-revisions "NEW_REVISION=$WEIGHT"
+        env:
+          WEIGHT: ${{ inputs.weight }}
 ```
 :::
 

@@ -96,6 +96,9 @@ A build produces a digest when it pushes an image; the deployment should carry t
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     outputs:
       digest: ${{ steps.push.outputs.digest }}
     steps:

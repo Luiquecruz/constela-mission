@@ -16,7 +16,7 @@ public static class OidcTrust
             '?' => ".",
             _ => Regex.Escape(character.ToString()),
         }));
-        return new Regex($"^{source}$").IsMatch(subject);
+        return new Regex($"\\A{source}\\z", RegexOptions.Singleline).IsMatch(subject);
     }
 
     public static OidcValidationResult ValidateOidcClaims(OidcTokenClaims claims, OidcTrustPolicy policy, long now)

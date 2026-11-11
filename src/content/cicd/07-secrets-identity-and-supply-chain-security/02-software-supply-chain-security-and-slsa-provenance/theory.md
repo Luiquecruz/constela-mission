@@ -135,7 +135,7 @@ Try it in a repository of your own.
 2. Verify the signature or the attestation from your machine with the command of the examples.
 3. Change one byte of the artifact and verify again.
 
-The challenge verifies provenance against the digest, the builder and the source.
+The challenge verifies provenance against the predicate type, the artifact digest and the builder.
 
 ## Check yourself
 

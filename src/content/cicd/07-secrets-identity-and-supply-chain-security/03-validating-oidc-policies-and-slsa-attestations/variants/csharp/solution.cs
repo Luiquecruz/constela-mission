@@ -29,7 +29,7 @@ public static class DeploymentGate
             '?' => ".",
             _ => Regex.Escape(character.ToString()),
         }));
-        return new Regex($"^{source}$").IsMatch(subject);
+        return new Regex($"\\A{source}\\z", RegexOptions.Singleline).IsMatch(subject);
     }
 
     private static bool SubjectTrusted(string target, string subject, DeploymentPolicy policy) =>

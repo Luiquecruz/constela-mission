@@ -51,5 +51,5 @@ test('rejects a publicly accessible resource and lets a rejection outweigh a req
   ), policy);
   expect(review.decision).toBe('REJECT');
   expect(review.findings.map((finding: { rule: string }) => finding.rule)).toEqual(['protected-destroy', 'public-access']);
-  expect(() => mod.reviewPlan(plan(change('x.y', 'x', ['forget'])), policy)).toThrow('Unsupported actions: forget');
+  expect(() => mod.reviewPlan(plan(change('x.y', 'x', ['explode'])), policy)).toThrow('Unsupported actions: explode');
 });

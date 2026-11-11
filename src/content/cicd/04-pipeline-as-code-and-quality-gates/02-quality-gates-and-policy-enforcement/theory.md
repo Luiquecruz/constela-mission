@@ -98,7 +98,11 @@ default allow := false
 
 allow if count(deny) == 0
 
+deny contains "Coverage missing" if not input.coverage
+
 deny contains "Coverage below 80" if input.coverage < 80
+
+deny contains "Critical vulnerability count missing" if not input.criticalVulnerabilities
 
 deny contains "Critical vulnerabilities present" if input.criticalVulnerabilities > 0
 

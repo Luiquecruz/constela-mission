@@ -6,7 +6,7 @@ You need: Declarative Artifact Promotion
 
 ## Case study
 
-The Argo project, backed by Intuit, built Argo CD, a controller that keeps clusters equal to what is declared in Git and that became one of the most used delivery tools for Kubernetes. A team using it promotes a release by changing a file in the repository, usually through a pull request, and the controller applies the change. The planner in this lesson builds exactly that change: the patch that moves one version to the next environment.
+A command meant to remove a few servers from one subsystem of a cloud storage service was mistyped and removed a much larger set, which caused a widespread outage. The provider's summary says the tool now removes capacity more slowly and refuses to go below a minimum. The planner in this lesson applies the same thinking to promotion: the change is a reviewed patch, and the planner refuses it when its preconditions are missing.
 
 ## Promotion Engine State and Transition Rules
 
@@ -61,21 +61,27 @@ images:
     digest: sha256:b5bb9d8014a0f9b1d61e21e796d78dccdf1352f23cd32812f4850b878ae4944c
 ```
 
-The planner returns only the `images` entry, as the challenge defines. The job that commits it merges that entry into the existing overlay, so `resources` and `newName` stay in place, for example with `kustomize edit set image`. Writing the planner output over the whole file would remove them and the overlay would stop rendering the base deployment.
+The planner returns only the `images` entry, as the challenge defines. The job that commits it merges that entry into the existing overlay, so `resources` and `newName` stay in place, for example with `kustomize edit set image api-service=registry.example.com/api-service@sha256:<digest>`, which keeps the registry name. Writing the planner output over the whole file would remove them and the overlay would stop rendering the base deployment.
 
 ::: github
 The patch the planner builds has to reach the environment. In GitHub Actions, a job commits the overlay and opens the pull request that a reviewer approves:
 
 ```yaml
-- run: |
-    git switch -c promote/api-service
-    git add overlays/production/kustomization.yaml
-    git commit -m "Promote api-service to production"
-    git push -u origin promote/api-service
-    gh pr create --title "Promote api-service to production" --body "Pins the image to the verified digest."
-  env:
-    GH_TOKEN: ${{ github.token }}
+permissions:
+  contents: write
+  pull-requests: write
+steps:
+  - run: |
+      git switch -c promote/api-service
+      git add overlays/production/kustomization.yaml
+      git commit -m "Promote api-service to production"
+      git push -u origin promote/api-service
+      gh pr create --title "Promote api-service to production" --body "Pins the image to the verified digest."
+    env:
+      GH_TOKEN: ${{ github.token }}
 ```
+
+The repository must allow GitHub Actions to create pull requests. Checks of a pull request created with the default token do not start until a person approves them; a token of a GitHub App avoids that step.
 :::
 
 ::: azure
@@ -90,7 +96,7 @@ az repos pr create \
 :::
 
 ::: aws
-On Amazon ECS, CodeDeploy reads an AppSpec file from a bucket, and the deployment that promotes the new task definition is created from it:
+The next two commands are an alternative to the Git flow: they call the service directly, so the job needs the permissions of that service, such as `codedeploy:CreateDeployment`, and not only the right to push a branch. On Amazon ECS, CodeDeploy reads an AppSpec file from a bucket, and the deployment that promotes the new task definition is created from it:
 
 ```bash
 aws deploy create-deployment --cli-input-json file://create-deployment.json
@@ -120,7 +126,7 @@ gcloud deploy releases create release-2041 \
 
 ## Across the platforms
 
-The CI job that promotes does not touch the cluster: it opens the pull request that changes the overlay. That keeps the cloud credentials in the controller, and in every provider the pipeline needs only permission to push a branch to the configuration repository.
+The CI job that promotes does not touch the cluster: it opens the pull request that changes the overlay. In the Git flow that keeps the cloud credentials in the controller, and the pipeline needs only permission to push a branch to the configuration repository. The AWS and Google Cloud commands above are the alternative that calls the service directly and needs its own permissions.
 
 ## Common mistakes
 

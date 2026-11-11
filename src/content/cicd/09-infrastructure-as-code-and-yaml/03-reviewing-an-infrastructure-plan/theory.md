@@ -1,6 +1,6 @@
 # Reviewing an Infrastructure Plan
 
-A pull request that changes infrastructure is only as safe as its review, and the diff of a template tells little about what the cloud will do. The plan tells: it lists every resource the tool will create, change or destroy. This lesson puts the plan in the pipeline: a job produces it on every pull request, a second job reads it with rules, and the apply happens only after the merge and any approval the plan requires.
+A pull request that changes infrastructure is only as safe as its review, and the diff of a template tells little about what the cloud will do. The plan tells: it lists every resource the tool will create, change or destroy. This lesson puts the plan in the pipeline: a job produces it on every pull request, a policy step can read it with rules, and the apply happens only after the merge and any approval the plan requires.
 
 You need: Planning Infrastructure Changes
 
@@ -18,7 +18,7 @@ terraform plan -input=false -detailed-exitcode -out=tfplan
 terraform show -json tfplan > plan.json
 ```
 
-The exit code is 0 when the plan is empty, 1 on error and 2 when changes are present. The `plan.json` file is what a policy reads. In the JSON, each entry of `resource_changes` has an `address`, a `type` and a `change` with the list of `actions` (`create`, `update`, `delete`, `no-op`, `read`, and the pairs `delete, create` and `create, delete` for a replacement) and the `after` values.
+The exit code is 0 when the plan is empty, 1 on error and 2 when changes are present. The `plan.json` file is what a policy reads. In the JSON, each entry of `resource_changes` has an `address`, a `type` and a `change` with the list of `actions` (`create`, `update`, `delete`, `no-op`, `read`, `forget` and the pairs `delete, create` and `create, delete` for a replacement) and the `after` values.
 
 ## The Workflow
 
@@ -55,7 +55,9 @@ jobs:
       - uses: actions/upload-artifact@v7
         with:
           name: plan
-          path: plan.json
+          path: |
+            plan.json
+            infra/tfplan
   apply:
     if: github.ref == 'refs/heads/main'
     needs: plan
@@ -71,8 +73,11 @@ jobs:
         with:
           role-to-assume: arn:aws:iam::111122223333:role/terraform-apply
           aws-region: eu-west-1
+      - uses: actions/download-artifact@v7
+        with:
+          name: plan
       - run: terraform -chdir=infra init -input=false
-      - run: terraform -chdir=infra apply -input=false -auto-approve
+      - run: terraform -chdir=infra apply -input=false tfplan
 ```
 
 Two roles keep the privileges apart: the planning role can read, and only the applying role can write. The `production` environment holds the job for the approvers configured on it. Azure and Google Cloud follow the same pattern with their own identity step; Azure also offers `az deployment group what-if` for Bicep, and AWS CloudFormation offers change sets, which show the plan and wait for an explicit execution.

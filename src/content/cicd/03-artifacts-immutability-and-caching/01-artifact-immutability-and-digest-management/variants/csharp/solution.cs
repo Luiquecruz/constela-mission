@@ -7,7 +7,7 @@ public record VerificationResult(bool Verified, bool Match, string Reason);
 
 public static class ArtifactVerifier
 {
-    private static readonly Regex DigestRegex = new(@"^sha256:[a-f0-9]{64}$", RegexOptions.IgnoreCase);
+    private static readonly Regex DigestRegex = new(@"\Asha256:[a-f0-9]{64}\z", RegexOptions.IgnoreCase);
 
     public static VerificationResult VerifyArtifactImmutability(ArtifactMeta artifact, string expectedDigest)
     {

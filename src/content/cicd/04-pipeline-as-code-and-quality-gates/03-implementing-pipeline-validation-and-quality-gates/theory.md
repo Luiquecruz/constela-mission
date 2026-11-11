@@ -88,8 +88,11 @@ jobs:
     environment: production
     steps:
       - name: Record the override
+        env:
+          ACTOR: ${{ github.actor }}
+          JUSTIFICATION: ${{ inputs.justification }}
         run: |
-          echo "Override by ${{ github.actor }}: ${{ inputs.justification }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Override by $ACTOR: $JUSTIFICATION" >> "$GITHUB_STEP_SUMMARY"
 ```
 :::
 
@@ -107,7 +110,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - script: echo "Override reason: ${{ parameters.justification }}"
+  - script: echo "Override reason: $JUSTIFICATION"
+    env:
+      JUSTIFICATION: ${{ parameters.justification }}
     displayName: Record the override
 ```
 :::

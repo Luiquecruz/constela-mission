@@ -4,11 +4,11 @@
     "options": [
       "High server hosting costs caused by unused infrastructure.",
       "Lack of relational database schema backups before deployments.",
-      "Integration friction and late bug discovery caused by long-lived unmerged code.",
+      "Integration friction and late bug discovery that come from long-lived unmerged code.",
       "Slow network speeds during large file downloads."
     ],
     "answer": 2,
-    "explanation": "Continuous Integration prevents integration friction and late defect discovery by forcing frequent code merges and automated build validations."
+    "explanation": "Continuous Integration reduces integration friction and helps find defects earlier by forcing frequent code merges and automated build validations."
   },
   {
     "question": "Which of the following describes the Lead Time for Changes metric?",
@@ -41,17 +41,17 @@
       "Code Review Speed."
     ],
     "answer": 1,
-    "explanation": "Change Failure Rate is the percentage of production deployments that need remediation. It counts failed changes per deployment, while frequency and lead time count how fast changes flow."
+    "explanation": "Change Failure Rate is the percentage of production deployments that need remediation, so it divides failed deployments by total deployments. Frequency and lead time measure how fast changes flow."
   },
   {
     "question": "What is an immediate requirement when a Continuous Integration pipeline build fails on the main branch?",
     "options": [
       "Bypass the pipeline and deploy the code manually.",
       "Delete the failing automated test from the repository.",
-      "Stop new feature work and fix the build immediately.",
+      "Prioritize fixing the build immediately.",
       "Wait until the end of the month to investigate log files."
     ],
     "answer": 2,
-    "explanation": "Maintaining a healthy build requires fixing broken main pipelines immediately so the entire team can continue integrating safely."
+    "explanation": "A broken main build blocks everyone's integration, so fixing it comes first. Other developers can keep working while some of the team restores the build."
   }
 ]

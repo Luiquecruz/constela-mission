@@ -13,6 +13,6 @@
   },
   {
     "term": "Store Key",
-    "description": "Composite lookup key used to index artifacts uniquely by name and SHA256 digest in a registry."
+    "description": "Composite lookup key that indexes an artifact registration by name and version; the SHA256 digest is the value stored under it."
   }
 ]
