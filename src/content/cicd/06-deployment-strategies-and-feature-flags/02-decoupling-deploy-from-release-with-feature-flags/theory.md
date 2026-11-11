@@ -6,7 +6,7 @@ You need: Progressive Delivery Strategies
 
 ## Case study
 
-A trading firm deployed new software to its servers and missed one of eight. A flag that had once controlled an old, retired feature was reused for the new code, so on the server that still ran the old software the same flag woke the retired behavior. In under an hour the firm lost hundreds of millions of dollars and it did not survive as an independent company. Flags need an owner, a lifecycle and a clean-up, and a deployment must reach every server or none.
+A trading firm deployed new code to its automated equity router incorrectly. The new code used a flag that an old, retired function had also used, so on the server that still ran the old code the same flag woke the retired behavior. In the first forty-five minutes after the market opened the router sent millions of unintended orders, and the SEC reported a loss of more than four hundred and sixty million dollars. Flags need an owner, a lifecycle and a clean-up, and a deployment must reach every server or none.
 
 ## Feature Flags and Toggles
 
