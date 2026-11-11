@@ -6,7 +6,7 @@ You need: Implementing Pipeline Validation and Quality Gates
 
 ## Case study
 
-Heroku Review Apps create a temporary app for each pull request that is opened on a connected repository, and tear it down when the pull request is closed. Reviewers open a link and see the change running, and no shared staging environment is blocked while someone tests. The pattern spread to other platforms because it removes a queue. It also needs rules, such as isolation from production data and automatic cleanup, which is what the lifecycle in this lesson models.
+Heroku Review Apps create a temporary app for each pull request when they are enabled for the repository that is connected to the parent app, except for pull requests from forks of public repositories. Apps created automatically are removed when the pull request is closed, while apps created by hand stay until someone deletes them and can keep incurring charges. Reviewers open a link and see the change running, and no shared staging environment is blocked while someone tests. The pattern needs rules, such as isolation from production data and automatic cleanup, which is what the lifecycle in this lesson models.
 
 ## Environment Lifecycles: Persistent versus Ephemeral
 

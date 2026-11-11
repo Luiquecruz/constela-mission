@@ -6,7 +6,7 @@ You need: YAML Without Surprises
 
 ## Case study
 
-Atlantis was created at Hootsuite to run Terraform plan and apply from pull requests and to post the output back to the pull request for everyone to read before the change is applied. The team stopped running infrastructure changes from laptops, and reviewers saw what would change instead of imagining it. Planning in the pipeline is the practice behind this lesson: the plan is the artifact that gets reviewed.
+Atlantis was created at Hootsuite to run Terraform plan and apply from pull requests. It posts the plan output to the pull request for everyone to read before the change is applied, and posts the apply output afterwards. The team stopped running infrastructure changes from laptops, and reviewers saw what would change instead of imagining it. Planning in the pipeline is the practice behind this lesson: the plan is the artifact that gets reviewed.
 
 ## Desired State, Current State and the Plan
 

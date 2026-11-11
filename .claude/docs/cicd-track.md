@@ -130,18 +130,18 @@ Every case study and provider example was checked against the primary source whi
 | Lesson | What the case study says | Source |
 | --- | --- | --- |
 | 01-01 | the health insurance website launched without verifying that it met its performance requirements, and many users had trouble | the Government Accountability Office report on the launch |
-| 01-02 | most of Google's source is in one repository, everyone syncs to trunk, development branches are minimal or very short lived | the Google engineering book, chapter on version control and branch management |
+| 01-02 | most of Google's source is in one repository, everyone syncs to trunk, development branches are minimal or very short lived, with release branches and a couple of development branches as the exception | the Google engineering book, chapter on version control and branch management |
 | 01-03 | a branch name with shell commands reached a `pull_request_target` workflow, then a poisoned build cache and a stolen token led to malicious releases | the analysis of the attack by its researcher and the package registry's write-up |
 | 02-01 | a WAF rule regular expression exhausted the CPU, and the test suite had no check for CPU use | the provider's post-mortem of the outage |
 | 02-02 | the exploited flaw had a fix published in March, and the attackers had access from May to July | the FTC complaint and the House Oversight report on the breach |
-| 02-03 | flaky tests at Google and their mitigation | the title and subject of the Google Testing Blog post; no figures are quoted |
+| 02-03 | Log4Shell, a critical remote code execution flaw in Log4j, and CISA's guidance to inventory and scan for the library | the CISA advisory and guidance pages and the NVD entry |
 | 03-01 | a developer unpublished many packages including left-pad, thousands of projects broke, and the registry said it would make unpublishing harder | the registry's own account of the incident |
 | 03-02 | the attack on a popular package targeted the GitHub Actions cache | the package registry's analysis |
 | 03-03 | a coverage uploader script was modified to send environment variables, found when a customer compared its checksum | the vendor's security update |
 | 04-01 | CI services such as Travis CI read the pipeline from a file in the repository | general knowledge of those services; no figure or date is quoted |
 | 04-02 | Capital One built Cloud Custodian, an open source rules engine with YAML policies | the project's package page and the book chapter on it |
 | 04-03 | a command issued to assess backbone capacity took down all backbone connections, and the audit tool that should have stopped it had a bug | the company's engineering post on the outage |
-| 05-01 | Heroku Review Apps create a temporary app per pull request and tear it down when the pull request is closed | the Heroku announcements and Dev Center |
+| 05-01 | Heroku Review Apps create a temporary app per pull request when enabled, except for forks of public repositories; automatic apps are removed when the pull request closes, manual ones are not | the Heroku announcements and Dev Center |
 | 05-02 | Amazon's pipelines promote immutable artifacts through test and production stages with automatic monitoring and rollback | the Builders' Library article; the stage names are not quoted |
 | 05-03 | a mistyped command removed more capacity than intended, and the tool was changed to remove capacity more slowly and keep a minimum | the cloud provider's post-event summary |
 | 06-01 | a content update with an undetected error crashed Windows computers, and the report lists a staggered deployment starting with a canary group | the vendor's preliminary post-incident report |
@@ -154,7 +154,7 @@ Every case study and provider example was checked against the primary source whi
 | 08-02 | the four metrics come from the Accelerate research and the DORA reports group them into throughput and stability | the DORA reports |
 | 08-03 | Spinnaker was developed at Netflix, with pipelines made of stages, including a canary | the Spinnaker and Netflix documentation |
 | 09-01 | YAML 1.1 reads `NO` as a boolean, known as the Norway problem | the YAML 1.1 behavior described in several write-ups; PyYAML shows it |
-| 09-02 | Atlantis was created at Hootsuite and runs plan and apply from pull requests | the Atlantis launch post and Hootsuite's engineering blog |
+| 09-02 | Atlantis was created at Hootsuite, runs plan and apply from pull requests and posts the plan before and the apply output after | the Atlantis launch post and Hootsuite's engineering blog |
 | 09-03 | an engineer wiped the data directory on the primary instead of the secondary, and the backups failed | the outage post-mortem |
 
 Provider examples:

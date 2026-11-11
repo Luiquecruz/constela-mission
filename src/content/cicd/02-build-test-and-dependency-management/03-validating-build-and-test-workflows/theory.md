@@ -6,7 +6,7 @@ You need: Dependency Management and Security Scanning
 
 ## Case study
 
-Google's testing blog describes flaky tests, which pass and fail without a change in the code, and how the company mitigates them at its scale. A flaky test is not an annoyance: it trains engineers to rerun and ignore red builds, and it hides the failures that matter. Teams respond by isolating flaky tests, running independent work in parallel and keeping the gate deterministic. A workflow is validated when its order is right and its signals can be trusted.
+A critical remote code execution flaw in Log4j, a Java logging library used inside a very large number of applications, was disclosed and became known as Log4Shell. CISA's guidance told organizations to inventory every asset that uses the library and to scan for it, because the library was often buried several dependencies deep. A pipeline that evaluates scan results against a severity threshold can stop an affected build at the gate instead of leaving the search to a person. This lesson models that gate and the order of the tasks that feed it.
 
 ## DAG Task Scheduling and Parallel Batching
 
