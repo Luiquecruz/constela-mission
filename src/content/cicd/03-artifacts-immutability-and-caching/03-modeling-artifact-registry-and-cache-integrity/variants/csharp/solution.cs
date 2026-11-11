@@ -4,7 +4,7 @@ public record RegistrationResult(bool Registered, string Digest);
 
 public class ArtifactRegistry
 {
-    private static readonly Regex DigestPattern = new("^sha256:[a-f0-9]{64}$", RegexOptions.IgnoreCase);
+    private static readonly Regex DigestPattern = new("\\Asha256:[a-f0-9]{64}\\z", RegexOptions.IgnoreCase);
 
     private readonly Dictionary<string, List<(string Version, string Digest)>> _artifacts = new();
 

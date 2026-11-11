@@ -1,19 +1,19 @@
 [
   {
     "term": "Deployment Frequency",
-    "description": "DORA velocity metric measuring how often code is successfully released to production."
+    "description": "DORA throughput metric measuring how often code is successfully released to production."
   },
   {
     "term": "Lead Time for Changes",
-    "description": "DORA velocity metric measuring time elapsed from code commit to production execution."
+    "description": "DORA throughput metric measuring time elapsed from code commit to production execution."
   },
   {
     "term": "Change Failure Rate",
-    "description": "DORA stability metric measuring percentage of deployments causing production degradation."
+    "description": "DORA instability metric measuring the percentage of deployments that cause a production failure."
   },
   {
-    "term": "Failed Service Recovery Time",
-    "description": "DORA stability metric measuring time required to restore service health after an outage."
+    "term": "Failed Deployment Recovery Time",
+    "description": "DORA throughput metric measuring the time to recover after a deployment causes a failure in production."
   },
   {
     "term": "Error Budget",

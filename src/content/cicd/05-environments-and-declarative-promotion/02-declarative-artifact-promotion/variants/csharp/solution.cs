@@ -10,7 +10,7 @@ public record PromotionDecision(bool Allowed, string Reason);
 
 public static class PromotionValidator
 {
-    private static readonly Regex DigestRegex = new(@"^sha256:[a-f0-9]{64}$", RegexOptions.IgnoreCase);
+    private static readonly Regex DigestRegex = new(@"\Asha256:[a-f0-9]{64}\z", RegexOptions.IgnoreCase);
 
     public static PromotionDecision ValidateEnvironmentPromotion(
         PromotionRequest request,
@@ -24,12 +24,12 @@ public static class PromotionValidator
 
         var entries = history ?? Array.Empty<DeploymentHistoryEntry>();
 
-        if (string.Equals(request.TargetEnv, "staging", StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(request.TargetEnv, "staging", StringComparison.Ordinal))
         {
             bool failedStaging = entries.Any(h =>
-                h.ArtifactDigest == request.ArtifactDigest &&
-                string.Equals(h.Env, "staging", StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(h.Status, "FAILED", StringComparison.OrdinalIgnoreCase)
+                string.Equals(h.ArtifactDigest, request.ArtifactDigest, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(h.Env, "staging", StringComparison.Ordinal) &&
+                string.Equals(h.Status, "FAILED", StringComparison.Ordinal)
             );
 
             if (failedStaging)
@@ -40,12 +40,12 @@ public static class PromotionValidator
             return new PromotionDecision(true, "Promotion to staging approved");
         }
 
-        if (string.Equals(request.TargetEnv, "production", StringComparison.OrdinalIgnoreCase))
+        if (string.Equals(request.TargetEnv, "production", StringComparison.Ordinal))
         {
             bool verifiedStaging = entries.Any(h =>
-                h.ArtifactDigest == request.ArtifactDigest &&
-                string.Equals(h.Env, "staging", StringComparison.OrdinalIgnoreCase) &&
-                string.Equals(h.Status, "VERIFIED", StringComparison.OrdinalIgnoreCase)
+                string.Equals(h.ArtifactDigest, request.ArtifactDigest, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(h.Env, "staging", StringComparison.Ordinal) &&
+                string.Equals(h.Status, "VERIFIED", StringComparison.Ordinal)
             );
 
             if (!verifiedStaging)

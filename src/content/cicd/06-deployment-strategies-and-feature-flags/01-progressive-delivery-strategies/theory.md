@@ -6,7 +6,7 @@ You need: Building an Environment Promotion Planner
 
 ## Case study
 
-A security vendor pushed a content update to millions of Windows computers at the same time, and a defect in it made them crash and stay unavailable until repaired by hand. The update had no staged rollout: every machine received it at once, so the blast radius was the whole fleet. The company then committed to deploying such updates in stages and giving customers control over when they arrive. Choosing a strategy is choosing how many users can be hurt by one mistake.
+A security vendor released a content update for its Windows sensor with an undetected error, and the computers that received it crashed. In its post-incident report the company listed, among the fixes, a staggered deployment that starts with a canary group and more customer control over when updates arrive. The update had reached the whole fleet without that staging, so the blast radius was every machine that received it. Choosing a strategy is choosing how many users can be hurt by one mistake.
 
 ## The Mechanics of Progressive Deployment Strategies
 
@@ -75,7 +75,9 @@ jobs:
         with:
           workload_identity_provider: projects/PROJECT_NUMBER/locations/global/workloadIdentityPools/github-pool/providers/github-provider
           service_account: deploy@PROJECT_ID.iam.gserviceaccount.com
-      - run: gcloud run services update-traffic api-service --to-revisions NEW_REVISION=${{ inputs.weight }}
+      - run: gcloud run services update-traffic api-service --to-revisions "NEW_REVISION=$WEIGHT"
+        env:
+          WEIGHT: ${{ inputs.weight }}
 ```
 :::
 

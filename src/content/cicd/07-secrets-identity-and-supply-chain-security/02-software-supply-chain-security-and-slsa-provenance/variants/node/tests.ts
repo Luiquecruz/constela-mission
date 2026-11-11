@@ -22,6 +22,7 @@ test('finds the artifact among several subjects regardless of hexadecimal case',
     { name: 'api-service.tar.gz', digest: { sha256: DIGEST.toUpperCase() } },
   ];
   expect(mod.verifySlsaProvenance(`sha256:${DIGEST}`, statement({ subject: subjects }), policy).valid).toBe(true);
+  expect(mod.verifySlsaProvenance(`sha256:${DIGEST.toUpperCase()}`, statement(), policy).valid).toBe(true);
 });
 
 // beginner mistake: trusting the builder and never comparing the artifact digest with the subjects

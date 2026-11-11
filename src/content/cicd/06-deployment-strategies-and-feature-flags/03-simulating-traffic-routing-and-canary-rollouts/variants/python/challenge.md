@@ -6,7 +6,7 @@ Write `decide_canary_step(steps, current_weight, metrics, limits)`. `metrics` an
 
 - `steps` is the ascending list of canary weights in percent, such as `[10, 25, 50]`.
 - `metrics` is `{ totalRequests, errorRequests, latencyP99Ms }` and `limits` is `{ maxErrorRatePercent, maxLatencyP99Ms, minRequests }`.
-- The error rate is `errorRequests / totalRequests * 100`, rounded to two decimals, and zero when there were no requests. Every decision reports it as `errorRatePercent`.
+- The error rate is `errorRequests / totalRequests * 100`, and zero when there were no requests. Decisions compare the unrounded rate with the limit; only the value reported as `errorRatePercent` is rounded to two decimals, with a half rounding up, computed exactly from the request counts (0.375 becomes 0.38, and 201 errors in 20,000 requests is exactly 1.005, which becomes 1.01).
 
 Decide in this order:
 

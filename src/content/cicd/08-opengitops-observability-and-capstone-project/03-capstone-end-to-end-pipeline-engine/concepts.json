@@ -4,15 +4,15 @@
     "description": "Core engine coordinating task scheduling, security scans, identity checks, and environment promotion."
   },
   {
-    "term": "Execution Report",
-    "description": "Consolidated audit document capturing pipeline stage outcomes, security statuses, and DORA metrics."
+    "term": "Rejection Report",
+    "description": "Report that names the failed stage, the stages that passed before it and the reasons of the failure, so the first problem to fix is clear."
   },
   {
     "term": "Short-Circuiting",
     "description": "Pipeline execution pattern immediately halting downstream stages upon quality gate or policy failure."
   },
   {
-    "term": "DORA Performance Tier",
-    "description": "Classification (Elite, High, Medium, Low) derived from lead time for changes and change failure rate."
+    "term": "Digest in Provenance",
+    "description": "Check that the digest of the artifact is among the subjects of its provenance and that the builder is trusted, before promotion."
   }
 ]

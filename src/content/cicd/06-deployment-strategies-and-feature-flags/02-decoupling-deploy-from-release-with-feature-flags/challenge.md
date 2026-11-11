@@ -6,7 +6,7 @@ Export `bucketFor(key: string, userId: string): number`, which assigns a user to
 
 - Hash the UTF-8 text `<key>:<userId>` (the flag key, a colon and the user id) with 32-bit FNV-1a: start at `0x811C9DC5`; for each byte, XOR it into the hash and multiply by `0x01000193`, keeping 32 bits.
 - The bucket is the hash modulo 100, so it is a number from 0 to 99.
-- The same user always gets the same bucket for a flag, and different flags give different buckets.
+- The same user always gets the same bucket for a flag, and the flag key is part of the hashed text, so different flags can give the same user different buckets. Two flags can also land on the same bucket, because there are only 100.
 
 Export `evaluateFeatureFlag(flag, context)`. `flag` is `{ key, enabled, emergencyKillSwitch, targetSegments, rolloutPercent }` and `context` is `{ userId, userSegment }`. It returns `{ active, reason }`.
 

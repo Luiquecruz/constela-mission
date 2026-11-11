@@ -6,7 +6,7 @@ You need: Automated Build and Commit Suite
 
 ## Case study
 
-A major credit reporting company was breached through a web framework flaw for which a fix had been published weeks earlier. The vulnerable component was running in an internet-facing application, and nothing in the delivery process forced the update or reported that it was missing. The attackers had access for months. Dependency pinning, automated scanning and a gate that fails the build turn "someone should update that" into a check that cannot be skipped.
+A major credit reporting company was breached through a flaw in a web framework for which a fix had been published months earlier. The vulnerable component was running in an internet-facing application and was not patched, and the attackers exploited it for months before the breach was found. Dependency pinning, automated scanning and a gate that fails the build turn "someone should update that" into a check that cannot be skipped.
 
 ## Dependency Pinning and Lockfiles
 
@@ -103,7 +103,7 @@ jobs:
 :::
 
 ::: azure
-The other clouds scan the artifact they store rather than the pull request: In all of them a pipeline step reads the finding counts and applies a gate, which is the evaluation the challenge models: a minimum coverage, a threshold severity and a list of violations.
+A pipeline step publishes the test and coverage results so that a gate can read them. The gate applies a minimum coverage, a severity threshold and a list of violations, which is the evaluation the challenge models. Microsoft Defender for Cloud scans the images that Azure Container Registry stores only when a Defender plan for container registries is enabled and has access to the registry.
 
 ```yaml
 # Azure Pipelines: publish test and coverage results so the gate can read them
@@ -187,7 +187,7 @@ steps:
 
 ## Across the platforms
 
-In both clouds the pipeline then reads the findings and applies the gate that the challenge models.
+Publishing results and enabling image scanning do not configure a gate by themselves. In every provider you add a pipeline step that retrieves the finding counts and applies the gate that the challenge models.
 
 ## Common mistakes
 

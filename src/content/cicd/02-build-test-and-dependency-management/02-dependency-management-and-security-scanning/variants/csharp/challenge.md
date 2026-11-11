@@ -2,7 +2,7 @@ Evaluate test coverage and dependency security scan metrics against quality gate
 
 ### Requirements
 
-Implement `EvaluateTestAndSecuritySummary(summary, policy)`:
+Implement the public static method `EvaluateTestAndSecuritySummary(summary, policy)` of the static class `TestSecurityEvaluator`:
 - `summary`: `TestSecuritySummary(double LineCoveragePercent, VulnerabilityItem[] Vulnerabilities)`, where a vulnerability has an id, a package and a severity.
 - `policy`: `SecurityCoveragePolicy(double MinLineCoveragePercent, string SecurityThreshold)`.
 

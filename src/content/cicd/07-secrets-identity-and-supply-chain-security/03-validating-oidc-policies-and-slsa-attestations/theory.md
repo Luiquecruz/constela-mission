@@ -6,7 +6,7 @@ You need: Secretless Authentication via OIDC and PBAC, Software Supply Chain Sec
 
 ## Case study
 
-A widely used action for finding changed files in a repository was compromised: the attacker moved existing version tags to a malicious commit, and every workflow that referred to the tag started printing its secrets into the logs. Workflows that referred to a full commit hash were not affected. A gate that checks identity, audience and provenance, and a habit of pinning to immutable references, is what separates a trusted input from a name someone can reassign.
+A widely used action for finding changed files in a repository was compromised: the attacker moved existing version tags to a malicious commit, and runs of the action that used one of those tags could print secrets found in the runner's memory into the workflow logs. The advice that followed was to pin actions to full commit hashes, which cannot be reassigned. A gate that checks identity, audience and provenance, and a habit of pinning to immutable references, is what separates a trusted input from a name someone can reassign.
 
 ## Reporting Every Failure
 

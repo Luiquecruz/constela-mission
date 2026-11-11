@@ -6,7 +6,7 @@ You need: Quality Gates and Policy as Code
 
 ## Case study
 
-During routine maintenance at a large social network, a command meant to assess backbone capacity took down the connections between its data centers, and the services went offline for hours. The tool that should have stopped such a command had a bug that let it through. Safety checks fail like any other code, and they need the same care as the rest: a guard that can be bypassed must leave a record, and the bypass path must be as controlled as the gate.
+During routine maintenance at a large social network, a command was issued to assess the availability of backbone capacity and unintentionally took down all the connections in its backbone network. The company's report says the audit tool that should have stopped the command had a bug. Safety checks fail like any other code, and they need the same care as the rest: a guard that can be bypassed must leave a record, and the bypass path must be as controlled as the gate.
 
 ## Quality Gate Metrics and Policy Rule Structures
 
@@ -88,8 +88,11 @@ jobs:
     environment: production
     steps:
       - name: Record the override
+        env:
+          ACTOR: ${{ github.actor }}
+          JUSTIFICATION: ${{ inputs.justification }}
         run: |
-          echo "Override by ${{ github.actor }}: ${{ inputs.justification }}" >> "$GITHUB_STEP_SUMMARY"
+          echo "Override by $ACTOR: $JUSTIFICATION" >> "$GITHUB_STEP_SUMMARY"
 ```
 :::
 
@@ -107,7 +110,9 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-  - script: echo "Override reason: ${{ parameters.justification }}"
+  - script: echo "Override reason: $JUSTIFICATION"
+    env:
+      JUSTIFICATION: ${{ parameters.justification }}
     displayName: Record the override
 ```
 :::

@@ -16,11 +16,6 @@ public static class DoraCalculator
         {
             throw new ArgumentException("Window must be positive");
         }
-        if (deployments.Length == 0)
-        {
-            return new DoraMetrics(0, 0, 0, 0);
-        }
-
         var failed = deployments.Count(deployment => deployment.Status == "FAILURE");
         var leadTotal = deployments.Sum(deployment => deployment.LeadTimeMinutes);
         var resolved = incidents.Where(incident => incident.ResolvedTimestamp.HasValue).ToArray();
@@ -28,8 +23,8 @@ public static class DoraCalculator
 
         return new DoraMetrics(
             Round2(deployments.Length / windowDays),
-            Round2((double)failed / deployments.Length * 100),
-            Round2(leadTotal / deployments.Length),
+            deployments.Length == 0 ? 0 : Round2((double)failed / deployments.Length * 100),
+            deployments.Length == 0 ? 0 : Round2(leadTotal / deployments.Length),
             resolved.Length == 0 ? 0 : Round2(restoreTotal / resolved.Length / 60000));
     }
 

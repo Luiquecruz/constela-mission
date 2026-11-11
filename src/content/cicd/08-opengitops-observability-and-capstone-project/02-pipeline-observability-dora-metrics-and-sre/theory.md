@@ -6,19 +6,19 @@ You need: OpenGitOps Principles and Pull-Based Reconciliation
 
 ## Case study
 
-The research program behind the book Accelerate, led by Nicole Forsgren with Jez Humble and Gene Kim, surveyed thousands of organizations and found that four measures predict how well a software organization performs: deployment frequency, lead time for changes, change failure rate and time to restore service. The finding that speed and stability go together, and do not trade off, is why these four numbers are the ones a pipeline should report.
+The research program behind the book Accelerate, led by Nicole Forsgren with Jez Humble and Gene Kim, settled on four measures of software delivery performance: deployment frequency, lead time for changes, change failure rate and time to restore service. The DORA reports group them into throughput and stability, which is why a pipeline should report all four numbers and not only how fast it ships.
 
 ## The Four Core DORA Metrics
 
 DORA research categorizes software delivery performance across four fundamental metrics:
 
-### Velocity Metrics
+### Throughput Metrics
 1. **Deployment Frequency (DF)**: How often an organization successfully releases code to production (e.g., multiple deployments per day vs once per month).
 2. **Lead Time for Changes (LTC)**: The total time elapsed from code commit check-in to code successfully running in production.
+3. **Failed Deployment Recovery Time (often called mean time to restore)**: The time required to restore service after a deployment causes a failure in production.
 
-### Stability Metrics
-3. **Change Failure Rate (CFR)**: The percentage of production deployments that result in degraded service or severe outages requiring immediate hotfixes, rollbacks, or patches.
-4. **Failed Service Recovery Time (FSRT / MTTR)**: The time required to restore full service operational health following a production outage or degradation.
+### Instability Metrics
+4. **Change Failure Rate (CFR)**: The percentage of production deployments that result in degraded service or severe outages requiring immediate hotfixes, rollbacks, or patches.
 
 High-performing organizations achieve high deployment frequency and low lead time while simultaneously maintaining low change failure rates and rapid service recovery times.
 
@@ -74,7 +74,7 @@ gcloud logging write deployments '{"release": "rel-2041", "status": "SUCCESS"}' 
 
 DORA benchmarks categorize software engineering organizations into four distinct performance tiers:
 
-| Performance Tier | Deployment Frequency | Lead Time for Changes | Change Failure Rate | Failed Service Recovery Time |
+| Performance Tier | Deployment Frequency | Lead Time for Changes | Change Failure Rate | Failed Deployment Recovery Time |
 | :--- | :--- | :--- | :--- | :--- |
 | **Elite** | On-demand (multiple per day) | Less than 1 hour | 0% - 5% | Less than 1 hour |
 | **High** | Between 1 day and 1 week | Between 1 day and 1 week | 6% - 15% | Less than 1 day |

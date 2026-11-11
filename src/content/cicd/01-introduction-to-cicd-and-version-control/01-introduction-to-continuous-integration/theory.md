@@ -6,7 +6,7 @@ You need: nothing. This is the first lesson of the track.
 
 ## Case study
 
-When the United States federal health insurance website launched, the pieces built by many contractors had been integrated and tested together only shortly before opening day. The site failed under real traffic, and the recovery effort that followed relied on what continuous integration provides from the first day: integrating often, running the whole system's checks on every change and watching the result. The lesson for a pipeline is that the cost of an integration problem grows with the time it stays undiscovered.
+When the United States federal health insurance website opened for enrollment, the agency behind it had launched it without verifying that it met its performance requirements, according to the Government Accountability Office, and many users had trouble using it. The lesson for a pipeline is that checks which run only at the end find their problems when they are most expensive: continuous integration moves them to every change, so that integration and performance problems are found while the change is still small.
 
 ## Core Pillars of Continuous Integration
 
@@ -73,12 +73,13 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: latest
+      nodejs: 22
   pre_build:
     commands:
       - npm ci
   build:
     commands:
+      - npm run lint
       - npm test
 
 reports:
@@ -86,20 +87,6 @@ reports:
     files:
       - "junit.xml"
     file-format: JUNITXML
-```
-
-AWS CodeBuild runs the commands of a `buildspec.yml` in the repository on every build that its webhook triggers:
-
-```yaml
-version: 0.2
-phases:
-  install:
-    commands:
-      - npm ci
-  build:
-    commands:
-      - npm run lint
-      - npm test
 ```
 :::
 

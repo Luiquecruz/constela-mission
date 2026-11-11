@@ -6,7 +6,7 @@ You need: Introduction to Continuous Integration
 
 ## Case study
 
-Google keeps the code of most of its products in one repository, and its engineers commit to a single trunk instead of keeping long-lived branches. Changes are small, tests run before they merge, and unfinished work is hidden behind flags. Nobody carries a branch for weeks, so there is no large merge at the end. The pipeline of such a team is built around frequent, small, verified merges, which is exactly what the branch rules in this lesson protect.
+Google's engineering book says that the vast majority of its source lives in a single repository, that everyone is responsible for syncing to trunk and committing, and that development branches should be minimal or at best very short lived. Some teams keep release branches, and a couple keep a development branch, but the usual practice is short branches and small, frequent merges. The pipeline of such a team is built around frequent, small, verified merges, which is exactly what the branch rules in this lesson protect.
 
 ## Comparison of Branching Models
 

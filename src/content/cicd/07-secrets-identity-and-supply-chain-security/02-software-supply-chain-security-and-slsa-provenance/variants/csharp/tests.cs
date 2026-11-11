@@ -25,6 +25,7 @@ public static class SlsaProvenanceTests
     {
         var subjects = new[] { Subject("checksums.txt", Other), Subject("api-service.tar.gz", Digest.ToUpperInvariant()) };
         Assert.True(SlsaProvenanceVerifier.VerifySlsaProvenance($"sha256:{Digest}", Statement(subjects: subjects), Policy).Valid);
+        Assert.True(SlsaProvenanceVerifier.VerifySlsaProvenance($"sha256:{Digest.ToUpperInvariant()}", Statement(), Policy).Valid);
     }
 
     // beginner mistake: trusting the builder and never comparing the artifact digest with the subjects

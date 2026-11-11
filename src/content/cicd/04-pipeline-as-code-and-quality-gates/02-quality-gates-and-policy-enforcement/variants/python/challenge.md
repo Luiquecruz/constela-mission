@@ -4,7 +4,7 @@ Policy as code means the rules of a deployment gate live in data that can be rev
 
 Write `evaluate_policy(rules, facts)`, which returns a dict with `allowed` and `failures`. Rules and facts are dicts, the unsupported operator is a `ValueError`, and a failure is a dict with `ruleId` and `message`.
 
-A rule is a dict with `id`, `field`, `operator`, `value` and `message`. Facts are named numbers or strings.
+A rule is a dict with `id`, `field`, `operator`, `value` and `message`. Facts are named numbers (integers, floats or `Decimal`) or strings.
 
 Operators:
 

@@ -3,7 +3,7 @@ Schedule DAG tasks into execution batches and evaluate vulnerability scan result
 ### Requirements
 
 Implement `schedule_dag_tasks(tasks)`:
-- `tasks`: List of dicts `{ "id": str, "dependencies": list, "command": str }`.
+- `tasks`: List of dicts with an `id` and a `dependencies` list; other keys, such as `name` or `command`, are ignored.
 - If a dependency is missing from `tasks`, raise `ValueError("Missing dependency: <dep>")`.
 - Schedule the tasks into parallel batches: a task goes into the first batch in which all its dependencies were met by earlier batches. Inside a batch, keep the order in which the tasks appear in the input.
 - If a cycle prevents scheduling all tasks, raise `ValueError("Cyclic dependency detected")`.

@@ -271,8 +271,6 @@ steps:
 
 ## Across the platforms
 
-AWS CodePipeline orders actions inside a stage with `runOrder`: actions with the same number run in parallel and a higher number waits for the lower ones. In a pipeline declaration, a stage can hold the `lint` and `test` CodeBuild actions with `"runOrder": 2` and the `package` action with `"runOrder": 3`.
-
 All four reject a graph with a cycle or an unknown dependency before the run starts, which is the behavior the challenge reproduces.
 
 ## Common mistakes

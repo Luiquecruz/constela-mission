@@ -1,6 +1,6 @@
 import re
 
-DIGEST_PATTERN = re.compile(r"^sha256:[a-f0-9]{64}$", re.IGNORECASE)
+DIGEST_PATTERN = re.compile(r"sha256:[a-f0-9]{64}", re.IGNORECASE)
 
 
 class ArtifactRegistry:
@@ -8,7 +8,7 @@ class ArtifactRegistry:
         self._versions = {}
 
     def register(self, name: str, version: str, digest: str) -> dict:
-        if not DIGEST_PATTERN.match(digest):
+        if not DIGEST_PATTERN.fullmatch(digest):
             raise ValueError("Invalid SHA256 digest format")
         normalized = digest.lower()
         known = self._versions.setdefault(name, {})

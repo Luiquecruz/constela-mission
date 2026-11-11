@@ -29,6 +29,9 @@ def _():
     incidents = [incident("i1", 30), incident("i2", 90), incident("i3", None)]
     assert mod.calculate_dora_metrics(deployments, incidents, 1)["meanTimeToRestoreMinutes"] == 60
     assert mod.calculate_dora_metrics(deployments, [incident("i3", None)], 1)["meanTimeToRestoreMinutes"] == 0
+    assert mod.calculate_dora_metrics([], [incident("i1", 60)], 1)["meanTimeToRestoreMinutes"] == 60
+    eight = [deployment(str(index), "SUCCESS", 2 if index == 7 else 1) for index in range(8)]
+    assert mod.calculate_dora_metrics(eight, [], 1)["meanLeadTimeMinutes"] == 1.13
 
 
 @test("rounds to two decimals, returns zeros without deployments and rejects a window that is not positive")

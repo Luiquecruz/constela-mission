@@ -6,9 +6,9 @@ Export `calculateDoraMetrics(deployments, incidents, windowDays)`. It returns `{
 
 - `deployments` are `{ id, timestamp, status, leadTimeMinutes }` with status `SUCCESS` or `FAILURE`; `incidents` are `{ id, deploymentId, createdTimestamp, resolvedTimestamp }` with timestamps in milliseconds, where `resolvedTimestamp` is empty (`null`) while the incident is open.
 - A `windowDays` that is zero or negative fails with `Window must be positive`.
-- With no deployments, every metric is 0.
+- With no deployments, the deployment frequency, the failure rate and the lead time are 0; the mean time to restore still comes from the resolved incidents.
 - `deploymentFrequencyPerDay` is the number of deployments divided by the window; `changeFailureRatePercent` is the share of `FAILURE` deployments, in percent; `meanLeadTimeMinutes` is the mean of the lead times; `meanTimeToRestoreMinutes` is the mean duration in minutes of the **resolved** incidents, and 0 when none is resolved.
-- Every metric is rounded to two decimals.
+- Every metric is rounded to two decimals, a half rounding away from zero (1.125 becomes 1.13). The rounding is applied to the computed number; the tests only use values whose midpoint is exact in binary floating point, and each language may use its own rounding function.
 
 Export `classifyPerformance(metrics)`, which takes the object above and returns `'ELITE'`, `'HIGH'`, `'MEDIUM'` or `'LOW'`.
 

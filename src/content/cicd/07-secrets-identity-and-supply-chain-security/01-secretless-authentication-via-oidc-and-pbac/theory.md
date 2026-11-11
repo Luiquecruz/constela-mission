@@ -106,6 +106,8 @@ jobs:
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 ```
 
+The client, tenant and subscription ids are identifiers, not secrets: nothing in this workflow can be replayed by someone who copies it.
+
 The workflow then names the provider and the service account, and needs `id-token: write` like the other clouds:
 
 ```yaml
@@ -142,8 +144,6 @@ steps:
 :::
 
 ::: aws
-Pin third-party actions to a full commit SHA in production workflows; a tag such as `@v4` can be moved to different code. The client, tenant and subscription ids are identifiers, not secrets: nothing in this workflow can be replayed by someone who copies it.
-
 On AWS, the role's trust policy accepts the token through `sts:AssumeRoleWithWebIdentity`. The audience must be `sts.amazonaws.com`, and the subject is checked with `StringEquals` for one exact value or `StringLike` for a pattern:
 
 ```json
@@ -163,6 +163,8 @@ On AWS, the role's trust policy accepts the token through `sts:AssumeRoleWithWeb
 }
 ```
 :::
+
+Pin third-party actions to a full commit SHA in production workflows; a tag such as `@v4` can be moved to different code.
 
 ::: gcp
 On Google Cloud, a workload identity pool holds a provider that trusts the issuer. The attribute mapping copies claims into attributes, and the service account is bound to a principal set that names the one repository allowed to impersonate it:

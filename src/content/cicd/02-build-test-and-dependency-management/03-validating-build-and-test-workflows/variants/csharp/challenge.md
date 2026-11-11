@@ -2,6 +2,8 @@ Schedule DAG tasks into execution batches and evaluate vulnerability scan result
 
 ### Requirements
 
+Implement the public static methods `ScheduleDagTasks` and `EvaluateScanResults` of the static class `WorkflowValidator`.
+
 Implement `ScheduleDagTasks(tasks)`:
 - `tasks`: Array of `BuildTask(string Id, string[] Dependencies, string Command)`.
 - If a dependency is missing from `tasks`, throw `InvalidOperationException("Missing dependency: <dep>")`.

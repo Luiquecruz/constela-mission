@@ -14,6 +14,9 @@ test('averages the restore time of resolved incidents only', async () => {
   const incidents = [incident('i1', 30), incident('i2', 90), incident('i3', null)];
   expect(mod.calculateDoraMetrics(deployments, incidents, 1).meanTimeToRestoreMinutes).toBe(60);
   expect(mod.calculateDoraMetrics(deployments, [incident('i3', null)], 1).meanTimeToRestoreMinutes).toBe(0);
+  expect(mod.calculateDoraMetrics([], [incident('i1', 60)], 1).meanTimeToRestoreMinutes).toBe(60);
+  const eight = Array.from({ length: 8 }, (_, index) => deployment(String(index), 'SUCCESS', index === 7 ? 2 : 1));
+  expect(mod.calculateDoraMetrics(eight, [], 1).meanLeadTimeMinutes).toBe(1.13);
 });
 
 test('rounds to two decimals, returns zeros without deployments and rejects a window that is not positive', async () => {

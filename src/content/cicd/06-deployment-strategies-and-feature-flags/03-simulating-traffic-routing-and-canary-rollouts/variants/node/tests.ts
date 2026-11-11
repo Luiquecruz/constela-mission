@@ -4,6 +4,9 @@ const metrics = (totalRequests: number, errorRequests: number, latencyP99Ms = 20
 
 test('advances to the first step when the canary starts healthy', async () => {
   expect(mod.decideCanaryStep(STEPS, 0, metrics(1000, 2), LIMITS)).toEqual({ action: 'ADVANCE', nextWeight: 10, reason: 'Canary healthy, advancing', errorRatePercent: 0.2 });
+  expect(mod.decideCanaryStep(STEPS, 0, metrics(800, 3), LIMITS).errorRatePercent).toBe(0.38);
+  expect(mod.decideCanaryStep(STEPS, 0, metrics(20000, 201), { ...LIMITS, maxErrorRatePercent: 5 }).errorRatePercent).toBe(1.01);
+  expect(mod.decideCanaryStep(STEPS, 50, metrics(25000, 1), { ...LIMITS, maxErrorRatePercent: 0 }).action).toBe('ROLLBACK');
 });
 
 test('moves to the first step above the current weight, even when the weight is between steps', async () => {
@@ -21,6 +24,8 @@ test('holds the current weight until there is enough traffic to judge', async ()
 test('rolls back to zero when the error rate is above the limit and tolerates exactly the limit', async () => {
   expect(mod.decideCanaryStep(STEPS, 25, metrics(1000, 11), LIMITS)).toEqual({ action: 'ROLLBACK', nextWeight: 0, reason: 'Error rate exceeds limit', errorRatePercent: 1.1 });
   expect(mod.decideCanaryStep(STEPS, 25, metrics(1000, 10), LIMITS).action).toBe('ADVANCE');
+  expect(mod.decideCanaryStep(STEPS, 25, metrics(10000, 57), { ...LIMITS, maxErrorRatePercent: 0.57 }).action).toBe('ADVANCE');
+  expect(mod.decideCanaryStep(STEPS, 25, metrics(1000, 0), { ...LIMITS, maxErrorRatePercent: 1e-7 }).action).toBe('ADVANCE');
 });
 
 test('rolls back when the latency is above the limit and reports errors first when both fail', async () => {

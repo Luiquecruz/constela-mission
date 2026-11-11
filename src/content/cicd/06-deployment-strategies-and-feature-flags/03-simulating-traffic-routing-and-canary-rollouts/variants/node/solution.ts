@@ -17,13 +17,24 @@ export interface CanaryDecision {
   errorRatePercent: number;
 }
 
+function exceedsLimit(errorRequests: number, totalRequests: number, limitPercent: number): boolean {
+  const [mantissa, exponent = '0'] = limitPercent.toExponential().split('e');
+  const [whole, fraction = ''] = mantissa.split('.');
+  const digits = BigInt(whole + fraction);
+  const power = Number(exponent) - fraction.length;
+  const left = BigInt(errorRequests) * 100n * (power < 0 ? 10n ** BigInt(-power) : 1n);
+  const right = digits * (power > 0 ? 10n ** BigInt(power) : 1n) * BigInt(totalRequests);
+  return left > right;
+}
+
 export function decideCanaryStep(steps: number[], currentWeight: number, metrics: CanaryMetrics, limits: CanaryLimits): CanaryDecision {
-  const errorRatePercent = metrics.totalRequests === 0 ? 0 : Math.round((metrics.errorRequests / metrics.totalRequests) * 10000) / 100;
+  const hundredths = metrics.totalRequests === 0 ? 0n : (BigInt(metrics.errorRequests) * 20000n + BigInt(metrics.totalRequests)) / (2n * BigInt(metrics.totalRequests));
+  const errorRatePercent = Number(hundredths) / 100;
 
   if (metrics.totalRequests < limits.minRequests) {
     return { action: 'HOLD', nextWeight: currentWeight, reason: 'Not enough traffic to decide', errorRatePercent };
   }
-  if (errorRatePercent > limits.maxErrorRatePercent) {
+  if (exceedsLimit(metrics.errorRequests, metrics.totalRequests, limits.maxErrorRatePercent)) {
     return { action: 'ROLLBACK', nextWeight: 0, reason: 'Error rate exceeds limit', errorRatePercent };
   }
   if (metrics.latencyP99Ms > limits.maxLatencyP99Ms) {

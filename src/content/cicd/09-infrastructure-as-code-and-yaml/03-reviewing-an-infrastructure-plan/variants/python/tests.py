@@ -63,5 +63,5 @@ async def _():
     review = mod.review_plan(plan(change("aws_db_instance.main", "aws_db_instance", ["delete", "create"], {"tags": {"Owner": "platform"}, "publicly_accessible": True})), POLICY)
     assert review["decision"] == "REJECT"
     assert [finding["rule"] for finding in review["findings"]] == ["protected-destroy", "public-access"]
-    error = await capture_error(lambda: mod.review_plan(plan(change("x.y", "x", ["forget"])), POLICY))
-    assert "Unsupported actions: forget" in str(error)
+    error = await capture_error(lambda: mod.review_plan(plan(change("x.y", "x", ["explode"])), POLICY))
+    assert "Unsupported actions: explode" in str(error)

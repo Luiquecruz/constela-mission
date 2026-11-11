@@ -11,6 +11,9 @@ public static class CanaryRouterTests
     public static void AdvancesFirst()
     {
         Assert.Equal(new CanaryDecision("ADVANCE", 10, "Canary healthy, advancing", 0.2), CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(1000, 2), Limits));
+        Assert.Equal(0.38, CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(800, 3), Limits).ErrorRatePercent);
+        Assert.Equal(1.01, CanaryRouter.DecideCanaryStep(Steps, 0, Metrics(20000, 201), new CanaryLimits(5, 500, 100)).ErrorRatePercent);
+        Assert.Equal("ROLLBACK", CanaryRouter.DecideCanaryStep(Steps, 50, Metrics(25000, 1), new CanaryLimits(0, 500, 100)).Action);
     }
 
     [Test("moves to the first step above the current weight, even when the weight is between steps")]
@@ -33,6 +36,8 @@ public static class CanaryRouterTests
     {
         Assert.Equal(new CanaryDecision("ROLLBACK", 0, "Error rate exceeds limit", 1.1), CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(1000, 11), Limits));
         Assert.Equal("ADVANCE", CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(1000, 10), Limits).Action);
+        Assert.Equal("ADVANCE", CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(10000, 57), new CanaryLimits(0.57, 500, 100)).Action);
+        Assert.Equal("ADVANCE", CanaryRouter.DecideCanaryStep(Steps, 25, Metrics(1000, 0), new CanaryLimits(1e-7, 500, 100)).Action);
     }
 
     [Test("rolls back when the latency is above the limit and reports errors first when both fail")]

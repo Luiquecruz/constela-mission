@@ -12,7 +12,7 @@ public record PromotionPlan(bool Success, string Reason, ManifestPatch? Patch);
 
 public static class PromotionPlanner
 {
-    private static readonly Regex DigestPattern = new("^sha256:[a-f0-9]{64}$", RegexOptions.IgnoreCase);
+    private static readonly Regex DigestPattern = new("\\Asha256:[a-f0-9]{64}\\z", RegexOptions.IgnoreCase);
 
     public static PromotionPlan PlanPromotion(PromotionRequest request, GateResult gate, DeploymentHistoryEntry[] history, string[] environments)
     {

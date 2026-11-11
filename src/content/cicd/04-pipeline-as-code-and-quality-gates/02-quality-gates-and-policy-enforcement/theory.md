@@ -6,7 +6,7 @@ You need: Declarative Pipeline Architecture
 
 ## Case study
 
-A large bank that suffered a cloud breach caused by a misconfigured firewall had already built an open source tool, Cloud Custodian, to express cloud rules as code and enforce them automatically. Rules written as code can be reviewed, versioned and run on every change, instead of living in a document that people read once. A quality gate works the same way: the policy is code, it runs the same for everyone, and the evidence of each decision is kept.
+Capital One built Cloud Custodian, an open source rules engine in which cloud policies are written in YAML and enforced automatically. Rules written as code can be reviewed, versioned and run on every change, instead of living in a document that people read once. A quality gate works the same way: the policy is code, it runs the same for everyone, and the evidence of each decision is kept.
 
 ## The Structure of Quality Gates
 
@@ -98,7 +98,11 @@ default allow := false
 
 allow if count(deny) == 0
 
+deny contains "Coverage is missing or not a number" if not is_number(input.coverage)
+
 deny contains "Coverage below 80" if input.coverage < 80
+
+deny contains "Critical vulnerability count is missing or not a number" if not is_number(input.criticalVulnerabilities)
 
 deny contains "Critical vulnerabilities present" if input.criticalVulnerabilities > 0
 

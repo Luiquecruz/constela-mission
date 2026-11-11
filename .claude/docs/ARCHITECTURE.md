@@ -246,7 +246,7 @@ No change is needed in the runner, sandbox, loader, pages or features: they read
 
 ## Provider examples
 
-A track can list `providers` in `track.json` (registry in `content/providers.ts`). The Briefing then shows a `ProviderSwitch` (`features/lesson`, pinned at the top of the scrolling panel on wide screens) when the theory has `::: <provider id>` blocks placed under the concepts they illustrate, the choice is stored per track in the progress store (`provider`, `progress.chooseProvider`) and `shared/ui/Markdown` receives it as `provider`: `providerBlocks.selectProviderBlocks` keeps the chosen block, unwrapped, and drops the others before `marked` runs. Challenges are not affected; the language switch of the editor is independent.
+A track can list `providers` in `track.json` (registry in `content/providers.ts`). The Briefing then shows a `ProviderSwitch` (`features/lesson`, pinned at the top of the scrolling panel on wide screens) when the theory has `::: <provider id>` blocks placed under the concepts they illustrate, the choice is stored per track in the progress store (`provider`, `progress.chooseProvider`) and `shared/ui/Markdown` receives it as `provider`: `providerBlocks.selectProviderBlocks` keeps the chosen block, unwrapped, and drops the others before `marked` runs. The switch is a radio group with one tab stop and arrow-key navigation (Left or Up to the previous platform, Right or Down to the next), and `providerBlocks` ignores a `:::` line inside a fenced code sample. Challenges are not affected; the language switch of the editor is independent.
 
 ## Multi-language challenges
 

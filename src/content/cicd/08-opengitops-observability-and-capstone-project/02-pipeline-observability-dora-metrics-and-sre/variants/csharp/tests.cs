@@ -25,6 +25,9 @@ public static class DoraTests
         var deployments = new[] { Deployment("a", "SUCCESS", 10) };
         Assert.Equal(60, DoraCalculator.CalculateDoraMetrics(deployments, [Incident("i1", 30), Incident("i2", 90), Incident("i3", null)], 1).MeanTimeToRestoreMinutes);
         Assert.Equal(0, DoraCalculator.CalculateDoraMetrics(deployments, [Incident("i3", null)], 1).MeanTimeToRestoreMinutes);
+        Assert.Equal(60, DoraCalculator.CalculateDoraMetrics([], [Incident("i1", 60)], 1).MeanTimeToRestoreMinutes);
+        var eight = Enumerable.Range(0, 8).Select(index => Deployment(index.ToString(), "SUCCESS", index == 7 ? 2 : 1)).ToArray();
+        Assert.Equal(1.13, DoraCalculator.CalculateDoraMetrics(eight, [], 1).MeanLeadTimeMinutes);
     }
 
     [Test("rounds to two decimals, returns zeros without deployments and rejects a window that is not positive")]

@@ -4,7 +4,7 @@ Policy as code means the rules of a deployment gate live in data that can be rev
 
 In the static class `PolicyEngine`, write `PolicyOutcome EvaluatePolicy(PolicyRule[] rules, Dictionary<string, object> facts)`, using the records declared in the file: `PolicyRule(Id, Field, Operator, Value, Message)`, `PolicyFailure(RuleId, Message)` and `PolicyOutcome(Allowed, Failures)`. An unsupported operator throws `ArgumentException`. Facts and values are numbers or strings, and the value of `in` is a `string[]`.
 
-A rule is `PolicyRule`. Facts are named numbers or strings.
+A rule is `PolicyRule`. Facts are named numbers (any integer or floating-point type) or strings.
 
 Operators:
 

@@ -1,19 +1,23 @@
+from decimal import ROUND_HALF_UP, Decimal
+
+
+def round2(value: float) -> float:
+    return float(Decimal(value).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP))
+
+
 def calculate_dora_metrics(deployments: list, incidents: list, window_days: float) -> dict:
     if window_days <= 0:
         raise ValueError("Window must be positive")
-    if not deployments:
-        return {"deploymentFrequencyPerDay": 0, "changeFailureRatePercent": 0, "meanLeadTimeMinutes": 0, "meanTimeToRestoreMinutes": 0}
-
     failed = sum(1 for deployment in deployments if deployment["status"] == "FAILURE")
     lead_total = sum(deployment["leadTimeMinutes"] for deployment in deployments)
     resolved = [incident for incident in incidents if incident["resolvedTimestamp"] is not None]
     restore_total = sum(incident["resolvedTimestamp"] - incident["createdTimestamp"] for incident in resolved)
 
     return {
-        "deploymentFrequencyPerDay": round(len(deployments) / window_days, 2),
-        "changeFailureRatePercent": round(failed / len(deployments) * 100, 2),
-        "meanLeadTimeMinutes": round(lead_total / len(deployments), 2),
-        "meanTimeToRestoreMinutes": 0 if not resolved else round(restore_total / len(resolved) / 60000, 2),
+        "deploymentFrequencyPerDay": round2(len(deployments) / window_days),
+        "changeFailureRatePercent": 0 if not deployments else round2(failed / len(deployments) * 100),
+        "meanLeadTimeMinutes": 0 if not deployments else round2(lead_total / len(deployments)),
+        "meanTimeToRestoreMinutes": 0 if not resolved else round2(restore_total / len(resolved) / 60000),
     }
 
 
@@ -37,6 +41,6 @@ def classify_performance(metrics: dict) -> str:
 
 
 def error_budget(slo_percent: float, total_requests: int, failed_requests: int) -> dict:
-    allowed = round(total_requests * (100 - slo_percent) / 100, 2)
-    remaining = round(allowed - failed_requests, 2)
+    allowed = round2(total_requests * (100 - slo_percent) / 100)
+    remaining = round2(allowed - failed_requests)
     return {"allowedFailures": allowed, "remainingFailures": remaining, "releasesAllowed": remaining > 0}

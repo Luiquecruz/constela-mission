@@ -15,10 +15,10 @@ An immutable artifact registry acts as the single source of truth for compiled b
 The registry service must enforce strict integrity rules:
 
 - **SHA256 Format Validation**: Verifying that artifact digests adhere strictly to standard 64-character hexadecimal formatting prefixed with `sha256:` (e.g., `sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`).
-- **Immutability Protection**: Preventing existing artifact records from being overwritten or modified. If an incoming registration attempt supplies a digest that already exists with different metadata or binary payload, the registry must throw an immutability violation error.
+- **Immutability Protection**: Preventing existing artifact records from being overwritten or modified. If an incoming registration supplies a version that already exists with a different digest, the registry must throw an immutability violation error; registering the same digest again changes nothing.
 
 ::: github
-The registries of the four providers enforce the same two rules the challenge models: a version names one digest, and what moves between environments is the digest.
+The challenge models two rules: a version names one digest, and what moves between environments is the digest. The registries of the four providers can keep a tag from moving only when tag immutability is configured, so the pipeline records the digest of a version and deploys by that digest.
 
 A GitHub Actions workflow can promote by digest and sign in to each cloud without stored secrets; the deploy job names the digest it received from the build:
 

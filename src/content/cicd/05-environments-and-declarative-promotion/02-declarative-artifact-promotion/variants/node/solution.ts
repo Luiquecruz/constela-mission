@@ -27,7 +27,7 @@ export function validateEnvironmentPromotion(
 
   if (request.targetEnv === "staging") {
     const failedStaging = history.some(
-      (h) => h.artifactDigest === request.artifactDigest && h.env === "staging" && h.status === "FAILED"
+      (h) => h.artifactDigest.toLowerCase() === request.artifactDigest.toLowerCase() && h.env === "staging" && h.status === "FAILED"
     );
     if (failedStaging) {
       return {
@@ -44,7 +44,7 @@ export function validateEnvironmentPromotion(
 
   if (request.targetEnv === "production") {
     const verifiedStaging = history.some(
-      (h) => h.artifactDigest === request.artifactDigest && h.env === "staging" && h.status === "VERIFIED"
+      (h) => h.artifactDigest.toLowerCase() === request.artifactDigest.toLowerCase() && h.env === "staging" && h.status === "VERIFIED"
     );
 
     if (!verifiedStaging) {

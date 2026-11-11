@@ -157,7 +157,7 @@ Google Kubernetes Engine offers Config Sync, and Amazon EKS runs Argo CD or Flux
 
 Turning on `prune` and `selfHeal` is a decision with consequences: it makes Git the only way to change the cluster, which is the point of GitOps, and it deletes things that were created outside Git. Teams usually start with reporting only and turn them on once the repository holds everything the cluster needs.
 
-The `flux bootstrap github` command shown above then runs unchanged against either cluster.
+The `flux bootstrap github` command shown above then runs unchanged against any of these clusters.
 
 ## Common mistakes
 

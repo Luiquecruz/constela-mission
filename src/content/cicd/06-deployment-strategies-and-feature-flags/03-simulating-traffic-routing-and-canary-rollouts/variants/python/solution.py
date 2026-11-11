@@ -1,10 +1,14 @@
+from decimal import Decimal
+
+
 def decide_canary_step(steps: list, current_weight: int, metrics: dict, limits: dict) -> dict:
     total = metrics["totalRequests"]
-    error_rate = 0 if total == 0 else round(metrics["errorRequests"] / total * 100, 2)
+    errors = metrics["errorRequests"]
+    error_rate = 0 if total == 0 else (errors * 20000 + total) // (2 * total) / 100
 
     if total < limits["minRequests"]:
         return {"action": "HOLD", "nextWeight": current_weight, "reason": "Not enough traffic to decide", "errorRatePercent": error_rate}
-    if error_rate > limits["maxErrorRatePercent"]:
+    if errors * 100 > Decimal(str(limits["maxErrorRatePercent"])) * total:
         return {"action": "ROLLBACK", "nextWeight": 0, "reason": "Error rate exceeds limit", "errorRatePercent": error_rate}
     if metrics["latencyP99Ms"] > limits["maxLatencyP99Ms"]:
         return {"action": "ROLLBACK", "nextWeight": 0, "reason": "Latency exceeds limit", "errorRatePercent": error_rate}

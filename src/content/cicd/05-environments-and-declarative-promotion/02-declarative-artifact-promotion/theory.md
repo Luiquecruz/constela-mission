@@ -6,7 +6,7 @@ You need: Environment Lifecycle and Isolation
 
 ## Case study
 
-Amazon describes in its engineering library how its pipelines promote a change through stages: first a pre-production environment, then a small slice of one region, then more regions in waves, with automated checks and alarms between the steps and a rollback when one fails. The same build moves through all of them. A promotion is a controlled decision between environments, with preconditions, and it never rebuilds what it promotes.
+Amazon describes in its Builders' Library how its pipelines move one immutable artifact through test and production stages, monitor each deployment and roll it back automatically, with no developer watching each step. A promotion is a controlled decision between environments, with preconditions, and it never rebuilds what it promotes.
 
 ## The Declarative Promotion Workflow
 
@@ -77,41 +77,6 @@ Promoting an artifact from Staging to Production requires passing multi-stage ve
 
 If any verification stage fails in Staging, the promotion sequence is aborted, preventing the artifact reference from reaching the Production manifest.
 
-::: github
-A promotion workflow moves one artifact through ordered environments, and each provider has a native object for that order. In GitHub Actions, jobs that name an environment run in sequence with `needs`, and the environment's protection rules hold the production job for approval:
-
-```yaml
-jobs:
-  staging:
-    runs-on: ubuntu-latest
-    environment: staging
-    steps:
-      - run: ./deploy.sh staging "${{ needs.build.outputs.digest }}"
-  production:
-    needs: staging
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - run: ./deploy.sh production "${{ needs.build.outputs.digest }}"
-```
-
-GitHub Actions orders the environments with `needs`, and the environment of production holds the job until its reviewers approve:
-
-```yaml
-jobs:
-  staging:
-    runs-on: ubuntu-latest
-    environment: staging
-    steps:
-      - run: ./deploy.sh staging
-  production:
-    needs: staging
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - run: ./deploy.sh production
-```
-:::
 
 ::: azure
 Azure Pipelines models the order as stages, and a deployment job in each one targets an environment whose approvals hold the production stage:
